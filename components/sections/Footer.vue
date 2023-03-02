@@ -300,14 +300,12 @@
 
 
 
-                    
+
 
 
 
                 </div>
             <!-- courency and language dropdown & payment_methods  -->
-
-
 
 
 
