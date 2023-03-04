@@ -6,6 +6,10 @@ body{
   font-family: Century Gothic Std Bold,Noto Sans JP,Noto Sans SC,Noto Sans TC,Noto Sans KR!important;
 }
 
+.DinCondensedBold {
+  font-family: DinCondensedBold;
+}
+
 .Century-bold-hover {
   transition: font-family 0.3s ease;
 }
@@ -42,13 +46,14 @@ body{
   transform: rotateY(180deg);
 }
 
+.rotate-45 {
+    transform: rotate(45deg);
+}
+
 .rotate-180 {
     transform: rotate(180deg);
 }
 
-.rotate-45 {
-    transform: rotate(45deg);
-}
 
 /* Hover link */
 .link-hover {
@@ -294,4 +299,24 @@ body{
   max-height: 0;
   opacity: 0;
   overflow: hidden;
+}
+
+.slide-right-enter-active {
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in;
+}
+
+.slide-right-leave-active {
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.slide-right-enter-to, .slide-leave {
+  max-width: 100px;
+  overflow: hidden;
+}
+
+.slide-right-enter, .slide-leave-to {
+  overflow: hidden;
+  max-width: 0;
 }

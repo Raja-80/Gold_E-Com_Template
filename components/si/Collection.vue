@@ -8,7 +8,7 @@
             </div>
             <div class="absolute inset-0 flex items-center justify-center cursor-pointer">
                 <nuxt-link  :to="item.childrens.length > 0 ? `/collections/${item.slug}` : `/shop/${item.slug}`">
-                    <h1 class="text-xl md:text-2xl sha">{{ item.name }}</h1>
+                    <h1 class="text-xl lg:text-2xl text-shadoow">{{ item.name }}</h1>
                     <div class="text-center">
                         <span class="text-active opacity-100 lg:opacity-0 text-sm underline transition ease-in-out delay-100">{{ $settings.sections.collections.description }}</span>
                     </div>
@@ -28,6 +28,11 @@
 </script>
 
 <style scoped>
+
+.text-shadoow {
+    filter: drop-shadow(0 0 0.625rem rgba(0, 0, 0, 0.8));
+}
+
 .pbres-4\/5 {
     padding-bottom: 80%;
 }

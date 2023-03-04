@@ -422,8 +422,5 @@
 .menus-text:first-child {
     margin-top: 2rem;
 }
-
-
-
-  </style>
+</style>
     
