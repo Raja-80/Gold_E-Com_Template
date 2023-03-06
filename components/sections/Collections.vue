@@ -1,12 +1,18 @@
 <template>
     <div>
         <!-- Collections -->
-        <div v-if="items.length>0" class="flex flex-wrap">
-            <div class="w-full lg:w-1/2" v-for="(item,i) in items" :key="i"> 
-                <si-collection :item="item"></si-collection>
+        <div>
+            <div v-if="loading" class="flex justify-center items-center my-5">
+                <si-loader></si-loader>
             </div>
-        </div> 
+            <div v-if="items.length>0" class="flex flex-wrap">
+                <div v-for="(item,i) in items" :key="i" class="w-full lg:w-1/2">
+                    <si-collection :item="item"></si-collection>
+                </div>
+            </div>
+        </div>
         <!-- Collections -->
+
         <!-- Collections not exists -->
         <div v-if="!loading && items.length==0" class="flex flex-wrap items-center  bg-white p-2 mx-4 border rounded-xl">
             <div class="w-full md:w-1/2 flex items-center justify-center md:items-start md:justify-start ">

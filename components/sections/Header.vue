@@ -71,8 +71,8 @@
                                             <!-- show search -->
                                             <transition name="slide-right">
                                                 <div class="pr-2" v-if="showSearch" @mouseleave="showSearch=false">
-                                                    <form @submit.prevent="search" class="search flex items-center border-b o border-black" action="/shop?">
-                                                        <input autofocus v-model="q" class="bg-transparent outline-none text-sm" :placeholder="'Search for products'" type="search" name="q">
+                                                    <form @submit.prevent="search" class="search flex items-center border-b border-black py-1" action="/shop?">
+                                                        <input v-model="q" class="bg-transparent outline-none text-sm" :placeholder="'Search for products'" type="search" name="q">
                                                         <button aria-label="Search button">
                                                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.17 16.48L12 11.36a5.5 5.5 0 10-4.22 2 5.41 5.41 0 003.51-1.27l5.14 5.13a.51.51 0 00.7 0 .5.5 0 00.04-.74zm-9.35-4.15a4.5 4.5 0 110-9 4.5 4.5 0 010 9z" fill="currentColor"></path></svg>
                                                         </button>
@@ -133,7 +133,7 @@
                     <!--  -->
                     <div class="px-5 pb-5 lg:hidden bg-white">
                         <form @submit.prevent="search" class="search flex justify-between items-center border-b pb-2 border-black" action="/shop?">
-                            <input autofocus v-model="q" class="bg-transparent outline-none text-sm" :placeholder="'Search for products'" type="search" name="q">
+                            <input v-model="q" class="bg-transparent outline-none text-sm w-full" :placeholder="'Search for products'" type="search" name="q">
                             <button aria-label="Search button">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.17 16.48L12 11.36a5.5 5.5 0 10-4.22 2 5.41 5.41 0 003.51-1.27l5.14 5.13a.51.51 0 00.7 0 .5.5 0 00.04-.74zm-9.35-4.15a4.5 4.5 0 110-9 4.5 4.5 0 010 9z" fill="currentColor"></path></svg>
                             </button>
@@ -198,6 +198,22 @@ export default {
 }
 </script>
 <style scoped>
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  height: 1em;
+  width: 1em;
+  border-radius: 50em;
+  background: url(https://cdn-icons-png.flaticon.com/512/2961/2961937.png) no-repeat 50% 50%;
+  background-size: contain;
+  opacity: 0;
+  cursor: pointer;
+}
+
+input[type="search"]:focus::-webkit-search-cancel-button {
+  opacity: 1;
+  pointer-events: all;
+}
+
 .chivron-down {
     transition: opacity 0.3s ease-out;
 }

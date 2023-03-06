@@ -1,130 +1,237 @@
 <template>
-    <div class="container">
-        <div class="flex mb-2 relative">
-            <transition name="slideleft">
-                <div :class="showSideBar ? 'show':'hide'" class="w-80 md:w-1/4 fixed hidden md:block md:top-0 h-full top-0 bottom-0 bg-white md:relative z-20">
-                    <div class="bg-black bg-opacity-50 fixed block md:hidden inset-0" @click="showSideBar=false"></div>
-                    <div class="border-r bg-white h-full flex flex-col relative">
-                        <div class="w-full flex justify-end md:hidden">
-                            <button @click="showSideBar=false" aria-label="Search button" class="item p-1 bg-gray-100 rounded-md m-1 hover:bg-gray-200">
-                                <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-5 h-5 translate"><path fill="currentColor" d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z" class=""></path></svg>
-                            </button>
-                        </div>
-                        <h2 v-if="$settings.sections.shop.sidebar.collections.active" class="px-2">{{ $settings.sections.shop.sidebar.collections.title }}</h2>
-                        <div v-if="$settings.sections.shop.sidebar.collections.active" class="flex flex-col mb-2">
-                            <div v-if="loading.collections" class="flex justify-center items-center my-5">
-                                <si-loader></si-loader>
+    <div>
+        <div class="relative">
+
+
+            <div class="flex items-center justify-between mx-10">
+                <transition name="slideleft">
+                    <div :class="showSideBar ? 'show':'hide'" class="w-full  fixed hidden md:block md:top-0 h-full top-0 bottom-0 bg-white md:relative z-20">
+                       
+                        <div class="bg-black bg-opacity-50 fixed block md:hidden inset-0" @click="showSideBar=false"></div>
+                        
+                        
+                        
+                        <div class="relative flex bg-red-200 border-b-2">
+                            <!-- close sidebar -->
+                            <div class="w-full flex justify-end md:hidden">
+                                <button @click="showSideBar=false" aria-label="Search button" class="item p-1 bg-gray-100 rounded-md m-1 hover:bg-gray-200">
+                                    <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-5 h-5 translate"><path fill="currentColor" d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z" class=""></path></svg>
+                                </button>
                             </div>
-                            <div v-for="(item, i) in collections" :key="i" class="px-2">
-                                <div class="flex items-center">
-                                    <input v-if="item.childrens && item.childrens.length == 0 " class="w-4 h-4 mx-1" :checked="params['collections.slug-in'] && params['collections.slug-in'].indexOf(item.slug) >= 0" :id="item.slug" @change="setParams($event, 'collections.slug-in', item.slug)" type="checkbox"/>
-                                    <label @click="setActive(i+'fit',i+'ret')" v-if="item.childrens && item.childrens.length > 0 " class="cursor-pointer capitalize collec-name" :for="item.slug">{{ item.name }}</label>
-                                    <label v-if="item.childrens && item.childrens.length == 0 " class="cursor-pointer capitalize collec-name" :for="item.slug">{{ item.name }}</label>
-                                    <svg @click="setActive(i+'fit',i+'ret')" :id="i+'ret'"  v-if="item.childrens && item.childrens.length > 0 " xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="15" height="15" x="0" y="0" viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 512 512 ; cursor:pointer;" xml:space="preserve" class="rotated"><g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751   c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0   c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z" fill="#7a7575" data-original="#000000" style="" class=""/>
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        </g>
-                                    </svg>
+                            <!-- close sidebar -->
+    
+    
+                            <!--  Collections -->
+                            <div class="">
+                                <div @click="showCollections" class="flex items-center cursor-pointer py-5 mr-3">
+                                    <h2 class="text-sm Century-bold-hover" v-if="$settings.sections.shop.sidebar.collections.active">{{ $settings.sections.shop.sidebar.collections.title }}</h2>
+                                    <svg class="mx-1"  :class="isVisible.collections == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                 </div>
-                                <div :id="i+'fit'" class="fit-collapsible" :class="item.childrens.length > 0 ? 'sub-collections' : ''">
-                                    <ul class="list-sub-collections fit-collapsible-content" v-if="item.childrens && item.childrens.length > 0" >
-                                        <li v-for="(child, i) in item.childrens">
-                                            <input class="w-4 h-4 mx-1" :checked="params['collections.slug-in'] && params['collections.slug-in'].indexOf(child.slug) >= 0" :id="child.slug" @change="setParams($event, 'collections.slug-in', child.slug)" type="checkbox"/>
-                                            <label  :for="child.slug" class="cursor-pointer c-p c-grey">{{ child.name }}</label>
-                                        </li>
-                                    </ul>
+    
+                                <transition name="slide">
+                                    <div class="bg-green-300 absolute top-full left-0 right-0 w-full" v-if="isVisible.collections">
+    
+                                        <div v-if="$settings.sections.shop.sidebar.collections.active" class="flex flex-col text-sm mt-5 mb-2">
+    
+                                            <!-- loader -->
+                                            <!-- <div v-if="loading.collections" class="flex justify-center items-center my-5">
+                                                <si-loader></si-loader>
+                                            </div> -->
+                                            <!-- loader -->
+    
+                                            <div v-for="(item, i) in collections" :key="i" class="mb-3">
+                                                <div class="flex items-center">
+                                                    <label  class="relative flex items-center cursor-pointer transition delay-300 ease-in-out">
+                                                        <input v-if="item.childrens && item.childrens.length == 0" type="checkbox" class="form-checkbox absolute top-0 left-0"  style="z-index: -1" :checked="params['collections.slug-in'] && params['collections.slug-in'].indexOf(item.slug) >= 0" :id="item.slug" @change="setParams($event, 'collections.slug-in', item.slug)">
+                                                        <div v-if="item.childrens && item.childrens.length == 0" class="flex justify-center items-center">
+                                                            <svg class="fill-current text-black"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
+                                                        </div>
+                                                        <label v-if="item.childrens && item.childrens.length == 0 " class="cursor-pointer text-sm" :for="item.slug">{{ item.name }}</label>
+                                                        <label @click="setActive(i+'fit',i+'ret')" v-if="item.childrens && item.childrens.length > 0 " class="cursor-pointer text-sm" :for="item.slug">{{ item.name }}</label>
+                                                        <svg class="mx-1 rotated" @click="setActive(i+'fit',i+'ret')" :id="i+'ret'"  v-if="item.childrens && item.childrens.length > 0" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                                    </label>                         
+                                                </div>
+                                                <div :id="i+'fit'" class="fit-collapsible" :class="item.childrens.length > 0 ? 'sub-collections' : ''">
+                                                    <div class="list-sub-collections fit-collapsible-content" v-if="item.childrens && item.childrens.length > 0" >
+                                                        <div v-for="(child, i) in item.childrens" :key="i" class="mt-3">
+                                                            <label class="relative flex items-center cursor-pointer">
+                                                                <input type="checkbox" class="form-checkbox absolute top-0 left-0" style="z-index: -1" :checked="params['collections.slug-in'] && params['collections.slug-in'].indexOf(child.slug) >= 0" :id="child.slug" @change="setParams($event, 'collections.slug-in', child.slug)">
+                                                                <div class="flex justify-center items-center">
+                                                                    <svg class="fill-current text-black"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
+                                                                </div>
+                                                                <label  :for="child.slug" class="cursor-pointer text-sm">{{ child.name }}</label>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                </transition>
+                            </div>
+                            <!-- Collections -->
+    
+                            
+                            <!-- Prices -->
+                            <div class="">
+                                <div @click="showPrices" class="flex items-center cursor-pointer py-5 mr-3">
+                                    <h2 class="text-sm Century-bold-hover" v-if="$settings.sections.shop.sidebar.prices.active">{{ $settings.sections.shop.sidebar.prices.title }}</h2>
+                                    <svg class="mx-1" :class="isVisible.prices == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                 </div>
-                            </div> 
-                        </div>
-                        <hr v-if="$settings.sections.shop.sidebar.collections.active">
-                        <h2 v-if="$settings.sections.shop.sidebar.prices.active" class="px-2 mt-2">{{ $settings.sections.shop.sidebar.prices.title }}</h2>
-                        <div v-if="loading.filters" class="flex justify-center items-center my-5">
-                            <si-loader></si-loader>
-                        </div>
-                        <div v-if="$settings.sections.shop.sidebar.prices.active && filters" class="flex flex-col mb-2" dir="ltr">
-                            <si-price-range @change="setParams" :min="filters.prices.min" :max="filters.prices.max" />
-                        </div>
-                        <hr v-if="$settings.sections.shop.sidebar.prices.active">
-                        <h2 class="px-2" v-if="$settings.sections.shop.sidebar.sizes.active">{{ $settings.sections.shop.sidebar.sizes.title }}</h2>
-                        <div v-if="$settings.sections.shop.sidebar.sizes.active && loading.filters" class="flex justify-center items-center my-5">
-                            <si-loader></si-loader>
-                        </div>
-                        <div v-if="$settings.sections.shop.sidebar.sizes.active && filters" class="flex flex-wrap mx-2 mb-2">
-                            <div v-for="(item, i) in filters.sizes" :key="i" class="flex items-center m-0.5 rounded-md" :class="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0 ? 'bg-primary text-white' : 'bg-gray-200' ">
-                                <input hidden :id="item.value1" :checked="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0" @change="setParams($event, 'options.values.value1', item.value1)" type="checkbox"/>
-                                <label class="cursor-pointer px-2" :for="item.value1">{{ item.value1 }}</label>
+                                <transition name="slide">
+                                    <div class="bg-green-300 absolute top-full left-0 right-0 w-full" v-if="isVisible.prices">
+                                        <div class="py-5">
+                                            <!-- <div v-if="loading.filters" class="flex justify-center items-center my-5">
+                                                <si-loader></si-loader>
+                                            </div> -->
+    
+                                            <div v-if="$settings.sections.shop.sidebar.prices.active && filters" class="flex flex-col mb-2" dir="ltr">
+                                                <si-price-range @change="setParams" :min="filters.prices.min" :max="filters.prices.max" />
+                                            </div>
+                                         </div>
+                                    </div>
+                                </transition>
                             </div>
-                        </div>
-                        <hr v-if="$settings.sections.shop.sidebar.sizes.active">
-                        <h2 class="px-2" v-if="$settings.sections.shop.sidebar.colors.active">{{ $settings.sections.shop.sidebar.colors.title }}</h2>
-                        <div v-if="$settings.sections.shop.sidebar.colors.active && loading.filters" class="flex justify-center items-center my-5">
-                            <si-loader></si-loader>
-                        </div>
-                        <div v-if="$settings.sections.shop.sidebar.colors.active && filters" class="flex flex-wrap mx-2 mb-2">
-                            <div v-for="(item, i) in filters.colors" :key="i" class="flex items-center my-0.5 color-option" :class="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0 ? 'active' : '' ">
-                                <input hidden :id="item.value1" :checked="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0" @change="setParams($event, 'options.values.value1', item.value1)" type="checkbox"/>
-                                <label class="cursor-pointer rounded-full" :style="`background-color:${item.value2}`" :for="item.value1" :aria-label="item.value1"></label>
+                            <!-- Prices -->
+    
+    
+                            <!-- Sizes -->
+                            <div class="">
+                                <div @click="showSizes" class="flex items-center cursor-pointer py-5 mr-3">
+                                    <h2 class="text-sm Century-bold-hover" v-if="$settings.sections.shop.sidebar.sizes.active">{{ $settings.sections.shop.sidebar.sizes.title }}</h2>
+                                    <svg class="mx-1" :class="isVisible.sizes == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                </div>
+                                <transition name="slide">
+                                    <div class="bg-green-300 absolute top-full left-0 right-0 w-full" v-if="isVisible.sizes">
+                                        <!-- <div v-if="$settings.sections.shop.sidebar.sizes.active && loading.filters" class="flex justify-center items-center my-5">
+                                            <si-loader></si-loader>
+                                        </div> -->
+                                        <div class="pt-5 mb-2">
+                                            <div class="flex flex-col" v-if="$settings.sections.shop.sidebar.sizes.active && filters">
+                                                <div class="flex items-center mb-3" v-for="(item, i) in filters.sizes" :key="i" >
+                                                    <label class="relative flex items-center cursor-pointer">
+                                                        <input type="checkbox" class="absolute top-0 left-0" style="z-index: -1" :checked="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0" :id="item.value1" @change="setParams($event, 'options.values.value1', item.value1)">
+                                                        <div class="flex justify-center items-center">
+                                                            <svg class="fill-current text-black"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
+                                                        </div>
+                                                        <label class="text-sm cursor-pointer" :for="item.value1">{{ item.value1 }}</label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </transition>
                             </div>
-                        </div>
-                        <hr v-if="$settings.sections.shop.sidebar.colors.active">
-                        <h2 class="px-2" v-if="$settings.sections.shop.sidebar.tags.active">{{ $settings.sections.shop.sidebar.tags.title }}</h2>
-                        <div v-if="$settings.sections.shop.sidebar.tags.active && loading.filters" class="flex justify-center items-center my-5">
-                            <si-loader></si-loader>
-                        </div>
-                        <div v-if="$settings.sections.shop.sidebar.tags.active && filters" class="flex flex-col mb-2">
-                            <div v-for="(tag, i) in filters.tags" :key="i" class="flex items-center px-2">
-                                <input class="w-4 h-4 mx-1" :checked="params['tags-in'] && params['tags-in'].indexOf(tag) >= 0" :id="`tag_${tag}`" @change="setParams($event, 'tags-in', tag)" type="checkbox"/>
-                                <label class="cursor-pointer capitalize" :for="`tag_${tag}`">{{ tag }}</label>
+                            <!-- Sizes -->
+    
+    
+                            <!-- Colors -->
+                            <div class="">
+                                <div @click="showColors" class="flex items-center cursor-pointer py-5 mr-3">
+                                    <h2 class="text-sm Century-bold-hover" v-if="$settings.sections.shop.sidebar.colors.active">{{ $settings.sections.shop.sidebar.colors.title }}</h2>
+                                    <svg class="mx-1" :class="isVisible.colors == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                </div>
+                                <transition name="slide">
+                                    <div class="bg-green-300 absolute top-full left-0 right-0 w-full" v-if="isVisible.colors">
+                                        <!-- <div v-if="$settings.sections.shop.sidebar.colors.active && loading.filters" class="flex justify-center items-center my-5">
+                                            <si-loader></si-loader>
+                                        </div> -->
+                                        <!--  -->
+                                        <div class="pt-5 mb-2">
+                                            <div class="flex flex-col" v-if="$settings.sections.shop.sidebar.colors.active && filters" >
+                                                <div class="flex items-center mb-3" v-for="(item, i) in filters.colors" :key="i" :class="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0 ? 'active' : '' ">
+                                                    <label class="relative flex items-center cursor-pointer">
+                                                        <input type="checkbox" class="absolute top-0 left-0" style="z-index: -1" :id="item.value1" :checked="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0" @change="setParams($event, 'options.values.value1', item.value1)">
+                                                        <div class="flex justify-center items-center">
+                                                            <svg class="fill-current text-black"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
+                                                        </div>
+                                                        <label class="cursor-pointer text-sm"  :for="item.value1" :aria-label="item.value1">{{ item.value1 }}</label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </transition>
                             </div>
-                        </div>
-                        <hr v-if="$settings.sections.shop.sidebar.tags.active">
-                        <h2 class="px-2" v-if="$settings.sections.shop.sidebar.brands.active">{{ $settings.sections.shop.sidebar.brands.title }}</h2>
-                        <div class="flex flex-col mb-2">
-                            <div v-if="$settings.sections.shop.sidebar.brands.active && loading.brands" class="flex justify-center items-center my-5">
-                                <si-loader></si-loader>
-                            </div>
-                            <div v-if="$settings.sections.shop.sidebar.brands.active">
-                                <div v-for="(item, i) in brands" :key="i" class="flex items-center px-2">
-                                    <input class="w-4 h-4 mx-1" :id="item.slug" :checked="params['brand.slug-in'] && params['brand.slug-in'].indexOf(item.slug) >= 0" @change="setParams($event, 'brand.slug-in', item.slug)" type="checkbox"/>
-                                    <label class="cursor-pointer capitalize" :for="item.slug">{{ item.name }}</label>
+                            <!-- Colors -->
+    
+    
+                            <!-- tags -->
+                            <div class="">
+                                <div @click="showTags" class="flex items-center cursor-pointer py-5 mr-3">
+                                    <h2 class="text-sm Century-bold-hover" v-if="$settings.sections.shop.sidebar.tags.active">{{ $settings.sections.shop.sidebar.tags.title }}</h2>
+                                    <svg class="mx-1" :class="isVisible.tags == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                </div>
+                                
+                                <div class="bg-green-300 absolute top-full left-0 right-0 w-full" v-if="isVisible.tags">
+                                    <!-- <div v-if="$settings.sections.shop.sidebar.tags.active && loading.filters" class="flex justify-center items-center my-5">
+                                        <si-loader></si-loader>
+                                    </div> -->
+                                    <div  class="pt-5 mb-2">
+                                        <div class="flex flex-col" v-if="$settings.sections.shop.sidebar.tags.active && filters">
+                                            <div class="flex items-center mb-3" v-for="(tag, i) in filters.tags" :key="i">
+                                                <label class="relative flex items-center cursor-pointer">
+                                                    <input type="checkbox" class="absolute top-0 left-0" style="z-index: -1" :checked="params['tags-in'] && params['tags-in'].indexOf(tag) >= 0" :id="`tag_${tag}`" @change="setParams($event, 'tags-in', tag)">
+                                                    <div class="flex justify-center items-center">
+                                                        <svg class="fill-current text-black"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
+                                                    </div>
+                                                    <label class="cursor-pointer text-sm" :for="`tag_${tag}`">{{ tag }}</label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            <!-- tags -->
+    
+    
+                            <!-- brands -->
+                            <div class="">
+                                <div @click="showBrands" class="flex items-center cursor-pointer py-5">
+                                    <h2 class="text-sm Century-bold-hover" v-if="$settings.sections.shop.sidebar.brands.active">{{ $settings.sections.shop.sidebar.brands.title }}</h2>
+                                    <svg class="mx-1" :class="isVisible.brands == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                </div>
+                                
+                                <transition name="slide">
+                                    <div class="bg-green-300 absolute top-full left-0 right-0 w-full" v-if="isVisible.brands">
+                                        <div class="flex flex-col mb-2">
+                                            <!-- <div v-if="$settings.sections.shop.sidebar.brands.active && loading.brands" class="flex justify-center items-center my-5">
+                                                <si-loader></si-loader>
+                                            </div> -->
+                                            <div class="pt-5 mb-2">
+                                                <div class="flex flex-col" v-if="$settings.sections.shop.sidebar.brands.active">
+                                                    <div class="flex items-center mb-3" v-for="(item, i) in brands" :key="i">
+                                                        <label class="relative flex items-center cursor-pointer">
+                                                            <input type="checkbox" class="absolute top-0 left-0" style="z-index: -1" :id="item.slug" :checked="params['brand.slug-in'] && params['brand.slug-in'].indexOf(item.slug) >= 0" @change="setParams($event, 'brand.slug-in', item.slug)">
+                                                            <div class="flex justify-center items-center">
+                                                                <svg class="fill-current text-black"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
+                                                            </div>
+                                                            <label class="cursor-pointer text-sm" :for="item.slug">{{ item.name }}</label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </transition>
+                            </div>
+                            <!-- brand -->
                         </div>
                     </div>
+                </transition>
+    
+                <div>
+                    <select class="bg-white p-2 rounded shadow outline-none" v-model="params.sort">
+                        <option v-for="(sort,i) in sorts" :key="i" :value="sort.field">{{ sort.name }}</option>
+                    </select>
                 </div>
-            </transition>
-            <div class="w-full md:w-3/4">
+            </div>
+
+
+
+
+
+            <div class="w-full">
                 <div class="bg-white">
                     <div class="border-b">
                         <div class="flex justify-between items-center p-2">
@@ -170,6 +277,7 @@
                             <svg class="h-4 translate" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"></path></svg>
                         </button>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -179,6 +287,14 @@
 export default {
     data() {
         return {
+            isVisible : {
+                collections: false,
+                prices: false,
+                sizes: false,
+                colors: false,
+                tags: false,
+                brands: false,
+            },
             loading: {
                 products: true,
                 filters: true,
@@ -369,10 +485,43 @@ export default {
             }
             this.loading.products = false;
         },
+        showCollections() {
+            this.isVisible.collections = !this.isVisible.collections;
+        },
+        showPrices() {
+            this.isVisible.prices = !this.isVisible.prices;
+        },
+        showSizes() {
+            this.isVisible.sizes = !this.isVisible.sizes;
+        },
+        showColors() {
+            this.isVisible.colors = !this.isVisible.colors;
+        },
+        showTags() {
+            this.isVisible.tags = !this.isVisible.tags;
+        },
+        showBrands() {
+            this.isVisible.brands = !this.isVisible.brands;
+        },
     },
 }
 </script>
 <style>
+input[type="checkbox"] + div svg {
+    height: 0;
+    width: 0;
+    opacity: 0;
+    margin-right: 0;
+    transition: all .3s ease-in-out;
+}
+
+input[type="checkbox"]:checked + div svg {
+    margin-right: 2px;
+    height: 1.25rem;
+    width: 1.25rem;
+    opacity: 1;
+}
+
 .color-option label{
     width: 24px;
     height: 24px;
@@ -380,6 +529,7 @@ export default {
     margin-right: 4px;
     box-shadow: 0 0 0px 2px rgb(230, 230, 230);
 }
+
 .color-option.active label{
     color: transparent;
     box-shadow: 0 0 0px 2px white, 0 0 0px 4px var(--primary-color);
@@ -413,38 +563,11 @@ export default {
     }
 }
 
-[dir="ltr"] .collec-name{
-    margin-right: auto;
-}
-
-[dir="rtl"] .collec-name{
-    margin-left:auto;
-}
-
-
-[dir="ltr"]  .sub-collections .list-sub-collections{
-    list-style: none;
-    padding-left:40px;
-}
-
-  [dir="rtl"]  .sub-collections .list-sub-collections{
-    list-style: none;
-    padding-right:40px;
-  }
-
-  [dir="rtl"]  .list-sub-collections li{
-    /*padding-left: 133px;*/
-    text-align: right;
-  }
-
  .fit-collapsible{
     overflow: unset;
-    /*padding-bottom: 20px;*/
-    /*border-bottom: 1px solid #dadbdd;*/
     text-align: left;
     display: block;
     margin: 0;
-    /*padding: 0;*/
     border: 0;
     outline: 0;
     vertical-align: baseline;
@@ -455,32 +578,19 @@ export default {
     max-height: 0;
     position: relative;
     overflow: hidden;
-    /* padding: 0; */
     transition: 0.4s;
-    /*overflow-y: auto;*/
   }
 
   .fit-collapsible.active .fit-collapsible-content{
     max-height: 500px;
-    /*padding: 10px;*/
   }
 
   .rotated{
-    transform: rotate(-92deg);
-    transition: 0.3s;
+    transition: all 0.3s ease-in-out;
   }
 
   .rotated.active{
-    transform: rotate(0deg);
-  }
-
-  [dir="rtl"] .rotated {
-    transform: rotate(92deg);
-    transition: 0.3s;
-  }
-
-[dir="rtl"] .rotated.active{
-    transform: rotate(0deg);
+    transform: rotate(180deg);
   }
 
 </style>

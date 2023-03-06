@@ -1,49 +1,90 @@
 <template>
-    <div class="container">
-        <div v-if="item" class="flex items-center bg-white border m-2">
-            <div class="w-40 h-40 p-2 bs-bb">
-                <si-image width="400" height="400" class="w-100 h-100 object-contain" :src="item.image ? item.image.src : null" :alt="item.name" srcset=""/>
-            </div>
-            <span class="w-2">&ensp;</span>
-            <div class="flex flex-1 flex-col justify-start items-start">
-                <h1 class="text-center">{{ item.name }}</h1>
-                <p class="text-center">{{ item.description }}</p>
+    <div>
+        <!-- Loader -->
+        <div v-if="loading.subCollections && loading.posts" class="flex justify-center items-center my-5">
+            <si-loader></si-loader>
+        </div>
+        <!-- Loader -->
+        <!-- Sub Collections -->
+        <div>
+            <div v-if="subCollections.length>0" class="flex flex-wrap">
+                <div v-for="(item,i) in subCollections" :key="i" class="collections w-full lg:w-1/2">
+                    <si-collection :item="item"  page="collections"></si-collection>
+                </div>
             </div>
         </div>
-        <div class="flex flex-wrap">
-            <div v-if="loading" class="flex justify-center items-center my-5">
-                <si-loader></si-loader>
+        <!-- Sub Collections -->
+        <!-- One Blog -->
+        <div v-if="posts.length > 0" class="px-3 lg:px-7 mt-16 pb-16 lg:pb-20 lg:border-b">
+            <div class="">
+                <h2 class="text-base text-center Century-bold">{{ $settings.sections.posts.title  }}</h2>
             </div>
-            <div v-for="(item,i) in items" :key="i" class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2">
-                <si-collection :item="item"></si-collection>
+            <div class="flex flex-wrap">
+                <div v-for="(item, i) in posts.slice(0,1)" :key="i" class="w-full mt-8 lg:mt-4">
+                    <si-post :item="item" page="collections"></si-post>
+                </div>
             </div>
+
         </div>
+        <!-- One Blog -->
     </div>
 </template>
 <script>
 export default {
     data() {
         return {
-            items: [],
-            item: null,
-            loading: true,
+            subCollections: [],
+            collection: null,
+            posts: [],
+            loading: {
+                subCollections: true,
+                posts: true
+            } 
         }
     },
     async fetch(){
-        this.items = [];
-        this.loading = true;
+        this.subCollections = [];
+        this.loading.subCollections = true;
         try{
             const { data } = await this.$storeino.collections.get({ slug: this.$route.params.slug});
-            this.item = data;
+            this.collection = data;
             const { data : { results } } = await this.$storeino.collections.search({ parent: data._id });
-            this.items = results;
+            this.subCollections = results;
         }catch(e){
             console.log({e});
         }
-        this.loading = false;
+        this.loading.subCollections = false;
+
+        this.posts = [];
+        this.loading.posts = true;
+        try{
+            const { data } = await this.$storeino.pages.search( { status: 'PUBLISH' ,'categories.slug-in': [this.collection.slug], type: 'POST' } )
+            this.posts = data.results
+        }catch(e){
+          console.log({e});
+        }
+        this.loading.posts = false;
     },
     mounted() {
       this.$storeino.fbpx('PageView')
     }
 }
 </script>
+
+<style scoped>
+.collections {
+    padding-bottom: 1.5px;
+    padding-top: 1.5px;
+}
+
+@media (min-width: 1024px) {
+    
+    .collections:nth-child(odd) {
+        padding-right: 1.5px;
+    }
+    
+    .collections:nth-child(even) {
+        padding-left: 1.5px;
+    }
+}
+</style>

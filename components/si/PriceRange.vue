@@ -1,13 +1,13 @@
 <template>
-<div class="mx-1">
-    <div class="flex items-center px-2 h-2 bg-gray-200 rounded-md relative range mx-2">
-        <div class="absolute top-0 range-width h-2" :style="`left:${minVal*100/max}%;width:${(maxVal-minVal)*100/max}%`"></div>
-        <input class="min w-full h-2 absolute top-0 left-0 appearance-none bg-transparent" type="range" v-model="minVal" :min="min" :max="max" @change="setParams($event, 'price.salePrice-from')">
-        <input class="max w-full h-2 absolute top-0 left-0 appearance-none bg-transparent" type="range" v-model="maxVal" :min="min" :max="max" @change="setParams($event, 'price.salePrice-to')">
+<div>
+    <div class="flex justify-between text-sm mb-2">
+        <span>{{ min }}</span>
+        <span>{{ max }}</span>
     </div>
-    <div class="flex justify-between m-1">
-        <b>{{ min }}</b>
-        <b>{{ max }}</b>
+    <div class="flex items-center px-2 h-1 bg-gray-200 rounded-md relative range mx-1">
+        <div class="absolute top-0 range-width h-1" :style="`left:${minVal*100/max}%;width:${(maxVal-minVal)*100/max}%`"></div>
+        <input class="min w-full h-1 absolute top-0 left-0 appearance-none bg-transparent" type="range" v-model="minVal" :min="min" :max="max" @change="setParams($event, 'price.salePrice-from')">
+        <input class="max w-full h-1 absolute top-0 left-0 appearance-none bg-transparent" type="range" v-model="maxVal" :min="min" :max="max" @change="setParams($event, 'price.salePrice-to')">
     </div>
 </div>
 </template>
@@ -47,8 +47,8 @@ export default {
     -webkit-appearance: none;
     -moz-appearance: none;
     position: relative;
-    height: 17px;
-    width: 17px;
+    height: 10px;
+    width: 10px;
     border-radius: 50%;
     z-index: 3;
     cursor: pointer;
