@@ -9,7 +9,7 @@
                     <div class="top-0 left-0 right-0 z-20 " v-if="isHeaderFixed" :class="{ 'fixed-header': isHeaderFixed }">
                         <div style="height: 3.8rem;" class="flex justify-between flex-wrap items-center relative px-5 lg:px-10 bg-white">
                             <!-- NavBar -->
-                            <nav v-if="menu" class="w-auto lg:w-2/5 hidden lg:flex items-center text-sm scroll" >
+                            <nav v-if="menu" class="w-auto lg:w-2/5 hidden lg:flex items-center text-sml scroll" >
                                 <ul v-for="(item, i) in menu.items" :key="i" @mouseover="activeId = activeId = item._id" @mouseleave="activeId = activeId = null">
                                     <!-- main child -->
                                     <li class="chivron-box flex items-center mr-2 py-5">
@@ -72,7 +72,7 @@
                                             <transition name="slide-right">
                                                 <div class="pr-2" v-if="showSearch" @mouseleave="showSearch=false">
                                                     <form @submit.prevent="search" class="search flex items-center border-b border-black py-1" action="/shop?">
-                                                        <input v-model="q" class="bg-transparent outline-none text-sm" :placeholder="'Search for products'" type="search" name="q">
+                                                        <input v-model="q" class="bg-transparent outline-none text-sml" :placeholder="'Search for products'" type="search" name="q">
                                                         <button aria-label="Search button">
                                                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.17 16.48L12 11.36a5.5 5.5 0 10-4.22 2 5.41 5.41 0 003.51-1.27l5.14 5.13a.51.51 0 00.7 0 .5.5 0 00.04-.74zm-9.35-4.15a4.5 4.5 0 110-9 4.5 4.5 0 010 9z" fill="currentColor"></path></svg>
                                                         </button>
@@ -133,7 +133,7 @@
                     <!--  -->
                     <div class="px-5 pb-5 lg:hidden bg-white">
                         <form @submit.prevent="search" class="search flex justify-between items-center border-b pb-2 border-black" action="/shop?">
-                            <input v-model="q" class="bg-transparent outline-none text-sm w-full" :placeholder="'Search for products'" type="search" name="q">
+                            <input v-model="q" class="bg-transparent outline-none text-sml w-full" :placeholder="'Search for products'" type="search" name="q">
                             <button aria-label="Search button">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.17 16.48L12 11.36a5.5 5.5 0 10-4.22 2 5.41 5.41 0 003.51-1.27l5.14 5.13a.51.51 0 00.7 0 .5.5 0 00.04-.74zm-9.35-4.15a4.5 4.5 0 110-9 4.5 4.5 0 010 9z" fill="currentColor"></path></svg>
                             </button>

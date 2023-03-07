@@ -12,7 +12,7 @@
                         <div class="absolute inset-0 flex items-end cursor-pointer p-5 lg:py-6  lg:px-10">
                             <div class="content">
                                 <h1 class="text-base text-shadoow Century-bold">{{ item.name }}</h1>
-                                <span class="text-sm text-shadoow transition ease-in-out delay-100">{{ item.description }}</span>
+                                <span class="text-sml text-shadoow transition ease-in-out delay-100">{{ item.description }}</span>
                             </div>
                         </div>
                     </div>
@@ -31,7 +31,7 @@
                         <div class="absolute inset-0 flex items-center justify-center cursor-pointer">
                             <div class="content text-center">
                                 <h1 class="text-center text-xl lg:text-2xl text-shadoow">{{ item.name }}</h1>
-                                <span class="text-active opacity-100 lg:opacity-0 text-sm underline transition ease-in-out delay-100">{{ $settings.sections.collections.description }}</span>
+                                <span class="text-active opacity-100 lg:opacity-0 text-sml underline transition ease-in-out delay-100">{{ $settings.sections.collections.description }}</span>
                             </div>
                         </div>
                     </div>

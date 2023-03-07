@@ -3,7 +3,7 @@ body{
 }
 
 .Century-bold {
-  font-family: Century Gothic Std Bold,Noto Sans JP,Noto Sans SC,Noto Sans TC,Noto Sans KR!important;
+  font-family: Century Gothic Std Bold,Noto Sans JP,Noto Sans SC,Noto Sans TC,Noto Sans KR;
 }
 
 .DinCondensedBold {
@@ -11,12 +11,17 @@ body{
 }
 
 .Century-bold-hover {
-  transition: font-family 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .Century-bold-hover:hover {
-  font-family: Century Gothic Std Bold,Noto Sans JP,Noto Sans SC,Noto Sans TC,Noto Sans KR!important;
-  transition: font-family 0.3s ease;
+  font-family: Century Gothic Std Bold,Noto Sans JP,Noto Sans SC,Noto Sans TC,Noto Sans KR;
+  transition: all 0.3s ease;
+}
+
+.text-sml {
+  font-size: .8125rem;
+  line-height: 1.3125rem;
 }
 
 .w-4\.5 {

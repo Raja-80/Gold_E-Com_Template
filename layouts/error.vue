@@ -8,7 +8,7 @@
 					<span class="my-4 text-primary font-semibold text-4xl">{{ $settings.sections._404.title }}</span>
 				</div>
 				<h5 class="text-primary font-semibold text-xl my-4">{{ $settings.sections._404.description }}</h5>
-				<a href="/shop" class="bg-primary inline-flex  px-5 py-3 text-sm shadow-sm font-medium tracking-wider text-gray-50 rounded-full hover:shadow-lg">{{ $settings.sections._404.buttons.back_to_shop_text }}</a>
+				<a href="/shop" class="bg-primary inline-flex  px-5 py-3 text-sml shadow-sm font-medium tracking-wider text-gray-50 rounded-full hover:shadow-lg">{{ $settings.sections._404.buttons.back_to_shop_text }}</a>
 			</div>
 		</div>
 	</div>

@@ -22,7 +22,7 @@
                             <ul v-for="(item, i) in menu.items" :key="i" class="flex flex-col mt-5">
                                 <li class="flex items-center justify-between cursor-pointer" @click="activeId = activeId != item._id ? item._id : null">
                                     <div class="">
-                                        <router-link class="Century-bold text-sm" :to="item.url">{{ item.text }}</router-link>
+                                        <router-link class="Century-bold text-sml" :to="item.url">{{ item.text }}</router-link>
                                     </div>
                                     <button class="" >
                                         <span v-if="item.childrens && item.childrens.length > 0">
@@ -34,7 +34,7 @@
                                 <div v-if="item._id == activeId">
                                     <ul class="mt-5" v-for="(item,i) in item.childrens" :key="i" >
                                         <li class="flex items-center justify-between" @click="subItems = subItems != item.collectionId ? item.collectionId : null">
-                                            <router-link class="text-sm link-hover" :to="item.url">
+                                            <router-link class="text-sml link-hover" :to="item.url">
                                                 {{item.text}}
                                             </router-link>
                                             <button  >
@@ -47,7 +47,7 @@
                                             <div v-if="item.collectionId == subItems"> 
                                                 <ul v-if="item.childrens && item.childrens.length > 0">
                                                     <li class="mt-5" v-for="(child,ii) in item.childrens" :key="ii">
-                                                        <nuxt-link  class="text-sm link-hover primary-text" :to="child.url">
+                                                        <nuxt-link  class="text-sml link-hover primary-text" :to="child.url">
                                                             {{ child.text }}
                                                         </nuxt-link>
                                                     </li>
@@ -65,13 +65,13 @@
                         <div class="border-t border-gray-200 mt-5">
                             <ul v-for="(item, i) in langMenu" :key="i" class="flex flex-col">
                                 <div class="mt-5" >
-                                    <h4 class="Century-bold text-sm">{{ item.title }}</h4>
+                                    <h4 class="Century-bold text-sml">{{ item.title }}</h4>
                                 </div>
                                 <transition name="slide">
                                     <div>
                                         <li class="border-b border-black mt-8" @click="active.Id3 = active.Id3 != item._id ? item._id : null" :class="item.childrens.length > 0 ? 'text-hover cursor-pointer' : ''">
                                             <a class="flex items-center justify-between" :href="item.url">
-                                                <div class="text-sm">{{ item.text }}</div>
+                                                <div class="text-sml">{{ item.text }}</div>
                                                 <span class="w-5 flex justify-center lg:justify-end" v-if="item.childrens && item.childrens.length > 0">
                                                     <svg width="12" height="7"  :class="[active.Id3==item._id ? 'rotate-180 transition-all delay-150 ease-linear' : '']"  viewBox="0 0 12 7" xmlns="http://www.w3.org/2000/svg"><path d="M11.39.6a.54.54 0 00-.78 0L6 5.21 1.39.6a.54.54 0 00-.78 0 .55.55 0 000 .77L6 6.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                                 </span>
@@ -81,10 +81,10 @@
                                             <div class="relative" >
                                                 <div v-if="item._id == active.Id3" class="h-56 absolute bottom-6 left-0 right-0 border border-gray-200 px-6 py-3 bg-white">
                                                     <div class="pb-1" v-for="(item,i) in item.childrens" :key="i" >
-                                                        <a class="text-sm" :href="item.url">{{item.text}}</a>
+                                                        <a class="text-sml" :href="item.url">{{item.text}}</a>
                                                         <ul v-if="item.childrens && item.childrens.length > 0">
                                                             <li class="px-2 pt-1" v-for="(child,ii) in item.childrens" :key="ii">
-                                                                <a class="text-sm link-hover" :href="child.url">
+                                                                <a class="text-sml link-hover" :href="child.url">
                                                                     > {{ child.text }}
                                                                 </a>
                                                             </li>
@@ -103,13 +103,13 @@
                         <div class="lang border-t border-gray-200 mt-5">
                             <ul v-for="(item, i) in currMenu" :key="i" class="flex flex-col">
                                 <div @click="showCurr" class="mt-5" >
-                                    <h4 class="Century-bold text-sm">{{ item.title }}</h4>
+                                    <h4 class="Century-bold text-sml">{{ item.title }}</h4>
                                 </div>
                                 <transition name="slide">
                                     <div>
                                         <li class="border-b border-black mt-8" @click="active.Id3 = active.Id3 != item._id ? item._id : null" :class="item.childrens.length > 0 ? 'text-hover cursor-pointer' : ''">
                                             <a class="flex items-center justify-between" :href="item.url">
-                                                <div class="text-sm">{{ item.text }}</div>
+                                                <div class="text-sml">{{ item.text }}</div>
                                                 <span class="w-5 flex justify-center lg:justify-end" v-if="item.childrens && item.childrens.length > 0">
                                                     <svg width="12" height="7"  :class="[active.Id3==item._id ? 'rotate-180 transition-all delay-150 ease-linear' : '']"  viewBox="0 0 12 7" xmlns="http://www.w3.org/2000/svg"><path d="M11.39.6a.54.54 0 00-.78 0L6 5.21 1.39.6a.54.54 0 00-.78 0 .55.55 0 000 .77L6 6.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                                 </span>
@@ -119,10 +119,10 @@
                                             <div class="relative" >
                                                 <div v-if="item._id == active.Id3" class="h-56 absolute bottom-6 left-0 right-0 border border-gray-200 px-6 py-3 bg-white">
                                                     <div class="pb-1" v-for="(item,i) in item.childrens" :key="i" >
-                                                        <a class="text-sm" :href="item.url">{{item.text}}</a>
+                                                        <a class="text-sml" :href="item.url">{{item.text}}</a>
                                                         <ul v-if="item.childrens && item.childrens.length > 0">
                                                             <li class="px-2 pt-1" v-for="(child,ii) in item.childrens" :key="ii">
-                                                                <a class="text-sm link-hover" :href="child.url">
+                                                                <a class="text-sml link-hover" :href="child.url">
                                                                     > {{ child.text }}
                                                                 </a>
                                                             </li>

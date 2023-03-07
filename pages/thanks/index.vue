@@ -8,7 +8,7 @@
                     </h1>
                     <p class="my-4 text-gray-700 font-semibold text-4xl">{{ $settings.sections.thanks.description }}</p>
 				</div>
-				<nuxt-link to="/shop" class="bg-primary inline-flex  px-5 py-3 text-sm shadow-sm font-medium tracking-wider text-gray-50 rounded-full hover:shadow-lg"> {{ $settings.sections.thanks.buttons.back_to_shop_text }}</nuxt-link>
+				<nuxt-link to="/shop" class="bg-primary inline-flex  px-5 py-3 text-sml shadow-sm font-medium tracking-wider text-gray-50 rounded-full hover:shadow-lg"> {{ $settings.sections.thanks.buttons.back_to_shop_text }}</nuxt-link>
 			</div>
 		</div>
 	</div>

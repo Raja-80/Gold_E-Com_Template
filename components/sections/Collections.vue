@@ -21,8 +21,8 @@
             <div class="w-full md:w-1/2 align-center mt-4 md:mt-0 flex items-center justify-center md:items-start md:justify-start ">
                 <div>
                 <h2 class="text-xl md:text-2xl font-bold">{{ 'You don\'t have any collection' }}</h2>
-                <p class="text-sm md:text-base font-normal">{{ 'Go to your store admin > products > collections >' }} <a href="//business.storeino.com/stores/collections" target="_blank" class="text-primary underline">{{ 'Add new' }}</a></p>
-                <a href="https://palest.storeino.com" target="_blank" class="text-sm md:text-base font-bold bg-primary text-white px-4 py-2  rounded-full inline-block mt-1 transition delay-200 ease-linear scale">{{'View theme demo'}}</a>
+                <p class="text-sml md:text-base font-normal">{{ 'Go to your store admin > products > collections >' }} <a href="//business.storeino.com/stores/collections" target="_blank" class="text-primary underline">{{ 'Add new' }}</a></p>
+                <a href="https://palest.storeino.com" target="_blank" class="text-sml md:text-base font-bold bg-primary text-white px-4 py-2  rounded-full inline-block mt-1 transition delay-200 ease-linear scale">{{'View theme demo'}}</a>
                 </div>
             </div>
         </div>

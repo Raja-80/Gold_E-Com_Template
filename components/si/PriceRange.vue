@@ -1,6 +1,6 @@
 <template>
 <div>
-    <div class="flex justify-between text-sm mb-2">
+    <div class="flex justify-between text-sml mb-2">
         <span>{{ min }}</span>
         <span>{{ max }}</span>
     </div>
