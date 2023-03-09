@@ -10,7 +10,7 @@
             </div>
             <div class="w-full lg:w-1/3 px-2 lg:px-3 mt-8 lg:mt-0">
                 <div class="flex flex-col justify-center items-center text-black">
-                    <h3 class="text-base text-center Century-bold">{{ item.title }}</h3>
+                    <h3 class="text-base text-center century-bold">{{ item.title }}</h3>
                     <p class="mt-2 text-sml text-center ">{{ item.excerpt }}</p>
                     <nuxt-link class="mt-4 h-12 px-12 flex justify-center items-center border border-gray-300 rounded-full hover:border-black transition-all ease-linear delay-75" :to="`/posts/${item.slug}`"  :aria-label="item.title">
                         <span class="text-sml">{{ $settings.sections.posts.button.text }}</span>

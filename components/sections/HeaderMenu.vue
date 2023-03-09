@@ -8,7 +8,7 @@
         <!-- Slide left  -->
         <transition name="slide">
             <!-- <transition name="fade"> -->
-                <div style="width: calc(100% - 1.25rem);" v-if="$store.state.showHeaderMenu" :class="$store.state.showHeaderMenu==true ? hideBodyScroll() : null" class="bg-white absolute inset-0 left-auto overflow-scroll">
+                <div style="width: calc(100% - 1.25rem);" v-if="$store.state.showHeaderMenu" :class="$store.state.showHeaderMenu==true ? hideBodyScroll() : null" class="bg-white absolute inset-0 left-auto overflow-auto">
                     <!-- close slider left botton -->
                     <div class="w-full flex items-center justify-end" @click="showBodyScroll"> 
                         <button class="p-4"  @click="$store.state.showHeaderMenu=false" aria-label="Close button">
@@ -22,7 +22,7 @@
                             <ul v-for="(item, i) in menu.items" :key="i" class="flex flex-col mt-5">
                                 <li class="flex items-center justify-between cursor-pointer" @click="activeId = activeId != item._id ? item._id : null">
                                     <div class="">
-                                        <router-link class="Century-bold text-sml" :to="item.url">{{ item.text }}</router-link>
+                                        <router-link class="century-bold text-sml" :to="item.url">{{ item.text }}</router-link>
                                     </div>
                                     <button class="" >
                                         <span v-if="item.childrens && item.childrens.length > 0">
@@ -65,7 +65,7 @@
                         <div class="border-t border-gray-200 mt-5">
                             <ul v-for="(item, i) in langMenu" :key="i" class="flex flex-col">
                                 <div class="mt-5" >
-                                    <h4 class="Century-bold text-sml">{{ item.title }}</h4>
+                                    <h4 class="century-bold text-sml">{{ item.title }}</h4>
                                 </div>
                                 <transition name="slide">
                                     <div>
@@ -103,7 +103,7 @@
                         <div class="lang border-t border-gray-200 mt-5">
                             <ul v-for="(item, i) in currMenu" :key="i" class="flex flex-col">
                                 <div @click="showCurr" class="mt-5" >
-                                    <h4 class="Century-bold text-sml">{{ item.title }}</h4>
+                                    <h4 class="century-bold text-sml">{{ item.title }}</h4>
                                 </div>
                                 <transition name="slide">
                                     <div>

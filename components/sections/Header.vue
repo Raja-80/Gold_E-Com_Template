@@ -13,7 +13,7 @@
                                 <ul v-for="(item, i) in menu.items" :key="i" @mouseover="activeId = activeId = item._id" @mouseleave="activeId = activeId = null">
                                     <!-- main child -->
                                     <li class="chivron-box flex items-center mr-2 py-5">
-                                        <router-link :to="item.url" class="Century-bold-hover mr-1" :class="item.childrens.length > 0 ? '':'mr-2'">
+                                        <router-link :to="item.url" class="century-bold-hover mr-1" :class="item.childrens.length > 0 ? '':'mr-2'">
                                             {{ item.text }}
                                         </router-link>
                                         <button class="chivron-down opacity-0" v-if="item.childrens.length > 0" @click="activeId = activeId != item._id ? item._id : null">
@@ -23,11 +23,11 @@
                                     <!-- main child -->
                                     <!-- sub child -->
                                     <transition name="slide">
-                                        <div v-if="item._id == activeId && item.childrens.length > 0" class="bg-white absolute  left-0 right-0 top-full z-20 border-t border-b px-10">
+                                        <div v-if="item._id == activeId && item.childrens.length > 0" class="bg-white absolute  left-0 right-0 top-full z-20 border-t border-b border-gray-300 px-10">
                                             <div class="flex items-center scroll">
                                                 <div v-for="(item,i) in item.childrens" :key="i" @mouseover="subItems = subItems = item.collectionId" @mouseleave="subItems = subItems = null">
                                                     <div class="chivron-box flex items-center mr-2 py-5">
-                                                        <router-link class="Century-bold-hover mr-1" :to="item.url" :class="item.childrens.length > 0 ? '':'mr-2'">
+                                                        <router-link class="century-bold-hover mr-1" :to="item.url" :class="item.childrens.length > 0 ? '':'mr-2'">
                                                             {{item.text}}
                                                         </router-link>
                                                         <button class="chivron-down opacity-0" v-if="item.childrens.length > 0" @click="subItems = subItems != item.collectionId ? item.collectionId : null">
@@ -35,10 +35,10 @@
                                                         </button>
                                                     </div>
                                                     <transition name="slide">
-                                                        <div v-if="item.collectionId == subItems" class="bg-white absolute left-0 right-0 top-full z-20 border-t border-gray-400 px-10">
+                                                        <div v-if="item.collectionId == subItems" class="bg-white absolute left-0 right-0 top-full z-20 border-t border-gray-300 px-10">
                                                             <div class="flex flex-col pt-5 mb-2" v-if="item.childrens && item.childrens.length > 0">
                                                                 <div class="mb-3" v-for="(child,ii) in item.childrens" :key="ii">
-                                                                    <nuxt-link  class="Century-bold-hover" :to="child.url">
+                                                                    <nuxt-link  class="century-bold-hover" :to="child.url">
                                                                     {{ child.text }}
                                                                     </nuxt-link>
                                                                 </div>

@@ -11,7 +11,7 @@
                         </div>
                         <div class="absolute inset-0 flex items-end cursor-pointer p-5 lg:py-6  lg:px-10">
                             <div class="content">
-                                <h1 class="text-base text-shadoow Century-bold">{{ item.name }}</h1>
+                                <h1 class="text-base text-shadoow century-bold">{{ item.name }}</h1>
                                 <span class="text-sml text-shadoow transition ease-in-out delay-100">{{ item.description }}</span>
                             </div>
                         </div>
@@ -21,7 +21,7 @@
         </div>
         <div v-else> 
             <nuxt-link  :to="item.childrens.length > 0 ? `/collections/${item.slug}` : `/shop/${item.slug}`">
-                <div class="text-white Century-bold">
+                <div class="text-white century-bold">
                     <div class="pbres-4/5 relative image-container overflow-hidden">
                         <div class="cursor-pointer">
                             <div class="image">

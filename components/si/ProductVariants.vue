@@ -201,7 +201,7 @@ export default {
                     if(this.options[i].style == 'LIST' && this.options[i].key == 'color'){
                         this.listStyleColorValue.index = i+1;
                         this.listStyleColorValue.value = this.options[i].values[0]._id;
-                        console.log('List Style color ===>',this.listStyleColorValue);
+                        // console.log('List Style color ===>',this.listStyleColorValue);
                     }
                     if(this.options[i].style == 'LIST' && this.options[i].key == 'size'){
                         this.listStyleSizeValue.index = i+1;
