@@ -94,7 +94,11 @@ body{
 }
 
 .pb-1\/2{
-  padding-bottom: 55%;
+  padding-bottom: 50%;
+}
+
+.pb-3\/5{
+  padding-bottom: 60%;
 }
 
 .pb-2\/3{
@@ -113,6 +117,10 @@ body{
   padding-bottom: 100%;
 }
 
+.pb-3\/5-res{
+  padding-bottom: 70%;
+}
+
 .pb-full-res{
   padding-bottom: 100%;
 }
@@ -120,6 +128,9 @@ body{
 @media (min-width: 1024px) {
   .pb-full-res{
     padding-bottom: 55%;
+  }
+  .pb-3\/5-res{
+    padding-bottom: 60%;
   }
 }
 
@@ -334,4 +345,14 @@ body{
 .slide-right-enter, .slide-leave-to {
   overflow: hidden;
   max-width: 0;
+}
+
+.fade-image-enter-active,
+.fade-image-leave-active {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.fade-image-enter,
+.fade-image-leave-to {
+    opacity: 0;
 }

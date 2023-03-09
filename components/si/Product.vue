@@ -272,14 +272,5 @@ export default {
         opacity: 1;
     }
 
-    .fade-image-enter-active,
-    .fade-image-leave-active {
-        transition: opacity 0.3s ease-in-out;
-    }
-
-    .fade-image-enter,
-    .fade-image-leave-to {
-        opacity: 0;
-    }
 </style>
     

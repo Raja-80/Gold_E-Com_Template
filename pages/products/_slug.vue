@@ -1,8 +1,8 @@
 <template>
     <div class="bg-white">
-        <div class="md:mt-6 mb-6">
+        <div class="lg:p-5 xl:p-10">
             <!-- Loader -->
-            <div v-if="loading" class="flex justify-center items-center mt-6 md:mt-0">
+            <div v-if="loading" class="flex justify-center items-center">
                 <si-loader></si-loader>
             </div>
             <!-- Loader -->
@@ -11,68 +11,96 @@
                 <!-- Product id -->
                 <meta itemprop="productID" :content="item._id" />
                 <!-- Product id -->
+                <!-- shows images when click -->
+                <transition name="fade-image">
+                    <div v-if="showImageSlider" class="bg-white fixed inset-0 z-50">
+                        <div @click="showBodyScroll">
+                            <div @click="showImageSlider=false" class="absolute top-0 right-0 z-50 cursor-pointer py-8 px-4 md:px-10 md:py-10">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.71 10l4.65-4.66a.495.495 0 10-.7-.7L10 9.29 5.34 4.64a.495.495 0 00-.7.7L9.29 10l-4.65 4.66a.48.48 0 000 .7.481.481 0 00.7 0L10 10.71l4.66 4.65a.482.482 0 00.7 0 .48.48 0 000-.7L10.71 10z" fill="currentColor"></path></svg>
+                            </div>  
+                        </div>
+                        <div class="flex items-center flex-wrap justify-between h-full lg:p-10 relative">
+                            <div class="hidden lg:flex flex-col items-center">
+                                <div @click="increaseSize" class="border border-gray-300 hover:border-black transition delay-150 ease-in-out m-2.5 w-7 h-7 flex items-center justify-center cursor-pointer">
+                                    <svg class="w-2.5 h-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
+                                </div>
+                                <div class="flex items-center justify-center ">
+                                    <span class="text-base"> {{ zoom }} %</span>
+                                </div>
+                                <div @click="decreaseSize" class="border border-gray-300 hover:border-black transition delay-150 ease-in-out m-2.5 w-7 h-7 flex items-center justify-center cursor-pointer">
+                                    <svg class="w-2.5 h-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.45h-11a.55.55 0 000 1.1h11a.55.55 0 000-1.1z" fill="currentColor"></path></svg>
+                                </div>
+                            </div>
+                            <div class="flex-1 lg:px-20 xl:px-40 lg:relative">
+                                <div class="overflow-hidden" @dblclick="toggleZoom" @mousedown.prevent @mousedown="startDrag" @mousemove="dragImage" @mouseup="stopDrag">
+                                    <div class="pb-3/5-res relative" ref="image" :style="{ transform: 'scale(' + imageScale + ') translate(' + posX + 'px, ' + posY + 'px)'}" v-show="visibleSlide === index" v-for="(image, index) in item.images" :key="index" :index="index">
+                                        <si-image width="400" height="400" class="h-full w-full absolute inset-0 object-contain cursor-pointer" :src="image ? image.src : null " :alt="item.name" />
+                                    </div>
+                                </div>
+                                <div class="absolute lg:static my-8 md:my-10 lg:my-0 bottom-0 lg:bottom-auto left-1/2 lg:left-auto transform lg:transform-none -translate-x-1/2 lg:translate-x-0">
+                                    <div class="flex lg:block items-center">
+                                        <button v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:left-1 xl:left-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150  rounded-full border border-gray-300 hover:border-black" @click="prev">
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 15.54a.54.54 0 01-.39-.16L6.72 10l5.39-5.4a.551.551 0 11.78.78L8.28 10l4.61 4.61a.56.56 0 010 .78.54.54 0 01-.39.15z" fill="currentColor"></path></svg>
+                                        </button>
+                                        <div class="dots flex items-center justify-center lg:hidden">
+                                            <div class="mx-1" v-for="(image, index) in item.images" :key="index" >
+                                                <div class="h-2 w-2 rounded-full cursor-pointer" :class="visibleSlide == index ? 'bg-primary w-2.5 h-2.5' : 'bg-gray-300'" @click="setImage(index)"></div>
+                                            </div>
+                                        </div>
+                                        <button v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:right-1 xl:right-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150 rounded-full border border-gray-300 hover:border-black" @click="next">
+                                            <svg class="w-5 h-5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.89 4.6a.552.552 0 00-.78.78L11.72 10l-4.61 4.6a.56.56 0 000 .78.56.56 0 00.78 0L13.28 10 7.89 4.6z" fill="currentColor"></path></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hidden lg:block overflow-hidden">
+                                <div style="max-height: 70vh;">
+                                    <si-image  class="w-16 h-16 cursor-pointer object-cover mb-4" :class="visibleSlide == index ? 'opacity-100' : 'opacity-50'" v-for="(image, index) in item.images" @click="setImage(index)" :key="index" :src="image.src" :alt="`${item.name} - ${image.title}`"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </transition>
+                <!-- shows images when click -->
+
                 <!--  -->
-                <div style="height: fit-content;"  class="w-full lg:w-3/5 lg:sticky lg:top-6">
-                    
-                    
+                <div style="height: fit-content;"  class="w-full lg:w-3/5 lg:sticky">
                     <div class="flex flex-col">
                         <div class="w-full">
-
                             <div v-show="visibleSlide === index" v-for="(image, index) in item.images" :key="index" :index="index" class="pb-2/3 relative overflow-hidden">
-                                <si-image width="400" height="400" class="product-image h-full w-full absolute inset-0 object-cover" @click="$store.state.fullImage=image ? image.src : null" :src="image ? image.src : null " :alt="item.name" />
-                                <button v-if="item.images.length > 1" class="box-shadow-xs mx-2 md:mx-3 absolute top-1/2 -left-0 transform -translate-y-1/2 p-3 md:p-3.5 bg-white transition-all ease-linear delay-150  rounded-full  hover-bg" @click="prev">
-                                    <svg class="w-5 h-5" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-                                        <path fill="currentColor" d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z" class=""></path>
-                                    </svg>
-                                </button>
-                                <button v-if="item.images.length > 1" class="box-shadow-xs mx-2 md:mx-3 absolute top-1/2 -right-0 transform -translate-y-1/2 p-3 md:p-3.5 bg-white transition-all ease-linear delay-150 rounded-full hover-bg" @click="next">
-                                    <svg class="w-5 h-5" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-                                        <path fill="currentColor" d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z" class=""></path>
-                                    </svg>
-                                </button>
+                                <div @click="hideBodyScroll">
+                                    <si-image width="400" height="400" class="h-full w-full absolute inset-0 object-cover cursor-pointer" @click="showImageSlider=true" :src="image ? image.src : null " :alt="item.name" />
+                                </div>
+                                <!-- <div class="lg:hidden">
+                                    <button v-if="item.images.length > 1" class="box-shadow-xs mx-2 md:mx-3 absolute top-1/2 -left-0 transform -translate-y-1/2 p-3 md:p-3.5 bg-white transition-all ease-linear delay-150  rounded-full  hover-bg" @click="prev">
+                                        <svg class="w-5 h-5" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                            <path fill="currentColor" d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z" class=""></path>
+                                        </svg>
+                                    </button>
+                                    <button v-if="item.images.length > 1" class="box-shadow-xs mx-2 md:mx-3 absolute top-1/2 -right-0 transform -translate-y-1/2 p-3 md:p-3.5 bg-white transition-all ease-linear delay-150 rounded-full hover-bg" @click="next">
+                                        <svg class="w-5 h-5" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                            <path fill="currentColor" d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z" class=""></path>
+                                        </svg>
+                                    </button>
+                                </div> -->
                                 <div v-if="$settings.sections.products.add_to_wishlist.active">
                                     <button v-if="$store.state.wishlist.find(i=>i._id==item._id)" @click="removeFromWishlist" title="Wishlist" class="box-shadow-xs bg-white rounded-full absolute z-10 top-0 right-0 m-2 md:m-3 p-3 md:p-3.5 transition-all ease-linear delay-150  hover-bg">
-                                        <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 text-xs translate text-red align-middle"><path fill="currentColor" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
+                                        <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 translate text-red-400 align-middle"><path fill="currentColor" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
                                     </button>
                                     <button v-else @click="addToWishlist" title="Wishlist" class="box-shadow-xs bg-white rounded-full absolute z-10 top-0 right-0 m-2 md:m-3 p-3 md:p-3.5 transition-all ease-linear delay-150 hover-bg">
-                                        <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 text-xs translate align-middle"><path fill="currentColor" d="M458.4 64.3C400.6 15.7 311.3 23 256 79.3 200.7 23 111.4 15.6 53.6 64.3-21.6 127.6-10.6 230.8 43 285.5l175.4 178.7c10 10.2 23.4 15.9 37.6 15.9 14.3 0 27.6-5.6 37.6-15.8L469 285.6c53.5-54.7 64.7-157.9-10.6-221.3zm-23.6 187.5L259.4 430.5c-2.4 2.4-4.4 2.4-6.8 0L77.2 251.8c-36.5-37.2-43.9-107.6 7.3-150.7 38.9-32.7 98.9-27.8 136.5 10.5l35 35.7 35-35.7c37.8-38.5 97.8-43.2 136.5-10.6 51.1 43.1 43.5 113.9 7.3 150.8z" class=""></path></svg>
+                                        <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 translate align-middle"><path fill="currentColor" d="M458.4 64.3C400.6 15.7 311.3 23 256 79.3 200.7 23 111.4 15.6 53.6 64.3-21.6 127.6-10.6 230.8 43 285.5l175.4 178.7c10 10.2 23.4 15.9 37.6 15.9 14.3 0 27.6-5.6 37.6-15.8L469 285.6c53.5-54.7 64.7-157.9-10.6-221.3zm-23.6 187.5L259.4 430.5c-2.4 2.4-4.4 2.4-6.8 0L77.2 251.8c-36.5-37.2-43.9-107.6 7.3-150.7 38.9-32.7 98.9-27.8 136.5 10.5l35 35.7 35-35.7c37.8-38.5 97.8-43.2 136.5-10.6 51.1 43.1 43.5 113.9 7.3 150.8z" class=""></path></svg>
                                     </button>
                                 </div>
                             </div>
-
-
                         </div>
-                        <!-- :class="visibleSlide == index ? 'opacity-100 border-2 border-black' : 'opacity-60'" -->
-                        <!-- @click="setImage(index)" -->
-
-                        <div class="flex flex-wrap mt-5">
-
-                            <div class="w-1/2" v-for="(image, index) in item.images"  :key="index">
-                               
-                                <div class="pb-full relative overflow-hidden">
-                                    {{ image }}
+                        <div class="hidden lg:flex flex-wrap pt-2.5">
+                            <div class="w-1/2 products-padding py-2.5" v-for="(image, index) in item.images"  :key="index">
+                                <div @click="hideBodyScroll" class="pb-full relative overflow-hidden">
                                     <!-- <si-image  width="400" height="400" class="img h-full w-full absolute inset-0 object-cover" :src="item.image ? item.image.src : null" :alt="item.name" srcset=""/> -->
-                                    <si-image  class="h-full w-full absolute inset-0 object-cover"  :src="image.src" :alt="`${item.name} - ${image.title}`"/>
-            
+                                    <si-image  class="h-full w-full absolute inset-0 object-cover cursor-pointer" @click="showImageSlider=true;setImage(index)"  :src="image.src" :alt="`${item.name} - ${image.title}`"/>
                                 </div>   
-
-                            
                             </div>
-
                         </div> 
-                    </div>
-
-
-
-
-
-
-                    <div class="block md:hidden">
-                        <div class="dots flex items-center  justify-center mx-3 mt-3 ">
-                            <div class="mx-1" v-for="(image, index) in item.images" :key="index" >
-                                <div class="h-2.5 w-2.5 rounded-full cursor-pointer" :class="visibleSlide == index ? 'bg-primary' : 'bg-gray-300'" @click="setImage(index)"></div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <!--  -->
@@ -205,8 +233,10 @@
             </div>
             <!-- related Products  -->
             </div>
-            <!--  -->
         </div>
+
+
+
     </div>
 </template>
 
@@ -214,6 +244,15 @@
     export default {
         data() {
             return {
+                showImageSlider:false,
+                zoomed: false,
+                zoom: 0,
+                imageScale: 1,
+                posX: 0,
+                posY: 0,
+                isDragging: false,
+                startMouseX: 0,
+                startMouseY: 0,
                 Description: true,
                 Reviews: false,
                 visibleSlide: 0,
@@ -344,6 +383,57 @@
         }
         ,
         methods: {
+            toggleZoom(event) {
+                const image = this.$refs.image
+                    // Check if the image is already zoomed in
+                    if(window.innerWidth < 1024) {
+                        if (this.zoomed) {
+                            // Zoom out
+                            this.imageScale = 1;
+                            this.zoom = 0;
+                            this.zoomed = false
+                        } else {
+                            // Zoom in
+                            this.imageScale = 4;
+                            this.zoom = 60;
+                            this.zoomed = true
+                        }
+                    }
+                },
+            startDrag(event) {
+                this.isDragging = true;
+                this.startMouseX = event.clientX;
+                this.startMouseY = event.clientY;
+            },
+            dragImage(event) {
+                if (this.isDragging) {
+                    const deltaX = event.clientX - this.startMouseX;
+                    const deltaY = event.clientY - this.startMouseY;
+                    this.posX += deltaX;
+                    this.posY += deltaY;
+                    this.startMouseX = event.clientX;
+                    this.startMouseY = event.clientY;
+                }
+            },
+            stopDrag() {
+                this.isDragging = false;
+                this.posX  = 0; 
+                this.posY  = 0; 
+            },
+            increaseSize() {
+                const currentScale = this.imageScale;
+                if (currentScale < 6) {
+                    this.imageScale = currentScale + 1;
+                    this.zoom = this.zoom + 20;
+                }
+            },
+            decreaseSize() {
+                const currentScale = this.imageScale;
+                if (currentScale > 1) {
+                    this.imageScale = currentScale - 1;
+                    this.zoom = this.zoom - 20;
+                }
+            },
             next(){
                 if(this.visibleSlide >= this.slidesLen - 1 ){
                     this.visibleSlide = 0
@@ -418,12 +508,29 @@
             setTab(tab){
                 this.tab = tab;
                 if(tab == 'reviews' && this.reviews.results.length == 0) this.getReviews();
-            }
+            },
+            hideBodyScroll() {
+                document.body.style.overflow = 'hidden';
+            },
+            showBodyScroll() {
+                document.body.style.overflow = 'scroll';
+            },
         },
     }
 </script>
 
 <style >
+/* Product padding */
+@media (min-width: 1024px) { 
+  .products-padding:nth-child(odd) {
+    padding-right: 0.625rem
+  }
+  .products-padding:nth-child(even) {
+    padding-left: 0.625rem;
+  }
+}
+/* Product padding */
+
     .product-image {
         cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><circle cx='15' cy='15' r='10' fill='white' stroke='black' stroke-width='2'/><line x1='15' y1='10' x2='15' y2='20' stroke='black' stroke-width='2'/><line x1='10' y1='15' x2='20' y2='15' stroke='black' stroke-width='2'/></svg>"), auto;
     }
