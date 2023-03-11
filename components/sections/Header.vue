@@ -253,7 +253,7 @@ input[type="search"]:focus::-webkit-search-cancel-button {
 
 @media (min-width: 1024px) {
     .h-124 {
-        height: 125px;
+        height: 123px;
     }
 }
 

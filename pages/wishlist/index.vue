@@ -37,7 +37,7 @@ export default {
         await this.initWishlist();
     },
     watch: {
-        async "$store.state.cart.length"(){
+        async "$store.state.wishlist"(){
             await this.initWishlist();
         }
     },
