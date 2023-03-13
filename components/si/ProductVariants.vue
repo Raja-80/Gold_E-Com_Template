@@ -1,16 +1,17 @@
 <template>
     <div class="options">
-        <div v-for="(option, i) in options" :key="i" :class="option.key" class="p-1 bg-gray-50 mb-1 border">
-            <b class="capitalize option-name mb-1 flex">{{ option.name }}</b>
+        <div v-for="(option, i) in options" :key="i" :class="option.key" class="p-5 mt-3 border rounded-md border-gray-300">
+            <b class="capitalize option-name mb-2 flex">{{ option.name }}</b>
+            <!--  -->
             <div v-if="!option.hasOwnProperty('style') || option.style == '' || option.style == null  || (option.style !== 'LIST' && option.style !== 'CHECK' && option.style !== 'RADIO') && (option.key !== 'color' && option.style == 'SIZE') || (option.key == 'color' && option.style == 'COLOR') " class="options-list">
-                <div v-for="(val, ii) in option.values" :key="ii" class="option mx-1">
+                <div v-for="(val, ii) in option.values" :key="ii" class="option mr-f-2">
                     <button :class="selected[`option${i+1}`] && selected[`option${i+1}`].value == val._id ? 'active': ''" @click="setVariant(i+1, val._id)" :id="val._id" :style="`${option.key == 'color' ? `background-color:${val.value2}` : ''}`"><small>{{ val.value1 }}</small></button>
                 </div>
             </div>
             
             <!-- Size style for Color option -->
             <div v-if="option.key == 'color' && option.style == 'SIZE'" class="options-list">
-                <div v-for="(val, ii) in option.values" :key="ii" class="option mx-1">
+                <div v-for="(val, ii) in option.values" :key="ii" class="option mr-f-2">
                     <button class="size-style " :class="selected[`option${i+1}`] && selected[`option${i+1}`].value == val._id ? 'active': ''" @click="setVariant(i+1, val._id)" :id="val._id" :style="``"><small>{{ val.value1 }}</small></button>
                 </div>
             </div>
@@ -270,6 +271,15 @@ export default {
 }
 </script>
 <style scoped>
+.mr-f-2 {
+    margin-right: 0.5rem;
+
+}
+[dir="rtl"] .mr-f-2 {
+    margin-left: 0.5rem;
+
+}
+
 .options {
     display: flex;
     flex-direction: column;
@@ -297,8 +307,8 @@ export default {
 
 .options .color .option button {
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     color: transparent;
     overflow: hidden;
     position: relative;
@@ -501,6 +511,4 @@ export default {
         height: 100%;
         object-fit: cover;
     }
-    
-
 </style>

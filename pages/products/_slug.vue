@@ -1,242 +1,237 @@
 <template>
     <div class="bg-white">
-        <div class="lg:p-5 xl:p-10">
-            <!-- Loader -->
-            <div v-if="loading" class="flex justify-center items-center">
-                <si-loader></si-loader>
-            </div>
-            <!-- Loader -->
-            <!--  -->
-            <div v-if="!loading && item" class="flex flex-wrap justify-between">
-                <!-- Product id -->
-                <meta itemprop="productID" :content="item._id" />
-                <!-- Product id -->
-                <!-- shows images when click -->
-                <transition name="fade-image">
-                    <div v-if="showImageSlider" class="bg-white fixed inset-0 z-50">
-                        <div @click="showBodyScroll">
-                            <div @click="showImageSlider=false" class="absolute top-0 right-0 z-50 cursor-pointer py-8 px-4 md:px-10 md:py-10">
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.71 10l4.65-4.66a.495.495 0 10-.7-.7L10 9.29 5.34 4.64a.495.495 0 00-.7.7L9.29 10l-4.65 4.66a.48.48 0 000 .7.481.481 0 00.7 0L10 10.71l4.66 4.65a.482.482 0 00.7 0 .48.48 0 000-.7L10.71 10z" fill="currentColor"></path></svg>
-                            </div>  
-                        </div>
-                        <div class="flex items-center flex-wrap justify-between h-full lg:p-10 relative">
-                            <div class="hidden lg:flex flex-col items-center">
-                                <div @click="increaseSize" class="border border-gray-300 hover:border-black transition delay-150 ease-in-out m-2.5 w-7 h-7 flex items-center justify-center cursor-pointer">
-                                    <svg class="w-2.5 h-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
-                                </div>
-                                <div class="flex items-center justify-center ">
-                                    <span class="text-base"> {{ zoom }} %</span>
-                                </div>
-                                <div @click="decreaseSize" class="border border-gray-300 hover:border-black transition delay-150 ease-in-out m-2.5 w-7 h-7 flex items-center justify-center cursor-pointer">
-                                    <svg class="w-2.5 h-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.45h-11a.55.55 0 000 1.1h11a.55.55 0 000-1.1z" fill="currentColor"></path></svg>
-                                </div>
+        <!-- Loader -->
+        <div v-if="loading" class="flex justify-center items-center">
+            <si-loader></si-loader>
+        </div>
+        <!-- Loader -->
+        <div v-if="!loading && item">
+            <!-- Product id -->
+            <meta itemprop="productID" :content="item._id" />
+            <!-- Product id -->
+            <div class="lg:p-5 xl:py-7 xl:px-10 border-t border-gray-300">
+                <div class="flex flex-wrap justify-between">
+                    <!-- shows images when click -->
+                    <transition name="fade-image">
+                        <div v-if="showImageSlider" class="bg-white fixed inset-0 z-50">
+                            <div @click="showBodyScroll">
+                                <div @click="showImageSlider=false" class="absolute top-0 right-0 z-50 cursor-pointer py-8 px-4 md:px-10 md:py-10">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.71 10l4.65-4.66a.495.495 0 10-.7-.7L10 9.29 5.34 4.64a.495.495 0 00-.7.7L9.29 10l-4.65 4.66a.48.48 0 000 .7.481.481 0 00.7 0L10 10.71l4.66 4.65a.482.482 0 00.7 0 .48.48 0 000-.7L10.71 10z" fill="currentColor"></path></svg>
+                                </div>  
                             </div>
-                            <div class="flex-1 lg:px-20 xl:px-40 lg:relative">
-                                <div class="overflow-hidden" @dblclick="toggleZoom" @mousedown.prevent @mousedown="startDrag" @mousemove="dragImage" @mouseup="stopDrag">
-                                    <div class="pb-3/5-res relative" ref="image" :style="{ transform: 'scale(' + imageScale + ') translate(' + posX + 'px, ' + posY + 'px)'}" v-show="visibleSlide === index" v-for="(image, index) in item.images" :key="index" :index="index">
-                                        <si-image width="400" height="400" class="h-full w-full absolute inset-0 object-contain cursor-pointer" :src="image ? image.src : null " :alt="item.name" />
+                            <div class="flex items-center flex-wrap justify-between h-full lg:p-10 relative">
+                                <div class="hidden lg:flex flex-col items-center">
+                                    <div @click="increaseSize" class="border border-gray-300 hover:border-black transition delay-150 ease-in-out m-2.5 w-7 h-7 flex items-center justify-center cursor-pointer">
+                                        <svg class="w-2.5 h-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
+                                    </div>
+                                    <div class="flex items-center justify-center ">
+                                        <span class="text-base"> {{ zoom }} %</span>
+                                    </div>
+                                    <div @click="decreaseSize" class="border border-gray-300 hover:border-black transition delay-150 ease-in-out m-2.5 w-7 h-7 flex items-center justify-center cursor-pointer">
+                                        <svg class="w-2.5 h-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.45h-11a.55.55 0 000 1.1h11a.55.55 0 000-1.1z" fill="currentColor"></path></svg>
                                     </div>
                                 </div>
-                                <div class="absolute lg:static my-8 md:my-10 lg:my-0 bottom-0 lg:bottom-auto left-1/2 lg:left-auto transform lg:transform-none -translate-x-1/2 lg:translate-x-0">
-                                    <div class="flex lg:block items-center">
-                                        <button v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:left-1 xl:left-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150  rounded-full border border-gray-300 hover:border-black" @click="prev">
-                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 15.54a.54.54 0 01-.39-.16L6.72 10l5.39-5.4a.551.551 0 11.78.78L8.28 10l4.61 4.61a.56.56 0 010 .78.54.54 0 01-.39.15z" fill="currentColor"></path></svg>
-                                        </button>
-                                        <div class="dots flex items-center justify-center lg:hidden">
+                                <div class="flex-1 lg:px-20 xl:px-40 lg:relative">
+                                    <div class="overflow-hidden" @dblclick="toggleZoom" @mousedown.prevent @mousedown="startDrag" @mousemove="dragImage" @mouseup="stopDrag">
+                                        <div class="pb-3/5-res relative" ref="image" :style="{ transform: 'scale(' + imageScale + ') translate(' + posX + 'px, ' + posY + 'px)'}" v-show="visibleSlide === index" v-for="(image, index) in item.images" :key="index" :index="index">
+                                            <si-image width="400" height="400" class="h-full w-full absolute inset-0 object-contain cursor-pointer" :src="image ? image.src : null " :alt="item.name" />
+                                        </div>
+                                    </div>
+                                    <div class="absolute lg:static my-8 md:my-10 lg:my-0 bottom-0 lg:bottom-auto left-1/2 lg:left-auto transform lg:transform-none -translate-x-1/2 lg:translate-x-0">
+                                        <div class="flex lg:block items-center">
+                                            <button v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:left-1 xl:left-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150  rounded-full border border-gray-300 hover:border-black" @click="prev">
+                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 15.54a.54.54 0 01-.39-.16L6.72 10l5.39-5.4a.551.551 0 11.78.78L8.28 10l4.61 4.61a.56.56 0 010 .78.54.54 0 01-.39.15z" fill="currentColor"></path></svg>
+                                            </button>
+                                            <div v-if="item.images.length > 0" class="dots flex items-center justify-center lg:hidden">
+                                                <div class="mx-1" v-for="(image, index) in item.images" :key="index" >
+                                                    <div class="h-1.5 w-1.5 rounded-full cursor-pointer" :class="visibleSlide == index ? 'bg-primary w-2 h-2' : 'bg-gray-300'" @click="setImage(index)"></div>
+                                                </div>
+                                            </div>
+                                            <button v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:right-1 xl:right-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150 rounded-full border border-gray-300 hover:border-black" @click="next">
+                                                <svg class="w-5 h-5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.89 4.6a.552.552 0 00-.78.78L11.72 10l-4.61 4.6a.56.56 0 000 .78.56.56 0 00.78 0L13.28 10 7.89 4.6z" fill="currentColor"></path></svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="hidden lg:block scroll overflow-y-scroll">
+                                    <div style="max-height: 70vh;">
+                                        <si-image  class="w-16 h-16 cursor-pointer object-cover mb-4" :class="visibleSlide == index ? 'opacity-100' : 'opacity-50'" v-for="(image, index) in item.images" @click="setImage(index)" :key="index" :src="image.src" :alt="`${item.name} - ${image.title}`"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </transition>
+                    <!-- shows images when click -->
+                    <!--  -->
+                    <div style="height: fit-content;"  class="w-full lg:w-3/5 lg:sticky lg:top-7">
+                        <div class="flex flex-col">
+                            <div class="w-full">
+                                <div v-show="visibleSlide === index" v-for="(image, index) in item.images" :key="index" :index="index" class="pb-2/3-res relative overflow-hidden">
+                                    <div @click="hideBodyScroll">
+                                        <si-image width="400" height="400" class="h-full w-full absolute inset-0 object-cover cursor-pointer" @click="showImageSlider=true" :src="image ? image.src : null " :alt="item.name" />
+                                    </div>
+                                    <div v-if="$settings.sections.products.add_to_wishlist.active">
+                                        <transition name="fade-image">
+                                            <button v-if="$store.state.wishlist.find(i=>i._id==item._id)" @click="removeFromWishlist" title="Wishlist" class="box-shadow-xs bg-white rounded-full absolute z-10 top-0 right-0 m-2 md:m-3 p-3 md:p-3.5 transition-all ease-linear delay-150  hover-bg">
+                                                <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 translate text-red-400 align-middle"><path fill="currentColor" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
+                                            </button>
+                                        </transition>
+                                        <transition name="fade-image">
+                                            <button v-if="!$store.state.wishlist.find(i=>i._id==item._id)" @click="addToWishlist" title="Wishlist" class="box-shadow-xs bg-white rounded-full absolute z-10 top-0 right-0 m-2 md:m-3 p-3 md:p-3.5 transition-all ease-linear delay-150 hover-bg">
+                                                <svg class="w-5 h-5 translate" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.48 3.91a3.25 3.25 0 012.68 1.62L10 6.85l.83-1.33a3.12 3.12 0 012.63-1.61 2.8 2.8 0 012.08.93c1.48 1.59 1.33 3.78-.37 5.57L10 15.66l-5.22-5.3c-1.67-1.85-1.8-4-.36-5.53a2.8 2.8 0 012.06-.92zm0-1a3.8 3.8 0 00-2.79 1.24C1.94 6 2 8.73 4 11l6 6.06 5.9-6c2.16-2.27 2.15-5.06.4-6.95a3.871 3.871 0 00-2.82-1.25A4.1 4.1 0 0010 5a4.23 4.23 0 00-3.52-2.09z" fill="currentColor"></path></svg>
+                                            </button>
+                                        </transition>
+                                    </div>
+                                    <div v-if="item.images.length > 0" class="absolute bottom-0 left-1/2 transform -translate-x-1/2 lg:hidden">
+                                        <div class="flex py-5">
                                             <div class="mx-1" v-for="(image, index) in item.images" :key="index" >
-                                                <div class="h-2 w-2 rounded-full cursor-pointer" :class="visibleSlide == index ? 'bg-primary w-2.5 h-2.5' : 'bg-gray-300'" @click="setImage(index)"></div>
+                                                <div class="h-1.5 w-1.5 rounded-full cursor-pointer" :class="visibleSlide == index ? 'bg-primary w-2. h-2' : 'bg-gray-300'" @click="setImage(index)"></div>
                                             </div>
                                         </div>
-                                        <button v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:right-1 xl:right-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150 rounded-full border border-gray-300 hover:border-black" @click="next">
-                                            <svg class="w-5 h-5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.89 4.6a.552.552 0 00-.78.78L11.72 10l-4.61 4.6a.56.56 0 000 .78.56.56 0 00.78 0L13.28 10 7.89 4.6z" fill="currentColor"></path></svg>
-                                        </button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="hidden lg:block overflow-hidden">
-                                <div style="max-height: 70vh;">
-                                    <si-image  class="w-16 h-16 cursor-pointer object-cover mb-4" :class="visibleSlide == index ? 'opacity-100' : 'opacity-50'" v-for="(image, index) in item.images" @click="setImage(index)" :key="index" :src="image.src" :alt="`${item.name} - ${image.title}`"/>
+                            <div class="hidden lg:flex flex-wrap pt-2.5">
+                                <div class="w-1/2 products-padding py-2.5" v-for="(image, index) in item.images.slice(1)"  :key="index">
+                                    <div @click="hideBodyScroll" class="pb-full relative overflow-hidden">
+                                        <si-image  class="h-full w-full absolute inset-0 object-cover cursor-pointer" @click="showImageSlider=true;setImage(index)"  :src="image.src" :alt="`${item.name} - ${image.title}`"/>
+                                    </div>   
                                 </div>
-                            </div>
+                            </div> 
                         </div>
                     </div>
-                </transition>
-                <!-- shows images when click -->
-
-                <!--  -->
-                <div style="height: fit-content;"  class="w-full lg:w-3/5 lg:sticky">
-                    <div class="flex flex-col">
-                        <div class="w-full">
-                            <div v-show="visibleSlide === index" v-for="(image, index) in item.images" :key="index" :index="index" class="pb-2/3 relative overflow-hidden">
-                                <div @click="hideBodyScroll">
-                                    <si-image width="400" height="400" class="h-full w-full absolute inset-0 object-cover cursor-pointer" @click="showImageSlider=true" :src="image ? image.src : null " :alt="item.name" />
+                    <!--  -->
+                    <!-- Product content -->
+                    <div style="height: fit-content;"  class="content-part w-full lg:w-2/5 pl-6% lg:sticky lg:top-5">
+                        <div class="px-5 lg:px-0 pt-5 lg:pt-0">
+                            <div class="bg-white ">
+                            <!--  product name hidden-->
+                            <meta itemprop="name" :content="item.name" />
+                            <!--  product name hidden-->
+                            <!--  Product Name -->
+                            <h4 class="text-xl md:text-2xl my-3">{{ item.name }}</h4>
+                            <!--  Product Name -->
+                            <!-- Price  -->
+                            <div class="flex justify-between items-center">
+                                <!-- Price -->
+                                <si-product-price class="flex items-center text-base" :type="'simple'" :price="price" :variants="[]"></si-product-price>
+                                <!-- Price -->
+                                <!-- Price -->
+                                <!-- <si-product-price class="flex text-xl md:text-2xl " :type="item.type" :price="item.price" :variants="item.variants"></si-product-price> -->
+                                <!-- Price -->
+                                <!-- reviews -->
+                                <div class="flex items-center justify-start" v-if="$settings.sections.product.reviews.active">
+                                    <div class="flex mx-1">
+                                        <span class="mx-0.5" v-for="(star,i) in 5" :class="star <= item.review.rating ? 'text-yellow-500 ': 'text-black'" :key="i">
+                                            <svg class="w-3 h-3" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="3 3 18 18" aria-hidden="true" focusable="false"><path d="M20.83,9.15l-6-.52L12.46,3.08h-.92L9.18,8.63l-6,.52L2.89,10l4.55,4L6.08,19.85l.75.55L12,17.3l5.17,3.1.75-.55L16.56,14l4.55-4Z"></path></svg>
+                                        </span>
+                                    </div>
+                                    <span class="text-sml" key="count">({{ item.review.reviews.length }} {{$settings.sections.product.reviews.name}})</span>
                                 </div>
-                                <!-- <div class="lg:hidden">
-                                    <button v-if="item.images.length > 1" class="box-shadow-xs mx-2 md:mx-3 absolute top-1/2 -left-0 transform -translate-y-1/2 p-3 md:p-3.5 bg-white transition-all ease-linear delay-150  rounded-full  hover-bg" @click="prev">
-                                        <svg class="w-5 h-5" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-                                            <path fill="currentColor" d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z" class=""></path>
-                                        </svg>
-                                    </button>
-                                    <button v-if="item.images.length > 1" class="box-shadow-xs mx-2 md:mx-3 absolute top-1/2 -right-0 transform -translate-y-1/2 p-3 md:p-3.5 bg-white transition-all ease-linear delay-150 rounded-full hover-bg" @click="next">
-                                        <svg class="w-5 h-5" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-                                            <path fill="currentColor" d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z" class=""></path>
-                                        </svg>
-                                    </button>
-                                </div> -->
-                                <div v-if="$settings.sections.products.add_to_wishlist.active">
-                                    <button v-if="$store.state.wishlist.find(i=>i._id==item._id)" @click="removeFromWishlist" title="Wishlist" class="box-shadow-xs bg-white rounded-full absolute z-10 top-0 right-0 m-2 md:m-3 p-3 md:p-3.5 transition-all ease-linear delay-150  hover-bg">
-                                        <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 translate text-red-400 align-middle"><path fill="currentColor" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
-                                    </button>
-                                    <button v-else @click="addToWishlist" title="Wishlist" class="box-shadow-xs bg-white rounded-full absolute z-10 top-0 right-0 m-2 md:m-3 p-3 md:p-3.5 transition-all ease-linear delay-150 hover-bg">
-                                        <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 translate align-middle"><path fill="currentColor" d="M458.4 64.3C400.6 15.7 311.3 23 256 79.3 200.7 23 111.4 15.6 53.6 64.3-21.6 127.6-10.6 230.8 43 285.5l175.4 178.7c10 10.2 23.4 15.9 37.6 15.9 14.3 0 27.6-5.6 37.6-15.8L469 285.6c53.5-54.7 64.7-157.9-10.6-221.3zm-23.6 187.5L259.4 430.5c-2.4 2.4-4.4 2.4-6.8 0L77.2 251.8c-36.5-37.2-43.9-107.6 7.3-150.7 38.9-32.7 98.9-27.8 136.5 10.5l35 35.7 35-35.7c37.8-38.5 97.8-43.2 136.5-10.6 51.1 43.1 43.5 113.9 7.3 150.8z" class=""></path></svg>
-                                    </button>
-                                </div>
+                                <!-- reviews -->
                             </div>
-                        </div>
-                        <div class="hidden lg:flex flex-wrap pt-2.5">
-                            <div class="w-1/2 products-padding py-2.5" v-for="(image, index) in item.images"  :key="index">
-                                <div @click="hideBodyScroll" class="pb-full relative overflow-hidden">
-                                    <!-- <si-image  width="400" height="400" class="img h-full w-full absolute inset-0 object-cover" :src="item.image ? item.image.src : null" :alt="item.name" srcset=""/> -->
-                                    <si-image  class="h-full w-full absolute inset-0 object-cover cursor-pointer" @click="showImageSlider=true;setImage(index)"  :src="image.src" :alt="`${item.name} - ${image.title}`"/>
-                                </div>   
-                            </div>
-                        </div> 
-                    </div>
-                </div>
-                <!--  -->
-
-                <!-- Product content -->
-                <div class="content-part w-full lg:w-2/5 px-2">
-                    <div class="">
-                        <div class="bg-white ">
-
-                        <!--  Product Name -->
-                        <h4 class="text-lg md:text-lh lg:text-xl guard-cairo-font font-medium mb-4 mx-2 mt-4 lg:mt-0">{{ item.name }}</h4>
-                        <!--  Product Name -->
-
-                        <!--  product name hidden-->
-                        <meta itemprop="name" :content="item.name" />
-                        <!--  product name hidden-->
-
-                        <!-- Price  -->
-                        <div class="flex justify-between items-center mb-4 mx-2">
                             <!-- Price -->
-                            <si-product-price page="product-price" class="flex items-center" :type="'simple'" :price="price" :variants="[]"></si-product-price>
-                            <!-- Price -->
-
-                            <!-- Price -->
-                            <!-- <si-product-price class="flex text-xl md:text-2xl " :type="item.type" :price="item.price" :variants="item.variants"></si-product-price> -->
-                            <!-- Price -->
-
-                            <!-- reviews -->
-                            <div class="flex items-center justify-start" v-if="$settings.sections.product.reviews.active">
-                                <div class="mb-1 flex">
-                                    <span v-for="(star,i) in 5" :class="star <= item.review.rating ? 'text-yellow-500 ': 'text-black'" :key="i">
-                                        <!-- <fa class="text-sm"  :icon="['fa', 'star']"></fa> -->
-                                    </span>
-                                </div>
-                                <span class="text-md font-normal" key="count">({{ item.review.reviews.length }})</span>
-                            </div>
-                            <!-- reviews -->
-                        </div>
-                        <!-- Price -->
-                        <!-- short description -->
-                        <p class="text-sm text-gr font-normal mb-2 mx-2">{{ item.description }}</p>
-                        <!-- short description -->
-                        <!-- variant -->
-                        <si-product-variants class="flex mx-2" v-if="item.type=='variable'" :options="item.options" :variants="item.variants" @selected="variantSelected"></si-product-variants>
-                        <!-- variant -->
-                        <!-- product cart -->
-                        <!-- product quantity -->
-                        <div class="mx-2 mt-4">
-                            <div>
+                            <!-- short description -->
+                            <p class="text-sml pt-3">{{ item.description }}</p>
+                            <!-- short description -->
+                            <!-- variant -->
+                            <si-product-variants class="flex text-sml" v-if="item.type=='variable'" :options="item.options" :variants="item.variants" @selected="variantSelected"></si-product-variants>
+                            <!-- variant -->
+                            <!-- product cart -->
+                            <!-- product quantity -->
+                            <div class="flex items-center justify-between my-3" :class="item.type!='variable'?'border-t border-gray-300 pt-3':''">
                                 <!-- {{ $settings.sections.product.quantity.text }} -->
-                                <h2 class="capitalize text-md font-normal mb-2">Quantity</h2>
+                                <h2 class="text-sml text-black">{{ $settings.sections.product.quantity.text }}</h2>
+                                <div class="">
+                                    <si-product-quantity @selected="quantitySelected" :quantity="quantity" page="product"></si-product-quantity>
+                                </div>
                             </div>
-                            <si-product-quantity @selected="quantitySelected" :quantity="quantity" page="product"></si-product-quantity>
+                            <!-- product quantity -->
+                            <!--  -->
+                            <div class="py-3">
+                                <si-app-loader placement="BEFORE_ADD_TO_CART"/>
+                                <!-- add to cart -->
+                                <button v-if="$settings.sections.product.add_to_cart.active" @click="addToCart" class="mb-3 text-sml century-bold-hover w-full flex  justify-center border border-black rounded-full p-4 px-5 click-effect">
+                                    <span>{{ $settings.sections.product.add_to_cart.text }}</span>
+                                </button>
+                                <!-- add to cart -->
+                                <si-app-loader placement="AFTER_ADD_TO_CART"/>
+                                <si-app-loader placement="BEFORE_BUYNOW"/>
+                                <si-app-loader placement="REPLACE_BUYNOW"/>
+                                <!-- buy now -->
+                                <button v-if="$settings.sections.product.buy_now.active" v-show="!$store.state.apps.find(a=>a.placement.indexOf('REPLACE_BUYNOW') >= 0)" @click="buyNow" class="text-sml century-bold-hover w-full flex  justify-center border border-black rounded-full p-4 px-5 click-effect">
+                                    <span>{{ $settings.sections.product.buy_now.text }}</span>
+                                </button>
+                                <si-app-loader placement="AFTER_BUYNOW"/>
+                                <!-- buy now -->
+                            </div>
+                            <!--  -->
                         </div>
-                        <!-- product quantity -->
-                        <si-app-loader placement="BEFORE_ADD_TO_CART"/>
-                        <!-- add to cart -->
-                        <div class="mx-2 mt-6 mb-4">
-                            <button v-if="$settings.sections.product.add_to_cart.active" @click="addToCart" class="text-base font-bold w-full flex ai-c justify-center addtocart-bg addtocart-text-bg   rounded-full p-3 px-5 click-effect scale hover:opacity-90">
-                                <span>{{ $settings.sections.product.add_to_cart.text }}</span>
-                            </button>
                         </div>
-                        <!-- add to cart -->
-                        <si-app-loader placement="AFTER_ADD_TO_CART"/>
-                        <si-app-loader placement="BEFORE_BUYNOW"/>
-                        <si-app-loader placement="REPLACE_BUYNOW"/>
-                        <!-- buy now -->
-                        <div class="mx-2">
-                            <button v-if="$settings.sections.product.buy_now.active" v-show="!$store.state.apps.find(a=>a.placement.indexOf('REPLACE_BUYNOW') >= 0)" @click="buyNow" class="text-base font-bold w-full flex ai-c justify-center buynow-bg  buynow-text-bg  rounded-full p-3 px-5 click-effect scale hover:opacity-90">
-                                <span>{{ $settings.sections.product.buy_now.text }}</span>
-                            </button>
+                        <!-- Description -->
+                        <div class="pt-3">
+                            <si-app-loader placement="BEFORE_DESCRIPTION"/>
+                            <div class="border-t border-b lg:border-l lg:border-r border-gray-300 text-sml lg:rounded-md p-5">
+                                <div @click="showDescription" class="flex justify-between items-center cursor-pointer">
+                                    <div>
+                                        <span class="text-sml century-bold">{{ $settings.sections.product.description.title }}</span>
+                                    </div>
+                                    <div>
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                    </div>
+                                </div>
+                                <transition name="slide">
+                                    <div class="pt-3" v-if="description == true">
+                                        <div id="description" v-html="item.html"></div>
+                                    </div>
+                                </transition>
+                            </div>
+                            <si-app-loader placement="AFTER_DESCRIPTION"/>
                         </div>
-                        <si-app-loader placement="AFTER_BUYNOW"/>
-                        <!-- buy now -->
-                        </div>
+                        <!-- Description -->
                         <!-- share products icons -->
-                        <div class="mx-2" v-if="$settings.sections.product.share_buttons">
-                            <div>
-                                <h3 class="align-center whitespace-nowrap text-lg font-bold px-4 mb-3 mt-4">{{ $settings.sections.product.share_buttons.title }}</h3>
-                            </div>
-                            <div class="flex justify-center md:justify-start">
-                                <div v-for="item in socialMedia.filter(s=>$settings.sections.product.share_buttons[s.name])" :key="item.name" class="m-2  flex items-center justify-center">
-                                    <a class="h-full flex " :href="item.url" target="_blank" rel="noopener noreferrer">
-                                    <!-- <fa class="text-3xl mx-2 hover:opacity-80" :icon="['fab', item.name]"></fa> -->
+                        <div class="" v-if="$settings.sections.product.share_buttons">
+                            <h3 class="text-center lg:text-left text-sml century-bold py-3">{{ $settings.sections.product.share_buttons.title }}</h3>
+                            <div class="flex items-center justify-center lg:justify-start">
+                                <div v-for="item in socialMedia.filter(s=>$settings.sections.product.share_buttons[s.name])" :key="item.name" class="mr-3 flex items-center justify-center">
+                                    <a class="h-full flex" :href="item.url" target="_blank" rel="noopener noreferrer">
+                                        <si-image class="h-7 w-7" width="40" height="40" :src="item.image" :alt="item.name"/>
                                     </a>
                                 </div>
                             </div>
                         </div>
                         <!-- share products icons -->
                     </div>
+                    <!-- Product content -->
                 </div>
-                <!-- Product content -->
             </div>
-            <!--  -->
-            <si-app-loader placement="BEFORE_DESCRIPTION"/>
-            <!-- Desciption and Reviews -->
-           
-            <!-- <div v-if="!loading && item" class="mb-6 mt-10">
-                <div class="flex justify-center items-center mb-4 mx-4">
-                    <div  class="text-sm md:text-base font-bold cursor-pointer mx-2 py-1 px-4 transition ease-in delay-150 rounded-full " :class="Description == true? 'bg-primary text-white': 'hover-bg'" @click="Description = true; Reviews = false">{{ $settings.sections.product.description.title }}</div>
-                    <div  v-if="$settings.sections.product.reviews.active"  class="text-sm md:text-base font-bold cursor-pointer mx-2 py-1 px-4 transition ease-in delay-150 rounded-full" :class="Reviews == true? 'bg-primary text-white': 'hover-bg'" @click="Description = false; Reviews = true">{{ $settings.sections.product.reviews.title }}</div>
-                </div>
-                <div class="flex justify-center mx-4">
-                    <div v-if="Description">
-                        <div class="bg-white description font-normal leading-7 text-base w-full" id="description" v-html="item.html"></div>
-                        <h2 v-if="item.html.length == 0" class="text-base font-normal" >{{ $settings.sections.product.description.title_empty }}</h2>
-                    </div>
-                </div>
-                <div v-if="Reviews" class="reviews mx-2">
+
+
+            <div class="flex flex-col">
+                
+                <div class="replace-reviews">
                     <div v-if="item && $settings.sections.product.reviews.active" class="reviews">
                         <sections-reviews v-show="!$store.state.apps.find(a=>a.placement.indexOf('REPLACE_REVIEWS') >= 0)" :item="item"></sections-reviews>
                     </div>
                     <si-app-loader  placement="REPLACE_REVIEWS"/>
-                    <h2 v-if="item.review.reviews.length == 0" class="text-base font-normal flex justify-center mx-2" >{{ $settings.sections.product.reviews.empty_title }}</h2>
                 </div>
-            </div>  -->
+ 
 
-            <si-app-loader placement="AFTER_DESCRIPTION"/>
-            <!-- Desciption and Reviews -->
-            
-            <div v-if="!loading && item" class="flex flex-col mt-3">
-            <!-- upsells  -->
-            <div v-if="item && $settings.sections.product.upsell.active" class="upsells">
-                <sections-upsell :item="item.upsell"/>
-            </div>
-            <!-- upsells -->
-            <!-- related Products  -->
-            <div v-if="item && $settings.sections.product.related.active" class="related">
-                <sections-related-products :item="item"/>
-            </div>
-            <!-- related Products  -->
+
+                <!-- upsells  -->
+                <div v-if="item && $settings.sections.product.upsell.active" class="upsells">
+                    <sections-upsell :item="item.upsell"/>
+                </div>
+                <!-- upsells -->
+
+                <!-- related Products  -->
+
+                <div v-if="item && $settings.sections.product.related.active" class="related">
+                    <sections-related-products :item="item"/>
+                </div>
+                <!-- related Products  -->
             </div>
         </div>
-
-
-
     </div>
 </template>
 
@@ -253,7 +248,7 @@
                 isDragging: false,
                 startMouseX: 0,
                 startMouseY: 0,
-                Description: true,
+                description: true,
                 Reviews: false,
                 visibleSlide: 0,
                 direction:'',
@@ -268,22 +263,22 @@
                     {
                         name: 'whatsapp',
                         url: 'https://api.whatsapp.com/send?text={title}%20{url}',
-                        image: 'https://storeno.b-cdn.net/themes/palest/whatsapp.png'
+                        image: 'https://cdn-icons-png.flaticon.com/512/160/160200.png'
                     },
                     {
                         name: 'facebook',
-                        image: 'https://storeno.b-cdn.net/themes/palest/facebook.png',
+                        image: 'https://cdn-icons-png.flaticon.com/512/4406/4406234.png',
                         url: 'https://www.facebook.com/sharer.php?u={url}'
                     },
                     {
                         name: 'twitter',
                         url: 'https://twitter.com/intent/tweet?url={url}&text={title}',
-                        image: 'https://storeno.b-cdn.net/themes/palest/twitter.png'
+                        image: 'https://cdn-icons-png.flaticon.com/512/220/220375.png'
                     },
                     {
                         name: 'linkedin',
                         url: 'https://www.linkedin.com/sharing/share-offsite/?url={url}',
-                        image: 'https://storeno.b-cdn.net/themes/palest/linkedin.png'
+                        image: 'https://cdn-icons-png.flaticon.com/512/160/160168.png'
                     }
                 ]
             }
@@ -406,7 +401,7 @@
                 this.startMouseY = event.clientY;
             },
             dragImage(event) {
-                if (this.isDragging) {
+                if (this.isDragging && this.imageScale > 1) {
                     const deltaX = event.clientX - this.startMouseX;
                     const deltaY = event.clientY - this.startMouseY;
                     this.posX += deltaX;
@@ -515,11 +510,32 @@
             showBodyScroll() {
                 document.body.style.overflow = 'scroll';
             },
+            showDescription(){
+                this.description = !this.description;
+            }
         },
     }
 </script>
 
-<style >
+<style scoped>
+.pb-3\/5-res{
+  padding-bottom: 70%;
+}
+
+.pb-2\/3-res{
+  padding-bottom: 100%;
+}
+
+@media (min-width: 1024px) {
+    .pb-3\/5-res{
+        padding-bottom: 60%;
+    }
+
+    .pb-2\/3-res{
+        padding-bottom: 66.6667%;
+    }
+}
+
 /* Product padding */
 @media (min-width: 1024px) { 
   .products-padding:nth-child(odd) {
@@ -531,49 +547,40 @@
 }
 /* Product padding */
 
-    .product-image {
-        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><circle cx='15' cy='15' r='10' fill='white' stroke='black' stroke-width='2'/><line x1='15' y1='10' x2='15' y2='20' stroke='black' stroke-width='2'/><line x1='10' y1='15' x2='20' y2='15' stroke='black' stroke-width='2'/></svg>"), auto;
-    }
+.pl-6\% {
+    padding-left: 0%;
+}
 
-    [dir = "rtl"] .dots{
-        flex-direction: row-reverse;
+@media (min-width: 1024px) {
+    .pl-6\% {
+        padding-left: 6%;
     }
+}
 
-    .video-wrapper {
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-        height: 0;
-        padding-top: 56.25%;
-    }
+[dir = "rtl"] .dots{
+    flex-direction: row-reverse;
+}
 
-    .video-wrapper iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-    }
+.video-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    padding-top: 56.25%;
+}
 
-    .scroll::-webkit-scrollbar {
-        display: none;
-    }
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
 
-    [dir = 'rtl'] .galery {
-        margin-right: 1rem;
-        margin-left: 0;
-    }
- 
-    @media (min-width: 768px) { 
-        .slider {
-            flex: 1 0 0%;
-        }
-        
-        .galery {
-            flex: 0 0 auto;
-        }
-    }
+.scroll::-webkit-scrollbar {
+    display: none;
+}
 </style>
   

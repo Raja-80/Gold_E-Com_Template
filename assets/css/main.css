@@ -2,6 +2,7 @@ body{
   font-family: Century Gothic Std, arial, sans-serif;
 }
 
+
 .century-bold {
   font-family: Century Gothic Std Bold,Noto Sans JP,Noto Sans SC,Noto Sans TC,Noto Sans KR;
 }
@@ -117,8 +118,8 @@ body{
   padding-bottom: 100%;
 }
 
-.pb-3\/5-res{
-  padding-bottom: 70%;
+.pb-2\/3{
+  padding-bottom: 66.6667%;
 }
 
 .pb-full-res{
@@ -128,9 +129,6 @@ body{
 @media (min-width: 1024px) {
   .pb-full-res{
     padding-bottom: 55%;
-  }
-  .pb-3\/5-res{
-    padding-bottom: 60%;
   }
 }
 

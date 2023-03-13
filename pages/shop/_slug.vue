@@ -22,8 +22,8 @@
                                             <svg class="lg:mx-1" :class="isVisible.collections == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </div>
                                         <transition name="slide">
-                                            <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.collections">
-                                                <div v-if="$settings.sections.shop.sidebar.collections.active" class="flex flex-col text-sml mb-2 lg:pt-5 lg:border-t border-gray-300">
+                                            <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.collections && $settings.sections.shop.sidebar.collections.active">
+                                                <div class="flex flex-col text-sml mb-2 lg:pt-5 lg:border-t border-gray-300">
                                                     <div v-for="(item, i) in collections" :key="i" class="pb-3">
                                                         <div class="flex items-center w-full">
                                                             <label class="w-full lg:w-auto relative flex items-center transition delay-300 ease-in-out">
@@ -68,9 +68,9 @@
                                             <svg class="lg:mx-1" :class="isVisible.prices == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </div>
                                         <transition name="slide">
-                                            <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.prices">
+                                            <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.prices && $settings.sections.shop.sidebar.prices.active && filters">
                                                 <div class="pb-5 lg:pt-5 lg:border-t border-gray-300">
-                                                    <div v-if="$settings.sections.shop.sidebar.prices.active && filters" class="flex flex-col" dir="ltr">
+                                                    <div class="flex flex-col" dir="ltr">
                                                         <si-price-range @change="setParams" :min="filters.prices.min" :max="filters.prices.max" />
                                                     </div>
                                                 </div>
@@ -85,9 +85,9 @@
                                             <svg class="lg:mx-1" :class="isVisible.sizes == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </div>
                                         <transition name="slide">
-                                            <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.sizes">
+                                            <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.sizes && $settings.sections.shop.sidebar.sizes.active && filters">
                                                 <div class="pb-2 lg:pt-5 lg:border-t border-gray-300">
-                                                    <div class="flex flex-col" v-if="$settings.sections.shop.sidebar.sizes.active && filters">
+                                                    <div class="flex flex-col">
                                                         <div class="flex items-center pb-3" v-for="(item, i) in filters.sizes" :key="i" >
                                                             <label class="relative flex items-center cursor-pointer">
                                                                 <input hidden type="checkbox" class="absolute top-0 left-0" style="z-index: -1" :checked="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0" :id="item.value1" @change="setParams($event, 'options.values.value1', item.value1)">
@@ -110,9 +110,9 @@
                                             <svg class="lg:mx-1" :class="isVisible.colors == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </div>
                                         <transition name="slide">
-                                            <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.colors">
+                                            <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.colors && $settings.sections.shop.sidebar.colors.active && filters">
                                                 <div class="pb-2 lg:pt-5 lg:border-t border-gray-300">
-                                                    <div class="flex flex-col" v-if="$settings.sections.shop.sidebar.colors.active && filters" >
+                                                    <div class="flex flex-col">
                                                         <div class="flex items-center pb-3" v-for="(item, i) in filters.colors" :key="i" :class="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0 ? 'active' : '' ">
                                                             <label class="relative flex items-center cursor-pointer">
                                                                 <input hidden type="checkbox" class="absolute top-0 left-0" style="z-index: -1" :id="item.value1" :checked="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0" @change="setParams($event, 'options.values.value1', item.value1)">
@@ -134,9 +134,9 @@
                                             <h2 class="text-sml century-bold-hover" v-if="$settings.sections.shop.sidebar.tags.active" :class="isVisible.tags==true? 'century-bold' : ''">{{ $settings.sections.shop.sidebar.tags.title }}</h2>
                                             <svg class="lg:mx-1" :class="isVisible.tags == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </div>
-                                        <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.tags">
+                                        <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.tags && $settings.sections.shop.sidebar.tags.active && filters">
                                             <div  class="pb-2 lg:pt-5 lg:border-t border-gray-300">
-                                                <div class="flex flex-col" v-if="$settings.sections.shop.sidebar.tags.active && filters">
+                                                <div class="flex flex-col">
                                                     <div class="flex items-center pb-3" v-for="(tag, i) in filters.tags" :key="i">
                                                         <label class="relative flex items-center cursor-pointer">
                                                             <input hidden type="checkbox" class="absolute top-0 left-0" style="z-index: -1" :checked="params['tags-in'] && params['tags-in'].indexOf(tag) >= 0" :id="`tag_${tag}`" @change="setParams($event, 'tags-in', tag)">
@@ -158,10 +158,10 @@
                                             <svg class="lg:mx-1" :class="isVisible.brands == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </div>
                                         <transition name="slide">
-                                            <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.brands">
+                                            <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.brands && $settings.sections.shop.sidebar.brands.active && filters">
                                                 <div class="flex flex-col">
                                                     <div class="pb-2 lg:pt-5 lg:border-t border-gray-300">
-                                                        <div class="flex flex-col" v-if="$settings.sections.shop.sidebar.brands.active">
+                                                        <div class="flex flex-col">
                                                             <div class="flex items-center pb-3" v-for="(item, i) in brands" :key="i">
                                                                 <label class="relative flex items-center cursor-pointer">
                                                                     <input hidden    type="checkbox" class="absolute top-0 left-0" style="z-index: -1" :id="item.slug" :checked="params['brand.slug-in'] && params['brand.slug-in'].indexOf(item.slug) >= 0" @change="setParams($event, 'brand.slug-in', item.slug)">
@@ -598,8 +598,8 @@ export default {
     },
 }
 </script>
-<style>
-@media (max-width: 1024px) { 
+<style scoped>
+@media (min-width:0px) and (max-width:1024px) { 
     .products-padding:nth-child(odd) {
         padding-right: 1rem;
     }
