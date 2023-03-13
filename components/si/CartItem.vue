@@ -1,38 +1,62 @@
 <template>
-    <div>
-        <div class="flex justify-between flex-wrap relative mb-2 p-2 shadow">
-            <div class="flex md:w-1/2">
-                <div class="flex items-center w-full">
-                    <nuxt-link class="w-1/4 flex" :to="`/products/${item.slug}`">
-                        <si-image class="border-2 border-gray-300 rounded-md object-contain w-full" :src="item.image" :alt="item.name"/>
+    <div class="border-t border-gray-300 w-full">
+        <div class="flex justify-between flex-wrap relative h-full py-5">
+            <!--  -->
+            <!--  -->
+            <div class="w-1/4 lg:w-1/12">
+                <div class="pb-full relative">
+                    <nuxt-link :to="`/products/${item.slug}`" :title="item.name" :aria-label="item.name">
+                        <si-image  width="400" height="400" class="h-full w-full absolute inset-0 object-cover"  :src="item.image" :alt="item.name"/>
                     </nuxt-link>
-                    <div class="w-3/4">
-                        <div class="flex flex-col p-2">
-                            <nuxt-link class="text-2xl" :to="`/products/${item.slug}`">{{ item.name }}</nuxt-link>
-                            <nuxt-link class="text-gray-600" :to="`/products/${item.slug}`"><b v-if="item.variant">{{ item.variant.name }}</b></nuxt-link>
-                            <div v-if="item.upsell">
-                                <b class="bg-red-700 text-white inline-block p-1 rounded-lg">-{{ item.upsell.value }} {{ item.upsell.type == 'percentage' ? '%' : $store.state.currency.symbol }}</b>
-                            </div>
+                </div>
+            </div>
+            <!--  -->
+            <!--  -->
+            <div class="w-3/4 lg:w-11/12 flex flex-wrap px-4 lg:px-0">
+                <div class="w-full lg:w-5/12 border-b lg:border-0 pb-2 lg-pb-0 border-gray-300 -order-2">
+                    <div class="flex justify-center h-full flex-col lg:px-3">
+                        <nuxt-link :to="`/products/${item.slug}`">
+                            <span class="text-sml century-bold">{{ item.name }}</span>
+                        </nuxt-link>
+                        <nuxt-link :to="`/products/${item.slug}`">
+                            <span class="text-sml primary-text" v-if="item.variant">{{ item.variant.name }}</span>
+                        </nuxt-link>
+                        <div v-if="item.upsell">
+                            <b class="text-red-500 text-sml century-bold">-{{ item.upsell.value }} {{ item.upsell.type == 'percentage' ? '%' : $store.state.currency.symbol }}</b>
+                        </div>
+                        <div class="text-sml century-bold text-black pt-1 cursor-pointer" @click="remove">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="#000000" width="20" height="20" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M19,6 L19,18.5 C19,19.8807119 17.8807119,21 16.5,21 L7.5,21 C6.11928813,21 5,19.8807119 5,18.5 L5,6 L4.5,6 C4.22385763,6 4,5.77614237 4,5.5 C4,5.22385763 4.22385763,5 4.5,5 L9,5 L9,4.5 C9,3.67157288 9.67157288,3 10.5,3 L13.5,3 C14.3284271,3 15,3.67157288 15,4.5 L15,5 L19.5,5 C19.7761424,5 20,5.22385763 20,5.5 C20,5.77614237 19.7761424,6 19.5,6 L19,6 Z M6,6 L6,18.5 C6,19.3284271 6.67157288,20 7.5,20 L16.5,20 C17.3284271,20 18,19.3284271 18,18.5 L18,6 L6,6 Z M14,5 L14,4.5 C14,4.22385763 13.7761424,4 13.5,4 L10.5,4 C10.2238576,4 10,4.22385763 10,4.5 L10,5 L14,5 Z M14,9.5 C14,9.22385763 14.2238576,9 14.5,9 C14.7761424,9 15,9.22385763 15,9.5 L15,16.5 C15,16.7761424 14.7761424,17 14.5,17 C14.2238576,17 14,16.7761424 14,16.5 L14,9.5 Z M9,9.5 C9,9.22385763 9.22385763,9 9.5,9 C9.77614237,9 10,9.22385763 10,9.5 L10,16.5 C10,16.7761424 9.77614237,17 9.5,17 C9.22385763,17 9,16.7761424 9,16.5 L9,9.5 Z"/>
+                            </svg>
                         </div>
                     </div>
-                </div> 
-            </div>
-            <div class="flex flex-col justify-center w-1/2 md:w-1/4 bg-gray-100 md:bg-white p-2">
-                <si-product-quantity @selected="quantitySelected" :quantity="item.quantity"/>
-            </div>
-            <div class="flex flex-col justify-center w-1/2 md:w-1/4 bg-gray-100 md:bg-white p-2 relative">
-                <div class="text-gray-600">
-                    <b class="text-xl">{{ item.quantity.value }} x</b>
-                    <b class="text-xl">{{ item.price }} {{ $store.state.currency.symbol }}</b>
                 </div>
-                <h2 class="text-2xl text-red-700">{{ item.total }} {{ $store.state.currency.symbol }}</h2>
-            </div>
-            <div class="absolute top-0 right-0">
-                <button class="w-8 h-8 justify-center items-center bg-white rounded-md shadow" @click="remove">&times;</button>
+                <!--  -->
+                <!--  -->
+                <div class="w-full lg:w-3/12 py-2 lg:py-0 border-b lg:border-0 border-gray-300">
+                    <div class="flex items-center lg:justify-center h-full">
+                        <si-product-quantity @selected="quantitySelected" :quantity="item.quantity"/>
+                    </div>
+                </div>
+                <!--  -->
+                <!--  -->
+                <div class="w-full lg:w-2/12 py-2 lg:py-0 border-b lg:border-0 border-gray-300 -order-1">
+                    <div class="flex items-center lg:justify-center h-full">
+                        <span class="text-sml century-bold primary-text">{{ item.price.toFixed(2) }} {{ $store.state.currency.symbol }}</span>
+                    </div>
+                </div>
+                <!--  -->
+                <!--  -->
+                <div class="w-full lg:w-2/12 py-2 lg:py-0">
+                    <div class="flex items-center lg:justify-end h-full">
+                        <h2 class="text-sml century-bold">{{ item.total.toFixed(2) }} {{ $store.state.currency.symbol }}</h2>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </template>
+
 <script>
 export default {
     props: {
@@ -57,3 +81,16 @@ export default {
     },
 }
 </script>
+
+<style scoped>
+@media (max-width: 1024px) {
+    .\-order-1 {
+        order: -1;
+    }
+    
+    .\-order-2 {
+        order: -2;
+    }
+}
+
+</style>    

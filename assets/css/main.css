@@ -55,6 +55,9 @@ body{
 .rotate-180 {
     transform: rotate(180deg);
 }
+.rotate-45 {
+    transform: rotate(45deg);
+}
 
 
 /* Hover link */

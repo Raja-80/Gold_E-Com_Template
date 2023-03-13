@@ -1,6 +1,6 @@
 <template>
-  <div class="border-b border-gray-300"  v-if="items.length > 0">
-    <div class="border-t mt-7 pt-5 lg:mx-5 xl:mx-10">
+  <div v-if="items.length > 0">
+    <div class="border-t border-gray-300 mt-7 pt-5 lg:mx-5 xl:mx-10">
       <h2 class="text-base text-center pb-8">{{ $settings.sections.product.related.title }}</h2>
       <!-- loader -->
       <div v-if="loading" class="flex justify-center items-center my-5">
@@ -15,7 +15,7 @@
       </div>
     </div>
     <!-- related product -->
-    <div class="flex justify-center pb-20" v-if="$settings.sections.products_1.show_more_text">
+    <div class="flex justify-center" v-if="$settings.sections.products_1.show_more_text">
       <nuxt-link class="h-12 px-12 flex justify-center items-center border border-gray-300 rounded-full hover:border-black transition-all ease-linear delay-75" to="/shop">
             <span class="text-sml">{{ $settings.sections.products_1.show_more_text }}</span>
         </nuxt-link>
