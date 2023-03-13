@@ -10,7 +10,7 @@
     <!-- loader -->
     <!--related product  -->
     <div class="flex flex-wrap mx-1 xl:mx-5">
-      <div v-for="(item, i) in items" :key="i" class="w-1/2 md:w-1/3 lg:w-1/4 px-4 xl:px-5 mb-4 lg:mb-8">
+      <div v-for="(item, i) in items" :key="i" class="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 px-4 xl:px-5 mb-4 lg:mb-8">
         <si-product :item="item"></si-product>
       </div>
     </div>

@@ -17,7 +17,7 @@
         <!-- empty cart -->
         <div v-if="!loading.cart && !loading.upsells && items.length > 0">
             <!-- title -->
-            <div class="mt-7 mb-10 px-5 xl:px-10">
+            <div class="my-5 px-5 xl:px-10">
                 <h2 class="text-lg century-bold">{{$settings.sections.cart.title}}</h2>
             </div>
             <!-- title -->
