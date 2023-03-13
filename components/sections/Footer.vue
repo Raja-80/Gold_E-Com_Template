@@ -1,7 +1,7 @@
 <template>
     <div>
       <si-app-loader placement="BEFORE_FOOTER"/>
-      <div class="">
+      <div class="lg:border-t border-gray-300">
         <!-- Start footer Section -->
         <footer class="footer text-black lg:px-7 lg:py-10">
           <div class="flex flex-wrap justify-between">

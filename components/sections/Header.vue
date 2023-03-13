@@ -2,7 +2,7 @@
 <div>
     <si-app-loader placement="BEFORE_HEADER"/>
     <!-- header -->
-        <div class="relative">
+        <div class="relative border-b border-gray-300">
             <div class="bg-white h-60.8 h-124"></div>
             <transition name="header-slide">
                 <header>

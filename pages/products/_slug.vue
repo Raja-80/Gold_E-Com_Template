@@ -1,7 +1,7 @@
 <template>
     <div class="bg-white">
         <!-- Loader -->
-        <div v-if="loading" class="flex justify-center items-center">
+        <div v-if="loading" class="flex justify-center items-center my-5">
             <si-loader></si-loader>
         </div>
         <!-- Loader -->
@@ -9,7 +9,7 @@
             <!-- Product id -->
             <meta itemprop="productID" :content="item._id" />
             <!-- Product id -->
-            <div class="lg:p-5 xl:py-7 xl:px-10 border-t border-gray-300">
+            <div class="lg:p-5 xl:py-7 xl:px-10">
                 <div class="flex flex-wrap justify-between">
                     <!-- shows images when click -->
                     <transition name="fade-image">
@@ -21,13 +21,13 @@
                             </div>
                             <div class="flex items-center flex-wrap justify-between h-full lg:p-10 relative">
                                 <div class="hidden lg:flex flex-col items-center">
-                                    <div @click="increaseSize" class="border border-gray-300 hover:border-black transition delay-150 ease-in-out m-2.5 w-7 h-7 flex items-center justify-center cursor-pointer">
+                                    <div @click="increaseSize" class="text-black border border-gray-300 hover:border-black transition delay-150 ease-in-out m-2.5 w-7 h-7 flex items-center justify-center cursor-pointer">
                                         <svg class="w-2.5 h-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
                                     </div>
                                     <div class="flex items-center justify-center ">
                                         <span class="text-base"> {{ zoom }} %</span>
                                     </div>
-                                    <div @click="decreaseSize" class="border border-gray-300 hover:border-black transition delay-150 ease-in-out m-2.5 w-7 h-7 flex items-center justify-center cursor-pointer">
+                                    <div @click="decreaseSize" class="text-black border border-gray-300 hover:border-black transition delay-150 ease-in-out m-2.5 w-7 h-7 flex items-center justify-center cursor-pointer">
                                         <svg class="w-2.5 h-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.45h-11a.55.55 0 000 1.1h11a.55.55 0 000-1.1z" fill="currentColor"></path></svg>
                                     </div>
                                 </div>
@@ -42,7 +42,7 @@
                                             <button v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:left-1 xl:left-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150  rounded-full border border-gray-300 hover:border-black" @click="prev">
                                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 15.54a.54.54 0 01-.39-.16L6.72 10l5.39-5.4a.551.551 0 11.78.78L8.28 10l4.61 4.61a.56.56 0 010 .78.54.54 0 01-.39.15z" fill="currentColor"></path></svg>
                                             </button>
-                                            <div v-if="item.images.length > 0" class="dots flex items-center justify-center lg:hidden">
+                                            <div v-if="item.images.length > 1" class="dots flex items-center justify-center lg:hidden">
                                                 <div class="mx-1" v-for="(image, index) in item.images" :key="index" >
                                                     <div class="h-1.5 w-1.5 rounded-full cursor-pointer" :class="visibleSlide == index ? 'bg-primary w-2 h-2' : 'bg-gray-300'" @click="setImage(index)"></div>
                                                 </div>
@@ -82,7 +82,7 @@
                                             </button>
                                         </transition>
                                     </div>
-                                    <div v-if="item.images.length > 0" class="absolute bottom-0 left-1/2 transform -translate-x-1/2 lg:hidden">
+                                    <div v-if="item.images.length > 1" class="absolute bottom-0 left-1/2 transform -translate-x-1/2 lg:hidden">
                                         <div class="flex py-5">
                                             <div class="mx-1" v-for="(image, index) in item.images" :key="index" >
                                                 <div class="h-1.5 w-1.5 rounded-full cursor-pointer" :class="visibleSlide == index ? 'bg-primary w-2. h-2' : 'bg-gray-300'" @click="setImage(index)"></div>
@@ -140,9 +140,8 @@
                             <!-- product cart -->
                             <!-- product quantity -->
                             <div class="flex items-center justify-between my-3" :class="item.type!='variable'?'border-t border-gray-300 pt-3':''">
-                                <!-- {{ $settings.sections.product.quantity.text }} -->
                                 <h2 class="text-sml text-black">{{ $settings.sections.product.quantity.text }}</h2>
-                                <div class="">
+                                <div class="text-black">
                                     <si-product-quantity @selected="quantitySelected" :quantity="quantity" page="product"></si-product-quantity>
                                 </div>
                             </div>
@@ -205,27 +204,19 @@
                     <!-- Product content -->
                 </div>
             </div>
-
-
-            <div class="flex flex-col">
-                
+            <div class="flex flex-col pb-16">
                 <div class="replace-reviews">
                     <div v-if="item && $settings.sections.product.reviews.active" class="reviews">
                         <sections-reviews v-show="!$store.state.apps.find(a=>a.placement.indexOf('REPLACE_REVIEWS') >= 0)" :item="item"></sections-reviews>
                     </div>
                     <si-app-loader  placement="REPLACE_REVIEWS"/>
                 </div>
- 
-
-
                 <!-- upsells  -->
                 <div v-if="item && $settings.sections.product.upsell.active" class="upsells">
                     <sections-upsell :item="item.upsell"/>
                 </div>
                 <!-- upsells -->
-
                 <!-- related Products  -->
-
                 <div v-if="item && $settings.sections.product.related.active" class="related">
                     <sections-related-products :item="item"/>
                 </div>

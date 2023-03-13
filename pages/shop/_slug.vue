@@ -134,21 +134,23 @@
                                             <h2 class="text-sml century-bold-hover" v-if="$settings.sections.shop.sidebar.tags.active" :class="isVisible.tags==true? 'century-bold' : ''">{{ $settings.sections.shop.sidebar.tags.title }}</h2>
                                             <svg class="lg:mx-1" :class="isVisible.tags == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </div>
-                                        <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.tags && $settings.sections.shop.sidebar.tags.active && filters">
-                                            <div  class="pb-2 lg:pt-5 lg:border-t border-gray-300">
-                                                <div class="flex flex-col">
-                                                    <div class="flex items-center pb-3" v-for="(tag, i) in filters.tags" :key="i">
-                                                        <label class="relative flex items-center cursor-pointer">
-                                                            <input hidden type="checkbox" class="absolute top-0 left-0" style="z-index: -1" :checked="params['tags-in'] && params['tags-in'].indexOf(tag) >= 0" :id="`tag_${tag}`" @change="setParams($event, 'tags-in', tag)">
-                                                            <div class="flex justify-center items-center">
-                                                                <svg class="fill-current text-black"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
-                                                            </div>
-                                                            <label class="cursor-pointer text-sml text-hover" :for="`tag_${tag}`">{{ tag }}</label>
-                                                        </label>
+                                        <transition name="slide">
+                                            <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.tags && $settings.sections.shop.sidebar.tags.active && filters">
+                                                <div  class="pb-2 lg:pt-5 lg:border-t border-gray-300">
+                                                    <div class="flex flex-col">
+                                                        <div class="flex items-center pb-3" v-for="(tag, i) in filters.tags" :key="i">
+                                                            <label class="relative flex items-center cursor-pointer">
+                                                                <input hidden type="checkbox" class="absolute top-0 left-0" style="z-index: -1" :checked="params['tags-in'] && params['tags-in'].indexOf(tag) >= 0" :id="`tag_${tag}`" @change="setParams($event, 'tags-in', tag)">
+                                                                <div class="flex justify-center items-center">
+                                                                    <svg class="fill-current text-black"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
+                                                                </div>
+                                                                <label class="cursor-pointer text-sml text-hover" :for="`tag_${tag}`">{{ tag }}</label>
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </transition>
                                     </div>
                                     <!-- tags -->
                                     <!-- brands -->
@@ -273,8 +275,8 @@
                 </div>
             </div>
             <!-- Pagination -->
-            <div class="lg:border-t lg:mx-10">
-                <div class="flex justify-center items-center flex-wrap py-4">
+            <div :class="items.length != 0?'lg:mx-10 py-2.5 lg:border-t border-gray-300 ':''">
+                <div class="flex justify-center items-center flex-wrap">
                     <!-- chivron left -->
                     <button v-if="paginate.last_page > 0" class="mx-2 p-3 flex items-center text-hover" @click="getItems(paginate.current_page-1)">
                         <svg class="w-3 h-3 translate" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path></svg>

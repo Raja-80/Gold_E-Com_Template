@@ -15,7 +15,7 @@
         </div>
         <!-- Sub Collections -->
         <!-- One Blog -->
-        <div v-if="posts.length > 0" class="px-3 lg:px-7 mt-16 pb-16 lg:pb-20 lg:border-b">
+        <div v-if="posts.length > 0" class="px-3 lg:px-7 mt-16 pb-16 lg:pb-20">
             <div class="">
                 <h2 class="text-base text-center century-bold">{{ $settings.sections.posts.title  }}</h2>
             </div>
@@ -72,19 +72,21 @@ export default {
 </script>
 
 <style scoped>
-.collections {
+/* .collections {
     padding-bottom: 1.5px;
     padding-top: 1.5px;
-}
+} */
 
 @media (min-width: 1024px) {
     
     .collections:nth-child(odd) {
         padding-right: 1.5px;
+        padding-bottom: 3px;
     }
     
     .collections:nth-child(even) {
         padding-left: 1.5px;
+        padding-bottom: 3px;
     }
 }
 </style>
