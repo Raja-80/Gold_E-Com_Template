@@ -16,7 +16,6 @@
         <!-- empty design -->
         <!-- Content -->
         <div v-if="items.length > 0">
-            <div class="bg-white">
                 <!-- title -->
                 <div class="my-5 px-5 xl:px-10">
                     <h2 class="text-lg century-bold">{{ $settings.sections.wishlist.title }}</h2>
@@ -29,7 +28,6 @@
                     </div>
                 </div>
                 <!--  -->
-            </div>
         </div>
         <!-- Content -->
     </div>
