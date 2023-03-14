@@ -189,12 +189,12 @@
                         </div>
                         <!-- Description -->
                         <!-- share products icons -->
-                        <div class="" v-if="$settings.sections.product.share_buttons">
+                        <div v-if="$settings.sections.product.share_buttons">
                             <h3 class="text-center lg:text-left text-sml century-bold py-3">{{ $settings.sections.product.share_buttons.title }}</h3>
                             <div class="flex items-center justify-center lg:justify-start">
                                 <div v-for="item in socialMedia.filter(s=>$settings.sections.product.share_buttons[s.name])" :key="item.name" class="mr-3 flex items-center justify-center">
                                     <a class="h-full flex" :href="item.url" target="_blank" rel="noopener noreferrer">
-                                        <si-image class="h-7 w-7" width="40" height="40" :src="item.image" :alt="item.name"/>
+                                        <si-image class="h-8 w-8" width="40" height="40" :src="item.image" :alt="item.name"/>
                                     </a>
                                 </div>
                             </div>
@@ -264,12 +264,12 @@
                     {
                         name: 'twitter',
                         url: 'https://twitter.com/intent/tweet?url={url}&text={title}',
-                        image: 'https://cdn-icons-png.flaticon.com/512/220/220375.png'
+                        image: 'https://cdn-icons-png.flaticon.com/512/356/356076.png'
                     },
                     {
                         name: 'linkedin',
                         url: 'https://www.linkedin.com/sharing/share-offsite/?url={url}',
-                        image: 'https://cdn-icons-png.flaticon.com/512/160/160168.png'
+                        image: 'https://cdn-icons-png.flaticon.com/512/356/356096.png'
                     }
                 ]
             }
