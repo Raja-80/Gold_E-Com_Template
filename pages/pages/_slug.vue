@@ -33,7 +33,7 @@
             <div class="flex justify-center gap-4 py-4">
                 <div v-for="item in socialMedia.filter(s=>$settings.sections.post.share_buttons[s.name])" :key="item.name">
                     <a :href="item.url" target="_blank" rel="noopener noreferrer">
-                        <si-image class="h-10 w-10" width="40" height="40" :src="item.image" :alt="item.name"/>
+                        <si-image class="h-8 w-8" width="40" height="40" :src="item.image" :alt="item.name"/>
                     </a>
                 </div>
             </div>

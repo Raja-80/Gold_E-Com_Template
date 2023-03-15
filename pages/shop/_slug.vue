@@ -28,10 +28,10 @@
                                                         <div class="flex items-center w-full">
                                                             <label class="w-full lg:w-auto relative flex items-center transition delay-300 ease-in-out">
                                                                 <div class="w-full lg:w-auto flex flex-col cursor-pointer" v-if="item.childrens && item.childrens.length > 0" @mouseover="windowWidth >= 1024 ? setActiveOver(i+'fit',i+'ret') : null" @mouseleave="windowWidth >= 1024 ? setActiveLeave(i+'fit',i+'ret') : null">
-                                                                    <div @click="setActive(i+'fit',i+'ret')" class="flex items-center justify-between text-hover">
-                                                                        <label class="text-sml cursor-pointer" :for="item.slug">{{ item.name }}</label>
-                                                                        <svg class="rotated lg:mx-1" :id="i+'ret'" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
-                                                                    </div>
+                                                                    <label :for="item.slug" :id="i+'ret'" @click="setActive(i+'fit',i+'ret')" class="cursor-pointer flex items-center justify-between text-hover">
+                                                                        <span class="text-sml cursor-pointer">{{ item.name }}</span>
+                                                                        <svg class="rotated lg:mx-1"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                                                    </label>
                                                                     <div :id="i+'fit'" class="fit-collapsible" :class="item.childrens.length > 0 ? 'sub-collections' : ''">
                                                                         <div class="list-sub-collections fit-collapsible-content" v-if="item.childrens && item.childrens.length > 0" >
                                                                             <div v-for="(child, i) in item.childrens" :key="i" class="pt-3">
@@ -185,7 +185,7 @@
                             <div @click="showBodyScroll">
                                 <div @click="showSideBar=false" class="lg:hidden bg-black py-5 px-8 mx-5 rounded-full cursor-pointer click-effect century-bold-hover my-5">
                                     <div class="flex items-center justify-center text-sml text-white">
-                                        <span>{{ $settings.sections.shop.sidebar.seeproducts.text1}} <span> {{ items.length }} </span> {{ $settings.sections.shop.sidebar.seeproducts.text2 }}</span>
+                                        <span>{{ $settings.sections.shop.sidebar.button_text1}} <span> {{ items.length }} </span> {{ $settings.sections.shop.sidebar.button_text2 }}</span>
                                     </div>   
                                 </div>
                             </div>
@@ -249,7 +249,7 @@
                                         <div class="flex flex-col justify-end" @click="showBodyScroll">
                                             <div @click="isVisible.sort=false" class="lg:hidden bg-black py-5 px-8 mx-5 rounded-full cursor-pointer click-effect century-bold-hover my-5">
                                                 <div class="flex items-center justify-center text-sml text-white">
-                                                    <span>{{ $settings.sections.shop.sidebar.seeproducts.text1}} <span> {{ items.length }} </span> {{ $settings.sections.shop.sidebar.seeproducts.text2 }}</span>
+                                                    <span>{{ $settings.sections.shop.sidebar.button_text1}} <span> {{ items.length }} </span> {{ $settings.sections.shop.sidebar.button_text2 }}</span>
                                                 </div>   
                                             </div>
                                         </div>
@@ -428,10 +428,14 @@ export default {
             this.windowWidth = window.innerWidth;
         },
         hideBodyScroll() {
+            if (window.innerWidth < 1024) {
                 document.body.style.overflow = 'hidden';
+            }
         },
         showBodyScroll() {
-            document.body.style.overflow = 'scroll';
+            if (window.innerWidth < 1024) {
+                document.body.style.overflow = 'scroll';
+            }
         },
         subCollections(){
             console.log('collections items ====>', this.collections);
@@ -610,23 +614,27 @@ export default {
     }
 }
 
-@media (min-width: 1024px) {
-    .under-border {
-      position: relative;
-      transition: all .3s ease-in-out;
-    }
-    
+.under-border {
+    position: relative;
+    transition: all .3s ease-in-out;
+}
+
+.under-border::before {
+    content: '';
+    margin: 0 20px;
+    position: absolute;
+    height: 0.05rem;
+    background-color: rgb(209, 213, 219);
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    transition: transform .3s ease-in-out;
+}
+
+@media (min-width: 1024px) {    
     .under-border::before {
-      content: '';
       margin: 0 40px;
-      position: absolute;
-      height: 0.05rem;
-      background-color: rgb(209, 213, 219);
-      top: 100%;
-      left: 0;
-      right: 0;
-      z-index: 1;
-      transition: transform .3s ease-in-out;
     }
 }
 
@@ -659,7 +667,6 @@ input[type="radio"]:checked + div + label {
     transition: all 0.3s ease;
 }
 
-
 .fit-collapsible{
     overflow: unset;
     text-align: left;
@@ -669,26 +676,26 @@ input[type="radio"]:checked + div + label {
     outline: 0;
     vertical-align: baseline;
     background: 0 0;
-  }
+}
 
-    .fit-collapsible .fit-collapsible-content{
+.fit-collapsible .fit-collapsible-content{
     max-height: 0;
     position: relative;
     overflow: hidden;
     transition: 0.4s;
-    }
+}
 
-    .fit-collapsible.active .fit-collapsible-content{
+.fit-collapsible.active .fit-collapsible-content{
     max-height: 500px;
-    }
+}
 
-  .rotated{
+.rotated{
     transition: all 0.3s ease-in-out;
-  }
+}
 
-  .rotated.active{
+.rotated.active{
     transform: rotate(180deg);
-  }
+}
 
 </style>
 
