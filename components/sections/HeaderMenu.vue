@@ -221,10 +221,14 @@
                 this.isVisible.Curr= !this.isVisible.Curr;
             },
             hideBodyScroll() {
-                document.body.style.overflow = 'hidden';
+                if (window.innerWidth < 1024) {
+                    document.body.style.overflow = 'hidden';
+                }
             },
             showBodyScroll() {
-                document.body.style.overflow = 'scroll';
+                if (window.innerWidth < 1024) {
+                    document.body.style.overflow = 'scroll';
+                }
             },
         }
     }

@@ -124,15 +124,6 @@ body{
   padding-bottom: 66.6667%;
 }
 
-.pb-full-res{
-  padding-bottom: 100%;
-}
-
-@media (min-width: 1024px) {
-  .pb-full-res{
-    padding-bottom: 55%;
-  }
-}
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
