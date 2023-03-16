@@ -10,7 +10,7 @@
                 <!-- about -->
                 <div class="about border-t lg:border-0 border-gray-200 py-8 px-5 lg:py-0 lg:px-0">
                     <div @click="showContent" class="flex items-center justify-between transition-all ease-in-out delay-150 cursor-pointer lg:cursor-auto">
-                        <h4 class="century-bold text-sml">{{ title }}</h4>
+                        <h4 class="ml-font-bold text-sml">{{ title }}</h4>
                         <span class="lg:hidden" :class="[isVisible.Content ? 'rotate-45 transition-all delay-150 ease-linear' : ''] ">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
                         </span>
@@ -19,17 +19,17 @@
                     <transition name="slide">
                       <div class="lg:block mt-8" v-if="windowWidth < 1024 ? isVisible.Content : true">
                         <!-- Footer About -->
-                            <div class="text-sml text-md-responsive font-normal">{{ footer.about }}</div>
+                            <div class="text-sml text-md-responsive ">{{ footer.about }}</div>
                         <!-- Footer About -->
                         <!-- Contacts  -->
                         <div class="contacts flex flex-col">
-                            <span class="mt-5 text-sml text-md-responsive font-normal">
+                            <span class="mt-5 text-sml text-md-responsive ">
                                 <a  class="link-hover" :href="$settings.sections.footer.location_link">{{ footer.location }}</a>
                             </span>
-                            <span class="mt-5 text-sml text-md-responsive font-normal">
+                            <span class="mt-5 text-sml text-md-responsive ">
                                 <a  class="link-hover" :href="'mail:'+footer.gmail">{{ footer.gmail }}</a>
                             </span>
-                            <span class="mt-5 text-sml text-md-responsive font-normal">    
+                            <span class="mt-5 text-sml text-md-responsive ">    
                                 <a class="link-hover" :href="'tel:'+footer.number">{{ footer.number }}</a>
                             </span>
                         </div>
@@ -42,7 +42,7 @@
                 <!--  Social Media -->
                 <div class="Social_Media border-t lg:border-0 mt-0 lg:mt-8 border-gray-200  py-8 px-5 lg:py-0 lg:px-0">
                     <div @click="showSocialMedia" class="flex items-center justify-between transition-all ease-in-out delay-150 cursor-pointer  lg:cursor-auto">
-                        <h4 class="century-bold text-sml">{{ footer.social_media.title }}</h4>
+                        <h4 class="ml-font-bold text-sml">{{ footer.social_media.title }}</h4>
                         <span class="lg:hidden" :class="[isVisible.SocialMedia ? 'rotate-45 transition-all delay-150 ease-linear' : ''] ">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
                         </span>
@@ -50,7 +50,7 @@
                     <transition name="slide">
                         <div v-if="windowWidth < 1024 ? isVisible.SocialMedia : true">
                             <div class="flex flex-wrap mt-4">
-                                <div v-for="item in socialMedia.filter(s=>$settings.sections.footer.social_media[s.name])" :key="item.name" class="flex items-center justify-center mr-4 mt-4">
+                                <div v-for="item in socialMedia.filter(s=>$settings.sections.footer.social_media[s.name])" :key="item.name" class="flex items-center justify-center ml-mr-4 mt-4">
                                     <a class="h-full flex" :href="$settings.sections.footer.social_media[item.name]" target="_blank" rel="noopener noreferrer">
                                         <si-image class="h-6 w-6" width="40" height="40" :src="item.image" :alt="item.name"/>
                                     </a>
@@ -66,7 +66,7 @@
             <div class="menu1 border-t lg:border-0 border-gray-200 py-8 px-5 lg:py-0 lg:px-3 w-full" :class="menus.menu1_active && menus.menu2_active ? 'lg:w-1/4' : 'lg:w-1/3'">
                 <div class="" v-if="menus.menu1_active" >
                     <div @click="showMenu1" class="flex items-center justify-between transition-all ease-in-out delay-150 cursor-pointer lg:cursor-auto">
-                        <h4 class="century-bold text-sml">{{ menus.menu1_title }}</h4>
+                        <h4 class="ml-font-bold text-sml">{{ menus.menu1_title }}</h4>
                         <span class="lg:hidden" :class="[isVisible.Menu1 ? 'rotate-45 transition-all delay-150 ease-linear' : ''] ">
                             <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
                         </span>
@@ -105,7 +105,7 @@
             <div class="menu2 border-t lg:border-0 border-gray-200 py-8 px-5 lg:py-0 lg:px-3 w-full" :class="menus.menu1_active && menus.menu2_active ? 'lg:w-1/4' : 'lg:w-1/3'">
                 <div class="" v-if="menus.menu2_active" >
                     <div @click="showMenu2" class="flex items-center justify-between transition-all ease-in-out delay-150  cursor-pointer lg:cursor-auto">
-                        <h4 class="century-bold text-sml">{{ menus.menu2_title }}</h4>
+                        <h4 class="ml-font-bold text-sml">{{ menus.menu2_title }}</h4>
                         <span class="lg:hidden" :class="[isVisible.Menu2 ? 'rotate-45 transition-all delay-150 ease-linear' : ''] ">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
                         </span>
@@ -146,7 +146,7 @@
                 <div class="lang border-t lg:border-0 border-gray-200  py-8 px-5 lg:py-0 lg:px-0">
                     <ul v-for="(item, i) in langMenu" :key="i" class="flex flex-col">
                         <div @click="showLang" class="flex items-center justify-between transition-all ease-in-out delay-150 cursor-pointer lg:cursor-auto" >
-                            <h4 class="century-bold text-sml">{{ item.title }}</h4>
+                            <h4 class="ml-font-bold text-sml">{{ item.title }}</h4>
                             <span class="lg:hidden" :class="[isVisible.Lang ? 'rotate-45 transition-all delay-150 ease-linear' : ''] ">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
                             </span>
@@ -186,7 +186,7 @@
                 <div class="Curr border-t lg:border-0 border-gray-200 lg:mt-8 py-8 px-5 lg:py-0 lg:px-0">
                     <ul v-for="(item, i) in currMenu" :key="i" class="flex flex-col">
                         <div @click="showCurr" class="flex items-center justify-between transition-all ease-in-out delay-150 cursor-pointer lg:cursor-auto" >
-                            <h4 class="century-bold text-sml">{{ item.title }}</h4>
+                            <h4 class="ml-font-bold text-sml">{{ item.title }}</h4>
                             <span class="lg:hidden" :class="[isVisible.Curr ? 'rotate-45 transition-all delay-150 ease-linear' : ''] ">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
                             </span>
@@ -225,14 +225,14 @@
                 <!-- payment_methods  -->
                 <div class="payment_methods border-t lg:border-0 border-gray-200 lg:mt-8 py-8 px-5 lg:py-0 lg:px-0">
                     <div @click="showPaymentMethods" class="flex items-center justify-between transition-all ease-in-out delay-150 cursor-pointer  lg:cursor-auto">
-                        <h4 class="century-bold text-sml">{{ footer.methods.title }}</h4>
+                        <h4 class="ml-font-bold text-sml">{{ footer.methods.title }}</h4>
                         <span class="lg:hidden" :class="[isVisible.PaymentMethods ? 'rotate-45 transition-all delay-150 ease-linear' : ''] ">
                             <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
                         </span>
                     </div> 
                     <div class="lg:block" v-if="windowWidth < 1024 ? isVisible.PaymentMethods : true">
                         <div class="payment_images flex flex-wrap mt-4">
-                            <div v-for="item in methods.filter(m=>$settings.sections.footer.methods[m.name])" :key="item.name" class="flex mr-4 mt-4">
+                            <div v-for="item in methods.filter(m=>$settings.sections.footer.methods[m.name])" :key="item.name" class="flex ml-mr-4 mt-4">
                                 <si-image  width="60" height="20" :src="item.image" :alt="item.name" class="h-full w-10 object-contain"/>
                             </div>
                         </div>
@@ -304,19 +304,19 @@
                     },
                     {
                         name: 'twitter',
-                        image: 'https://cdn-icons-png.flaticon.com/512/220/220375.png'
+                        image: 'https://cdn-icons-png.flaticon.com/512/356/356076.png'
                     },
                     {
                         name: 'instagram',
-                        image: 'https://cdn-icons-png.flaticon.com/512/4406/4406253.png'
+                        image: 'https://cdn-icons-png.flaticon.com/512/1362/1362857.png'
                     },
                     {
                         name: 'youtube',
-                        image: 'https://cdn-icons-png.flaticon.com/512/220/220353.png'
+                        image: 'https://cdn-icons-png.flaticon.com/512/4628/4628711.png'
                     },
                     {
                         name: 'linkedin',
-                        image: 'https://cdn-icons-png.flaticon.com/512/160/160168.png'
+                        image: 'https://cdn-icons-png.flaticon.com/512/356/356096.png'
                     },
                     {
                         name: 'whatsapp',
@@ -324,7 +324,7 @@
                     },
                     {
                         name: 'snapchat',
-                        image: 'https://cdn-icons-png.flaticon.com/512/220/220366.png'
+                        image: 'https://cdn-icons-png.flaticon.com/512/1383/1383333.png'
                     },
                     {
                         name: 'tiktok',
@@ -335,8 +335,8 @@
                 {
                     _id: "lang",
                     text: this.$store.state.language.code,
-                    active: this.$settings.sections.header.icons.language,
-                    title: 'LANGUAGE',
+                    active: this.$settings.sections.footer.icons.language,
+                    title: this.$settings.sections.footer.icons.language_text,
                     childrens: this.$settings.store_languages.map(l=> {
                         return {
                             _id: l.code,
@@ -350,8 +350,8 @@
                 {
                     _id: "currency",
                     text: this.$store.state.currency.code,
-                    active: this.$settings.sections.header.icons.currency,
-                    title: 'CURRENCY',
+                    active: this.$settings.sections.footer.icons.currency,
+                    title: this.$settings.sections.footer.icons.currency_text,
                     childrens: this.$settings.store_currencies.map(c=> {
                         return {
                             _id: c.code,
@@ -367,14 +367,13 @@
         if (process.client) {
             this.getWindowWidth();
             window.addEventListener('resize', this.getWindowWidth);
-        }
-    },
-    beforeDestroy() {
-        if (process.client) {
-        window.removeEventListener('resize', this.getWindowWidth);
-        }
-    },
-
+            }
+        },
+        beforeDestroy() {
+            if (process.client) {
+            window.removeEventListener('resize', this.getWindowWidth);
+            }
+        },
     methods: {
         getWindowWidth() {
             this.windowWidth = window.innerWidth;
@@ -421,6 +420,15 @@
 <style scoped>
 .menus-text:first-child {
     margin-top: 2rem;
+}
+
+.ml-mr-4 {
+    margin-right: 1rem;
+}
+
+[dir="rtl"] .ml-mr-4 {
+    margin-left: 1rem;
+    margin-right: 0;
 }
 </style>
     

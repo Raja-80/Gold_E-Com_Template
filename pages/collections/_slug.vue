@@ -17,7 +17,7 @@
         <!-- One Blog -->
         <div v-if="posts.length > 0" class="px-3 lg:px-7 mt-16 pb-16 lg:pb-20">
             <div class="">
-                <h2 class="text-base text-center century-bold">{{ $settings.sections.posts.title  }}</h2>
+                <h2 class="text-base text-center ml-font-bold">{{ $settings.sections.posts.title  }}</h2>
             </div>
             <div class="flex flex-wrap">
                 <div v-for="(item, i) in posts.slice(0,1)" :key="i" class="w-full mt-8 lg:mt-4">

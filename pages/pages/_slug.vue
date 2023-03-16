@@ -6,7 +6,7 @@
         <div v-if="!loading && item" class="px-5 xl:px-10">
             <!-- title -->
             <div class="py-5 border-b border-gray-300">
-                <h2 class="text-lg century-bold">{{ item.title }}</h2>
+                <h2 class="text-lg ml-font-bold">{{ item.title }}</h2>
             </div>
             <!-- title -->
             <!-- short description -->

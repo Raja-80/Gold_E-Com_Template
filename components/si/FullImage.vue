@@ -24,7 +24,7 @@ export default {
                 document.body.style.overflow = 'hidden';
             },
         showBodyScroll() {
-            document.body.style.overflow = 'scroll';
+            document.body.style.overflow = 'auto';
         },
     }
 }

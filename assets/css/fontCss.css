@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'Pathway Gothic One';
     src: url('../../static/fonts/PathwayGothiconeRegular/pathwaygothicone-regular-webfont.eot');
-    src: url('../../static/fonts/PathwayGothiconeRegular/pathwaygothicone-regular-webfont.eot?#iefix') format('embedded-opentype'),                  
-    url('../../static/fonts/PathwayGothiconeRegular/pathwaygothicone-regular-webfont.woff2') format('woff2'), 
-    url('../../static/fonts/PathwayGothiconeRegular/pathwaygothicone-regular-webfont.woff') format('woff'), 
-    url('../../static/fonts/PathwayGothiconeRegular/pathwaygothicone-regular-webfont.ttf') format('truetype'), 
-    url('../../static/fonts/PathwayGothiconeRegular/pathwaygothicone-regular-webfont.svg#pathway_gothic_oneregular') format('svg');
+    src: url('../../static/fonts/PathwayGothiconeRegular/pathwaygothicone-regular-webfont.eot?#iefix') format('embedded-opentype'),
+        url('../../static/fonts/PathwayGothiconeRegular/pathwaygothicone-regular-webfont.woff2') format('woff2'),
+        url('../../static/fonts/PathwayGothiconeRegular/pathwaygothicone-regular-webfont.woff') format('woff'),
+        url('../../static/fonts/PathwayGothiconeRegular/pathwaygothicone-regular-webfont.ttf') format('truetype'),
+        url('../../static/fonts/PathwayGothiconeRegular/pathwaygothicone-regular-webfont.svg#pathway_gothic_oneregular') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: fallback;
@@ -13,10 +13,10 @@
 
 @font-face {
     font-family: 'Century Gothic Std';
-    src: url('../../static/fonts/CenturyGothicRegular/CenturyGothicW05-Regular.woff2') format('woff2'), 
-    url('../../static/fonts/CenturyGothicRegular/CenturyGothicW05-Regular.woff') format('woff'),                     
-    url('../../static/fonts/CenturyGothicRegular/CenturyGothicW05-Regular.ttf') format('truetype'), 
-    url('../../static/fonts/CenturyGothicRegular/CenturyGothicW05-Regular.eot') format('eot');
+    src: url('../../static/fonts/CenturyGothicRegular/CenturyGothicW05-Regular.woff2') format('woff2'),
+        url('../../static/fonts/CenturyGothicRegular/CenturyGothicW05-Regular.woff') format('woff'),
+        url('../../static/fonts/CenturyGothicRegular/CenturyGothicW05-Regular.ttf') format('truetype'),
+        url('../../static/fonts/CenturyGothicRegular/CenturyGothicW05-Regular.eot') format('eot');
     font-weight: normal;
     font-style: normal;
     font-display: fallback;
@@ -24,10 +24,10 @@
 
 @font-face {
     font-family: 'Century Gothic Std Bold';
-    src: url('../../static/fonts/CenturyGothicBold/CenturyGothicW05-Bold.woff2') format('woff2'), 
-    url('../../static/fonts/CenturyGothicBold/CenturyGothicW05-Bold.woff') format('woff'), 
-    url('../../static/fonts/CenturyGothicBold/CenturyGothicW05-Bold.ttf') format('truetype'), 
-    url('../../static/fonts/CenturyGothicBold/CenturyGothicW05-Bold.eot') format('eot');
+    src: url('../../static/fonts/CenturyGothicBold/CenturyGothicW05-Bold.woff2') format('woff2'),
+        url('../../static/fonts/CenturyGothicBold/CenturyGothicW05-Bold.woff') format('woff'),
+        url('../../static/fonts/CenturyGothicBold/CenturyGothicW05-Bold.ttf') format('truetype'),
+        url('../../static/fonts/CenturyGothicBold/CenturyGothicW05-Bold.eot') format('eot');
     font-weight: bold;
     font-style: normal;
     font-display: fallback;
@@ -35,10 +35,10 @@
 
 @font-face {
     font-family: 'DinCondensedBold';
-    src: url('../../static/fonts/DINCondensed/DINCondensed-Bold.woff2') format('woff2'), 
-    url('../../static/fonts/DINCondensed/DINCondensed-Bold.woff') format('woff'), 
-    url('../../static/fonts/DINCondensed/DINCondensed-Bold.ttf') format('truetype'), 
-    url('../../static/fonts/DINCondensed/DINCondensed-Bold.eot') format('eot');
+    src: url('../../static/fonts/DINCondensed/DINCondensed-Bold.woff2') format('woff2'),
+        url('../../static/fonts/DINCondensed/DINCondensed-Bold.woff') format('woff'),
+        url('../../static/fonts/DINCondensed/DINCondensed-Bold.ttf') format('truetype'),
+        url('../../static/fonts/DINCondensed/DINCondensed-Bold.eot') format('eot');
     font-weight: bold;
     font-style: normal;
     font-display: fallback;
@@ -50,46 +50,66 @@
     font-display: fallback;
 }
 
+/* arabic font */
 
-/* 
 @font-face {
-    font-family: 'Pathway Gothic One';
-    src: url('/static/fashion/fonts/pathwaygothicone-regular-webfont.eot');
-    src: url('/static/fashion/fonts/pathwaygothicone-regular-webfont.eot?#iefix') format('embedded-opentype'), 
-    url('/static/fashion/fonts/pathwaygothicone-regular-webfont.woff2') format('woff2'), 
-    url('/static/fashion/fonts/pathwaygothicone-regular-webfont.woff') format('woff'), 
-    url('/static/fashion/fonts/pathwaygothicone-regular-webfont.ttf') format('truetype'), url('/static/fashion/fonts/pathwaygothicone-regular-webfont.svg#pathway_gothic_oneregular') format('svg');
-    font-weight: normal;
+    font-family: pingarlt;
+    src: url(https://cdn.salla.network/fonts/lib/pingarlt/PingARLT-Light.woff2) format("woff2"), 
+    url(https://cdn.salla.network/fonts/lib/pingarlt/PingARLT-Light.woff) format("woff");
+    font-weight: 300;
     font-style: normal;
-    font-display: fallback;
+    font-display: swap;
 }
 
 @font-face {
-    font-family: 'Century Gothic Std';
-    src: url('/static/fashion/fonts/CenturyGothicRegular/CenturyGothicW05-Regular.woff2') format('woff2'), url('/static/fashion/fonts/CenturyGothicRegular/CenturyGothicW05-Regular.woff') format('woff'), url('/static/fashion/fonts/CenturyGothicRegular/CenturyGothicW05-Regular.ttf') format('truetype'), url('/static/fashion/fonts/CenturyGothicRegular/CenturyGothicW05-Regular.eot') format('eot');
-    font-weight: normal;
+    font-family: pingarlt;
+    src: url(https://cdn.salla.network/fonts/lib/pingarlt/PingARLT-ExtraLight.woff2) format("woff2"), 
+    url(https://cdn.salla.network/fonts/lib/pingarlt/PingARLT-ExtraLight.woff) format("woff");
+    font-weight: 200;
     font-style: normal;
-    font-display: fallback;
+    font-display: swap;
 }
 
 @font-face {
-    font-family: 'Century Gothic Std Bold';
-    src: url('/static/fashion/fonts/CenturyGothicBold/CenturyGothicW05-Bold.woff2') format('woff2'), url('/static/fashion/fonts/CenturyGothicBold/CenturyGothicW05-Bold.woff') format('woff'), url('/static/fashion/fonts/CenturyGothicBold/CenturyGothicW05-Bold.ttf') format('truetype'), url('/static/fashion/fonts/CenturyGothicBold/CenturyGothicW05-Bold.eot') format('eot');
-    font-weight: bold;
+    font-family: pingarlt;
+    src: url(https://cdn.salla.network/fonts/lib/pingarlt/PingARLT-Hairline.woff2) format("woff2"), 
+    url(https://cdn.salla.network/fonts/lib/pingarlt/PingARLT-Hairline.woff) format("woff");
+    font-weight: 100;
     font-style: normal;
-    font-display: fallback;
+    font-display: swap;
 }
 
 @font-face {
-    font-family: 'DinCondensedBold';
-    src: url('/static/fashion/fonts/DINCondensed-Bold.woff2') format('woff2'), url('/static/fashion/fonts/DINCondensed-Bold.woff') format('woff'), url('/static/fashion/fonts/DINCondensed-Bold.ttf') format('truetype'), url('/static/fashion/fonts/DINCondensed-Bold.eot') format('eot');
-    font-weight: bold;
+    font-family: pingarlt;
+    src: url(https://cdn.salla.network/fonts/lib/pingarlt/PingARLT-Medium.woff2) format("woff2"), 
+    url(https://cdn.salla.network/fonts/lib/pingarlt/PingARLT-Medium.woff) format("woff");
+    font-weight: 500;
     font-style: normal;
-    font-display: fallback;
+    font-display: swap;
 }
 
 @font-face {
-    font-family: 'ABCDiorIcons';
-    src: url('/static/fashion/fonts/DiorIconsFont-Regular.otf') format('opentype');
-    font-display: fallback;
-} */
+    font-family: pingarlt;
+    src: url(https://cdn.salla.network/fonts/lib/pingarlt/PingARLT-Bold.woff2) format("woff2"), 
+    url(https://cdn.salla.network/fonts/lib/pingarlt/PingARLT-Bold.woff) format("woff");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: pingarlt;
+    src: url(https://cdn.salla.network/fonts/lib/pingarlt/PingARLT-Black.woff2) format("woff2"), 
+    url(https://cdn.salla.network/fonts/lib/pingarlt/PingARLT-Black.woff) format("woff");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: pingarlt;
+    src: url(https://cdn.salla.network/fonts/lib/pingarlt/PingARLT-Heavy.woff2) format("woff2"), url(https://cdn.salla.network/fonts/lib/pingarlt/PingARLT-Heavy.woff) format("woff");
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}

@@ -10,7 +10,7 @@
             <div class="flex flex-col items-center">
                 <h2 class="w-full text-center text-lg mb-3">{{ $settings.sections.cart.empty_text }}</h2>
                 <nuxt-link to="/shop" class="flex items-center py-2 px-4 justify-center border border-black rounded-full">
-                    <span class="w-full text-sml century-bold-hover">{{ $settings.sections.cart.buttons.back_to_shop_text }}</span>
+                    <span class="w-full text-sml ml-font-bold-hover">{{ $settings.sections.cart.buttons.back_to_shop_text }}</span>
                 </nuxt-link>
             </div>
         </div>
@@ -18,7 +18,7 @@
         <div v-if="!loading.cart && !loading.upsells && items.length > 0">
             <!-- title -->
             <div class="my-5 px-5 xl:px-10">
-                <h2 class="text-lg century-bold">{{$settings.sections.cart.title}}</h2>
+                <h2 class="text-lg ml-font-bold">{{$settings.sections.cart.title}}</h2>
             </div>
             <!-- title -->
             <div class="flex flex-col">
@@ -26,18 +26,18 @@
                 <div class="cart-items flex flex-col px-5 xl:px-10">
                     <div class="hidden lg:flex pb-2.5">
                         <div class="w-1/12 flex items-center">
-                            <span class="text-sml century-bold">{{ $settings.sections.cart.product_text }}</span>
+                            <span class="text-sml ml-font-bold">{{ $settings.sections.cart.product_text }}</span>
                         </div>
                         <div class="w-11/12 flex">
                             <div class="w-5/12 flex items-center justify-center"></div>
                             <div class="w-3/12 flex items-center justify-center">
-                                <span class="text-sml century-bold">{{ $settings.sections.cart.quantity_text }}</span>
+                                <span class="text-sml ml-font-bold">{{ $settings.sections.cart.quantity_text }}</span>
                             </div>
                             <div class="w-2/12 flex items-center justify-center">
-                                <span class="text-sml century-bold">{{ $settings.sections.cart.price_text }}</span>
+                                <span class="text-sml ml-font-bold">{{ $settings.sections.cart.price_text }}</span>
                             </div>
                             <div class="w-2/12 flex items-center justify-end">
-                                <span class="text-sml century-bold">{{ $settings.sections.cart.total_text }}</span>
+                                <span class="text-sml ml-font-bold">{{ $settings.sections.cart.total_text }}</span>
                             </div>
                         </div>
                     </div>
@@ -49,17 +49,17 @@
                     <div class="p-5 flex flex-col border border-gray-300 rounded-md" v-if="!loading.cart && items.length > 0">
                         <!--  -->
                         <div class="bg-white flex justify-between pb-5">
-                            <h2 class="text-sml century-bold">{{ $settings.sections.cart.subtotal_text }}({{items.length}})</h2>
-                            <h2 class="text-sml century-bold">{{ $store.state.currency.symbol }} {{ total.toFixed(2) }}</h2>
+                            <h2 class="text-sml ml-font-bold">{{ $settings.sections.cart.subtotal_text }}({{items.length}})</h2>
+                            <h2 class="text-sml ml-font-bold">{{ $store.state.currency.symbol }} {{ total.toFixed(2) }}</h2>
                         </div>
                         <!--  -->
                         <div class="flex flex-col">
-                            <div class="mb-5 cursor-pointer flex items-center justify-center border border-black rounded-full p-4 century-bold-hover">
+                            <div class="mb-5 cursor-pointer flex items-center justify-center border border-black rounded-full p-4 ml-font-bold-hover">
                                 <a href="/checkout2">
                                     <span class="text-sml">{{ $settings.sections.cart.buttons.checkout_text }}</span>
                                 </a>
                             </div>
-                            <div class="cursor-pointer flex items-center justify-center border border-black rounded-full p-4 century-bold-hover">
+                            <div class="cursor-pointer flex items-center justify-center border border-black rounded-full p-4 ml-font-bold-hover">
                                 <nuxt-link to="/shop">
                                     <span class="text-sml">{{ $settings.sections.cart.buttons.back_to_shop_text }}</span>
                                 </nuxt-link>

@@ -1,56 +1,58 @@
 <template>
-<div>
+<div>  
     <si-app-loader placement="BEFORE_HEADER"/>
     <!-- header -->
         <div class="relative border-b border-gray-300">
             <div class="bg-white h-60.8 h-124"></div>
             <transition name="header-slide">
                 <header>
-                    <div class="top-0 left-0 right-0 z-20 " v-if="isHeaderFixed" :class="{ 'fixed-header': isHeaderFixed }">
+                    <div id="header" class="absolute top-0 left-0 right-0 z-20 ">
                         <div style="height: 3.8rem;" class="flex justify-between flex-wrap items-center relative px-5 lg:px-10 bg-white">
                             <!-- NavBar -->
-                            <nav v-if="menu" class="w-auto lg:w-2/5 hidden lg:flex items-center text-sml scroll" >
-                                <ul v-for="(item, i) in menu.items" :key="i" @mouseover="activeId = activeId = item._id" @mouseleave="activeId = activeId = null">
-                                    <!-- main child -->
-                                    <li class="chivron-box flex items-center mr-2 py-5">
-                                        <router-link :to="item.url" class="century-bold-hover mr-1" :class="item.childrens.length > 0 ? '':'mr-2'">
-                                            {{ item.text }}
-                                        </router-link>
-                                        <button class="chivron-down opacity-0" v-if="item.childrens.length > 0" @click="activeId = activeId != item._id ? item._id : null">
-                                            <svg width="6" height="5"  :class="[activeId==item._id ? 'rotate-180 transition-all delay-150 ease-linear' : '']"  viewBox="0 0 12 7" xmlns="http://www.w3.org/2000/svg"><path d="M11.39.6a.54.54 0 00-.78 0L6 5.21 1.39.6a.54.54 0 00-.78 0 .55.55 0 000 .77L6 6.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
-                                        </button>
-                                    </li>
-                                    <!-- main child -->
-                                    <!-- sub child -->
-                                    <transition name="slide">
-                                        <div v-if="item._id == activeId && item.childrens.length > 0" class="bg-white absolute  left-0 right-0 top-full z-20 border-t border-b border-gray-300 px-10">
-                                            <div class="flex items-center scroll">
-                                                <div v-for="(item,i) in item.childrens" :key="i" @mouseover="subItems = subItems = item.collectionId" @mouseleave="subItems = subItems = null">
-                                                    <div class="chivron-box flex items-center mr-2 py-5">
-                                                        <router-link class="century-bold-hover mr-1" :to="item.url" :class="item.childrens.length > 0 ? '':'mr-2'">
-                                                            {{item.text}}
-                                                        </router-link>
-                                                        <button class="chivron-down opacity-0" v-if="item.childrens.length > 0" @click="subItems = subItems != item.collectionId ? item.collectionId : null">
-                                                            <svg width="6" height="5"  :class="[subItems==item.collectionId ? 'rotate-180 transition-all delay-150 ease-linear' : '']"  viewBox="0 0 12 7" xmlns="http://www.w3.org/2000/svg"><path d="M11.39.6a.54.54 0 00-.78 0L6 5.21 1.39.6a.54.54 0 00-.78 0 .55.55 0 000 .77L6 6.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
-                                                        </button>
-                                                    </div>
-                                                    <transition name="slide">
-                                                        <div v-if="item.collectionId == subItems" class="bg-white absolute left-0 right-0 top-full z-20 border-t border-gray-300 px-10">
-                                                            <div class="flex flex-col pt-5 mb-2" v-if="item.childrens && item.childrens.length > 0">
-                                                                <div class="mb-3" v-for="(child,ii) in item.childrens" :key="ii">
-                                                                    <nuxt-link  class="century-bold-hover" :to="child.url">
-                                                                    {{ child.text }}
-                                                                    </nuxt-link>
+                            <nav class="hidden lg:block lg:w-2/5">
+                                <div v-if="menu"  class="hidden lg:flex items-center text-sml scroll">
+                                    <ul  v-for="(item, i) in menu.items" :key="i" @mouseover="activeId = activeId = item._id" @mouseleave="activeId = activeId = null">
+                                        <!-- main child -->
+                                        <li class="chivron-box flex items-center ml-mr-2 py-5">
+                                            <router-link :to="item.url" class="ml-font-bold-hover ml-mr-1" :class="item.childrens.length > 0 ? '':'ml-mr-2'">
+                                                <span class="truncate">{{ item.text }}</span>
+                                            </router-link>
+                                            <button class="chivron-down opacity-0" v-if="item.childrens.length > 0" @click="activeId = activeId != item._id ? item._id : null">
+                                                <svg width="6" height="5"  :class="[activeId==item._id ? 'rotate-180 transition-all delay-150 ease-linear' : '']"  viewBox="0 0 12 7" xmlns="http://www.w3.org/2000/svg"><path d="M11.39.6a.54.54 0 00-.78 0L6 5.21 1.39.6a.54.54 0 00-.78 0 .55.55 0 000 .77L6 6.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                            </button>
+                                        </li>
+                                        <!-- main child -->
+                                        <!-- sub child -->
+                                        <transition name="slide">
+                                            <div v-if="item._id == activeId && item.childrens.length > 0" class="bg-white absolute  left-0 right-0 top-full z-20 border-t border-b border-gray-300 px-10">
+                                                <div class="flex items-center scroll">
+                                                    <div v-for="(item,i) in item.childrens" :key="i" @mouseover="subItems = subItems = item.collectionId" @mouseleave="subItems = subItems = null">
+                                                        <div class="chivron-box flex items-center ml-mr-2 py-5">
+                                                            <router-link class="ml-font-bold-hover ml-mr-1" :to="item.url" :class="item.childrens.length > 0 ? '':'ml-mr-2'">
+                                                                <span class="truncate">{{item.text}}</span> 
+                                                            </router-link>
+                                                            <button class="chivron-down opacity-0" v-if="item.childrens.length > 0" @click="subItems = subItems != item.collectionId ? item.collectionId : null">
+                                                                <svg width="6" height="5"  :class="[subItems==item.collectionId ? 'rotate-180 transition-all delay-150 ease-linear' : '']"  viewBox="0 0 12 7" xmlns="http://www.w3.org/2000/svg"><path d="M11.39.6a.54.54 0 00-.78 0L6 5.21 1.39.6a.54.54 0 00-.78 0 .55.55 0 000 .77L6 6.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                                            </button>
+                                                        </div>
+                                                        <transition name="slide">
+                                                            <div v-if="item.collectionId == subItems" class="bg-white absolute left-0 right-0 top-full z-20 border-t border-gray-300 px-10">
+                                                                <div class="flex flex-col pt-5 mb-2" v-if="item.childrens && item.childrens.length > 0">
+                                                                    <div class="mb-3" v-for="(child,ii) in item.childrens" :key="ii">
+                                                                        <nuxt-link  class="ml-font-bold-hover" :to="child.url">
+                                                                        <span class="truncate">{{ child.text }}</span> 
+                                                                        </nuxt-link>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </transition>
+                                                        </transition>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </transition>
-                                    <!-- sub child -->
-                                </ul>
+                                        </transition>
+                                        <!-- sub child -->
+                                    </ul>
+                                </div>
                             </nav> 
                             <!-- Nav Bar -->
                             <!-- logo -->
@@ -65,14 +67,14 @@
                             <!-- icons-->
                             <div class="w-auto lg:w-2/5" >
                                 <div class="flex items-center justify-end">
-                                    <div class="flex items-center justify-between">
+                                    <div class="flex items-center justify-between gap-2">
                                         <!-- search -->
                                         <div class="flex items-center">
                                             <!-- show search -->
                                             <transition name="slide-right">
-                                                <div class="pr-2" v-if="showSearch" @mouseleave="showSearch=false">
+                                                <div v-if="showSearch" @mouseleave="showSearch=false">
                                                     <form @submit.prevent="search" class="search flex items-center border-b border-black py-1" action="/shop?">
-                                                        <input v-model="q" class="bg-transparent outline-none text-sml" :placeholder="'Search for products'" type="search" name="q">
+                                                        <input v-model="q" class="bg-transparent outline-none text-sml" :placeholder="$settings.sections.header.search_text" type="search" name="q">
                                                         <button aria-label="Search button">
                                                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.17 16.48L12 11.36a5.5 5.5 0 10-4.22 2 5.41 5.41 0 003.51-1.27l5.14 5.13a.51.51 0 00.7 0 .5.5 0 00.04-.74zm-9.35-4.15a4.5 4.5 0 110-9 4.5 4.5 0 010 9z" fill="currentColor"></path></svg>
                                                         </button>
@@ -82,7 +84,7 @@
                                             <!-- show search -->
                                             <!-- search icon -->
                                             <transition name="show">
-                                                <button class="hidden lg:block pr-2" @click="showSearch=true" v-if="$settings.sections.header.icons.search && showSearch==false"  aria-label="Search button" title="Search">
+                                                <button class="hidden lg:block" @click="showSearch=true" v-if="$settings.sections.header.icons.search && showSearch==false"  aria-label="Search button" title="Search">
                                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.17 16.48L12 11.36a5.5 5.5 0 10-4.22 2 5.41 5.41 0 003.51-1.27l5.14 5.13a.51.51 0 00.7 0 .5.5 0 00.04-.74zm-9.35-4.15a4.5 4.5 0 110-9 4.5 4.5 0 010 9z" fill="currentColor"></path></svg>
                                                     <small v-if="$route.query.search" class="-top-1 -right-1 rounded-full absolute w-1 h-1 p-1 bg-green-700 text-white flex justify-center items-center"></small>
                                                 </button>
@@ -91,14 +93,14 @@
                                         </div>
                                         <!-- search -->
                                         <!-- acount -->
-                                        <div v-if="$settings.sections.header.icons.account" class="user pr-2 transition-all ease-in-out delay-150">
+                                        <div v-if="$settings.sections.header.icons.account" class="user transition-all ease-in-out delay-150">
                                             <router-link  to="/account/orders" title="Account" class="flex flex-col justify-center">
                                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 10a4 4 0 100-8 4 4 0 000 8zm0-7a3 3 0 110 6 3 3 0 010-6zM10 11c-5 0-7 2-7 7h14c0-5-2-7-7-7zm0 1c4.08 0 5.73 1.33 6 5H4c.27-3.67 1.92-5 6-5z" fill="currentColor"></path></svg>
                                             </router-link>
                                         </div>
                                         <!-- acount -->
                                         <!-- wishlist -->
-                                        <div v-if="$settings.sections.header.icons.wishlist" class="heart pr-2 transition-all ease-in-out delay-150">
+                                        <div v-if="$settings.sections.header.icons.wishlist" class="heart transition-all ease-in-out delay-150">
                                             <router-link  to="/wishlist" title="Wishlist" class="flex flex-col justify-center relative">
                                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.48 3.91a3.25 3.25 0 012.68 1.62L10 6.85l.83-1.33a3.12 3.12 0 012.63-1.61 2.8 2.8 0 012.08.93c1.48 1.59 1.33 3.78-.37 5.57L10 15.66l-5.22-5.3c-1.67-1.85-1.8-4-.36-5.53a2.8 2.8 0 012.06-.92zm0-1a3.8 3.8 0 00-2.79 1.24C1.94 6 2 8.73 4 11l6 6.06 5.9-6c2.16-2.27 2.15-5.06.4-6.95a3.871 3.871 0 00-2.82-1.25A4.1 4.1 0 0010 5a4.23 4.23 0 00-3.52-2.09z" fill="currentColor"></path></svg>
                                                 <small v-if="$store.state.wishlist.length>0"  class="border-2 border-white bg-black -top-2.5 -right-2 rounded-full absolute w-4.5 h-4.5 text-white flex justify-center items-center text-xs">{{ $store.state.wishlist.length }}</small>
@@ -114,7 +116,7 @@
                                         </div>
                                         <!-- cart -->
                                         <!-- show menu botton  -->
-                                        <div class="transition-all ease-in-out delay-150 pl-2 block lg:hidden">
+                                        <div class="transition-all ease-in-out delay-150 block lg:hidden">
                                             <button @click="$store.state.showHeaderMenu = !$store.state.showHeaderMenu" aria-label="Search button" class="flex flex-col justify-center">
                                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.54 5.48H3.5a.48.48 0 01-.463-.662.47.47 0 01.443-.288h13A.48.48 0 0117 5a.49.49 0 01-.46.48zM16.54 15.48H3.5A.49.49 0 013 15a.48.48 0 01.48-.47h13A.471.471 0 0117 15a.48.48 0 01-.46.48zM16.54 10.48H3.5A.49.49 0 013 10a.48.48 0 01.48-.47h13A.48.48 0 0117 10a.49.49 0 01-.46.48z" fill="currentColor"></path></svg>
                                             </button>
@@ -127,9 +129,9 @@
                         </div>
                     </div>
                     <!--  -->
-                    <div class="px-5 pb-5 lg:hidden bg-white">
+                    <div v-if="$settings.sections.header.icons.search" class="px-5 pb-5 lg:hidden bg-white">
                         <form @submit.prevent="search" class="search flex justify-between items-center border-b pb-2 border-black" action="/shop?">
-                            <input v-model="q" class="bg-transparent outline-none text-sml w-full" :placeholder="'Search for products'" type="search" name="q">
+                            <input v-model="q" class="bg-transparent outline-none text-sml w-full" :placeholder="$settings.sections.header.search_text" type="search" name="q">
                             <button aria-label="Search button">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.17 16.48L12 11.36a5.5 5.5 0 10-4.22 2 5.41 5.41 0 003.51-1.27l5.14 5.13a.51.51 0 00.7 0 .5.5 0 00.04-.74zm-9.35-4.15a4.5 4.5 0 110-9 4.5 4.5 0 010 9z" fill="currentColor"></path></svg>
                             </button>
@@ -149,9 +151,8 @@ export default {
         return {
             subItems:null,
             activeId: null,
-            isHeaderFixed: true,
-            lastScrollPosition: 0,
             showSearch: false,
+            lastScrollPosition: 0,
             iconMenu: null,
             q: this.$route.query.search,
             menu: this.$settings.sections.header.menu,
@@ -179,20 +180,41 @@ export default {
             this.$router.push({ path: '/shop', query: { search: this.q }});
         },
         handleScroll() {
+            const header = document.getElementById('header');
             const currentScrollPosition = window.pageYOffset;
-            if(currentScrollPosition > 80){
-                if (currentScrollPosition < this.lastScrollPosition) {
-                    this.isHeaderFixed = true;
+            if(currentScrollPosition <= 80) {
+                header.style.position = 'absolute';
+            }
+            else {
+                if (currentScrollPosition <= this.lastScrollPosition) {
+                    header.style.position = 'fixed';
                 } else {
-                    this.isHeaderFixed = false;
+                    header.style.position = 'absolute';
                 }
                 this.lastScrollPosition = currentScrollPosition;
             }
-        }
+        },
     },
 }
 </script>
 <style scoped>
+.ml-mr-1 {
+    margin-right: 0.25rem;
+}
+[dir="rtl"] .ml-mr-1 {
+    margin-left: 0.25rem;
+    margin-right: 0;
+}
+
+.ml-mr-2 {
+    margin-right: 0.5rem;
+}
+
+[dir="rtl"] .ml-mr-2 {
+    margin-left: 0.5rem;
+    margin-right: 0;
+}
+
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
   height: 1em;
@@ -217,27 +239,27 @@ input[type="search"]:focus::-webkit-search-cancel-button {
     opacity: 1;
 }
 
-.fixed-header {
-  position: fixed;
+.scroll {
+  overflow-x: auto;
 }
-
-/* .scroll {
-  overflow-x: scroll;
-}
-
 .scroll::-webkit-scrollbar {
     width: 5px;
-    height: 1.5px;
+    height: 2px;
 }
 
-.scroll::-webkit-scrollbar-track {
-    background-color: transparent;
+.scroll::-webkit-scrollbar-track{
+    background-color: #757575;
 }
 
-.scroll::-webkit-scrollbar-thumb {
+.scroll::-webkit-scrollbar-thumb{
     background-color: #222;
     border-radius: 10px;
-} */
+    cursor: pointer;
+}
+
+.scroll::-webkit-scrollbar-thumb:hover{
+    background-color: #757575;
+}
 
 @media (max-width: 1024px) {
     .h-60\.8 {

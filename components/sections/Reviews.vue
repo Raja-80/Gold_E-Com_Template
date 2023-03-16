@@ -15,7 +15,7 @@
                             <si-avatar :name="`${review.customer.firstname} ${review.customer.lastname}`"></si-avatar>
                             <span class="m-1"></span>
                             <div>
-                                <b class="capitalize century-bold text-sml">{{ `${review.customer.firstname} ${review.customer.lastname}` }}</b>
+                                <b class="capitalize ml-font-bold text-sml">{{ `${review.customer.firstname} ${review.customer.lastname}` }}</b>
                             </div>
                         </div>
                         <div class="mb-3 flex">

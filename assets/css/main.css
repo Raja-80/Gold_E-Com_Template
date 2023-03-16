@@ -1,23 +1,43 @@
 body{
   font-family: Century Gothic Std, arial, sans-serif;
+  color: #000;
 }
 
-.century-bold {
+[dir="rtl"] body{
+  font-family: pingarlt,-apple-system,BlinkMacSystemFont;
+  font-weight: 300;
+  color: #000;
+}
+
+[dir="ltr"] .ml-font-bold {
   font-family: Century Gothic Std Bold,Noto Sans JP,Noto Sans SC,Noto Sans TC,Noto Sans KR;
 }
 
-.DinCondensedBold {
+[dir="ltr"] .ml-font-bold-hover {
+  transition: all 0.3s ease;
+}
+
+[dir="ltr"] .ml-font-bold-hover:hover {
+  font-family: Century Gothic Std Bold,Noto Sans JP,Noto Sans SC,Noto Sans TC,Noto Sans KR;
+  transition: all 0.3s ease;
+}
+
+[dir="rtl"] .ml-font-bold {
+  font-weight: 700;
+}
+
+[dir="rtl"] .ml-font-bold-hover {
+  transition: all 0.3s ease;
+}
+
+[dir="rtl"] .ml-font-bold-hover:hover {
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+/* .DinCondensedBold {
   font-family: DinCondensedBold;
-}
-
-.century-bold-hover {
-  transition: all 0.3s ease;
-}
-
-.century-bold-hover:hover {
-  font-family: Century Gothic Std Bold,Noto Sans JP,Noto Sans SC,Noto Sans TC,Noto Sans KR;
-  transition: all 0.3s ease;
-}
+} */
 
 .text-sml {
   font-size: .8125rem;

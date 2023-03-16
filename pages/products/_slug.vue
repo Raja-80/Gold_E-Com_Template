@@ -150,7 +150,7 @@
                             <div class="py-3">
                                 <si-app-loader placement="BEFORE_ADD_TO_CART"/>
                                 <!-- add to cart -->
-                                <button v-if="$settings.sections.product.add_to_cart.active" @click="addToCart" class="mb-3 text-sml century-bold-hover w-full flex  justify-center border border-black rounded-full p-4 px-5 click-effect">
+                                <button v-if="$settings.sections.product.add_to_cart.active" @click="addToCart" class="mb-3 text-sml ml-font-bold-hover w-full flex  justify-center border border-black rounded-full p-4 px-5 click-effect">
                                     <span>{{ $settings.sections.product.add_to_cart.text }}</span>
                                 </button>
                                 <!-- add to cart -->
@@ -158,7 +158,7 @@
                                 <si-app-loader placement="BEFORE_BUYNOW"/>
                                 <si-app-loader placement="REPLACE_BUYNOW"/>
                                 <!-- buy now -->
-                                <button v-if="$settings.sections.product.buy_now.active" v-show="!$store.state.apps.find(a=>a.placement.indexOf('REPLACE_BUYNOW') >= 0)" @click="buyNow" class="text-sml century-bold-hover w-full flex  justify-center border border-black rounded-full p-4 px-5 click-effect">
+                                <button v-if="$settings.sections.product.buy_now.active" v-show="!$store.state.apps.find(a=>a.placement.indexOf('REPLACE_BUYNOW') >= 0)" @click="buyNow" class="text-sml ml-font-bold-hover w-full flex  justify-center border border-black rounded-full p-4 px-5 click-effect">
                                     <span>{{ $settings.sections.product.buy_now.text }}</span>
                                 </button>
                                 <si-app-loader placement="AFTER_BUYNOW"/>
@@ -173,7 +173,7 @@
                             <div class="border-t border-b lg:border-l lg:border-r border-gray-300 text-sml lg:rounded-md p-5">
                                 <div @click="showDescription" class="flex justify-between items-center cursor-pointer">
                                     <div>
-                                        <span class="text-sml century-bold">{{ $settings.sections.product.description.title }}</span>
+                                        <span class="text-sml ml-font-bold">{{ $settings.sections.product.description.title }}</span>
                                     </div>
                                     <div>
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
@@ -190,7 +190,7 @@
                         <!-- Description -->
                         <!-- share products icons -->
                         <div v-if="$settings.sections.product.share_buttons">
-                            <h3 class="text-center lg:text-left text-sml century-bold py-3">{{ $settings.sections.product.share_buttons.title }}</h3>
+                            <h3 class="text-center lg:text-left text-sml ml-font-bold py-3">{{ $settings.sections.product.share_buttons.title }}</h3>
                             <div class="flex items-center justify-center lg:justify-start">
                                 <div v-for="item in socialMedia.filter(s=>$settings.sections.product.share_buttons[s.name])" :key="item.name" class="mr-3 flex items-center justify-center">
                                     <a class="h-full flex" :href="item.url" target="_blank" rel="noopener noreferrer">
@@ -499,7 +499,7 @@
                 document.body.style.overflow = 'hidden';
             },
             showBodyScroll() {
-                document.body.style.overflow = 'scroll';
+                document.body.style.overflow = 'auto';
             },
             showDescription(){
                 this.description = !this.description;

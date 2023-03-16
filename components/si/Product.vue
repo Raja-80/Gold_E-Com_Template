@@ -16,7 +16,7 @@
         <!-- wishlist icon -->
         <!-- Product discount -->
         <div v-if="discount" class=" m-2 py-1 px-2 rounded-full flex items-center justify-center bg-primary text-white absolute top-0 left-0 z-10">
-            <span class="text-sml century-bold">-{{discount.value}} {{ discount.type == 'percentage' ? '%' : this.$store.state.currency.symbol }}</span>
+            <span class="text-sml ml-font-bold">-{{discount.value}} {{ discount.type == 'percentage' ? '%' : this.$store.state.currency.symbol }}</span>
         </div>
         <!-- Product discount -->
         <!-- Products details -->
@@ -40,7 +40,7 @@
                     <!-- product name -->
                     <div class="">
                         <nuxt-link :to="`/products/${item.slug}`">
-                            <h3 class="text-sml century-bold">{{item.name}}</h3>
+                            <h3 class="text-sml ml-font-bold">{{item.name}}</h3>
                         </nuxt-link>
                     </div>
                     <!-- product name -->
