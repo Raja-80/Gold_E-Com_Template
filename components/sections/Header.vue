@@ -221,7 +221,7 @@ input[type="search"]:focus::-webkit-search-cancel-button {
   position: fixed;
 }
 
-.scroll {
+/* .scroll {
   overflow-x: scroll;
 }
 
@@ -232,13 +232,12 @@ input[type="search"]:focus::-webkit-search-cancel-button {
 
 .scroll::-webkit-scrollbar-track {
     background-color: transparent;
-    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);  */
 }
 
 .scroll::-webkit-scrollbar-thumb {
     background-color: #222;
     border-radius: 10px;
-}
+} */
 
 @media (max-width: 1024px) {
     .h-60\.8 {

@@ -45,7 +45,7 @@
                     </div>
                     <!-- product name -->
                     <!-- product price -->
-                    <div class="">
+                    <div class="mt-1">
                         <si-product-price class="text-sml" :type="item.type" :price="item.price" :variants="item.variants"></si-product-price>
                     </div>
                     <!--  product price -->

@@ -27,7 +27,7 @@
             <!-- share page -->
             <div class="flex items-center">
                 <div class="flex w-full border-b border-gray-300"></div>
-                <h3 class="text-base">{{ $settings.sections.post.share_buttons.title }}</h3>
+                <h3 class="text-base mx-2">{{ $settings.sections.post.share_buttons.title }}</h3>
                 <div class=" flex w-full border-b border-gray-300"></div>
             </div>
             <div class="flex justify-center gap-4 py-4">

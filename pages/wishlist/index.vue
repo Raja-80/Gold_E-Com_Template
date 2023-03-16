@@ -1,5 +1,5 @@
 <template>
-    <div >
+    <div>
         <!-- loader -->
         <div v-if="loading.wishlist" class="flex justify-center items-center my-5">
             <si-loader></si-loader>
@@ -15,7 +15,7 @@
         </div>
         <!-- empty design -->
         <!-- Content -->
-        <div v-if="items.length > 0">
+        <div class="mb-16" v-if="items.length > 0">
                 <!-- title -->
                 <div class="my-5 px-5 xl:px-10">
                     <h2 class="text-lg century-bold">{{ $settings.sections.wishlist.title }}</h2>

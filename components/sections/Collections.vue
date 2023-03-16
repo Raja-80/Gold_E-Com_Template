@@ -12,7 +12,6 @@
             </div>
         </div>
         <!-- Collections -->
-
         <!-- Collections not exists -->
         <div v-if="!loading && items.length==0" class="flex flex-wrap items-center  bg-white p-2 mx-4 border rounded-xl">
             <div class="w-full md:w-1/2 flex items-center justify-center md:items-start md:justify-start ">
