@@ -193,12 +193,12 @@
             }
         },
         watch: {
-            "$route.params": {
-                handler(params) {
-                    this.$store.state.showHeaderMenu = false
-                },
-                deep: true
-            },
+            // "$route.params": {
+            //     handler(params) {
+            //         this.$store.state.showHeaderMenu = false
+            //     },
+            //     deep: true
+            // },
             "$store.state.showHeaderMenu"(val){
                 if(val){
                     this.show = val;

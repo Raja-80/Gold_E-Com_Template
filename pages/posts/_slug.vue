@@ -31,11 +31,11 @@
             <!-- share products icons -->
             <div v-if="$settings.sections.post.share_buttons.active">
                 <div class="flex items-center">
-                    <div class="flex w-full border-b border-gray-300"></div>
+                    <div class="flex-grow flex border-b border-gray-300"></div>
                     <h3 class="text-base mx-2">{{ $settings.sections.post.share_buttons.title }}</h3>
-                    <div class=" flex w-full border-b border-gray-300"></div>
+                    <div class="flex-grow flex border-b border-gray-300"></div>
                 </div>
-                <div class="flex justify-center gap-4 pt-3">
+                <div class="flex justify-center gap-4 pt-3 mb-7">
                     <div v-for="item in socialMedia.filter(s=>$settings.sections.post.share_buttons[s.name])" :key="item.name">
                         <a :href="item.url" target="_blank" rel="noopener noreferrer">
                             <si-image class="h-8 w-8" width="40" height="40" :src="item.image" :alt="item.name"/>

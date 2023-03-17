@@ -413,15 +413,11 @@ export default {
         this.subCollections();
     },
     mounted() {
-        if (process.client) {
-            this.getWindowWidth();
-            window.addEventListener('resize', this.getWindowWidth);
-        }
+        this.getWindowWidth();
+        window.addEventListener('resize', this.getWindowWidth);
     },
     beforeDestroy() {
-        if (process.client) {
         window.removeEventListener('resize', this.getWindowWidth);
-        }
     },
     methods: {
         getWindowWidth() {

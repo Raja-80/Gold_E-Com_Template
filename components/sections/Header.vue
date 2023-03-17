@@ -6,7 +6,7 @@
             <div class="bg-white h-60.8 h-124"></div>
             <transition name="header-slide">
                 <header>
-                    <div id="header" class="absolute top-0 left-0 right-0 z-20 ">
+                    <div id="header" class="header absolute top-0 left-0 right-0 z-20">
                         <div style="height: 3.8rem;" class="flex justify-between flex-wrap items-center relative px-5 lg:px-10 bg-white">
                             <!-- NavBar -->
                             <nav class="hidden lg:block lg:w-2/5">
@@ -184,12 +184,15 @@ export default {
             const currentScrollPosition = window.pageYOffset;
             if(currentScrollPosition <= 80) {
                 header.style.position = 'absolute';
+                header.style.animation = 'opacity 2s ease-in-out';
             }
             else {
                 if (currentScrollPosition <= this.lastScrollPosition) {
                     header.style.position = 'fixed';
+                    header.style.animation = 'opacity 2s ease-in-out';
                 } else {
                     header.style.position = 'absolute';
+                    header.style.animation = 'opacity 2s ease-in-out';
                 }
                 this.lastScrollPosition = currentScrollPosition;
             }
@@ -197,7 +200,20 @@ export default {
     },
 }
 </script>
+
 <style scoped>
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .ml-mr-1 {
     margin-right: 0.25rem;
 }

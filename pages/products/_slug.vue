@@ -22,13 +22,13 @@
                             <div class="flex items-center flex-wrap justify-between h-full lg:p-10 relative">
                                 <div class="hidden lg:flex flex-col items-center">
                                     <div @click="increaseSize" class="text-black border border-gray-300 hover:border-black transition delay-150 ease-in-out m-2.5 w-7 h-7 flex items-center justify-center cursor-pointer">
-                                        <svg class="w-2.5 h-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
+                                        <svg class="w-2.5 h-2.5 text-black" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
                                     </div>
                                     <div class="flex items-center justify-center ">
                                         <span class="text-base"> {{ zoom }} %</span>
                                     </div>
                                     <div @click="decreaseSize" class="text-black border border-gray-300 hover:border-black transition delay-150 ease-in-out m-2.5 w-7 h-7 flex items-center justify-center cursor-pointer">
-                                        <svg class="w-2.5 h-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.45h-11a.55.55 0 000 1.1h11a.55.55 0 000-1.1z" fill="currentColor"></path></svg>
+                                        <svg class="w-2.5 h-2. text-black" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.45h-11a.55.55 0 000 1.1h11a.55.55 0 000-1.1z" fill="currentColor"></path></svg>
                                     </div>
                                 </div>
                                 <div class="flex-1 lg:px-20 xl:px-40 lg:relative">
@@ -40,15 +40,15 @@
                                     <div class="absolute lg:static my-8 md:my-10 lg:my-0 bottom-0 lg:bottom-auto left-1/2 lg:left-auto transform lg:transform-none -translate-x-1/2 lg:translate-x-0">
                                         <div class="flex lg:block items-center">
                                             <button v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:left-1 xl:left-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150  rounded-full border border-gray-300 hover:border-black" @click="prev">
-                                                <svg class="translate w-5 h-5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 15.54a.54.54 0 01-.39-.16L6.72 10l5.39-5.4a.551.551 0 11.78.78L8.28 10l4.61 4.61a.56.56 0 010 .78.54.54 0 01-.39.15z" fill="currentColor"></path></svg>
+                                                <svg class="rotate-chivron w-5 h-5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 15.54a.54.54 0 01-.39-.16L6.72 10l5.39-5.4a.551.551 0 11.78.78L8.28 10l4.61 4.61a.56.56 0 010 .78.54.54 0 01-.39.15z" fill="currentColor"></path></svg>
                                             </button>
-                                            <div v-if="item.images.length > 1" class="dots flex items-center justify-center lg:hidden">
+                                            <div v-if="item.images.length > 1" class="flex items-center justify-center lg:hidden">
                                                 <div class="mx-1" v-for="(image, index) in item.images" :key="index" >
                                                     <div class="h-1.5 w-1.5 rounded-full cursor-pointer" :class="visibleSlide == index ? 'bg-primary w-2 h-2' : 'bg-gray-300'" @click="setImage(index)"></div>
                                                 </div>
                                             </div>
                                             <button v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:right-1 xl:right-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150 rounded-full border border-gray-300 hover:border-black" @click="next">
-                                                <svg class="translate w-5 h-5"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.89 4.6a.552.552 0 00-.78.78L11.72 10l-4.61 4.6a.56.56 0 000 .78.56.56 0 00.78 0L13.28 10 7.89 4.6z" fill="currentColor"></path></svg>
+                                                <svg class="rotate-chivron w-5 h-5"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.89 4.6a.552.552 0 00-.78.78L11.72 10l-4.61 4.6a.56.56 0 000 .78.56.56 0 00.78 0L13.28 10 7.89 4.6z" fill="currentColor"></path></svg>
                                             </button>
                                         </div>
                                     </div>
@@ -144,10 +144,10 @@
                             </div>
                             <!-- product quantity -->
                             <!--  -->
-                            <div class="py-3">
+                            <div v-if="$settings.sections.product.add_to_cart.active || $settings.sections.product.buy_now.active" class="py-3">
                                 <si-app-loader placement="BEFORE_ADD_TO_CART"/>
                                 <!-- add to cart -->
-                                <button v-if="$settings.sections.product.add_to_cart.active" @click="addToCart" class="mb-3 text-sml ml-font-bold-hover w-full flex  justify-center border border-black rounded-full p-4 px-5 click-effect">
+                                <button v-if="$settings.sections.product.add_to_cart.active" :class="$settings.sections.product.buy_now.active ? 'mb-3':''" @click="addToCart" class="text-sml ml-font-bold-hover w-full flex  justify-center border border-black rounded-full p-4 px-5 click-effect">
                                     <span>{{ $settings.sections.product.add_to_cart.text }}</span>
                                 </button>
                                 <!-- add to cart -->
@@ -186,10 +186,10 @@
                         </div>
                         <!-- Description -->
                         <!-- share products icons -->
-                        <div v-if="$settings.sections.product.share_buttons">
-                            <h3 class="text-center lg:text-left text-sml ml-font-bold py-3">{{ $settings.sections.product.share_buttons.title }}</h3>
-                            <div class="flex items-center justify-center lg:justify-start">
-                                <div v-for="item in socialMedia.filter(s=>$settings.sections.product.share_buttons[s.name])" :key="item.name" class="mr-3 flex items-center justify-center">
+                        <div v-if="$settings.sections.product.share_buttons.active">
+                            <h3 class="text-center-res text-sml ml-font-bold py-3">{{ $settings.sections.product.share_buttons.title }}</h3>
+                            <div class="flex items-center justify-center lg:justify-start gap-3">
+                                <div v-for="item in socialMedia.filter(s=>$settings.sections.product.share_buttons[s.name])" :key="item.name" class="flex items-center justify-center">
                                     <a class="h-full flex" :href="item.url" target="_blank" rel="noopener noreferrer">
                                         <si-image class="h-8 w-8" width="40" height="40" :src="item.image" :alt="item.name"/>
                                     </a>
@@ -319,7 +319,7 @@
         },
         mounted() {
             if(this.item) this.$tools.call('PAGE_VIEW', this.item);
-            window.addEventListener("APP_LOADER", e => {
+            window.addEventListener("APP_LOADER", () => {
                 window.dispatchEvent(new CustomEvent('CURRENT_PRODUCT', {
                     detail: {
                         product_id: this.item._id,
@@ -343,8 +343,6 @@
             if(this.item){
                 const iframes=document.querySelectorAll('iframe')
                 for(const ifram of iframes){
-                const width = ifram.getAttribute('width')
-                const height = ifram.getAttribute('height')
                 const parent = ifram.parentNode
                 if (!parent.classList.contains('video-wrapper')) {
                     const div = document.createElement("div");
@@ -366,9 +364,8 @@
         }
         ,
         methods: {
-            toggleZoom(event) {
-                const image = this.$refs.image
-                    // Check if the image is already zoomed in
+            toggleZoom() {
+
                     if(window.innerWidth < 1024) {
                         if (this.zoomed) {
                             // Zoom out
@@ -506,6 +503,12 @@
 </script>
 
 <style scoped>
+@media (max-width: 1024px) {
+    [dir='rtl'] svg.rotate-chivron{
+      transform: rotateY(180deg);
+    }
+}
+
 .pb-3\/5-res{
   padding-bottom: 70%;
 }
@@ -533,11 +536,11 @@
     padding-left: 0.625rem;
   }
 
-  .products-padding:nth-child(odd) {
+  [dir="rtl"] .products-padding:nth-child(odd) {
     padding-left: 0.625rem;
     padding-right: 0;
   }
-  .products-padding:nth-child(even) {
+  [dir="rtl"] .products-padding:nth-child(even) {
     padding-right: 0.625rem;
     padding-left: 0;
   }
@@ -557,10 +560,6 @@
         padding-right: 6%;
         padding-left: 0;
     }
-}
-
-[dir = "rtl"] .dots{
-    flex-direction: row-reverse;
 }
 
 .video-wrapper {

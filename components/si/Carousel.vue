@@ -7,7 +7,7 @@
     <!-- title -->
     <!-- content -->
     <div class="relative">
-      <div class="overflow-hidden carousel-container px-1 xl:px-5" dir="ltr">
+      <div class="overflow-hidden carousel-container px-1 xl:px-5">
         <div class="flex carousel" :style="`width: ${items.length*width}%`">
             <div v-for="(item,i) in items" :key="i" class="carousel-item px-4 xl:px-5 b-4 lg:pb-8" :class="itemClass">
               <component :is="component" :upsell="upsell" :item="item"></component>
@@ -57,7 +57,7 @@ export default {
   methods: {
     move(n){
       var get = 'pop', set = 'unshift', width = document.querySelector('.carousel-item') ? document.querySelector('.carousel-item').offsetWidth : 360;
-      if(n==1){ get='shift', set='push', width =`-${width}` };
+      if(n==1){ get='shift', set='push', width =`-${width}` }
       document.querySelector('.carousel').style.transform = `translateX(${width}px)`;
       document.querySelector('.carousel').style.transition = `500ms`;
       setTimeout(() => {
@@ -73,7 +73,7 @@ export default {
       var element=document.querySelector('.carousel-container')
       if(element) {
         this.parentWidth = element.clientWidth;
-        window.onresize = (ev)=>{
+        window.onresize = ()=>{
           this.parentWidth = element.clientWidth;
         }
       }

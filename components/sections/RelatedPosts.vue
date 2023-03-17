@@ -1,6 +1,6 @@
 <template>
   <div class="mb-16" v-if="items.length > 0">
-    <div class="border-t border-gray-300 mt-7 pt-5 lg:mx-5 xl:mx-10">
+    <div class="border-t border-gray-300 pt-5 lg:mx-5 xl:mx-10">
       <h2 class="text-base text-center pb-8">{{ $settings.sections.post.related.title }}</h2>
       <!-- loader -->
       <div v-if="loading" class="flex justify-center items-center my-5">

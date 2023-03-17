@@ -33,20 +33,20 @@
                     </div>
                 </div>
                 <div class="mt-2">
-                    <nuxt-link :to="`/posts/${item.slug}`" :title="item.title" :aria-label="item.title">
+                    <nuxt-link :to="`/posts/${item.slug}`" :aria-label="item.title">
                         <h3 class="text-lg lg:text-xl">{{ item.title }}</h3>
                     </nuxt-link>
                 </div>
                 <div class="mt-3">
-                    <nuxt-link class="w-max h-12 px-12 flex justify-center items-center border border-black rounded-full" :to="`/posts/${item.slug}`"  :aria-label="item.title">
-                        <span class="text-sml text-black ml-font-bold-hover">{{ $settings.sections.posts.button.text }}</span>
+                    <nuxt-link class="ml-font-bold-hover w-max h-12 px-12 flex justify-center items-center border border-black rounded-full" :to="`/posts/${item.slug}`"  :aria-label="item.title">
+                        <span class="text-sml text-black">{{ $settings.sections.posts.button.text }}</span>
                     </nuxt-link>
                 </div>
             </div>
         </div>
         <div v-else class="w-full flex flex-col h-full">
             <div class="pb-full-res-post relative ">
-                <nuxt-link :to="`/posts/${item.slug}`" :title="item.title" :aria-label="item.title">
+                <nuxt-link :to="`/posts/${item.slug}`" :aria-label="item.title">
                     <si-image width="400" height="400" class="h-full w-full absolute inset-0  object-cover" :src="item.image ? item.image.url : null" :alt="item.title"/>
                 </nuxt-link>
             </div>
@@ -57,17 +57,18 @@
                     </div>
                 </div>
                 <div class="mb-2">
-                    <nuxt-link :to="`/posts/${item.slug}`" :title="item.title" :aria-label="item.title">
+                    <nuxt-link :to="`/posts/${item.slug}`" :aria-label="item.title">
                         <h3 class="text-lg lg:text-xl">{{ item.title }}</h3>
                     </nuxt-link>
                 </div>
-                <nuxt-link :to="`/posts/${item.slug}`" :title="item.title" :aria-label="item.title">
+                <nuxt-link :to="`/posts/${item.slug}`" :aria-label="item.title">
                     <p class="text-sml primary-text">{{ item.excerpt.length > 150? item.excerpt.slice(0, 150) + '...' : item.excerpt }}</p>
                 </nuxt-link>
             </div>
         </div>
     </div>
 </template>
+
 <script>
 export default {
     props: {

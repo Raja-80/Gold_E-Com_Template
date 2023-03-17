@@ -54,6 +54,7 @@
         </div>
     </div>
 </template>
+
 <script>
 export default {
     props: {
@@ -110,7 +111,7 @@ export default {
         }
     },
     methods: {
-        addToCart(ev) {
+        addToCart() {
             // Call add to cart event
             // console.log('items', this.item)
             let item = {
