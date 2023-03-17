@@ -3,7 +3,7 @@
         <div v-if="page=='collections'">
             <nuxt-link  :to="item.childrens.length > 0 ? `/collections/${item.slug}` : `/shop/${item.slug}`">
                 <div class="text-white">
-                    <div class="pb-res-4/5 relative overflow-hidden">
+                    <div class="pb-col-collection-4/5 relative overflow-hidden">
                         <div class="cursor-pointer">
                             <div class="image">
                                 <si-image  width="400" height="400" class="img h-full w-full absolute inset-0 object-cover" :src="item.image ? item.image.src : null" :alt="item.name" srcset=""/>
@@ -22,7 +22,7 @@
         <div v-else> 
             <nuxt-link  :to="item.childrens.length > 0 ? `/collections/${item.slug}` : `/shop/${item.slug}`">
                 <div class="text-white ml-font-bold">
-                    <div class="pbres-4/5 relative image-container overflow-hidden">
+                    <div class="pb-col-home-4/5 relative image-container overflow-hidden">
                         <div class="cursor-pointer">
                             <div class="image">
                                 <si-image  width="400" height="400" class="img h-full w-full absolute inset-0 object-cover" :src="item.image ? item.image.src : null" :alt="item.name" srcset=""/>
@@ -51,26 +51,22 @@
 </script>
 
 <style scoped>
-
 .text-shadoow {
     filter: drop-shadow(0 0 0.625rem rgba(0, 0, 0, 0.8));
 }
 
-.pbres-4\/5,
-.pb-res-4\/5 {
+.pb-col-collection-4\/5 {
+    padding-bottom: 100%;
+}
+
+.pb-col-home-4\/5 {
     padding-bottom: 80%;
 }
 
 @media (min-width:768px) and (max-width:1023px) { 
-    .pbres-4\/5 {
+    .pb-col-home-4\/5 {
         padding-bottom: 30%;
     }
-}
-
-@media (max-width: 1024px) {
-  .pb-res-4\/5{
-    padding-bottom: 100%;
-  }
 }
 
 .image-container:hover .text-active{

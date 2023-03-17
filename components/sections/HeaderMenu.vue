@@ -78,13 +78,13 @@
                                         </li>
                                         <transition name="slide">
                                             <div class="relative" >
-                                                <div v-if="item._id == active.Id3" class="h-56 absolute bottom-6 left-0 right-0 border border-gray-200 px-6 py-3 bg-white">
+                                                <div v-if="item._id == active.Id3" class="h-56 overflow-auto absolute top-full left-0 right-0 border border-gray-200 px-6 py-3 bg-white">
                                                     <div class="pb-1" v-for="(item,i) in item.childrens" :key="i" >
-                                                        <a class="text-sml" :href="item.url">{{item.text}}</a>
+                                                        <a class="text-sml link-hover" :href="item.url">{{item.text}}</a>
                                                         <ul v-if="item.childrens && item.childrens.length > 0">
                                                             <li class="px-2 pt-1" v-for="(child,ii) in item.childrens" :key="ii">
-                                                                <a class="text-sml link-hover" :href="child.url">
-                                                                    > {{ child.text }}
+                                                                <a :href="child.url">
+                                                                    <span class="text-sml link-hover"> > {{ child.text }}</span> 
                                                                 </a>
                                                             </li>
                                                         </ul>
@@ -115,13 +115,13 @@
                                         </li>
                                         <transition name="slide">
                                             <div class="relative" >
-                                                <div v-if="item._id == active.Id3" class="h-56 absolute bottom-6 left-0 right-0 border border-gray-200 px-6 py-3 bg-white">
+                                                <div v-if="item._id == active.Id3" class="h-56 overflow-auto absolute top-full left-0 right-0 border border-gray-200 px-6 py-3 bg-white">
                                                     <div class="pb-1" v-for="(item,i) in item.childrens" :key="i" >
-                                                        <a class="text-sml" :href="item.url">{{item.text}}</a>
+                                                        <a class="text-sml link-hover" :href="item.url">{{item.text}}</a>
                                                         <ul v-if="item.childrens && item.childrens.length > 0">
                                                             <li class="px-2 pt-1" v-for="(child,ii) in item.childrens" :key="ii">
-                                                                <a class="text-sml link-hover" :href="child.url">
-                                                                    > {{ child.text }}
+                                                                <a :href="child.url">
+                                                                   <span class="text-sml link-hover"> > {{ child.text }}</span> 
                                                                 </a>
                                                             </li>
                                                         </ul>

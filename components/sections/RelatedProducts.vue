@@ -15,9 +15,9 @@
       </div>
     </div>
     <!-- related product -->
-    <div class="flex justify-center" v-if="$settings.sections.products_1.show_more_text">
+    <div class="flex justify-center" v-if="$settings.sections.product.related.show_more_text">
       <nuxt-link class="h-12 px-12 flex justify-center items-center border border-black ml-font-bold-hover rounded-full transition-all ease-linear delay-75" to="/shop">
-            <span class="text-sml">{{ $settings.sections.products_1.show_more_text }}</span>
+            <span class="text-sml">{{ $settings.sections.product.related.show_more_text }}</span>
         </nuxt-link>
     </div>
     <!-- related product -->

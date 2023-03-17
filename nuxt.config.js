@@ -24,9 +24,10 @@ export default {
   components: true,
   buildModules: [
     '@nuxtjs/tailwindcss',
+    '@nuxt/image'
   ],
   modules: [
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
   ],
   axios: {},
   pwa: {
@@ -40,5 +41,5 @@ export default {
     host: '0.0.0.0'
   },
   build: {
-  }
+  },
 }

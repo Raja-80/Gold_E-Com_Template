@@ -36,8 +36,8 @@
 #outline {
   stroke-dasharray: 2.42777px, 242.77666px;
   stroke-dashoffset: 0;
-  -webkit-animation: anim 1.6s linear infinite;
-  animation: anim 1.6s linear infinite;
+  -webkit-animation: anim 1s linear infinite;
+  animation: anim 1s linear infinite;
 }
 
 @-webkit-keyframes anim {

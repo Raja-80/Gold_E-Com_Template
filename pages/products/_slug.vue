@@ -40,7 +40,7 @@
                                     <div class="absolute lg:static my-8 md:my-10 lg:my-0 bottom-0 lg:bottom-auto left-1/2 lg:left-auto transform lg:transform-none -translate-x-1/2 lg:translate-x-0">
                                         <div class="flex lg:block items-center">
                                             <button v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:left-1 xl:left-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150  rounded-full border border-gray-300 hover:border-black" @click="prev">
-                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 15.54a.54.54 0 01-.39-.16L6.72 10l5.39-5.4a.551.551 0 11.78.78L8.28 10l4.61 4.61a.56.56 0 010 .78.54.54 0 01-.39.15z" fill="currentColor"></path></svg>
+                                                <svg class="translate w-5 h-5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 15.54a.54.54 0 01-.39-.16L6.72 10l5.39-5.4a.551.551 0 11.78.78L8.28 10l4.61 4.61a.56.56 0 010 .78.54.54 0 01-.39.15z" fill="currentColor"></path></svg>
                                             </button>
                                             <div v-if="item.images.length > 1" class="dots flex items-center justify-center lg:hidden">
                                                 <div class="mx-1" v-for="(image, index) in item.images" :key="index" >
@@ -48,7 +48,7 @@
                                                 </div>
                                             </div>
                                             <button v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:right-1 xl:right-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150 rounded-full border border-gray-300 hover:border-black" @click="next">
-                                                <svg class="w-5 h-5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.89 4.6a.552.552 0 00-.78.78L11.72 10l-4.61 4.6a.56.56 0 000 .78.56.56 0 00.78 0L13.28 10 7.89 4.6z" fill="currentColor"></path></svg>
+                                                <svg class="translate w-5 h-5"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.89 4.6a.552.552 0 00-.78.78L11.72 10l-4.61 4.6a.56.56 0 000 .78.56.56 0 00.78 0L13.28 10 7.89 4.6z" fill="currentColor"></path></svg>
                                             </button>
                                         </div>
                                     </div>
@@ -115,9 +115,6 @@
                             <div class="flex justify-between items-center">
                                 <!-- Price -->
                                 <si-product-price class="flex items-center text-base" :type="'simple'" :price="price" :variants="[]"></si-product-price>
-                                <!-- Price -->
-                                <!-- Price -->
-                                <!-- <si-product-price class="flex text-xl md:text-2xl " :type="item.type" :price="item.price" :variants="item.variants"></si-product-price> -->
                                 <!-- Price -->
                                 <!-- reviews -->
                                 <div class="flex items-center justify-start" v-if="$settings.sections.product.reviews.active">
@@ -530,14 +527,23 @@
 /* Product padding */
 @media (min-width: 1024px) { 
   .products-padding:nth-child(odd) {
-    padding-right: 0.625rem
+    padding-right: 0.625rem;
   }
   .products-padding:nth-child(even) {
     padding-left: 0.625rem;
   }
-}
-/* Product padding */
 
+  .products-padding:nth-child(odd) {
+    padding-left: 0.625rem;
+    padding-right: 0;
+  }
+  .products-padding:nth-child(even) {
+    padding-right: 0.625rem;
+    padding-left: 0;
+  }
+}
+
+/* Product padding */
 .pl-6\% {
     padding-left: 0%;
 }
@@ -545,6 +551,11 @@
 @media (min-width: 1024px) {
     .pl-6\% {
         padding-left: 6%;
+    }
+
+    [dir="rtl"] .pl-6\% {
+        padding-right: 6%;
+        padding-left: 0;
     }
 }
 

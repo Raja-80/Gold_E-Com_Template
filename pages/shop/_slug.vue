@@ -3,7 +3,7 @@
         <div class="relative">
             <div class="flex items-center justify-between lg:relative under-border"> 
                 <transition name="slide">
-                    <div :class="showSideBar ? 'show':'hide'" class="bg-white fixed lg:static hidden lg:block w-full lg:w-auto h-full lg:h-auto inset-0 lg:inset-auto z-50 lg:z-auto overflow-auto">
+                    <div v-if="$settings.sections.shop.sidebar.active" :class="showSideBar ? 'show':'hide'" class="bg-white fixed lg:static hidden lg:block w-full lg:w-auto h-full lg:h-auto inset-0 lg:inset-auto z-50 lg:z-auto overflow-auto">
                         <div class="flex flex-col justify-between h-full">
                             <div>
                                 <div class="flex items-center justify-between py-5 lg:hidden border-b lg:border-0 px-5">
@@ -16,13 +16,13 @@
                                 </div>
                                 <div class="flex flex-col lg:flex-row mx-5 lg:mx-10">
                                     <!--  Collections -->
-                                    <div class="border-b lg:border-0 lg:mr-3" @mouseover="windowWidth >= 1024 ? isVisible.collections=true : null" @mouseleave="windowWidth >= 1024 ? isVisible.collections=false : null">
+                                    <div v-if="$settings.sections.shop.sidebar.collections.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.collections=true : null" @mouseleave="windowWidth >= 1024 ? isVisible.collections=false : null">
                                         <div @click="showCollections" class="flex items-center  justify-between cursor-pointer py-5">
-                                            <h2 class="text-sml ml-font-bold-hover" v-if="$settings.sections.shop.sidebar.collections.active" :class="isVisible.collections==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.collections.title }}</h2>
+                                            <h2 class="text-sml ml-font-bold-hover" :class="isVisible.collections==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.collections.title }}</h2>
                                             <svg class="lg:mx-1" :class="isVisible.collections == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </div>
                                         <transition name="slide">
-                                            <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.collections && $settings.sections.shop.sidebar.collections.active">
+                                            <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.collections && collections.length > 0">
                                                 <div class="flex flex-col text-sml mb-2 lg:pt-5 lg:border-t border-gray-300">
                                                     <div v-for="(item, i) in collections" :key="i" class="pb-3">
                                                         <div class="flex items-center w-full">
@@ -62,13 +62,13 @@
                                     </div>
                                     <!-- Collections --> 
                                     <!-- Prices -->
-                                    <div class="border-b lg:border-0 lg:mr-3" @mouseover="windowWidth >= 1024 ? isVisible.prices=true: null" @mouseleave="windowWidth >= 1024 ? isVisible.prices=false:null">
+                                    <div v-if="$settings.sections.shop.sidebar.prices.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.prices=true: null" @mouseleave="windowWidth >= 1024 ? isVisible.prices=false:null">
                                         <div @click="showPrices" class="flex items-center justify-between cursor-pointer py-5">
-                                            <h2 class="text-sml ml-font-bold-hover" v-if="$settings.sections.shop.sidebar.prices.active" :class="isVisible.prices==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.prices.title }}</h2>
+                                            <h2 class="text-sml ml-font-bold-hover" :class="isVisible.prices==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.prices.title }}</h2>
                                             <svg class="lg:mx-1" :class="isVisible.prices == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </div>
                                         <transition name="slide">
-                                            <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.prices && $settings.sections.shop.sidebar.prices.active && filters">
+                                            <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.prices && filters">
                                                 <div class="pb-5 lg:pt-5 lg:border-t border-gray-300">
                                                     <div class="flex flex-col" dir="ltr">
                                                         <si-price-range @change="setParams" :min="filters.prices.min" :max="filters.prices.max" />
@@ -79,13 +79,13 @@
                                     </div>
                                     <!-- Prices -->
                                     <!-- Sizes -->
-                                    <div class="border-b lg:border-0 lg:mr-3" @mouseover="windowWidth >= 1024 ? isVisible.sizes=true : null" @mouseleave="windowWidth >= 1024 ? isVisible.sizes=false : null">
+                                    <div v-if="$settings.sections.shop.sidebar.sizes.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.sizes=true : null" @mouseleave="windowWidth >= 1024 ? isVisible.sizes=false : null">
                                         <div @click="showSizes" class="flex items-center justify-between cursor-pointer py-5">
-                                            <h2 class="text-sml ml-font-bold-hover" v-if="$settings.sections.shop.sidebar.sizes.active" :class="isVisible.sizes==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.sizes.title }}</h2>
+                                            <h2 class="text-sml ml-font-bold-hover" :class="isVisible.sizes==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.sizes.title }}</h2>
                                             <svg class="lg:mx-1" :class="isVisible.sizes == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </div>
                                         <transition name="slide">
-                                            <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.sizes && $settings.sections.shop.sidebar.sizes.active && filters">
+                                            <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.sizes && filters && filters.sizes.length > 0">
                                                 <div class="pb-2 lg:pt-5 lg:border-t border-gray-300">
                                                     <div class="flex flex-col">
                                                         <div class="flex items-center pb-3" v-for="(item, i) in filters.sizes" :key="i" >
@@ -104,13 +104,13 @@
                                     </div>
                                     <!-- Sizes -->
                                     <!-- Colors -->
-                                    <div class="border-b lg:border-0 lg:mr-3" @mouseover="windowWidth >= 1024 ? isVisible.colors=true : null" @mouseleave="windowWidth >= 1024 ? isVisible.colors=false: null">
+                                    <div v-if="$settings.sections.shop.sidebar.colors.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.colors=true : null" @mouseleave="windowWidth >= 1024 ? isVisible.colors=false: null">
                                         <div @click="showColors" class="flex items-center justify-between cursor-pointer py-5">
-                                            <h2 class="text-sml ml-font-bold-hover" v-if="$settings.sections.shop.sidebar.colors.active" :class="isVisible.colors==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.colors.title }}</h2>
+                                            <h2 class="text-sml ml-font-bold-hover" :class="isVisible.colors==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.colors.title }}</h2>
                                             <svg class="lg:mx-1" :class="isVisible.colors == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </div>
                                         <transition name="slide">
-                                            <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.colors && $settings.sections.shop.sidebar.colors.active && filters">
+                                            <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.colors && filters && filters.colors.length > 0">
                                                 <div class="pb-2 lg:pt-5 lg:border-t border-gray-300">
                                                     <div class="flex flex-col">
                                                         <div class="flex items-center pb-3" v-for="(item, i) in filters.colors" :key="i" :class="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0 ? 'active' : '' ">
@@ -129,13 +129,13 @@
                                     </div>
                                     <!-- Colors -->
                                     <!-- tags -->
-                                    <div class="border-b lg:border-0 lg:mr-3" @mouseover="windowWidth >= 1024 ? isVisible.tags=true: null" @mouseleave="windowWidth >= 1024 ? isVisible.tags=false:null">
+                                    <div v-if="$settings.sections.shop.sidebar.tags.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.tags=true: null" @mouseleave="windowWidth >= 1024 ? isVisible.tags=false:null">
                                         <div @click="showTags" class="flex items-center justify-between cursor-pointer py-5">
-                                            <h2 class="text-sml ml-font-bold-hover" v-if="$settings.sections.shop.sidebar.tags.active" :class="isVisible.tags==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.tags.title }}</h2>
+                                            <h2 class="text-sml ml-font-bold-hover" :class="isVisible.tags==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.tags.title }}</h2>
                                             <svg class="lg:mx-1" :class="isVisible.tags == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </div>
                                         <transition name="slide">
-                                            <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.tags && $settings.sections.shop.sidebar.tags.active && filters">
+                                            <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.tags && filters && filters.tags.length > 0">
                                                 <div  class="pb-2 lg:pt-5 lg:border-t border-gray-300">
                                                     <div class="flex flex-col">
                                                         <div class="flex items-center pb-3" v-for="(tag, i) in filters.tags" :key="i">
@@ -154,13 +154,13 @@
                                     </div>
                                     <!-- tags -->
                                     <!-- brands -->
-                                    <div class="border-b lg:border-0 lg:mr-3" @mouseover="windowWidth >= 1024 ? isVisible.brands=true : null" @mouseleave="windowWidth >= 1024 ? isVisible.brands=false : null">
+                                    <div  v-if="$settings.sections.shop.sidebar.brands.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.brands=true : null" @mouseleave="windowWidth >= 1024 ? isVisible.brands=false : null">
                                         <div @click="showBrands" class="flex items-center justify-between cursor-pointer py-5">
-                                            <h2 class="text-sml ml-font-bold-hover" v-if="$settings.sections.shop.sidebar.brands.active" :class="isVisible.brands==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.brands.title }}</h2>
+                                            <h2 class="text-sml ml-font-bold-hover" :class="isVisible.brands==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.brands.title }}</h2>
                                             <svg class="lg:mx-1" :class="isVisible.brands == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </div>
                                         <transition name="slide">
-                                            <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.brands && $settings.sections.shop.sidebar.brands.active && filters">
+                                            <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.brands && filters && brands.length > 0">
                                                 <div class="flex flex-col">
                                                     <div class="pb-2 lg:pt-5 lg:border-t border-gray-300">
                                                         <div class="flex flex-col">
@@ -204,10 +204,10 @@
                     </div>
                     <!--  -->
                     <!--  -->
-                    <div class="flex items-center">
+                    <div class="flex items-center gap-4">
                         <!-- filters -->
-                        <div @click="hideBodyScroll">
-                            <div @click="showSideBar = true" class="flex lg:hidden items-center cursor-pointer mr-4">
+                        <div v-if="$settings.sections.shop.sidebar.active" @click="hideBodyScroll">
+                            <div @click="showSideBar = true" class="flex lg:hidden items-center cursor-pointer">
                                 <h2 class="text-sml ml-font-bold-hover underline">{{ $settings.sections.shop.sidebar.filters_name }}</h2>
                             </div>
                         </div>
@@ -267,7 +267,7 @@
                 <si-loader></si-loader>
             </div>
             <div v-if="!loading.products && items.length == 0" class="flex justify-center items-center my-5">
-                <h1 class="py-3 text-xl">{{ $settings.sections.shop.empty_text }}</h1>
+                <h1 class="py-3 text-xl">{{ $settings.sections.shop.empty_text  }}</h1>
             </div>
             <div class="flex flex-wrap lg:mx-1 xl:mx-5">
                 <div v-for="(item, i) in items" :key="i" class="products-padding w-1/2 lg:w-1/3 lg:px-4 xl:px-5 mb-4 lg:mb-8">
@@ -605,12 +605,33 @@ export default {
 }
 </script>
 <style scoped>
+@media (min-width: 1024px) {
+    .lg\:ml-mr-3 {
+        margin-right: 0.75rem;
+    }
+
+    [dir="rtl"] .lg\:ml-mr-3 {
+        margin-left: 0.75rem;
+        margin-right: 0;
+    }
+}
+
+
 @media (min-width:0px) and (max-width:1024px) { 
     .products-padding:nth-child(odd) {
         padding-right: 1rem;
     }
     .products-padding:nth-child(even) {
         padding-left: 1rem;
+    }
+
+    [dir="rtl"] .products-padding:nth-child(odd) {
+        padding-left: 1rem;
+        padding-right: 0;
+    }
+    [dir="rtl"] .products-padding:nth-child(even) {
+        padding-right: 1rem;
+        padding-left: 0;
     }
 }
 
@@ -663,8 +684,18 @@ input[type="radio"]:checked + div svg {
 }
 input[type="checkbox"]:checked + div + label ,
 input[type="radio"]:checked + div + label {
-    font-family: Century Gothic Std Bold,Noto Sans JP,Noto Sans SC,Noto Sans TC,Noto Sans KR;
     transition: all 0.3s ease;
+}
+
+input[type="checkbox"]:checked + div + label ,
+input[type="radio"]:checked + div + label {
+    font-family: Century Gothic Std Bold,Noto Sans JP,Noto Sans SC,Noto Sans TC,Noto Sans KR;
+}
+
+[dir="rtl"] input[type="checkbox"]:checked + div + label ,
+[dir="rtl"] input[type="radio"]:checked + div + label {
+    font-family: pingarlt,-apple-system,BlinkMacSystemFont;
+    font-weight: 700;
 }
 
 .fit-collapsible{

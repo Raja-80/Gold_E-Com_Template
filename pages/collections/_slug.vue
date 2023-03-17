@@ -72,21 +72,30 @@ export default {
 </script>
 
 <style scoped>
-/* .collections {
-    padding-bottom: 1.5px;
-    padding-top: 1.5px;
-} */
+.collections:not(:nth-last-child(-n+1)) {
+    padding-bottom: 3px;
+}
 
 @media (min-width: 1024px) {
-    
+    .collections:not(:nth-last-child(-n+2)) {
+        padding-bottom: 3px;
+    } 
+
     .collections:nth-child(odd) {
         padding-right: 1.5px;
-        padding-bottom: 3px;
     }
     
     .collections:nth-child(even) {
         padding-left: 1.5px;
-        padding-bottom: 3px;
+    }
+
+    [dir="rtl"] .collections:nth-child(odd)  {
+        padding-left: 1.5px;
+        padding-right: 0;
+    }
+    [dir="rtl"] .collections:nth-child(even) {
+        padding-right: 1.5px;
+        padding-left: 0;
     }
 }
 </style>
