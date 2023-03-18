@@ -1,5 +1,5 @@
 <template>
-    <div class="flex items-center justify-center border border-black rounded-full overflow-hidden">
+    <div class="flex items-center justify-center border border-primary rounded-full overflow-hidden">
         <button @click="inc(-1)" class="py-1.5 lg:py-2.5 px-3 lg:px-4">
             <svg class="w-2.5 h-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.45h-11a.55.55 0 000 1.1h11a.55.55 0 000-1.1z" fill="currentColor"></path></svg>
         </button>

@@ -19,7 +19,7 @@
             <!-- texts -->
             <div class="flex flex-col justify-center my-10 px-5 xl:px-10">
                 <!-- short description -->
-                <p class="text-sml primary-text mb-3">{{ item.excerpt }}</p>
+                <p class="text-sml text-primary mb-3">{{ item.excerpt }}</p>
                 <!-- short description -->
                 <!-- description -->
                 <div v-if="item">

@@ -11,12 +11,12 @@
             <!-- title -->
             <!-- short description -->
             <div class="py-4 border-b border-gray-300">
-                <p class="text-sml primary-text">{{ item.excerpt }}</p>
+                <p class="text-sml text-primary">{{ item.excerpt }}</p>
             </div>
             <!-- short description -->
             <!-- description -->
             <div class="py-4">
-                <div v-if="item" id="description" class="text-sml text-black" v-html="item.content"></div>
+                <div v-if="item" id="description" class="text-sml " v-html="item.content"></div>
             </div>
             <!-- description -->
             <!-- contact page -->

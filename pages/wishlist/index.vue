@@ -8,7 +8,7 @@
         <div v-if="!loading.wishlist && items.length == 0" class="flex justify-center p-5">
             <div class="flex flex-col items-center">
                 <h2 class="w-full text-center text-lg mb-3">{{ $settings.sections.wishlist.empty_text }}</h2>
-                <nuxt-link to="/shop" class="flex items-center py-2 px-4 justify-center border border-black rounded-full">
+                <nuxt-link to="/shop" class="flex items-center py-2 px-4 justify-center border border-primary rounded-full">
                     <span class="w-full text-sml ml-font-bold-hover">{{ $settings.sections.wishlist.buttons.back_to_shop_text }}</span>
                 </nuxt-link>
             </div>

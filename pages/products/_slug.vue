@@ -21,14 +21,14 @@
                             </div>
                             <div class="flex items-center flex-wrap justify-between h-full lg:p-10 relative">
                                 <div class="hidden lg:flex flex-col items-center">
-                                    <div @click="increaseSize" class="text-black border border-gray-300 hover:border-black transition delay-150 ease-in-out m-2.5 w-7 h-7 flex items-center justify-center cursor-pointer">
-                                        <svg class="w-2.5 h-2.5 text-black" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
+                                    <div @click="increaseSize" class=" border border-gray-300 hover:border-primary transition delay-150 ease-in-out m-2.5 w-7 h-7 flex items-center justify-center cursor-pointer">
+                                        <svg class="w-2.5 h-2.5 " width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
                                     </div>
                                     <div class="flex items-center justify-center ">
                                         <span class="text-base"> {{ zoom }} %</span>
                                     </div>
-                                    <div @click="decreaseSize" class="text-black border border-gray-300 hover:border-black transition delay-150 ease-in-out m-2.5 w-7 h-7 flex items-center justify-center cursor-pointer">
-                                        <svg class="w-2.5 h-2. text-black" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.45h-11a.55.55 0 000 1.1h11a.55.55 0 000-1.1z" fill="currentColor"></path></svg>
+                                    <div @click="decreaseSize" class=" border border-gray-300 hover:border-primary transition delay-150 ease-in-out m-2.5 w-7 h-7 flex items-center justify-center cursor-pointer">
+                                        <svg class="w-2.5 h-2. " width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.45h-11a.55.55 0 000 1.1h11a.55.55 0 000-1.1z" fill="currentColor"></path></svg>
                                     </div>
                                 </div>
                                 <div class="flex-1 lg:px-20 xl:px-40 lg:relative">
@@ -39,7 +39,7 @@
                                     </div>
                                     <div class="absolute lg:static my-8 md:my-10 lg:my-0 bottom-0 lg:bottom-auto left-1/2 lg:left-auto transform lg:transform-none -translate-x-1/2 lg:translate-x-0">
                                         <div class="flex lg:block items-center">
-                                            <button v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:left-1 xl:left-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150  rounded-full border border-gray-300 hover:border-black" @click="prev">
+                                            <button v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:left-1 xl:left-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150  rounded-full border border-gray-300 hover:border-primary" @click="prev">
                                                 <svg class="rotate-chivron w-5 h-5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 15.54a.54.54 0 01-.39-.16L6.72 10l5.39-5.4a.551.551 0 11.78.78L8.28 10l4.61 4.61a.56.56 0 010 .78.54.54 0 01-.39.15z" fill="currentColor"></path></svg>
                                             </button>
                                             <div v-if="item.images.length > 1" class="flex items-center justify-center lg:hidden">
@@ -47,7 +47,7 @@
                                                     <div class="h-1.5 w-1.5 rounded-full cursor-pointer" :class="visibleSlide == index ? 'bg-primary w-2 h-2' : 'bg-gray-300'" @click="setImage(index)"></div>
                                                 </div>
                                             </div>
-                                            <button v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:right-1 xl:right-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150 rounded-full border border-gray-300 hover:border-black" @click="next">
+                                            <button v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:right-1 xl:right-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150 rounded-full border border-gray-300 hover:border-primary" @click="next">
                                                 <svg class="rotate-chivron w-5 h-5"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.89 4.6a.552.552 0 00-.78.78L11.72 10l-4.61 4.6a.56.56 0 000 .78.56.56 0 00.78 0L13.28 10 7.89 4.6z" fill="currentColor"></path></svg>
                                             </button>
                                         </div>
@@ -73,7 +73,7 @@
                                     <div v-if="$settings.sections.products.add_to_wishlist.active">
                                         <transition name="fade-image">
                                             <button v-if="$store.state.wishlist.find(i=>i._id==item._id)" @click="removeFromWishlist" title="Wishlist" class="box-shadow-xs bg-white rounded-full absolute z-10 top-0 right-0 m-2 md:m-3 p-3 md:p-3.5 transition-all ease-linear delay-150  hover-bg">
-                                                <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 translate text-red-400 align-middle"><path fill="currentColor" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
+                                                <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 translate text-primary align-middle"><path fill="currentColor" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
                                             </button>
                                         </transition>
                                         <transition name="fade-image">
@@ -119,7 +119,7 @@
                                 <!-- reviews -->
                                 <div class="flex items-center justify-start" v-if="$settings.sections.product.reviews.active">
                                     <div class="flex mx-1">
-                                        <span class="mx-0.5" v-for="(star,i) in 5" :class="star <= item.review.rating ? 'text-yellow-500 ': 'text-black'" :key="i">
+                                        <span class="mx-0.5" v-for="(star,i) in 5" :class="star <= item.review.rating ? 'text-yellow-500 ': ''" :key="i">
                                             <svg class="w-3 h-3" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="3 3 18 18" aria-hidden="true" focusable="false"><path d="M20.83,9.15l-6-.52L12.46,3.08h-.92L9.18,8.63l-6,.52L2.89,10l4.55,4L6.08,19.85l.75.55L12,17.3l5.17,3.1.75-.55L16.56,14l4.55-4Z"></path></svg>
                                         </span>
                                     </div>
@@ -137,8 +137,8 @@
                             <!-- product cart -->
                             <!-- product quantity -->
                             <div class="flex items-center justify-between my-3" :class="item.type!='variable'?'border-t border-gray-300 pt-3':''">
-                                <h2 class="text-sml text-black">{{ $settings.sections.product.quantity.text }}</h2>
-                                <div class="text-black">
+                                <h2 class="text-sml ">{{ $settings.sections.product.quantity.text }}</h2>
+                                <div class="">
                                     <si-product-quantity @selected="quantitySelected" :quantity="quantity" page="product"></si-product-quantity>
                                 </div>
                             </div>
@@ -147,7 +147,7 @@
                             <div v-if="$settings.sections.product.add_to_cart.active || $settings.sections.product.buy_now.active" class="py-3">
                                 <si-app-loader placement="BEFORE_ADD_TO_CART"/>
                                 <!-- add to cart -->
-                                <button v-if="$settings.sections.product.add_to_cart.active" :class="$settings.sections.product.buy_now.active ? 'mb-3':''" @click="addToCart" class="text-sml ml-font-bold-hover w-full flex  justify-center border border-black rounded-full p-4 px-5 click-effect">
+                                <button v-if="$settings.sections.product.add_to_cart.active" :class="$settings.sections.product.buy_now.active ? 'mb-3':''" @click="addToCart" class="text-sml ml-font-bold-hover w-full flex  justify-center border border-primary rounded-full p-4 px-5 click-effect">
                                     <span>{{ $settings.sections.product.add_to_cart.text }}</span>
                                 </button>
                                 <!-- add to cart -->
@@ -155,7 +155,7 @@
                                 <si-app-loader placement="BEFORE_BUYNOW"/>
                                 <si-app-loader placement="REPLACE_BUYNOW"/>
                                 <!-- buy now -->
-                                <button v-if="$settings.sections.product.buy_now.active" v-show="!$store.state.apps.find(a=>a.placement.indexOf('REPLACE_BUYNOW') >= 0)" @click="buyNow" class="text-sml ml-font-bold-hover w-full flex  justify-center border border-black rounded-full p-4 px-5 click-effect">
+                                <button v-if="$settings.sections.product.buy_now.active" v-show="!$store.state.apps.find(a=>a.placement.indexOf('REPLACE_BUYNOW') >= 0)" @click="buyNow" class="text-sml ml-font-bold-hover w-full flex  justify-center border border-primary rounded-full p-4 px-5 click-effect">
                                     <span>{{ $settings.sections.product.buy_now.text }}</span>
                                 </button>
                                 <si-app-loader placement="AFTER_BUYNOW"/>

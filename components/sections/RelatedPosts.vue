@@ -16,7 +16,7 @@
     </div>
     <!-- related post -->
     <div class="flex justify-center" v-if="$settings.sections.posts.show_more_text">
-      <nuxt-link class="h-12 px-12 flex justify-center items-center border border-black ml-font-bold-hover rounded-full transition-all ease-linear delay-75" to="/blog">
+      <nuxt-link class="h-12 px-12 flex justify-center items-center border border-primary ml-font-bold-hover rounded-full transition-all ease-linear delay-75" to="/blog">
             <span class="text-sml">{{ $settings.sections.posts.show_more_text}}</span>
         </nuxt-link>
     </div>

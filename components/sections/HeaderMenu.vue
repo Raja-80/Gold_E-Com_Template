@@ -8,7 +8,7 @@
         <!-- Slide left  -->
         <transition name="slide">
             <!-- <transition name="fade"> -->
-                <div style="width: calc(100% - 1.25rem);" v-if="$store.state.showHeaderMenu" :class="$store.state.showHeaderMenu==true ? hideBodyScroll() : null" class="sidebar bg-white overflow-auto">
+                <div style="width: calc(100% - 1.25rem);" v-if="$store.state.showHeaderMenu" :class="$store.state.showHeaderMenu==true ? hideBodyScroll() : null" class="sidebar bg-white overflow-auto header-color header-text">
                     <!-- close slider left botton -->
                     <div class="w-full flex items-center justify-end" @click="showBodyScroll"> 
                         <button class="p-4"  @click="$store.state.showHeaderMenu=false" aria-label="Close button">
@@ -47,7 +47,7 @@
                                             <div v-if="item.collectionId == subItems"> 
                                                 <ul v-if="item.childrens && item.childrens.length > 0">
                                                     <li class="mt-5" v-for="(child,ii) in item.childrens" :key="ii">
-                                                        <nuxt-link  class="text-sml link-hover primary-text" :to="child.url">
+                                                        <nuxt-link  class="text-sml link-hover text-primary" :to="child.url">
                                                             {{ child.text }}
                                                         </nuxt-link>
                                                     </li>
@@ -68,7 +68,7 @@
                                 </div>
                                 <transition name="slide">
                                     <div>
-                                        <li class="border-b border-black mt-8" @click="active.Id3 = active.Id3 != item._id ? item._id : null" :class="item.childrens.length > 0 ? 'text-hover cursor-pointer' : ''">
+                                        <li class="border-b border-primary mt-8" @click="active.Id3 = active.Id3 != item._id ? item._id : null" :class="item.childrens.length > 0 ? 'primary-hover cursor-pointer' : ''">
                                             <a class="flex items-center justify-between" :href="item.url">
                                                 <div class="text-sml">{{ item.text }}</div>
                                                 <span class="w-5 flex justify-center lg:justify-end" v-if="item.childrens && item.childrens.length > 0">
@@ -78,7 +78,7 @@
                                         </li>
                                         <transition name="slide">
                                             <div class="relative" >
-                                                <div v-if="item._id == active.Id3" class="h-56 overflow-auto absolute top-full left-0 right-0 border border-gray-200 px-6 py-3 bg-white">
+                                                <div v-if="item._id == active.Id3" class="header-color h-56 overflow-auto absolute top-full left-0 right-0 border border-gray-200 px-6 py-3 bg-white">
                                                     <div class="pb-1" v-for="(item,i) in item.childrens" :key="i" >
                                                         <a class="text-sml link-hover" :href="item.url">{{item.text}}</a>
                                                         <ul v-if="item.childrens && item.childrens.length > 0">
@@ -105,7 +105,7 @@
                                 </div>
                                 <transition name="slide">
                                     <div>
-                                        <li class="border-b border-black mt-8" @click="active.Id3 = active.Id3 != item._id ? item._id : null" :class="item.childrens.length > 0 ? 'text-hover cursor-pointer' : ''">
+                                        <li class="border-b border-primary mt-8" @click="active.Id3 = active.Id3 != item._id ? item._id : null" :class="item.childrens.length > 0 ? 'primary-hover cursor-pointer' : ''">
                                             <a class="flex items-center justify-between" :href="item.url">
                                                 <div class="text-sml">{{ item.text }}</div>
                                                 <span class="w-5 flex justify-center lg:justify-end" v-if="item.childrens && item.childrens.length > 0">
@@ -115,7 +115,7 @@
                                         </li>
                                         <transition name="slide">
                                             <div class="relative" >
-                                                <div v-if="item._id == active.Id3" class="h-56 overflow-auto absolute top-full left-0 right-0 border border-gray-200 px-6 py-3 bg-white">
+                                                <div v-if="item._id == active.Id3" class="header-color h-56 overflow-auto absolute top-full left-0 right-0 border border-gray-200 px-6 py-3 bg-white">
                                                     <div class="pb-1" v-for="(item,i) in item.childrens" :key="i" >
                                                         <a class="text-sml link-hover" :href="item.url">{{item.text}}</a>
                                                         <ul v-if="item.childrens && item.childrens.length > 0">
