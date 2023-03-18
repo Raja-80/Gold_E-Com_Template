@@ -1,7 +1,7 @@
 <template>
     <div class="container">
 		<div class="row">
-			<div class="text-gray-50 text-center py-24 flex items-center flex-col">
+			<div class="text-center py-24 flex items-center flex-col">
 				<div class="relative">
 				<h1 class="relative text-9xl tracking-tighter-less text-shadow font-sans font-bold mb-6">
 					<span>{{ String(error.statusCode).split('').join(' ') }}</span>

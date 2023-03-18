@@ -3,6 +3,7 @@
         <span class="text-sml text-white uppercase">{{ letters }}</span>
     </div>
 </template>
+
 <script>
 export default {
     props: {
