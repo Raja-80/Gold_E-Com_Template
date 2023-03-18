@@ -1,5 +1,6 @@
 <template>
-    <div class="text-black">
+    <div class="">
+        <si-app-loader placement="BEFORE_SHOP_SIDEBAR"/>
         <div class="relative">
             <div class="flex items-center justify-between lg:relative under-border"> 
                 <transition name="slide">
@@ -28,7 +29,7 @@
                                                         <div class="flex items-center w-full">
                                                             <label class="w-full lg:w-auto relative flex items-center transition delay-300 ease-in-out">
                                                                 <div class="w-full lg:w-auto flex flex-col cursor-pointer" v-if="item.childrens && item.childrens.length > 0" @mouseover="windowWidth >= 1024 ? setActiveOver(i+'fit',i+'ret') : null" @mouseleave="windowWidth >= 1024 ? setActiveLeave(i+'fit',i+'ret') : null">
-                                                                    <label :for="item.slug" :id="i+'ret'" @click="setActive(i+'fit',i+'ret')" class="cursor-pointer flex items-center justify-between text-hover">
+                                                                    <label :for="item.slug" :id="i+'ret'" @click="setActive(i+'fit',i+'ret')" class="cursor-pointer flex items-center justify-between primary-hover">
                                                                         <span class="text-sml cursor-pointer">{{ item.name }}</span>
                                                                         <svg class="rotated lg:mx-1"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                                                     </label>
@@ -38,9 +39,9 @@
                                                                                 <label class="relative flex items-center">
                                                                                     <input hidden type="checkbox" class="form-checkbox absolute top-0 left-0" style="z-index: -1" :checked="params['collections.slug-in'] && params['collections.slug-in'].indexOf(child.slug) >= 0" :id="child.slug" @change="setParams($event, 'collections.slug-in', child.slug)">
                                                                                     <div class="flex justify-center items-center">
-                                                                                        <svg class="fill-current text-black"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
+                                                                                        <svg class="fill-current "  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
                                                                                     </div>
-                                                                                    <label  :for="child.slug" class="cursor-pointer text-sml text-hover">{{ child.name }}</label>
+                                                                                    <label  :for="child.slug" class="cursor-pointer text-sml primary-hover">{{ child.name }}</label>
                                                                                 </label>
                                                                             </div>
                                                                         </div>
@@ -49,9 +50,9 @@
                                                                 <div v-if="item.childrens && item.childrens.length == 0" class="flex items-center">
                                                                     <input hidden  type="checkbox" class="form-checkbox absolute top-0 left-0"  style="z-index: -1" :checked="params['collections.slug-in'] && params['collections.slug-in'].indexOf(item.slug) >= 0" :id="item.slug" @change="setParams($event, 'collections.slug-in', item.slug)">
                                                                     <div class="flex justify-center items-center">
-                                                                        <svg class="fill-current text-black"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
+                                                                        <svg class="fill-current "  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
                                                                     </div>
-                                                                    <label class="cursor-pointer text-sml text-hover" :for="item.slug">{{ item.name }}</label>
+                                                                    <label class="cursor-pointer text-sml primary-hover" :for="item.slug">{{ item.name }}</label>
                                                                 </div>
                                                             </label>                         
                                                         </div>
@@ -92,9 +93,9 @@
                                                             <label class="relative flex items-center cursor-pointer">
                                                                 <input hidden type="checkbox" class="absolute top-0 left-0" style="z-index: -1" :checked="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0" :id="item.value1" @change="setParams($event, 'options.values.value1', item.value1)">
                                                                 <div class="flex justify-center items-center">
-                                                                    <svg class="fill-current text-black"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
+                                                                    <svg class="fill-current "  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
                                                                 </div>
-                                                                <label class="text-sml cursor-pointer text-hover" :for="item.value1">{{ item.value1 }}</label>
+                                                                <label class="text-sml cursor-pointer primary-hover" :for="item.value1">{{ item.value1 }}</label>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -117,9 +118,9 @@
                                                             <label class="relative flex items-center cursor-pointer">
                                                                 <input hidden type="checkbox" class="absolute top-0 left-0" style="z-index: -1" :id="item.value1" :checked="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0" @change="setParams($event, 'options.values.value1', item.value1)">
                                                                 <div class="flex justify-center items-center">
-                                                                    <svg class="fill-current text-black"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
+                                                                    <svg class="fill-current "  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
                                                                 </div>
-                                                                <label class="cursor-pointer text-sml text-hover" :for="item.value1" :aria-label="item.value1">{{ item.value1 }}</label>
+                                                                <label class="cursor-pointer text-sml primary-hover" :for="item.value1" :aria-label="item.value1">{{ item.value1 }}</label>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -142,9 +143,9 @@
                                                             <label class="relative flex items-center cursor-pointer">
                                                                 <input hidden type="checkbox" class="absolute top-0 left-0" style="z-index: -1" :checked="params['tags-in'] && params['tags-in'].indexOf(tag) >= 0" :id="`tag_${tag}`" @change="setParams($event, 'tags-in', tag)">
                                                                 <div class="flex justify-center items-center">
-                                                                    <svg class="fill-current text-black"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
+                                                                    <svg class="fill-current "  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
                                                                 </div>
-                                                                <label class="cursor-pointer text-sml text-hover" :for="`tag_${tag}`">{{ tag }}</label>
+                                                                <label class="cursor-pointer text-sml primary-hover" :for="`tag_${tag}`">{{ tag }}</label>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -168,9 +169,9 @@
                                                                 <label class="relative flex items-center cursor-pointer">
                                                                     <input hidden  type="checkbox" class="absolute top-0 left-0" style="z-index: -1" :id="item.slug" :checked="params['brand.slug-in'] && params['brand.slug-in'].indexOf(item.slug) >= 0" @change="setParams($event, 'brand.slug-in', item.slug)">
                                                                     <div class="flex justify-center items-center">
-                                                                        <svg class="fill-current text-black"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
+                                                                        <svg class="fill-current "  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
                                                                     </div>
-                                                                    <label class="cursor-pointer text-sml text-hover" :for="item.slug">{{ item.name }}</label>
+                                                                    <label class="cursor-pointer text-sml primary-hover" :for="item.slug">{{ item.name }}</label>
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -194,7 +195,7 @@
                 </transition>
                 <div class="w-full lg:w-auto flex items-center justify-between mx-5 lg:mx-10">
                     <!--  -->
-                    <div class="text-sml primary-text py-2 lg:py-5">
+                    <div class="text-sml text-primary py-2 lg:py-5">
                         <span>{{ items.length }} {{ $settings.sections.shop.articles_name }}</span>
                     </div>
                     <!--  -->
@@ -238,9 +239,9 @@
                                                         <label class="relative flex items-center cursor-pointer">
                                                             <input hidden type="radio" class="absolute top-0 left-0" style="z-index: -1" v-model="params.sort" :value="sort.field" :id="sort.name">
                                                             <div class="flex justify-center items-center">
-                                                                <svg class="fill-current text-black"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
+                                                                <svg class="fill-current "  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
                                                             </div>
-                                                            <label class="cursor-pointer text-sml text-hover" :for="sort.name">{{ sort.name }}</label>
+                                                            <label class="cursor-pointer text-sml primary-hover" :for="sort.name">{{ sort.name }}</label>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -278,28 +279,28 @@
             <div :class="items.length != 0?'lg:mx-10 py-2.5 lg:border-t border-gray-300 ':''">
                 <div class="flex justify-center items-center flex-wrap">
                     <!-- chivron left -->
-                    <button v-if="paginate.last_page > 0" class="mx-2 p-3 flex items-center text-hover" @click="getItems(paginate.current_page-1)">
+                    <button v-if="paginate.last_page > 0" class="mx-2 p-3 flex items-center primary-hover" @click="getItems(paginate.current_page-1)">
                         <svg class="w-3 h-3 translate" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path></svg>
                     </button>
                     <!-- chivron left -->
                     <!-- pages -->
-                    <button v-if="paginate.last_page > 1" :class="[(this.style),((paginate.last_page - (paginate.last_page -1)) == paginate.current_page ? 'primary-text' : '')]" @click="getItems(paginate.last_page - (paginate.last_page -1))">
+                    <button v-if="paginate.last_page > 1" :class="[(this.style),((paginate.last_page - (paginate.last_page -1)) == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page - (paginate.last_page -1))">
                         <span class="text-sm font-bold">{{ paginate.last_page - (paginate.last_page -1) }}</span>
                     </button> 
-                    <button v-if="paginate.last_page > 2" :class="[(this.style),((paginate.last_page - (paginate.last_page -2)) == paginate.current_page ? 'primary-text' : '')]" @click="getItems(paginate.last_page - (paginate.last_page -2))">
+                    <button v-if="paginate.last_page > 2" :class="[(this.style),((paginate.last_page - (paginate.last_page -2)) == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page - (paginate.last_page -2))">
                         <span class="text-sm font-bold">{{ paginate.last_page - (paginate.last_page -2) }}</span>
                     </button> 
-                    <button v-if="paginate.last_page > 3" :class="[(this.style),((paginate.last_page - (paginate.last_page -3)) == paginate.current_page ? 'primary-text' : '')]" @click="getItems(paginate.last_page - (paginate.last_page -3))">
+                    <button v-if="paginate.last_page > 3" :class="[(this.style),((paginate.last_page - (paginate.last_page -3)) == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page - (paginate.last_page -3))">
                         <span class="text-sm font-bold">{{ paginate.last_page - (paginate.last_page -3) }}</span>
                     </button> 
-                    <button v-if="paginate.last_page > 4" :class="[(this.style),((paginate.last_page - (paginate.last_page -4)) == paginate.current_page ? 'primary-text' : '')]" @click="getItems(paginate.last_page - (paginate.last_page -4))">
+                    <button v-if="paginate.last_page > 4" :class="[(this.style),((paginate.last_page - (paginate.last_page -4)) == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page - (paginate.last_page -4))">
                         <span class="text-sm font-bold">{{ paginate.last_page - (paginate.last_page -4) }}</span>
                     </button> 
-                    <button v-if="paginate.last_page > 5" :class="[(this.style),((paginate.last_page - (paginate.last_page -5)) == paginate.current_page ? 'primary-text' : '')]" @click="getItems(paginate.last_page - (paginate.last_page -5))">
+                    <button v-if="paginate.last_page > 5" :class="[(this.style),((paginate.last_page - (paginate.last_page -5)) == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page - (paginate.last_page -5))">
                         <span class="text-sm font-bold">{{ paginate.last_page - (paginate.last_page -5) }}</span>
                     </button> 
                     <!-- More Page exists -->
-                    <button v-if="paginate.last_page > 5" :class="[(this.style),(paginate.current_page > (paginate.last_page - (paginate.last_page -5)) &&  paginate.current_page < (paginate.last_page)   ? 'primary-text' : '')]" >
+                    <button v-if="paginate.last_page > 5" :class="[(this.style),(paginate.current_page > (paginate.last_page - (paginate.last_page -5)) &&  paginate.current_page < (paginate.last_page)   ? 'text-primary' : '')]" >
                         <span class="text-sm font-bold">{{paginate.current_page > (paginate.last_page - (paginate.last_page -5)) &&  paginate.current_page < (paginate.last_page)? paginate.current_page:'...'}}</span>
                     </button> 
                     <button v-if="paginate.current_page > (paginate.last_page - (paginate.last_page -5)) &&  paginate.current_page < (paginate.last_page)" :class="this.style">
@@ -308,18 +309,18 @@
                     <!-- More Page exists -->
                     <!-- pages -->
                     <div v-if="paginate.last_page > 5">
-                        <button v-if="paginate.last_page == paginate.current_page"  :class="[(this.style),(paginate.last_page == paginate.current_page ? 'primary-text' : '')]" @click="getItems(paginate.last_page)">
+                        <button v-if="paginate.last_page == paginate.current_page"  :class="[(this.style),(paginate.last_page == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page)">
                             <span class="text-sm font-bold">{{ paginate.last_page }}</span>
                         </button> 
                     </div>
                     <div v-else>
-                        <button v-if="paginate.last_page > 0" :class="[(this.style),(paginate.last_page == paginate.current_page ? 'primary-text' : '')]" @click="getItems(paginate.last_page)">
+                        <button v-if="paginate.last_page > 0" :class="[(this.style),(paginate.last_page == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page)">
                             <span class="text-sm font-bold">{{ paginate.last_page }}</span>
                         </button> 
                     </div>
                     <!-- pages -->
                     <!-- chivron right -->
-                    <button v-if="paginate.last_page > 0" class="mx-2 p-3 flex items-center text-hover" @click="getItems(paginate.current_page+1)">
+                    <button v-if="paginate.last_page > 0" class="mx-2 p-3 flex items-center primary-hover" @click="getItems(paginate.current_page+1)">
                         <svg class="w-3 h-3 translate" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"></path></svg>
                     </button>
                     <!-- chivron right -->
@@ -356,7 +357,7 @@ export default {
             items: [],
             collections:[],
             brands: [],
-            style: 'mx-2 h-10 w-10 text-hover',
+            style: 'mx-2 h-10 w-10 primary-hover',
             paginate: { page: 1, limit: this.$settings.sections.shop.pagination.limit, total: 12 },
             params: { page: 1, search: this.$route.query.search, limit: this.$settings.sections.shop.pagination.limit, 'collections.slug-in': [], sort: { createdAt: -1 } },
             lastParams: { page: 1, search: this.$route.query.search, limit: this.$settings.sections.shop.pagination.limit, 'collections.slug-in': [], sort: { createdAt: -1 } },
@@ -413,15 +414,11 @@ export default {
         this.subCollections();
     },
     mounted() {
-        if (process.client) {
-            this.getWindowWidth();
-            window.addEventListener('resize', this.getWindowWidth);
-        }
+        this.getWindowWidth();
+        window.addEventListener('resize', this.getWindowWidth);
     },
     beforeDestroy() {
-        if (process.client) {
         window.removeEventListener('resize', this.getWindowWidth);
-        }
     },
     methods: {
         getWindowWidth() {

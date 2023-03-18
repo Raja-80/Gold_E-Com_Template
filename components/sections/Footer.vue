@@ -3,7 +3,7 @@
       <si-app-loader placement="BEFORE_FOOTER"/>
       <div class="lg:border-t border-gray-300">
         <!-- Start footer Section -->
-        <footer class="footer text-black lg:px-7 lg:py-10">
+        <footer class="footer footer-color footer-text lg:px-7 lg:py-10">
           <div class="flex flex-wrap justify-between">
             <!-- Social Media & follow us  -->
             <div class="w-full px-0 lg:px-3" :class="[menus.menu1_active && !menus.menu2_active ? 'lg:w-1/3' : !menus.menu1_active && menus.menu2_active ? 'lg:w-1/3': !menus.menu1_active && !menus.menu2_active ?'lg:w-1/2':'lg:w-1/4']">
@@ -76,7 +76,7 @@
                     <div v-if="windowWidth < 1024 ? isVisible.Menu1 : true">
                         <div v-if="menu1">
                             <ul class="menus-text mt-5 flex flex-col" v-for="(item, i) in menu1.items" :key="i">
-                                <li @click="active.Id1 = active.Id1 != item._id ? item._id : null" :class="item.childrens.length > 0 ? 'text-hover cursor-pointer' : ''" class="flex items-center justify-between">
+                                <li @click="active.Id1 = active.Id1 != item._id ? item._id : null" :class="item.childrens.length > 0 ? 'primary-hover cursor-pointer' : ''" class="flex items-center justify-between">
                                     <router-link class="text-sml link-hover" :to="item.url">
                                         {{ item.text }}
                                     </router-link>
@@ -87,7 +87,7 @@
                                 <transition name="slide">
                                 <div v-if="item._id == active.Id1">
                                     <div class="mt-5" v-for="(item,i) in item.childrens" :key="i">
-                                        <router-link class="text-sml link-hover primary-text" :to="item.url">
+                                        <router-link class="text-sml link-hover text-primary" :to="item.url">
                                             {{item.text}}
                                         </router-link>
                                     </div>
@@ -113,7 +113,7 @@
                     <div v-if="windowWidth < 1024 ? isVisible.Menu2 : true">
                         <div v-if="menu2">
                             <ul class="menus-text mt-5 flex flex-col" v-for="(item, i) in menu2.items" :key="i">
-                                <li @click="active.Id2 = active.Id2 != item._id ? item._id : null" :class="item.childrens.length > 0 ? 'text-hover cursor-pointer' : ''" class="flex items-center justify-between">
+                                <li @click="active.Id2 = active.Id2 != item._id ? item._id : null" :class="item.childrens.length > 0 ? 'primary-hover cursor-pointer' : ''" class="flex items-center justify-between">
                                     <router-link class="text-sml link-hover" :to="item.url">
                                         {{ item.text }}
                                     </router-link>
@@ -124,7 +124,7 @@
                                 <transition name="slide">
                                 <div class="" v-if="item._id == active.Id2">
                                     <div class="mt-5" v-for="(item,i) in item.childrens" :key="i">
-                                        <router-link class="text-sml link-hover primary-text" :to="item.url">
+                                        <router-link class="text-sml link-hover text-primary" :to="item.url">
                                             {{item.text}}
                                         </router-link>
                                     </div>
@@ -150,7 +150,7 @@
                         </div>
                         <transition name="slide">
                             <div v-if="windowWidth < 1024 ? isVisible.Lang : true">
-                                <li class="border-b border-black mt-8" @click="active.Id3 = active.Id3 != item._id ? item._id : null" :class="item.childrens.length > 0 ? 'text-hover cursor-pointer' : ''">
+                                <li class="border-b border-primary mt-8" @click="active.Id3 = active.Id3 != item._id ? item._id : null" :class="item.childrens.length > 0 ? 'primary-hover cursor-pointer' : ''">
                                     <a class="flex items-center justify-between" :href="item.url">
                                         <div class="text-sml">{{ item.text }}</div>
                                         <span class="w-5 flex justify-center lg:justify-end" v-if="item.childrens && item.childrens.length > 0">
@@ -160,7 +160,7 @@
                                 </li>
                                 <transition name="slide">
                                     <div class="relative" >
-                                        <div v-if="item._id == active.Id3" class="h-56 z-10 overflow-auto absolute bottom-6 left-0 right-0 border border-gray-200 px-6 py-3 bg-white">
+                                        <div v-if="item._id == active.Id3" class="footer-color footer-text h-56 z-10 overflow-auto absolute bottom-6 left-0 right-0 border border-gray-200 px-6 py-3 bg-white">
                                             <div class="pb-1" v-for="(item,i) in item.childrens" :key="i" >
                                                 <a class="text-sml link-hover" :href="item.url">{{item.text}}</a>
                                                 <ul v-if="item.childrens && item.childrens.length > 0">
@@ -190,7 +190,7 @@
                         </div>
                         <transition name="slide">
                             <div v-if="windowWidth < 1024 ? isVisible.Curr : true">
-                                <li class="border-b border-black mt-8" @click="active.Id3 = active.Id3 != item._id ? item._id : null" :class="item.childrens.length > 0 ? 'text-hover cursor-pointer' : ''">
+                                <li class="border-b border-primary mt-8" @click="active.Id3 = active.Id3 != item._id ? item._id : null" :class="item.childrens.length > 0 ? 'primary-hover cursor-pointer' : ''">
                                     <a class="flex items-center justify-between" :href="item.url">
                                         <div class="text-sml">{{ item.text }}</div>
                                         <span class="w-5 flex justify-center lg:justify-end" v-if="item.childrens && item.childrens.length > 0">
@@ -200,7 +200,7 @@
                                 </li>
                                 <transition name="slide">
                                     <div class="relative" >
-                                        <div v-if="item._id == active.Id3" class="h-56 z-10 overflow-auto absolute bottom-6 left-0 right-0 border border-gray-200 px-6 py-3 bg-white">
+                                        <div v-if="item._id == active.Id3" class="footer-color footer-text h-56 z-10 overflow-auto absolute bottom-6 left-0 right-0 border border-gray-200 px-6 py-3 bg-white">
                                             <div class="pb-1" v-for="(item,i) in item.childrens" :key="i" >
                                                 <a class="text-sml link-hover" :href="item.url">{{item.text}}</a>
                                                 <ul v-if="item.childrens && item.childrens.length > 0">
@@ -361,15 +361,11 @@
         };
       },
       mounted() {
-        if (process.client) {
             this.getWindowWidth();
             window.addEventListener('resize', this.getWindowWidth);
-            }
         },
         beforeDestroy() {
-            if (process.client) {
             window.removeEventListener('resize', this.getWindowWidth);
-            }
         },
     methods: {
         getWindowWidth() {

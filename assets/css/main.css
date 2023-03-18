@@ -31,35 +31,9 @@ body{
   transition: all 0.3s ease;
 }
 
-/* .DinCondensedBold {
-  font-family: DinCondensedBold;
-} */
-
 .text-sml {
   font-size: .8125rem;
   line-height: 1.3125rem;
-}
-
-.w-4\.5 {
-  width: 18px;
-}
-
-.h-4\.5 {
-  height: 18px;
-}
-
-/* primary text color */
-.primary-text {
-  color: #757575;
-}
-
-/* text hover */
-.text-hover {
-  transition: all .1.5s ease-in-out;
-}
-.text-hover:hover {
-    color: #757575;
-    border-color: #757575;
 }
 
 @media (max-width: 1024px) {
@@ -95,7 +69,7 @@ body{
   width: 100%;
   height: 1px;
   border-radius: 4px;
-  background-color: #757575;
+  background-color: var(--text-color);
   bottom: 0;
   left: 0;
   transform-origin: right;
@@ -104,14 +78,13 @@ body{
 }
 
 .link-hover:hover {
-    color: #757575;
+    color: var(--text-color);
 }
 
 .link-hover:hover::before {
   transform-origin: left;
   transform: scaleX(1);
 }
-/*  */
 
 .container{
     max-width: 1200px;
@@ -214,7 +187,7 @@ body{
 }
 
 .toast.success .toast-progress{
-  background-color: #4caf50;
+  background-color: var(--primary-color);
 }
 
 .toast.error svg{
@@ -222,7 +195,7 @@ body{
 }
 
 .toast.success svg{
-  fill: #4caf50;
+  fill: var(--primary-color);
 }
 
 .toast-close {

@@ -5,7 +5,7 @@
             <b class="text-primary">{{ price.salePrice.toFixed(2) }}{{ $store.state.currency.symbol }}</b>
             <span class="flex w-2"></span>
             <span v-if="price.comparePrice > 0">
-                <del class="text-gray-600">{{ price.comparePrice.toFixed(2) }}{{ $store.state.currency.symbol }}</del>
+                <del>{{ price.comparePrice.toFixed(2) }}{{ $store.state.currency.symbol }}</del>
             </span>
             <meta itemprop="price" :content="price.salePrice" />
         </div>
@@ -13,14 +13,14 @@
             <meta itemprop="price" :content="minPrice" />
             <b class="text-primary">{{ minPrice.toFixed(2) }}{{ $store.state.currency.symbol }}</b>
             <span class="flex">~</span>
-            <b class=" text-primary">{{ maxPrice.toFixed(2) }}{{ $store.state.currency.symbol }}</b>
+            <b class="text-primary">{{ maxPrice.toFixed(2) }}{{ $store.state.currency.symbol }}</b>
         </div>
         <div class="price flex flex-wrap items-center" v-else-if="variants.length > 0">
             <meta itemprop="price" :content="variants[0].price.salePrice" />
             <b class="text-primary">{{ variants[0].price.salePrice.toFixed(2) }}{{ $store.state.currency.symbol }}</b>
             <span class="flex w-2"></span>
             <span v-if="variants[0].price.comparePrice > 0">
-                <del class="text-gray-600">{{ variants[0].price.comparePrice.toFixed(2) }}{{ $store.state.currency.symbol }}</del>
+                <del>{{ variants[0].price.comparePrice.toFixed(2) }}{{ $store.state.currency.symbol }}</del>
             </span>
         </div>
     </div>

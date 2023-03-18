@@ -1,24 +1,50 @@
 <template>
-    <div class="transition-all delay-300" :class="$store.state.showHeaderMenu ? 'to-right' : ''">
+    <div>
         <component :is="'style'">
-            :root{ --primary-rgb: {{ rgb.r }}, {{rgb.g}}, {{ rgb.b }}; --primary-color: rgb(var(--primary-rgb)); }
-            .bg-primary{ background-color: var(--primary-color); }
-            .bg-primary:hover{ background-color: rgb(var(--primary-rgb),0.8); }
-            .text-primary{ color: var(--primary-color); }
+            :root{  --primary-rgb: {{ rgb.r }}, {{ rgb.g }}, {{ rgb.b }}; 
+                    --primary-color: rgb(var(--primary-rgb)); 
+                    --text-rgb: {{ text_rgb.r }}, {{ text_rgb.g }}, {{ text_rgb.b }}; 
+                    --text-color: rgb(var(--text-rgb));   
+                    --header-rgb: {{ header_rgb.r }}, {{ header_rgb.g }}, {{header_rgb.b }}; 
+                    --header-color: rgb(var(--header-rgb));
+                    --header-text-rgb: {{ header_text.r }}, {{ header_text.g }}, {{ header_text.b }}; 
+                    --header-text: rgb(var(--header-text-rgb)); 
+                    --footer-rgb: {{ footer_rgb.r }}, {{ footer_rgb.g }}, {{footer_rgb.b }}; 
+                    --footer-color: rgb(var(--footer-rgb)); 
+                    --footer-text-rgb: {{ footer_text.r }}, {{ footer_text.g }}, {{ footer_text.b }}; 
+                    --footer-text: rgb(var(--footer-text-rgb));
+                    --copyright-rgb: {{ copyright_rgb.r }}, {{ copyright_rgb.g }}, {{copyright_rgb.b }}; 
+                    --copyright-color: rgb(var(--copyright-rgb)); 
+                    --copyright-text-rgb: {{ copyright_text.r }}, {{ copyright_text.g }}, {{ copyright_text.b }}; 
+                    --copyright-text: rgb(var(--copyright-text-rgb)); 
+            }
+            .bg-primary { background-color: var(--primary-color); }
+            .border-primary { border-color: var(--primary-color); }
+            .text-primary { color: var(--text-color); }
+            .primary-hover {
+                transition: all .1.5s ease-in-out;
+            }
+            .primary-hover:hover {
+                color: var(--text-color);
+                border-color: var(--text-color);
+            }
+            .header-color { background-color: var(--header-color); } 
+            .header-text { color: var(--header-text); } 
+            .footer-color { background-color: var(--footer-color); } 
+            .footer-text { color: var(--footer-text); } 
+            .copyright-color { background-color: var(--copyright-color); } 
+            .copyright-text { color: var(--copyright-text); } 
         </component>
         <sections-header-top></sections-header-top>
         <sections-header></sections-header>
         <sections-header-menu></sections-header-menu>
         <Nuxt />
         <sections-footer></sections-footer>
-        <div class="bg-white flex">
-            <hr class="my-2 w-full">
-        </div>
-        <sections-footer-menu></sections-footer-menu>
         <sections-copyright></sections-copyright>
         <si-full-image></si-full-image>
     </div>
 </template>
+
 <script>
 export default {
     head(){
@@ -47,7 +73,6 @@ export default {
             link: [
                 { rel: 'icon', type: 'image/x-icon', href: this.$settings.store_favicon ? this.$settings.store_favicon.src : this.$store.state.defaults.icon },
                 { rel: "dns-prefetch", href: 'https://storeno.b-cdn.net/stores/' },
-                ...this.otherLinks
             ],
             htmlAttrs: {
                 lang: this.$store.state.language.code,
@@ -58,8 +83,13 @@ export default {
     data() {
         return {
             rgb: { r: 0, g: 130, b: 70 },
-            otherLinks: [
-                ]
+            text_rgb: { r: 0, g: 130, b: 70 },
+            header_rgb: { r: 0, g: 130, b: 70 },
+            header_text: { r: 0, g: 130, b: 70 },
+            footer_rgb: { r: 0, g: 130, b: 70 },
+            footer_text: { r: 0, g: 130, b: 70 },
+            copyright_rgb: { r: 0, g: 130, b: 70 },
+            copyright_text: { r: 0, g: 130, b: 70 },
         }
     },
     async fetch(){
@@ -68,24 +98,15 @@ export default {
         this.$store.state.seo.keywords = this.$settings.store_keywords || [];
         if(this.$settings.store_og_image){ this.$store.state.seo.image = this.$settings.store_og_image.src; }
         if(this.$settings.favicon){ this.$store.state.seo.favicon = this.$settings.favicon.src; }
-        this.rgb = this.$tools.hexToRgb(this.$settings.style.primary_color);
-        if(this.$store.state.language.code == 'AR'){
-            this.otherLinks = [
-                { rel: "preconnect", href: 'https://fonts.googleapis.com' },
-                { rel: "preconnect", href: 'https://fonts.gstatic.com', crossorigin: true },
-                { rel: "stylesheet", href: 'https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700&display=swap' }
-            ]
-        }
+        this.rgb = this.$tools.hexToRgb(this.$settings.style.primary.primary_color);
+        this.text_rgb = this.$tools.hexToRgb(this.$settings.style.primary.primary_text);
+        this.header_rgb = this.$tools.hexToRgb(this.$settings.style.header.header_color);
+        this.header_text = this.$tools.hexToRgb(this.$settings.style.header.header_text);
+        this.footer_rgb = this.$tools.hexToRgb(this.$settings.style.footer.footer_color);
+        this.footer_text = this.$tools.hexToRgb(this.$settings.style.footer.footer_text);
+        this.copyright_rgb = this.$tools.hexToRgb(this.$settings.style.copyright.copyright_color);
+        this.copyright_text = this.$tools.hexToRgb(this.$settings.style.copyright.copyright_text);
     },
-    methods: {
-    }
+
 }
 </script>
-<style>
-    [dir='ltr'] .to-right{
-        transform: translateX(20rem);
-    }
-    [dir='rtl'] .to-right{
-        transform: translateX(-20rem) !important;
-    }
-</style>

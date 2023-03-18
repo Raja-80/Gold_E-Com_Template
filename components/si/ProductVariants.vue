@@ -252,17 +252,17 @@ export default {
             }
             this.$emit('selected', this.selected);
         },
-        changeVarColor(event){
+        changeVarColor(){
             let value = this.listStyleColorValue.value;
             let index = this.listStyleColorValue.index;
             this.setVariant(index,value);
         },
-        changeVarSize(event){
+        changeVarSize(){
             let value = this.listStyleSizeValue.value;
             let index = this.listStyleSizeValue.index;
             this.setVariant(index,value);
         },
-        changeVarOther(event){
+        changeVarOther(){
             let value = this.listStyleOtherOption.value;
             let index = this.listStyleOtherOption.index;
             this.setVariant(index,value);

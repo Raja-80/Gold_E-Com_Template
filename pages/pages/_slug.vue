@@ -11,12 +11,12 @@
             <!-- title -->
             <!-- short description -->
             <div class="py-4 border-b border-gray-300">
-                <p class="text-sml primary-text">{{ item.excerpt }}</p>
+                <p class="text-sml text-primary">{{ item.excerpt }}</p>
             </div>
             <!-- short description -->
             <!-- description -->
             <div class="py-4">
-                <div v-if="item" id="description" class="text-sml text-black" v-html="item.content"></div>
+                <div v-if="item" id="description" class="text-sml " v-html="item.content"></div>
             </div>
             <!-- description -->
             <!-- contact page -->
@@ -26,11 +26,11 @@
             <!-- contact page -->
             <!-- share page -->
             <div class="flex items-center">
-                <div class="flex w-full border-b border-gray-300"></div>
+                <div class="flex-grow flex border-b border-gray-300"></div>
                 <h3 class="text-base mx-2">{{ $settings.sections.post.share_buttons.title }}</h3>
-                <div class=" flex w-full border-b border-gray-300"></div>
+                <div class="flex-grow flex border-b border-gray-300"></div>
             </div>
-            <div class="flex justify-center gap-4 py-4">
+            <div class="flex justify-center gap-4 pt-4 mb-7">
                 <div v-for="item in socialMedia.filter(s=>$settings.sections.post.share_buttons[s.name])" :key="item.name">
                     <a :href="item.url" target="_blank" rel="noopener noreferrer">
                         <si-image class="h-8 w-8" width="40" height="40" :src="item.image" :alt="item.name"/>

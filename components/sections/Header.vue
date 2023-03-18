@@ -3,13 +3,13 @@
     <si-app-loader placement="BEFORE_HEADER"/>
     <!-- header -->
         <div class="relative border-b border-gray-300">
-            <div class="bg-white h-60.8 h-124"></div>
+            <div class="header-color header-text h-60.8 h-124"></div>
             <transition name="header-slide">
                 <header>
-                    <div id="header" class="absolute top-0 left-0 right-0 z-20 ">
-                        <div style="height: 3.8rem;" class="flex justify-between flex-wrap items-center relative px-5 lg:px-10 bg-white">
+                    <div id="header" class="header header-color absolute top-0 left-0 right-0 z-20">
+                        <div style="height: 3.8rem;" class="flex justify-between flex-wrap items-center relative px-5 lg:px-10">
                             <!-- NavBar -->
-                            <nav class="hidden lg:block lg:w-2/5">
+                            <nav class="hidden lg:block lg:w-2/5 header-text">
                                 <div v-if="menu"  class="hidden lg:flex items-center text-sml scroll">
                                     <ul  v-for="(item, i) in menu.items" :key="i" @mouseover="activeId = activeId = item._id" @mouseleave="activeId = activeId = null">
                                         <!-- main child -->
@@ -24,7 +24,7 @@
                                         <!-- main child -->
                                         <!-- sub child -->
                                         <transition name="slide">
-                                            <div v-if="item._id == activeId && item.childrens.length > 0" class="bg-white absolute  left-0 right-0 top-full z-20 border-t border-b border-gray-300 px-10">
+                                            <div v-if="item._id == activeId && item.childrens.length > 0" class="header-color absolute  left-0 right-0 top-full z-20 border-t border-b border-gray-300 px-10">
                                                 <div class="flex items-center scroll">
                                                     <div v-for="(item,i) in item.childrens" :key="i" @mouseover="subItems = subItems = item.collectionId" @mouseleave="subItems = subItems = null">
                                                         <div class="chivron-box flex items-center ml-mr-2 py-5">
@@ -36,7 +36,7 @@
                                                             </button>
                                                         </div>
                                                         <transition name="slide">
-                                                            <div v-if="item.collectionId == subItems" class="bg-white absolute left-0 right-0 top-full z-20 border-t border-gray-300 px-10">
+                                                            <div v-if="item.collectionId == subItems" class="header-color absolute left-0 right-0 top-full z-20 border-t border-gray-300 px-10">
                                                                 <div class="flex flex-col pt-5 mb-2" v-if="item.childrens && item.childrens.length > 0">
                                                                     <div class="mb-3" v-for="(child,ii) in item.childrens" :key="ii">
                                                                         <nuxt-link  class="ml-font-bold-hover" :to="child.url">
@@ -65,7 +65,7 @@
                             </div>
                             <!-- logo -->
                             <!-- icons-->
-                            <div class="w-auto lg:w-2/5" >
+                            <div class="w-auto lg:w-2/5 header-text" >
                                 <div class="flex items-center justify-end">
                                     <div class="flex items-center justify-between gap-2">
                                         <!-- search -->
@@ -73,7 +73,7 @@
                                             <!-- show search -->
                                             <transition name="slide-right">
                                                 <div v-if="showSearch" @mouseleave="showSearch=false">
-                                                    <form @submit.prevent="search" class="search flex items-center border-b border-black py-1" action="/shop?">
+                                                    <form @submit.prevent="search" class="search flex items-center border-b border-primary py-1" action="/shop?">
                                                         <input v-model="q" class="bg-transparent outline-none text-sml" :placeholder="$settings.sections.header.search_text" type="search" name="q">
                                                         <button aria-label="Search button">
                                                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.17 16.48L12 11.36a5.5 5.5 0 10-4.22 2 5.41 5.41 0 003.51-1.27l5.14 5.13a.51.51 0 00.7 0 .5.5 0 00.04-.74zm-9.35-4.15a4.5 4.5 0 110-9 4.5 4.5 0 010 9z" fill="currentColor"></path></svg>
@@ -103,7 +103,9 @@
                                         <div v-if="$settings.sections.header.icons.wishlist" class="heart transition-all ease-in-out delay-150">
                                             <router-link  to="/wishlist" title="Wishlist" class="flex flex-col justify-center relative">
                                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.48 3.91a3.25 3.25 0 012.68 1.62L10 6.85l.83-1.33a3.12 3.12 0 012.63-1.61 2.8 2.8 0 012.08.93c1.48 1.59 1.33 3.78-.37 5.57L10 15.66l-5.22-5.3c-1.67-1.85-1.8-4-.36-5.53a2.8 2.8 0 012.06-.92zm0-1a3.8 3.8 0 00-2.79 1.24C1.94 6 2 8.73 4 11l6 6.06 5.9-6c2.16-2.27 2.15-5.06.4-6.95a3.871 3.871 0 00-2.82-1.25A4.1 4.1 0 0010 5a4.23 4.23 0 00-3.52-2.09z" fill="currentColor"></path></svg>
-                                                <small v-if="$store.state.wishlist.length>0"  class="border-2 border-white bg-black -top-2.5 -right-2 rounded-full absolute w-4.5 h-4.5 text-white flex justify-center items-center text-xs">{{ $store.state.wishlist.length }}</small>
+                                                <div v-if="$store.state.wishlist.length>0" class="bg-primary -top-2.5 -right-2 rounded-full absolute w-4.5 h-4.5 text-white flex justify-center items-center text-xs">
+                                                    <small class="w-auto h-auto">{{ $store.state.wishlist.length }}</small>
+                                                </div>
                                             </router-link>
                                         </div>
                                         <!-- wishlist -->
@@ -111,7 +113,9 @@
                                         <div v-if="$settings.sections.header.icons.cart" class="cart py-1 transition-all ease-in-out delay-150">
                                             <router-link  to="/cart" title="Cart" id="cart-icon" class="flex flex-col justify-center relative">
                                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.63 17.47l-.6-11a.51.51 0 00-.5-.47h-2v-.43a3.5 3.5 0 00-7 0V6h-2a.51.51 0 00-.5.47l-.62 11a.49.49 0 00.49.53h12.3a.49.49 0 00.43-.53zm-12.31-.42L4.9 7h10.2l.56 10.1-11.34-.05zM7.5 5.57a2.5 2.5 0 115 0V6h-5v-.43z" fill="currentColor"></path></svg>
-                                                <small v-if="$store.state.cart.length>0" class="border-2 border-white bg-black -top-2.5 -right-2 rounded-full absolute w-4.5 h-4.5 text-white flex justify-center items-center text-xs">{{ $store.state.cart.length }}</small>
+                                                <div v-if="$store.state.cart.length>0" class="bg-primary -top-2.5 -right-2 rounded-full absolute w-4.5 h-4.5 text-white flex justify-center items-center text-xs">
+                                                    <small>{{ $store.state.cart.length }}</small>
+                                                </div>
                                             </router-link>
                                         </div>
                                         <!-- cart -->
@@ -129,8 +133,8 @@
                         </div>
                     </div>
                     <!--  -->
-                    <div v-if="$settings.sections.header.icons.search" class="px-5 pb-5 lg:hidden bg-white">
-                        <form @submit.prevent="search" class="search flex justify-between items-center border-b pb-2 border-black" action="/shop?">
+                    <div v-if="$settings.sections.header.icons.search" class="px-5 pb-5 lg:hidden header-color header-text">
+                        <form @submit.prevent="search" class="search flex justify-between items-center border-b pb-2 border-primary" action="/shop?">
                             <input v-model="q" class="bg-transparent outline-none text-sml w-full" :placeholder="$settings.sections.header.search_text" type="search" name="q">
                             <button aria-label="Search button">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.17 16.48L12 11.36a5.5 5.5 0 10-4.22 2 5.41 5.41 0 003.51-1.27l5.14 5.13a.51.51 0 00.7 0 .5.5 0 00.04-.74zm-9.35-4.15a4.5 4.5 0 110-9 4.5 4.5 0 010 9z" fill="currentColor"></path></svg>
@@ -184,12 +188,15 @@ export default {
             const currentScrollPosition = window.pageYOffset;
             if(currentScrollPosition <= 80) {
                 header.style.position = 'absolute';
+                header.style.animation = 'opacity 2s ease-in-out';
             }
             else {
                 if (currentScrollPosition <= this.lastScrollPosition) {
                     header.style.position = 'fixed';
+                    header.style.animation = 'opacity 2s ease-in-out';
                 } else {
                     header.style.position = 'absolute';
+                    header.style.animation = 'opacity 2s ease-in-out';
                 }
                 this.lastScrollPosition = currentScrollPosition;
             }
@@ -197,7 +204,28 @@ export default {
     },
 }
 </script>
+
 <style scoped>
+.w-4\.5 {
+  width: 18px;
+}
+
+.h-4\.5 {
+  height: 18px;
+} 
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .ml-mr-1 {
     margin-right: 0.25rem;
 }

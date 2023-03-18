@@ -9,13 +9,13 @@
         <div v-if="!loading.cart && items.length == 0" class="flex justify-center p-5">
             <div class="flex flex-col items-center">
                 <h2 class="w-full text-center text-lg mb-3">{{ $settings.sections.cart.empty_text }}</h2>
-                <nuxt-link to="/shop" class="flex items-center py-2 px-4 justify-center border border-black rounded-full">
+                <nuxt-link to="/shop" class="flex items-center py-2 px-4 justify-center border border-primary rounded-full">
                     <span class="w-full text-sml ml-font-bold-hover">{{ $settings.sections.cart.buttons.back_to_shop_text }}</span>
                 </nuxt-link>
             </div>
         </div>
         <!-- empty cart -->
-        <div v-if="!loading.cart && !loading.upsells && items.length > 0">
+        <div class="mb-16" v-if="!loading.cart && !loading.upsells && items.length > 0">
             <!-- title -->
             <div class="my-5 px-5 xl:px-10">
                 <h2 class="text-lg ml-font-bold">{{$settings.sections.cart.title}}</h2>
@@ -49,17 +49,17 @@
                     <div class="p-5 flex flex-col border border-gray-300 rounded-md" v-if="!loading.cart && items.length > 0">
                         <!--  -->
                         <div class="bg-white flex justify-between pb-5">
-                            <h2 class="text-sml ml-font-bold">{{ $settings.sections.cart.subtotal_text }}({{items.length}})</h2>
+                            <h2 class="text-sml ml-font-bold">{{ $settings.sections.cart.subtotal_text }} ({{items.length}})</h2>
                             <h2 class="text-sml ml-font-bold">{{ $store.state.currency.symbol }} {{ total.toFixed(2) }}</h2>
                         </div>
                         <!--  -->
                         <div class="flex flex-col">
-                            <div class="mb-5 cursor-pointer flex items-center justify-center border border-black rounded-full p-4 ml-font-bold-hover">
+                            <div class="cursor-pointer flex items-center justify-center border border-primary rounded-full p-4 ml-font-bold-hover">
                                 <a href="/checkout2">
                                     <span class="text-sml">{{ $settings.sections.cart.buttons.checkout_text }}</span>
                                 </a>
                             </div>
-                            <div class="cursor-pointer flex items-center justify-center border border-black rounded-full p-4 ml-font-bold-hover">
+                            <div v-if="$settings.sections.cart.buttons.show_back_to_shop" class="mt-5 cursor-pointer flex items-center justify-center border border-primary rounded-full p-4 ml-font-bold-hover">
                                 <nuxt-link to="/shop">
                                     <span class="text-sml">{{ $settings.sections.cart.buttons.back_to_shop_text }}</span>
                                 </nuxt-link>
@@ -71,7 +71,7 @@
                 <!-- totla and placeorder -->
             </div>                            
             <!-- up sell -->
-            <div class="flex flex-col bg-white mb-16">
+            <div v-if="$settings.sections.cart.upsell.active" class="flex flex-col bg-white">
                 <div class="pt-5 lg:mx-5 xl:mx-10" v-if="upsells.length > 0">
                     <h2 class="text-base text-center pb-8">{{ $settings.sections.cart.upsell.title }}</h2>
                 </div>
