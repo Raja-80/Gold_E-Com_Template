@@ -19,6 +19,7 @@
                     --copyright-text: rgb(var(--copyright-text-rgb)); 
             }
             .bg-primary { background-color: var(--primary-color); }
+            .bg-text-primary { color: var(--primary-color); }
             .border-primary { border-color: var(--primary-color); }
             .text-primary { color: var(--text-color); }
             .primary-hover {

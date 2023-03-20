@@ -12,7 +12,7 @@
                                 <svg class="lg:mx-1 hidden lg:block" :class="isVisible.collections == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                             </div>
                         </div>
-                        <transition name="slide">
+                        <transition :name="windowWidth < 1024 ? 'fade' : 'slide'">
                             <div class="bg-white fixed lg:absolute w-full h-full lg:h-auto inset-0 lg:top-full lg:inset-y-auto lg:bottom-auto z-50 overflow-auto lg:px-10" v-if="isVisible.collections">
                                 <div class="flex flex-col justify-between h-full">
                                     <div>
@@ -39,7 +39,7 @@
                                         </div>
                                     </div>
                                     <div class="flex flex-col justify-end" @click="showBodyScroll">
-                                        <div @click="isVisible.collections=false" class="lg:hidden bg-black py-5 px-8 mx-5 rounded-full cursor-pointer click-effect ml-font-bold-hover my-5">
+                                        <div @click="isVisible.collections=false" class="lg:hidden bg-black py-5 px-8 mx-5 rounded-full cursor-pointer  ml-font-bold-hover my-5">
                                             <div class="flex items-center justify-center text-sml text-white">
                                                 <span>{{ $settings.sections.blog.sidebar.button_text1 }} <span> {{ items.length }} </span> {{ $settings.sections.blog.sidebar.button_text2 }}</span>
                                             </div>   
@@ -71,8 +71,8 @@
                             <svg class="lg:mx-1 hidden lg:block" :class="isVisible.sort == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                         </div>
                     </div>
-                    <transition name="slide">
-                        <div class="bg-white fixed lg:absolute w-full h-full lg:h-auto inset-0 lg:top-full lg:inset-y-auto lg:bottom-auto z-50 overflow-auto lg:px-10" v-if="isVisible.sort">
+                    <transition :name="windowWidth < 1024 ? 'fade' : 'slide'">
+                        <div class="bg-white fixed lg:absolute w-full h-full lg:h-auto inset-0 lg:top-full lg:inset-y-auto lg:bottom-auto z-50 overflow-auto lg:overflow-hidden lg:px-10" v-if="isVisible.sort">
                             <div class="flex flex-col justify-between h-full">
                                 <div>
                                     <div class="flex items-center justify-between py-5 lg:hidden border-b border-gray-300 px-5">
@@ -98,7 +98,7 @@
                                     </div>
                                 </div>
                                 <div class="flex flex-col justify-end" @click="showBodyScroll">
-                                    <div @click="isVisible.sort=false" class="lg:hidden bg-black py-5 px-8 mx-5 rounded-full cursor-pointer click-effect ml-font-bold-hover my-5">
+                                    <div @click="isVisible.sort=false" class="lg:hidden bg-black py-5 px-8 mx-5 rounded-full cursor-pointer  ml-font-bold-hover my-5">
                                         <div class="flex items-center justify-center text-sml text-white">
                                             <span>{{ $settings.sections.blog.sidebar.button_text1 }} <span> {{ items.length }} </span> {{ $settings.sections.blog.sidebar.button_text2 }}</span>
                                         </div>   
@@ -323,15 +323,35 @@ input[type="radio"] + div svg {
 
 input[type="checkbox"]:checked + div svg ,
 input[type="radio"]:checked + div svg {
-    margin-right: 2px;
     height: 1.25rem;
     width: 1.25rem;
     opacity: 1;
 }
 
+input[type="checkbox"]:checked + div svg ,
+input[type="radio"]:checked + div svg {
+    margin-right: 4px;
+}
+
+[dir="rtl"] input[type="checkbox"]:checked + div svg ,
+[dir="rtl"] input[type="radio"]:checked + div svg {
+    margin-left: 4px;
+    margin-right: 0;
+}
+
+input[type="checkbox"]:checked + div + label ,
+input[type="radio"]:checked + div + label {
+    transition: all 0.3s ease;
+}
+
 input[type="checkbox"]:checked + div + label ,
 input[type="radio"]:checked + div + label {
     font-family: Century Gothic Std Bold,Noto Sans JP,Noto Sans SC,Noto Sans TC,Noto Sans KR;
-    transition: all 0.3s ease;
+}
+
+[dir="rtl"] input[type="checkbox"]:checked + div + label ,
+[dir="rtl"] input[type="radio"]:checked + div + label {
+    font-family: pingarlt,-apple-system,BlinkMacSystemFont;
+    font-weight: 700;
 }
 </style>

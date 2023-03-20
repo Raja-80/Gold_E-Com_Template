@@ -24,7 +24,7 @@
                                         <!-- main child -->
                                         <!-- sub child -->
                                         <transition name="slide">
-                                            <div v-if="item._id == activeId && item.childrens.length > 0" class="header-color absolute  left-0 right-0 top-full z-20 border-t border-b border-gray-300 px-10">
+                                            <div v-if="item._id == activeId && item.childrens.length > 0" class="header-color absolute left-0 right-0 top-full z-20 border-t border-b border-gray-300 px-10">
                                                 <div class="flex items-center scroll">
                                                     <div v-for="(item,i) in item.childrens" :key="i" @mouseover="subItems = subItems = item.collectionId" @mouseleave="subItems = subItems = null">
                                                         <div class="chivron-box flex items-center ml-mr-2 py-5">

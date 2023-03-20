@@ -53,7 +53,7 @@
                             <div class="flex flex-wrap mt-4">
                                 <div v-for="item in socialMedia.filter(s=>$settings.sections.footer.social_media[s.name])" :key="item.name" class="flex items-center justify-center ml-mr-4 mt-4">
                                     <a class="h-full flex" :href="$settings.sections.footer.social_media[item.name]" target="_blank" rel="noopener noreferrer">
-                                        <si-image class="h-7 w-7" width="40" height="40" :src="item.image" :alt="item.name"/>
+                                        <si-image class="h-8 w-8" width="40" height="40" :src="item.image" :alt="item.name"/>
                                     </a>
                                 </div>
                             </div>
@@ -230,7 +230,7 @@
                     <div class="lg:block" v-if="windowWidth < 1024 ? isVisible.PaymentMethods : true">
                         <div class="payment_images flex flex-wrap mt-4">
                             <div v-for="item in methods.filter(m=>$settings.sections.footer.methods[m.name])" :key="item.name" class="flex ml-mr-4 mt-4">
-                                <si-image  width="60" height="20" :src="item.image" :alt="item.name" class="h-full w-8 object-contain"/>
+                                <si-image  width="60" height="20" :src="item.image" :alt="item.name" class="h-full w-12 object-contain"/>
                             </div>
                         </div>
                     </div>
@@ -275,58 +275,58 @@
           methods: [
                     {
                         name: 'visa',
-                        image: 'https://cdn-icons-png.flaticon.com/512/493/493837.png'
+                        image: 'https://img.icons8.com/color/256/visa.png'
                     },
                     {
                         name: 'mastercard',
-                        image: 'https://cdn-icons-png.flaticon.com/512/8765/8765366.png'
+                        image: 'https://cdn1.iconfinder.com/data/icons/credit-card-icons/512/master.png'
                     },
                     {
                         name: 'transfer',
-                        image: 'https://cdn-icons-png.flaticon.com/512/1771/1771211.png'
-                    },
-                    {
-                        name: 'cash',
-                        image: 'https://cdn-icons-png.flaticon.com/512/5074/5074322.png'
+                        image: 'https://cdn1.iconfinder.com/data/icons/simplicity-payment-methods/512/bank_trasfer-256.png'
                     },
                     {
                         name: 'paypal',
-                        image: 'https://cdn-icons-png.flaticon.com/512/356/356107.png'
+                        image: 'https://cdn0.iconfinder.com/data/icons/credit-8/512/17_credit-256.png'
                     },
+                    {
+                        name: 'cash',
+                        image: 'https://static.vecteezy.com/system/resources/previews/002/952/794/large_2x/cash-on-delivery-steacker-free-vector.jpg'
+                    }
                 ],
                 socialMedia: [
                     {
                         name: 'facebook',
-                        image: 'https://cdn-icons-png.flaticon.com/512/4406/4406234.png'
+                        image: 'https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Facebook_colored_svg_copy-256.png'
                     },
                     {
                         name: 'twitter',
-                        image: 'https://cdn-icons-png.flaticon.com/512/356/356076.png'
+                        image: 'https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_twitter-256.png'
                     },
                     {
                         name: 'instagram',
-                        image: 'https://cdn-icons-png.flaticon.com/512/1362/1362857.png'
+                        image: 'https://cdn1.iconfinder.com/data/icons/social-circle-3/32/instagram_circle-256.png'
                     },
                     {
                         name: 'youtube',
-                        image: 'https://cdn-icons-png.flaticon.com/512/4628/4628711.png'
+                        image: 'https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_youtube-256.png'
                     },
                     {
                         name: 'linkedin',
-                        image: 'https://cdn-icons-png.flaticon.com/512/356/356096.png'
+                        image: 'https://cdn1.iconfinder.com/data/icons/logotypes/32/circle-linkedin-256.png'
                     },
                     {
                         name: 'whatsapp',
-                        image: 'https://cdn-icons-png.flaticon.com/512/160/160200.png'
+                        image: 'https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo-whatsapp-256.png'
                     },
                     {
                         name: 'snapchat',
-                        image: 'https://cdn-icons-png.flaticon.com/512/1383/1383333.png'
+                        image: 'https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_snapchat-256.png'
                     },
-                    {
-                        name: 'tiktok',
-                        image: 'https://cdn-icons-png.flaticon.com/512/3046/3046122.png'
-                    }
+                    // {
+                    //     name: 'tiktok',
+                    //     image: 'https://cdn4.iconfinder.com/data/icons/social-media-flat-color/512/tiktok_flat_color-256.png'
+                    // }
             ],
             langMenu: [
                 {

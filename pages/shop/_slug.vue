@@ -2,9 +2,37 @@
     <div class="">
         <si-app-loader placement="BEFORE_SHOP_SIDEBAR"/>
         <div class="relative">
+            <div class="collection-image">
+                <div v-if="loading.collections" class="flex justify-center items-center my-5">
+                    <si-loader></si-loader>
+                </div>
+                <div v-if="!loading.collections && urlSlugs.length == 1">
+                    <div v-for="(item, i) in collections" :key="i">
+                        <div v-if=" item.slug == urlSlugs[0]">
+                            <div class="pb-1/5-res relative overflow-hidden">
+                                <si-image  width="400" height="400" class="img h-full w-full absolute inset-0 object-cover" :src="item.image ? item.image.src : null" :alt="item.name" srcset=""/>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <h1 class="text-center text-xl lg:text-2xl text-white ml-font-bold text-shadoow">{{ item.name }}</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-for="(child, i) in item.childrens" :key="i">
+                            <div v-if="child.slug == urlSlugs[0]">
+                                <div class="pb-1/5-res relative overflow-hidden">
+                                    <si-image  width="400" height="400" class="img h-full w-full absolute inset-0 object-cover" :src="child.image ? child.image.src : null" :alt="child.name" srcset=""/>
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <h1 class="text-center text-xl lg:text-2xl text-white ml-font-bold text-shadoow">{{ child.name }}</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="flex items-center justify-between lg:relative under-border"> 
-                <transition name="slide">
-                    <div v-if="$settings.sections.shop.sidebar.active" :class="showSideBar ? 'show':'hide'" class="bg-white fixed lg:static hidden lg:block w-full lg:w-auto h-full lg:h-auto inset-0 lg:inset-auto z-50 lg:z-auto overflow-auto">
+                <transition name="fade">
+                    <!-- v-if="$settings.sections.shop.sidebar.active" -->
+                    <div v-if="windowWidth < 1024 ? showSideBar : true"  :class="showSideBar ? 'show':'hide'" class="bg-white fixed lg:static hidden lg:block w-full lg:w-auto h-full lg:h-auto inset-0 lg:inset-auto z-50 lg:z-auto overflow-auto">
                         <div class="flex flex-col justify-between h-full">
                             <div>
                                 <div class="flex items-center justify-between py-5 lg:hidden border-b lg:border-0 px-5">
@@ -18,41 +46,45 @@
                                 <div class="flex flex-col lg:flex-row mx-5 lg:mx-10">
                                     <!--  Collections -->
                                     <div v-if="$settings.sections.shop.sidebar.collections.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.collections=true : null" @mouseleave="windowWidth >= 1024 ? isVisible.collections=false : null">
-                                        <div @click="showCollections" class="flex items-center  justify-between cursor-pointer py-5">
+                                        <div @click="showCollections" class="flex items-center lg:gap-1  justify-between cursor-pointer py-5">
                                             <h2 class="text-sml ml-font-bold-hover" :class="isVisible.collections==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.collections.title }}</h2>
-                                            <svg class="lg:mx-1" :class="isVisible.collections == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                            <svg :class="isVisible.collections == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </div>
                                         <transition name="slide">
                                             <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.collections && collections.length > 0">
                                                 <div class="flex flex-col text-sml mb-2 lg:pt-5 lg:border-t border-gray-300">
                                                     <div v-for="(item, i) in collections" :key="i" class="pb-3">
-                                                        <div class="flex items-center w-full">
+                                                        <div  class="flex items-center w-full">
                                                             <label class="w-full lg:w-auto relative flex items-center transition delay-300 ease-in-out">
-                                                                <div class="w-full lg:w-auto flex flex-col cursor-pointer" v-if="item.childrens && item.childrens.length > 0" @mouseover="windowWidth >= 1024 ? setActiveOver(i+'fit',i+'ret') : null" @mouseleave="windowWidth >= 1024 ? setActiveLeave(i+'fit',i+'ret') : null">
-                                                                    <label :for="item.slug" :id="i+'ret'" @click="setActive(i+'fit',i+'ret')" class="cursor-pointer flex items-center justify-between primary-hover">
-                                                                        <span class="text-sml cursor-pointer">{{ item.name }}</span>
-                                                                        <svg class="rotated lg:mx-1"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
-                                                                    </label>
-                                                                    <div :id="i+'fit'" class="fit-collapsible" :class="item.childrens.length > 0 ? 'sub-collections' : ''">
-                                                                        <div class="list-sub-collections fit-collapsible-content" v-if="item.childrens && item.childrens.length > 0" >
-                                                                            <div v-for="(child, i) in item.childrens" :key="i" class="pt-3">
-                                                                                <label class="relative flex items-center">
-                                                                                    <input hidden type="checkbox" class="form-checkbox absolute top-0 left-0" style="z-index: -1" :checked="params['collections.slug-in'] && params['collections.slug-in'].indexOf(child.slug) >= 0" :id="child.slug" @change="setParams($event, 'collections.slug-in', child.slug)">
-                                                                                    <div class="flex justify-center items-center">
-                                                                                        <svg class="fill-current "  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
-                                                                                    </div>
-                                                                                    <label  :for="child.slug" class="cursor-pointer text-sml primary-hover">{{ child.name }}</label>
-                                                                                </label>
+                                                                <div>
+                                                                    <div  class="w-full lg:w-auto flex lg:gap-1 flex-col cursor-pointer" v-if="item.childrens && item.childrens.length > 0" @mouseover="windowWidth >= 1024 ? setActiveOver(i+'fit',i+'ret') : null" @mouseleave="windowWidth >= 1024 ? setActiveLeave(i+'fit',i+'ret') : null">
+                                                                        <label :for="item.slug" :id="i+'ret'" @click="setActive(i+'fit',i+'ret')" class="cursor-pointer flex items-center lg:gap-1 justify-between primary-hover rotated">
+                                                                            <span class="text-sml cursor-pointer">{{ item.name }}</span>
+                                                                            <svg  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                                                        </label>
+                                                                        <div :id="i+'fit'" class="fit-collapsible text-primary" :class="item.childrens.length > 0 ? 'sub-collections' : ''">
+                                                                            <div class="list-sub-collections fit-collapsible-content" v-if="item.childrens && item.childrens.length > 0" >
+                                                                                <div v-for="(child, i) in item.childrens" :key="i" class="pt-3">
+                                                                                    <label class="relative flex items-center">
+                                                                                        <input hidden type="checkbox" class="form-checkbox absolute top-0 left-0" style="z-index: -1" :checked="params['collections.slug-in'] && params['collections.slug-in'].indexOf(child.slug) >= 0" :id="child.slug" @change="setParams($event, 'collections.slug-in', child.slug)">
+                                                                                        <div class="flex justify-center items-center">
+                                                                                            <svg class="fill-current "  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
+                                                                                        </div>
+                                                                                        <label  :for="child.slug" class="cursor-pointer text-sml primary-hover">{{ child.name }}</label>
+                                                                                    </label>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
+                                                                    </div> 
+                                                                </div>
+                                                                <div>
+                                                                    <div class="flex items-center" v-if="item.childrens && item.childrens.length == 0">
+                                                                        <input hidden  type="checkbox" class="form-checkbox absolute top-0 left-0"  style="z-index: -1" :checked="params['collections.slug-in'] && params['collections.slug-in'].indexOf(item.slug) >= 0" :id="item.slug" @change="setParams($event, 'collections.slug-in', item.slug)">
+                                                                        <div class="flex justify-center items-center">
+                                                                            <svg class="fill-current "  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
+                                                                        </div>
+                                                                        <label class="cursor-pointer text-sml primary-hover" :for="item.slug">{{ item.name }}</label>
                                                                     </div>
-                                                                </div> 
-                                                                <div v-if="item.childrens && item.childrens.length == 0" class="flex items-center">
-                                                                    <input hidden  type="checkbox" class="form-checkbox absolute top-0 left-0"  style="z-index: -1" :checked="params['collections.slug-in'] && params['collections.slug-in'].indexOf(item.slug) >= 0" :id="item.slug" @change="setParams($event, 'collections.slug-in', item.slug)">
-                                                                    <div class="flex justify-center items-center">
-                                                                        <svg class="fill-current "  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
-                                                                    </div>
-                                                                    <label class="cursor-pointer text-sml primary-hover" :for="item.slug">{{ item.name }}</label>
                                                                 </div>
                                                             </label>                         
                                                         </div>
@@ -64,9 +96,9 @@
                                     <!-- Collections --> 
                                     <!-- Prices -->
                                     <div v-if="$settings.sections.shop.sidebar.prices.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.prices=true: null" @mouseleave="windowWidth >= 1024 ? isVisible.prices=false:null">
-                                        <div @click="showPrices" class="flex items-center justify-between cursor-pointer py-5">
+                                        <div @click="showPrices" class="flex items-center lg:gap-1 justify-between cursor-pointer py-5">
                                             <h2 class="text-sml ml-font-bold-hover" :class="isVisible.prices==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.prices.title }}</h2>
-                                            <svg class="lg:mx-1" :class="isVisible.prices == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                            <svg  :class="isVisible.prices == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </div>
                                         <transition name="slide">
                                             <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.prices && filters">
@@ -81,9 +113,9 @@
                                     <!-- Prices -->
                                     <!-- Sizes -->
                                     <div v-if="$settings.sections.shop.sidebar.sizes.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.sizes=true : null" @mouseleave="windowWidth >= 1024 ? isVisible.sizes=false : null">
-                                        <div @click="showSizes" class="flex items-center justify-between cursor-pointer py-5">
+                                        <div @click="showSizes" class="flex items-center lg:gap-1 justify-between cursor-pointer py-5">
                                             <h2 class="text-sml ml-font-bold-hover" :class="isVisible.sizes==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.sizes.title }}</h2>
-                                            <svg class="lg:mx-1" :class="isVisible.sizes == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                            <svg  :class="isVisible.sizes == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </div>
                                         <transition name="slide">
                                             <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.sizes && filters && filters.sizes.length > 0">
@@ -106,9 +138,9 @@
                                     <!-- Sizes -->
                                     <!-- Colors -->
                                     <div v-if="$settings.sections.shop.sidebar.colors.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.colors=true : null" @mouseleave="windowWidth >= 1024 ? isVisible.colors=false: null">
-                                        <div @click="showColors" class="flex items-center justify-between cursor-pointer py-5">
+                                        <div @click="showColors" class="flex items-center lg:gap-1 justify-between cursor-pointer py-5">
                                             <h2 class="text-sml ml-font-bold-hover" :class="isVisible.colors==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.colors.title }}</h2>
-                                            <svg class="lg:mx-1" :class="isVisible.colors == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                            <svg  :class="isVisible.colors == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </div>
                                         <transition name="slide">
                                             <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.colors && filters && filters.colors.length > 0">
@@ -131,9 +163,9 @@
                                     <!-- Colors -->
                                     <!-- tags -->
                                     <div v-if="$settings.sections.shop.sidebar.tags.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.tags=true: null" @mouseleave="windowWidth >= 1024 ? isVisible.tags=false:null">
-                                        <div @click="showTags" class="flex items-center justify-between cursor-pointer py-5">
+                                        <div @click="showTags" class="flex items-center lg:gap-1 justify-between cursor-pointer py-5">
                                             <h2 class="text-sml ml-font-bold-hover" :class="isVisible.tags==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.tags.title }}</h2>
-                                            <svg class="lg:mx-1" :class="isVisible.tags == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                            <svg  :class="isVisible.tags == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </div>
                                         <transition name="slide">
                                             <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.tags && filters && filters.tags.length > 0">
@@ -156,9 +188,9 @@
                                     <!-- tags -->
                                     <!-- brands -->
                                     <div  v-if="$settings.sections.shop.sidebar.brands.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.brands=true : null" @mouseleave="windowWidth >= 1024 ? isVisible.brands=false : null">
-                                        <div @click="showBrands" class="flex items-center justify-between cursor-pointer py-5">
+                                        <div @click="showBrands" class="flex items-center lg:gap-1 justify-between cursor-pointer py-5">
                                             <h2 class="text-sml ml-font-bold-hover" :class="isVisible.brands==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.brands.title }}</h2>
-                                            <svg class="lg:mx-1" :class="isVisible.brands == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                            <svg  :class="isVisible.brands == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </div>
                                         <transition name="slide">
                                             <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.brands && filters && brands.length > 0">
@@ -184,7 +216,7 @@
                                 </div>
                             </div>
                             <div @click="showBodyScroll">
-                                <div @click="showSideBar=false" class="lg:hidden bg-black py-5 px-8 mx-5 rounded-full cursor-pointer click-effect ml-font-bold-hover my-5">
+                                <div @click="showSideBar=false" class="lg:hidden bg-black py-5 px-8 mx-5 rounded-full cursor-pointer ml-font-bold-hover my-5">
                                     <div class="flex items-center justify-center text-sml text-white">
                                         <span>{{ $settings.sections.shop.sidebar.button_text1}} <span> {{ items.length }} </span> {{ $settings.sections.shop.sidebar.button_text2 }}</span>
                                     </div>   
@@ -221,8 +253,8 @@
                                     <svg class="lg:ml-1 hidden lg:block" :class="isVisible.sort == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                 </div>
                             </div>
-                            <transition name="slide">
-                                <div class="bg-white fixed lg:absolute w-full h-full lg:h-auto inset-0 lg:top-full lg:inset-y-auto lg:bottom-auto z-50 overflow-auto lg:px-10" v-if="isVisible.sort">
+                            <transition :name="windowWidth < 1024 ? 'fade' : 'slide'">
+                                <div class="bg-white fixed lg:absolute w-full h-full lg:h-auto inset-0 lg:top-full lg:inset-y-auto lg:bottom-auto z-50 overflow-auto lg:overflow-hidden lg:px-10" v-if="isVisible.sort">
                                     <div class="flex flex-col justify-between h-full">
                                         <div>
                                             <div class="flex items-center justify-between py-5 lg:hidden border-b border-gray-300 px-5">
@@ -248,7 +280,7 @@
                                             </div>
                                         </div>
                                         <div class="flex flex-col justify-end" @click="showBodyScroll">
-                                            <div @click="isVisible.sort=false" class="lg:hidden bg-black py-5 px-8 mx-5 rounded-full cursor-pointer click-effect ml-font-bold-hover my-5">
+                                            <div @click="isVisible.sort=false" class="lg:hidden bg-black py-5 px-8 mx-5 rounded-full cursor-pointer  ml-font-bold-hover my-5">
                                                 <div class="flex items-center justify-center text-sml text-white">
                                                     <span>{{ $settings.sections.shop.sidebar.button_text1}} <span> {{ items.length }} </span> {{ $settings.sections.shop.sidebar.button_text2 }}</span>
                                                 </div>   
@@ -334,6 +366,7 @@
 export default {
     data() {
         return {
+            urlSlugs: [],
             windowWidth: 0,
             showSideBar: false,
             isVisible : {
@@ -384,7 +417,7 @@ export default {
         },
         "$route.query.search"(val){
             this.$set(this.params, 'search', val);
-        }
+        },
     },
     async fetch(){
         this.$store.state.seo.title = this.$settings.sections.shop.title + ' - ' + this.$settings.store_name;
@@ -416,11 +449,18 @@ export default {
     mounted() {
         this.getWindowWidth();
         window.addEventListener('resize', this.getWindowWidth);
+        this.currentSlug()
     },
     beforeDestroy() {
         window.removeEventListener('resize', this.getWindowWidth);
     },
     methods: {
+        currentSlug() {
+            const slug = this.$route.params.slug
+            if( typeof(slug) !== 'undefined') {
+                this.urlSlugs = slug.split(" ");
+            }
+        },
         getWindowWidth() {
             this.windowWidth = window.innerWidth;
         },
@@ -435,7 +475,6 @@ export default {
             }
         },
         subCollections(){
-            console.log('collections items ====>', this.collections);
             for(let itm of this.collections){
                 if(itm.childrens && itm.childrens.length>0) itm.childrens = [];
             }
@@ -450,7 +489,6 @@ export default {
                     }
                 }
             }
-            console.log('items childrens is vide _______',this.collections);
         },
         setActive:function(id,idRet){
             if (window.innerWidth < 1024) {
@@ -494,7 +532,7 @@ export default {
             }
             for (const key in this.params) {
                 switch(key){
-                    case 'collections.slug-in': this.param = this.params[key];break;
+                    case 'collections.slug-in': this.param = this.params[key]; this.urlSlugs = this.params[key]  ;break;
                     case 'price.salePrice-from': this.query['price-from'] = this.params[key];break;
                     case 'price.salePrice-to': this.query['price-to'] = this.params[key];break;
                     case 'options.values.value1': this.query['colors-size'] = this.params[key];break;
@@ -602,6 +640,20 @@ export default {
 }
 </script>
 <style scoped>
+.text-shadoow {
+    filter: drop-shadow(0 0 0.625rem rgba(0, 0, 0, 0.8));
+}
+
+.pb-1\/5-res{
+  padding-bottom: 40%;
+}
+
+@media (min-width: 640px) {
+    .pb-1\/5-res{
+        padding-bottom: 30%;
+    }
+}
+
 @media (min-width: 1024px) {
     .lg\:ml-mr-3 {
         margin-right: 0.75rem;
@@ -611,8 +663,11 @@ export default {
         margin-left: 0.75rem;
         margin-right: 0;
     }
-}
 
+    .pb-1\/5-res{
+        padding-bottom: 20%;
+    }
+}
 
 @media (min-width:0px) and (max-width:1024px) { 
     .products-padding:nth-child(odd) {
@@ -674,11 +729,22 @@ input[type="radio"] + div svg {
 
 input[type="checkbox"]:checked + div svg ,
 input[type="radio"]:checked + div svg {
-    margin-right: 2px;
     height: 1.25rem;
     width: 1.25rem;
     opacity: 1;
 }
+
+input[type="checkbox"]:checked + div svg ,
+input[type="radio"]:checked + div svg {
+    margin-right: 4px;
+}
+
+[dir="rtl"] input[type="checkbox"]:checked + div svg ,
+[dir="rtl"] input[type="radio"]:checked + div svg {
+    margin-left: 4px;
+    margin-right: 0;
+}
+
 input[type="checkbox"]:checked + div + label ,
 input[type="radio"]:checked + div + label {
     transition: all 0.3s ease;
@@ -717,11 +783,15 @@ input[type="radio"]:checked + div + label {
     max-height: 500px;
 }
 
-.rotated{
-    transition: all 0.3s ease-in-out;
+.rotated > svg{
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+    transition-delay: 150ms;
+    transition-timing-function: linear;
 }
 
-.rotated.active{
+.rotated.active > svg{
     transform: rotate(180deg);
 }
 

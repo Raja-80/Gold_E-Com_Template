@@ -249,6 +249,7 @@ body{
   }
 }
 
+/* Click effect */
 .click-effect{
   position: relative;
   overflow: hidden;
@@ -292,28 +293,33 @@ body{
   transition: 0s;
 }
 
+/* slide */
+.slide-enter-active,
+.slide-leave-active {
+  transition-duration: 0.5s;
+}
+
 .slide-enter-active {
-  transition-duration: 0.3s;
   transition-timing-function: ease-in;
 }
 
 .slide-leave-active {
-  transition-duration: 0.3s;
-  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  transition-timing-function: ease-out;
 }
 
-.slide-enter-to, .slide-leave {
-  max-height: 100px;
-  opacity: 1;
-  overflow: hidden;
-}
-
-.slide-enter, .slide-leave-to {
+.slide-enter, 
+.slide-leave-to {
   max-height: 0;
   opacity: 0;
-  overflow: hidden;
 }
 
+.slide-enter-to, 
+.slide-leave {
+  max-height: 100px;
+  opacity: 1;
+}
+
+/* slide right search */
 .slide-right-enter-active {
   transition-duration: 0.3s;
   transition-timing-function: ease-in;
@@ -334,12 +340,21 @@ body{
   max-width: 0;
 }
 
-.fade-image-enter-active,
-.fade-image-leave-active {
-    transition: opacity 0.3s ease-in-out;
+/* fade trinsition */
+.fade-enter-active {
+  transition: opacity 0.5s ease-in;
 }
 
-.fade-image-enter,
-.fade-image-leave-to {
-    opacity: 0;
+.fade-leave-active {
+  transition: opacity 0.3s ease-out;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-to,
+.fade-leave {
+  opacity: 1;
 }

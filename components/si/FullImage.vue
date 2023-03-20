@@ -1,5 +1,5 @@
 <template>
-    <transition name="fade-image">
+    <transition name="fade">
         <div class="flex justify-center items-center fixed z-50 inset-0 md:p-10 p-5" :class="$store.state.fullImage!=null ? hideBodyScroll() : null" v-if="$store.state.fullImage">
             <div @click="$store.state.fullImage=null;showBodyScroll()" class="bg-white absolute inset-0"></div>
             <si-image class="relative md:h-full w-full md:w-auto z-10 object-contain cursor-pointer" :src="$store.state.fullImage" :alt="`Full screen image`"/>

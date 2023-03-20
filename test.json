@@ -1,0 +1,33 @@
+{
+    "image": {
+        "title": "pcd-dispatch29_1440_1200",
+        "_id": "63fe20669c46ed10105efc43",
+        "src": "https://storeno.b-cdn.net/stores/2-2023/1677598821890.png"
+    },
+    "parent": null,
+    "childrens": [],
+    "_id": "63fe20b39c46ed10105efc45",
+    "name": "العطور والجمال",
+    "slug": "fashion-and-accessories",
+    "description": "Explore Our Amazing Products",
+    "translates": [
+        {
+            "properties": [
+                {
+                    "_id": "6414594636dff2122fa690e8",
+                    "name": "name",
+                    "value": "FRAGRANCE & BEAUTY"
+                }
+            ],
+            "_id": "6414594636dff2122fa690e7",
+            "language": "EN"
+        },
+        {
+            "properties": [],
+            "_id": "6414594636dff2122fa690e9",
+            "language": "FR"
+        }
+    ],
+    "storeId": "641449f8f75290208b56ba87",
+    "__v": 0
+}
