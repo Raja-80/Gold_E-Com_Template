@@ -6,9 +6,6 @@
 
 <script>
 export default {
-  // mounted() {
-  // },
-
   props: ["isLoading"],
 };
 </script>

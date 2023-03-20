@@ -1,6 +1,7 @@
 <template>
     <nuxt-img @click="$emit('click')" :id="id" :src="newSrc" :alt="alt" loading="lazy" preload />
 </template>
+
 <script>
 export default {
     props: {
