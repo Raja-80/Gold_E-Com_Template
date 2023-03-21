@@ -1,25 +1,24 @@
 {
     "global_options": "Global Options",
     "colors": "Colors",
-    
-    
+    "select_all": "Select All",
+    "primary_colors": "Primary Colors",
     "primary_color": "Primary Color",
-    
-    
-    
+    "primary_text_color": "Primary Text Color",
+    "header_colors": "Header Colors",
+    "header_color": "Header Color",
+    "header_text_color": "Header Text Color",
+    "footer_colors": "Footer Colors",
+    "footer_color": "Footer Color",
+    "footer_text_color": "Footer Text Color",
+    "copyright_colors": "Copyright Colors",
+    "copyright_color": "Copyright Color",
+    "copyright_text_color": "Copyright Text Color",
     "options": "Options",
-    
-    
-    
-    
-    
     "add_to_cart_button": "Add to Cart Button",
     "show_add_to_cart": "Show Add to Cart",
     "show_reviews": "Show Reviews",
-    
-    
-    
-    
+    "show_wishlist": "Show Wishlist",
     "add_to_cart_to_checkout": "Add to Cart to Checkout",
     "add_to_cart_text": "Add to Cart Text",
     "added_text": "Added Text",
@@ -31,26 +30,25 @@
     "removed_from_wishlist": "Removed from Wishlist",
     "header": "Header",
     "header_logo": "Header Logo",
-    
+    "show_cart_icon": "Show Cart Icon",
+    "show_wishlist_icon": "Show Wishlist Icon",
+    "show_account_icon": "Show Account Icon",
+    "show_search_icon": "Show Search Icon",
+    "show_language": "Show Language",
+    "show_currency": "Show Currency",
+    "language_text": "Language Text",
+    "currency_text": "Currency Text",
+    "search_text": "Search Text",
     "menu": "Menu",
     "header_menu": "Header Menu",
-    
-    
-    
-    
-    
-    
-    
-    
     "footer": "Footer",
     "about": "About",
     "store_name": "Store Name",
     "footer_about": "Footer About",
-    
-    
-    
-    
-    
+    "location": "Location",
+    "location_URL": "Location URL",
+    "email": "Email",
+    "phone_number": "Phone Number",
     "social_media": "Social Media",
     "social_media_title": "Social Media Title",
     "facebook_url": "Facebook URL",
@@ -61,148 +59,41 @@
     "whatsapp_url": "Whatsapp URL",
     "snapchat_url": "Snapchat URL",
     "tiktok_url": "Tiktok URL",
-    
-    
-    
+    "footer_menus": "Footer Menus",
+    "show_first_menu": "Show First Menu",
+    "first_menu_title": "First Menu Title",
+    "first_menu": "First Menu",
+    "show_secend_menu": "Show Secend Menu",
+    "secend_menu_title": "Secend Menu Title",
+    "secend_menu": "Secend Menu",
+    "language": "Language",
+    "currency": "Currency",
     "payment_methods": "Payment Methods",
     "payment_methods_title": "Payment Methods Title",
     "show_visa": "Show Visa",
     "show_mastercard": "Show Mastercard",
     "show_transfer": "Show Transfer",
     "show_cash": "Show Cash",
-    
-    
-    
-    
-    
-    
-    "footer_menu": "Footer Menu",
-    
-    
+    "show_paypal": "Show Paypal",
     "copyright": "Copyright",
-    
-    
-    
     "copyright_text": "Copyright Text",
-    
-    
-    
-    
+    "copyright_menu": "Copyright Menu",
     "home_page": "Home Page",
     "collections": "Collections",
     "show_collections": "Show Collections",
-
+    "collections_description": "Collections Description",
     "selected_collections": "Selected Collections",
-    
-    
-    
-    
-    "collections_title": "Collections Title",
-
-    "posts_section": "Posts Section",
-
+    "collections_page": "Collections Page",
+    "blog_section": "Blog Section",
     "show_section": "Show Section",
     "section_title": "Section Title",
-
-
-
-
-
-
-
-    "cart": "Cart",
-    "wishlist": "Wishlist",
-    "show_add_to_wishlist": "Show Add to Wishlist",
-    "add_to_wishlist_text": "Add to Wishlist Text",
-    "products_section_1": "Products Section 1",
-    "section_1": "Section 1",
-    "show_section_1": "Show Section 1",
-    "section_1_title": "Section 1 Title",
-    "section_1_collections": "Section 1 Collections",
-    "section_1_tags": "Section 1 Tags",
-    "section_1_show_more_text": "Section 1 Show More Text",
-    "section_1_show_more_url": "Section 1 Show More URL",
-    "products_section_2": "Products Section 2",
-    "section_2": "Section 2",
-    "show_section_2": "Show Section 2",
-    "section_2_title": "Section 2 Title",
-    "section_2_collections": "Section 2 Collections",
-    "section_2_tags": "Section 2 Tags",
-    "section_2_show_more_text": "Section 2 Show More Text",
-    "section_2_show_more_url": "Section 2 Show More URL",
-    "products_section_3": "Products Section 3",
-    "section_3": "Section 3",
-    "show_section_3": "Show Section 3",
-    "section_3_title": "Section 3 Title",
-    "section_3_collections": "Section 3 Collections",
-    "section_3_tags": "Section 3 Tags",
-    "section_3_show_more_text": "Section 3 Show More Text",
-    "section_3_show_more_url": "Section 3 Show More URL",
-    "products_section_4": "Products Section 4",
-    "section_4": "Section 4",
-    "show_section_4": "Show Section 4",
-    "section_4_title": "Section 4 Title",
-    "section_4_collections": "Section 4 Collections",
-    "section_4_tags": "Section 4 Tags",
-    "section_4_show_more_text": "Section 4 Show More Text",
-    "section_4_show_more_url": "Section 4 Show More URL",
-    "products_section_5": "Products Section 5",
-    "section_5": "Section 5",
-    "show_section_5": "Show Section 5",
-    "section_5_title": "Section 5 Title",
-    "section_5_collections": "Section 5 Collections",
-    "section_5_tags": "Section 5 Tags",
-    "section_5_show_more_text": "Section 5 Show More Text",
-    "section_5_show_more_url": "Section 5 Show More URL",
-    "posts_list": "Posts List",
-    "show_more_text": "Show More Text",
-    "services_section": "Services Section",
-
-    "services_delivery": "Services Delivery",
-    "delivery": "Delivery URL",
-    "services_satisfaction": "Services Satisfaction",
-    "satisfaction": "Satisfaction URL",
-    "services_quality": "Services Quality",
-    "quality": "Quality URL",
-    "product_page": "Product Page",
-    "product_details": "Product Details",
-    "add_to_cart": "Add to Cart",
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    "buy_now": "Buy Now",
-    "show_buy_now": "Show Buy Now",
-    "buy_now_text": "Buy Now Text",
-    "related": "Related",
-    "show_related_products": "Show Related Products",
-    "related_products_title": "Related Products Title",
-    "upsell": "Upsell",
-    "show_upsell_products": "Show Upsell Products",
-    "upsell_products_title": "Upsell Products Title",
-    "reviews": "Reviews",
-    "reviews_title": "Reviews Title",
-    "share_buttons": "Share Buttons",
-    "show_share_buttons": "Show Share Buttons",
-    "share_buttons_title": "Share Buttons Title",
-    "show_whatsapp": "Show WhatsApp",
-    "show_facebook": "Show Facebook",
-    "show_twitter": "Show Twitter",
-    "show_linkedin": "Show Linkedin",
-    "post_page": "Post Page",
-    "post_details": "Post Details",
-    "related_posts": "Related Posts",
-    "show_related_posts": "Show Related Posts",
-    "related_posts_title": "Related Posts Title",
+    "posts_limit": "Posts Limit",
+    "button_text": "Button Text",
     "shop_page": "Shop Page",
     "sidebar": "Sidebar",
     "display": "Display",
     "show_sidebar": "Show Sidebar",
+    "collections_title": "Collections Title",
     "prices": "Prices",
     "show_prices": "Show Prices",
     "prices_title": "Prices Title",
@@ -217,8 +108,20 @@
     "brands": "Brands",
     "show_brands": "Show Brands",
     "brands_title": "Brands Title",
+    "filters": "Filters",
+    "filters_name": "Filters Name",
+    "buttons_texts": "Buttons Texts",
+    "text_1": "Text 1",
+    "text_2": "Text 2",
     "shop_content": "Shop Content",
-    "sorts": "Sort by",
+    "seo": "SEO",
+    "page_title": "Page Title",
+    "page_description": "Page Description",
+    "texts": "Texts",
+    "articles_name": "Articles Name",
+    "no_produts_text": "No Produts Text",
+    "sorts": "Sorts",
+    "sort_name": "Sort Name",
     "newest": "Newest",
     "oldest": "Oldest",
     "name_asc": "Name A-Z",
@@ -229,101 +132,62 @@
     "rating_desc": "Rating Desc",
     "pagination": "Pagination",
     "limit": "Limit",
-    "next_text": "Next Text",
-    "prev_text": "Back Text",
+    "product_page": "Product Page",
+    "product_details": "Product Details",
+    "quantity": "Quantity",
+    "quantity_text": "Quantity Text",
+    "add_to_cart": "Add to Cart",
+    "buy_now": "Buy Now",
+    "show_buy_now": "Show Buy Now",
+    "buy_now_text": "Buy Now Text",
+    "description": "Description",
+    "description_title": "Description Title",
+    "share_buttons": "Share Buttons",
+    "show_share_buttons": "Show Share Buttons",
+    "share_buttons_title": "Share Buttons Title",
+    "show_whatsapp": "Show WhatsApp",
+    "show_facebook": "Show Facebook",
+    "show_twitter": "Show Twitter",
+    "show_linkedin": "Show Linkedin",
+    "reviews": "Reviews",
+    "reviews_title": "Reviews Title",
+    "related": "Related",
+    "show_related_products": "Show Related Products",
+    "related_products_title": "Related Products Title",
+    "show_more_text": "Show More Text",
+    "upsell": "Upsell",
+    "show_upsell_products": "Show Upsell Products",
+    "upsell_products_title": "Upsell Products Title",
+    "cart_page": "Cart Page",
+    "cart_texts": "Cart Texts",
+    "title": "Title",
+    "empty_text": "Empty Text",
+    "procuct_text": "Procuct Text",
+    "price_text": "Price Text",
+    "total_text": "Total Text",
+    "subtotal_text": "Subtotal Text",
+    "buttons": "Buttons",
+    "place_order_text": "Place Order Text",
+    "back_to_shop_text": "Back to Shop Text",
+    "show_back_to_shop": "Show Back to Shop",
+    "wishlist_page": "Wishlist Page",
+    "wishlist_texts": "Wishlist Texts",
     "blog_page": "Blog Page",
     "categories": "Categories",
     "show_categories": "Show Categories",
     "categories_title": "Categories Title",
+    "blog_content": "Blog Content",
+    "blog_empty_text": "Blog Empty Text",
     "products": "Products",
     "show_products": "Show Products",
     "products_title": "Products Title",
-    "blog_content": "Blog Content",
-    "cart_page": "Cart Page",
-    "cart_texts": "Cart Texts",
-    "total_text": "Total Text",
-    "buttons": "Buttons",
-    "place_order_text": "Place Order Text",
-    "show_back_to_shop": "Show Back to Shop",
-    "wishlist_page": "Wishlist Page",
-    "wishlist_texts": "Wishlist Texts",
-    "title": "Title",
-    "empty_text": "Empty Text",
-    "back_to_shop_text": "Back to Shop Text",
-    "palest": "Palestine",
-    
-    
-    
-    
-    
-    
-    
-    
-    "select_all":"Select All",
-    
-    
-    "primary_colors":"Primary Colors",
-    "primary_text_color":"Primary Text Color",
-    "header_colors":"Header Colors",
-    "header_color":"Header Color",
-    "header_text_color":"Header Text Color",
-    "footer_colors":"Footer Colors",
-    "footer_color":"Footer Color",
-    "footer_text_color":"Footer Text Color",
-    "copyright_colors":"Copyright Colors",
-    "copyright_color":"Copyright Color",
-    "copyright_text_color":"Copyright Text Color",
-    
-    
-    "show_wishlist":"Show Wishlist",
-    "show_cart_icon":"Show Cart Icon",
-    "show_wishlist_icon":"Show Wishlist Icon",
-    "show_account_icon":"Show Account Icon",
-    "show_search_icon":"Show Search Icon",
-    "show_language":"Show Language",
-    "show_currency":"Show Currency",
-    "language_text":"Language Text",
-    "currency_text":"Currency Text",
-    "search_text":"Search Text",
-    
-    
-    
-    
-    
-    
-    
-    "location":"Location",
-    "location_URL":"Location URL",
-    "email":"Email",
-    "phone_number":"Phone Number",
-    
-    
-    
-    
-    
-    "footer_menus":"Footer Menus",
-    "show_first_menu":"Show First Menu",
-    "first_menu_title":"First Menu Title",
-    "first_menu":"First Menu",
-    "show_secend_menu":"Show Secend Menu",
-    "secend_menu_title":"Secend Menu Title",
-    "secend_menu":"Secend Menu",
-    "language":"Language",
-    "currency":"Currency",
-    
-    
-    
-    
-    
-    "show_paypal":"Show Paypal",
-    "copyright_menu":"Copyright Menu",
-    
-    
-    
-    "collections_description":"Collections Description",
-
-
-
-
-    "collections_page":"Collections Page"
-    }
+    "post_page": "Post Page",
+    "post_details": "Post Details",
+    "related_posts": "Related Posts",
+    "show_related_posts": "Show Related Posts",
+    "related_posts_title": "Related Posts Title",
+    "thanks_page": "Thanks Page",
+    "thanks_texts": "Thanks Texts",
+    "error_page": "Rrror Page",
+    "404_texts": "404 Texts"
+}

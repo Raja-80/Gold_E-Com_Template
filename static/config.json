@@ -311,7 +311,6 @@
                                             "name": "location_URL",
                                             "path": "sections.footer.location_link",
                                             "type": "tc_input",
-                                            "translatable": false,
                                             "value": "#"
                                         },
                                         {
@@ -413,14 +412,12 @@
                                             "note": "your_website_footer_menu1",
                                             "path": "sections.footer.menus.menu1",
                                             "type": "tc_menu",
-                                            "translatable": false,
                                             "value": null
                                         },
                                         {
                                             "name": "show_secend_menu",
                                             "path": "sections.footer.menus.menu2_active",
                                             "type": "tc_checkbox",
-                                            "translatable": false,
                                             "value": true
                                         },
                                         {
@@ -435,7 +432,6 @@
                                             "note": "your_website_footer_menu2",
                                             "path": "sections.footer.menus.menu2",
                                             "type": "tc_menu",
-                                            "translatable": false,
                                             "value": null
                                         }
                                     ]
@@ -515,7 +511,6 @@
                                             "name": "show_paypal",
                                             "path": "sections.footer.methods.paypal",
                                             "type": "tc_checkbox",
-                                            "translatable": false,
                                             "value": true
                                         }
                                     ]
@@ -536,7 +531,6 @@
                                             "note": "your_website_copyright_menu",
                                             "path": "sections.footer.copyright.menu",
                                             "type": "tc_menu",
-                                            "translatable": false,
                                             "value": null
                                         }
                                     ]
@@ -572,7 +566,7 @@
                                             "name": "selected_collections",
                                             "path": "sections.collections.items",
                                             "type": "tc_collection",
-                                            "value": null
+                                            "value": []
                                         }
                                     ]
                                 }
@@ -588,13 +582,12 @@
                             "icon": "select_all",
                             "blocks": [
                                 {
-                                    "name": "posts_section",
+                                    "name": "blog_section",
                                     "values": [
                                         {
                                             "name": "show_section",
                                             "path": "sections.posts.active",
                                             "type": "tc_checkbox",
-                                            "translatable": false,
                                             "value": true
                                         },
                                         {
@@ -606,10 +599,9 @@
                                             "value": "IN FOCUS"
                                         },
                                         {
-                                            "name": "posts limit",
+                                            "name": "posts_limit",
                                             "path": "sections.posts.items",
                                             "type": "tc_input",
-                                            "translatable": false,
                                             "value": "3",
                                             "inputType": "number"
                                         },
@@ -753,10 +745,10 @@
                                     ]
                                 },
                                 {
-                                    "name": "Filters",
+                                    "name": "filters",
                                     "values": [
                                         {
-                                            "name": "Filters Name",
+                                            "name": "filters_name",
                                             "path": "sections.shop.sidebar.filters_name",
                                             "type": "tc_input",
                                             "translatable": true,
@@ -765,17 +757,17 @@
                                     ]
                                 },
                                 {
-                                    "name": "Buttons Texts",
+                                    "name": "buttons_texts",
                                     "values": [
                                         {
-                                            "name": "Text 1",
+                                            "name": "text_1",
                                             "path": "sections.shop.sidebar.button_text1",
                                             "type": "tc_input",
                                             "translatable": true,
                                             "value": "See the"
                                         },
                                         {
-                                            "name": "Text 2",
+                                            "name": "text_2",
                                             "path": "sections.shop.sidebar.button_text2",
                                             "type": "tc_input",
                                             "translatable": true,
@@ -809,17 +801,17 @@
                                     ]
                                 },
                                 {
-                                    "name": "Texts",
+                                    "name": "texts",
                                     "values": [
                                         {
-                                            "name": "Articles Name",
+                                            "name": "articles_name",
                                             "path": "sections.shop.articles_name",
                                             "type": "tc_input",
                                             "translatable": true,
                                             "value": "Articles"
                                         },
                                         {
-                                            "name": "No Produts Text",
+                                            "name": "no_produts_text",
                                             "path": "sections.shop.empty_text",
                                             "type": "tc_input",
                                             "translatable": true,
@@ -831,7 +823,7 @@
                                     "name": "sorts",
                                     "values": [
                                         {
-                                            "name": "Sort Name",
+                                            "name": "sort_name",
                                             "path": "sections.shop.sort_name",
                                             "type": "tc_input",
                                             "translatable": true,
@@ -919,11 +911,10 @@
                             "icon": "select_all",
                             "blocks": [
                                 {
-                                    "name": "Quantity",
+                                    "name": "quantity",
                                     "values": [
                                         {
-                                            "name": "Quantity Text",
-                                            "note": "",
+                                            "name": "quantity_text",
                                             "path": "sections.product.quantity.text",
                                             "type": "tc_input",
                                             "translatable": true,
@@ -968,10 +959,10 @@
                                     ]
                                 },
                                 {
-                                    "name": "Description",
+                                    "name": "description",
                                     "values": [
                                         {
-                                            "name": "Description Title",
+                                            "name": "description_title",
                                             "path": "sections.product.description.title",
                                             "type": "tc_input",
                                             "translatable": true,
@@ -1111,35 +1102,35 @@
                                             "value": "your cart is empty"
                                         },
                                         {
-                                            "name": "Procuct Text",
+                                            "name": "procuct_text",
                                             "path": "sections.cart.product_text",
                                             "type": "tc_input",
                                             "translatable": true,
                                             "value": "PRODUCT"
                                         },
                                         {
-                                            "name": "Price Text",
+                                            "name": "price_text",
                                             "path": "sections.cart.price_text",
                                             "type": "tc_input",
                                             "translatable": true,
                                             "value": "PRICE"
                                         },
                                         {
-                                            "name": "Quantity Text",
+                                            "name": "quantity_text",
                                             "path": "sections.cart.quantity_text",
                                             "type": "tc_input",
                                             "translatable": true,
                                             "value": "QUANTITY"
                                         },
                                         {
-                                            "name": "Total Text",
+                                            "name": "total_text",
                                             "path": "sections.cart.total_text",
                                             "type": "tc_input",
                                             "translatable": true,
                                             "value": "TOTAL"
                                         },
                                         {
-                                            "name": "Subtotal Text",
+                                            "name": "subtotal_text",
                                             "path": "sections.cart.subtotal_text",
                                             "type": "tc_input",
                                             "translatable": true,
@@ -1274,19 +1265,17 @@
                                     ]
                                 },
                                 {
-                                    "name": "Button Texts",
+                                    "name": "buttons_texts",
                                     "values": [
                                         {
-                                            "name": "Text 1",
-                                            "note": "",
+                                            "name": "text_1",
                                             "path": "sections.blog.sidebar.button_text1",
                                             "type": "tc_input",
                                             "translatable": true,
                                             "value": "See the"
                                         },
                                         {
-                                            "name": "Text 2",
-                                            "note": "",
+                                            "name": "text_2",
                                             "path": "sections.blog.sidebar.button_text2",
                                             "type": "tc_input",
                                             "translatable": true,
@@ -1320,17 +1309,17 @@
                                     ]
                                 },
                                 {
-                                    "name": "Texts",
+                                    "name": "texts",
                                     "values": [
                                         {
-                                            "name": "Blog Empty Text",
+                                            "name": "blog_empty_text",
                                             "path": "sections.blog.empty_text",
                                             "type": "tc_input",
                                             "translatable": true,
                                             "value": "No blogs found"
                                         },
                                         {
-                                            "name": "Articles Name",
+                                            "name": "articles_name",
                                             "path": "sections.blog.articles_name",
                                             "type": "tc_input",
                                             "translatable": true,
@@ -1535,7 +1524,7 @@
                             "icon": "select_all",
                             "blocks": [
                                 {
-                                    "name": "_404_texts",
+                                    "name": "404_texts",
                                     "values": [
                                         {
                                             "name": "title",
@@ -2308,7 +2297,7 @@
                         "currency_text": "CURRENCY"
                     },
                     "search_text": "Search for products",
-                    "menu": "6414558136dff2122fa69063"
+                    "menu": null
                 },
                 "footer": {
                     "about": "add a small description about the website",
@@ -2341,12 +2330,12 @@
                         "menu1": null,
                         "menu2_active": true,
                         "menu2_title": "MENU 2",
-                        "menu2": "6415ae5236dff2122fa6b408"
+                        "menu2": null
                     },
                     "copyright": {
                         "store_name": "ONLINE STORE",
                         "text": "Copyright © __YEAR__. All rights reserved. <a href='//storeino.com'>storeino.com</a>",
-                        "menu": "6415ae6836dff2122fa6b410"
+                        "menu": null
                     },
                     "icons": {
                         "language": true,
@@ -2358,10 +2347,7 @@
                 "collections": {
                     "active": true,
                     "description": "Discover",
-                    "items": [
-                        "63fe20f49c46ed10105efc4b",
-                        "63fe20b39c46ed10105efc45"
-                    ]
+                    "items": []
                 },
                 "product": {
                     "add_to_cart": {
@@ -2509,7 +2495,7 @@
                     "price_text": "PRICE",
                     "quantity_text": "QUANTITY",
                     "total_text": "TOTAL",
-                    "subtotal_text": "SUBTOTAL ",
+                    "subtotal_text": "SUBTOTAL",
                     "upsell": {
                         "active": true,
                         "title": "SPECIAL OFFER"

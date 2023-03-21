@@ -32,7 +32,7 @@
                 "currency_text": "CURRENCY"
             },
             "search_text": "Search for products",
-            "menu": "6414558136dff2122fa69063"
+            "menu": null
         },
         "footer": {
             "about": "add a small description about the website",
@@ -65,12 +65,12 @@
                 "menu1": null,
                 "menu2_active": true,
                 "menu2_title": "MENU 2",
-                "menu2": "6415ae5236dff2122fa6b408"
+                "menu2": null
             },
             "copyright": {
                 "store_name": "ONLINE STORE",
                 "text": "Copyright © __YEAR__. All rights reserved. <a href='//storeino.com'>storeino.com</a>",
-                "menu": "6415ae6836dff2122fa6b410"
+                "menu": null
             },
             "icons": {
                 "language": true,
@@ -82,10 +82,7 @@
         "collections": {
             "active": true,
             "description": "Discover",
-            "items": [
-                "63fe20f49c46ed10105efc4b",
-                "63fe20b39c46ed10105efc45"
-            ]
+            "items": []
         },
         "product": {
             "add_to_cart": {
@@ -233,7 +230,7 @@
             "price_text": "PRICE",
             "quantity_text": "QUANTITY",
             "total_text": "TOTAL",
-            "subtotal_text": "SUBTOTAL ",
+            "subtotal_text": "SUBTOTAL",
             "upsell": {
                 "active": true,
                 "title": "SPECIAL OFFER"
