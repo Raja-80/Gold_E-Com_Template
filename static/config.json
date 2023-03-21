@@ -2563,14 +2563,14 @@
         }
     },
     "images": [
-        "https://storeno.b-cdn.net/themes/dior/dior-cover.jpg"
+        "https://storeno.b-cdn.net/themes/NewTheme/NewTheme-cover.jpg"
     ],
     "isActive": false,
     "autoRenew": false,
     "expiryDate": "2050-12-12T00:00:00.000Z",
-    "name": "dior",
-    "url": "/themes/dior",
-    "route": "dior",
+    "name": "NewTheme",
+    "url": "/themes/NewTheme",
+    "route": "NewTheme",
     "defaults": [],
     "paymentType": "yearly",
     "payments": [],
