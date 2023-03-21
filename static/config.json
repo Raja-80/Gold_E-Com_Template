@@ -33,7 +33,7 @@
                             "icon": "select_all",
                             "blocks": [
                                 {
-                                    "name": "Primary Colors",
+                                    "name": "primary_colors",
                                     "values": [
                                         {
                                             "name": "primary_color",
@@ -42,7 +42,7 @@
                                             "value": "#000000"
                                         },
                                         {
-                                            "name": "Primary Text Color",
+                                            "name": "primary_text_color",
                                             "path": "style.primary.primary_text",
                                             "type": "tc_color",
                                             "value": "#757575"
@@ -50,16 +50,16 @@
                                     ]
                                 },
                                 {
-                                    "name": "Header Colors",
+                                    "name": "header_colors",
                                     "values": [
                                         {
-                                            "name": "Header Color",
+                                            "name": "header_color",
                                             "path": "style.header.header_color",
                                             "type": "tc_color",
                                             "value": "#ffffff"
                                         },
                                         {
-                                            "name": "Header Text Color",
+                                            "name": "header_text_color",
                                             "path": "style.header.header_text",
                                             "type": "tc_color",
                                             "value": "#000000"
@@ -67,16 +67,16 @@
                                     ]
                                 },
                                 {
-                                    "name": "Footer Colors",
+                                    "name": "footer_colors",
                                     "values": [
                                         {
-                                            "name": "Footer Color",
+                                            "name": "footer_color",
                                             "path": "style.footer.footer_color",
                                             "type": "tc_color",
                                             "value": "#ffffff"
                                         },
                                         {
-                                            "name": "Footer Text Color",
+                                            "name": "footer_text_color",
                                             "path": "style.footer.footer_text",
                                             "type": "tc_color",
                                             "value": "#000000"
@@ -84,16 +84,16 @@
                                     ]
                                 },
                                 {
-                                    "name": "Copyright Colors",
+                                    "name": "copyright_colors",
                                     "values": [
                                         {
-                                            "name": "Copyright Color",
+                                            "name": "copyright_color",
                                             "path": "style.copyright.copyright_color",
                                             "type": "tc_color",
                                             "value": "#ffffff"
                                         },
                                         {
-                                            "name": "Copyright Text Color",
+                                            "name": "copyright_text_color",
                                             "path": "style.copyright.copyright_text",
                                             "type": "tc_color",
                                             "value": "#000000"
@@ -122,16 +122,16 @@
                                             "value": true
                                         },
                                         {
-                                            "name": "add_to_cart_to_checkout",
-                                            "path": "sections.products.add_to_cart_to_checkout",
-                                            "type": "tc_checkbox",
-                                            "value": false
-                                        },
-                                        {
                                             "name": "show_wishlist",
                                             "path": "sections.products.add_to_wishlist.active",
                                             "type": "tc_checkbox",
                                             "value": true
+                                        },
+                                        {
+                                            "name": "add_to_cart_to_checkout",
+                                            "path": "sections.products.add_to_cart_to_checkout",
+                                            "type": "tc_checkbox",
+                                            "value": false
                                         },
                                         {
                                             "name": "add_to_cart_text",
@@ -242,21 +242,21 @@
                                             "value": true
                                         },
                                         {
-                                            "name": "Language Text",
+                                            "name": "language_text",
                                             "path": "sections.header.icons.language_text",
                                             "type": "tc_input",
                                             "translatable": true,
                                             "value": "LANGUAGE"
                                         },
                                         {
-                                            "name": "Currency Text",
+                                            "name": "currency_text",
                                             "path": "sections.header.icons.currency_text",
                                             "type": "tc_input",
                                             "translatable": true,
                                             "value": "CURRENCY"
                                         },
                                         {
-                                            "name": "Search text",
+                                            "name": "search_text",
                                             "path": "sections.header.search_text",
                                             "type": "tc_input",
                                             "translatable": true,
@@ -283,7 +283,7 @@
                             "icon": "select_all",
                             "blocks": [
                                 {
-                                    "name": "About",
+                                    "name": "about",
                                     "values": [
                                         {
                                             "name": "store_name",
@@ -293,7 +293,7 @@
                                             "value": "ONLINE STORE"
                                         },
                                         {
-                                            "name": "Footer About",
+                                            "name": "footer_about",
                                             "note": "about_your_website",
                                             "path": "sections.footer.about",
                                             "type": "tc_input",
@@ -301,28 +301,28 @@
                                             "value": "add a small description about the website"
                                         },
                                         {
-                                            "name": "Location",
+                                            "name": "location",
                                             "path": "sections.footer.location",
                                             "type": "tc_input",
                                             "translatable": true,
                                             "value": "Location"
                                         },
                                         {
-                                            "name": "Location URL",
+                                            "name": "location_URL",
                                             "path": "sections.footer.location_link",
                                             "type": "tc_input",
                                             "translatable": false,
                                             "value": "#"
                                         },
                                         {
-                                            "name": "Email",
+                                            "name": "email",
                                             "path": "sections.footer.gmail",
                                             "type": "tc_input",
                                             "translatable": true,
                                             "value": "Email"
                                         },
                                         {
-                                            "name": "Phone Number",
+                                            "name": "phone_number",
                                             "path": "sections.footer.number",
                                             "type": "tc_input",
                                             "translatable": true,
@@ -392,24 +392,24 @@
                                     ]
                                 },
                                 {
-                                    "name": "Footer Menus",
+                                    "name": "footer_menus",
                                     "values": [
                                         {
-                                            "name": "Show First Menu",
+                                            "name": "show_first_menu",
                                             "note": "your_website_footer_menu",
                                             "path": "sections.footer.menus.menu1_active",
                                             "type": "tc_checkbox",
                                             "value": true
                                         },
                                         {
-                                            "name": "First Menu Title",
+                                            "name": "first_menu_title",
                                             "path": "sections.footer.menus.menu1_title",
                                             "type": "tc_input",
                                             "translatable": true,
                                             "value": "MENU 1"
                                         },
                                         {
-                                            "name": "First Menu",
+                                            "name": "first_menu",
                                             "note": "your_website_footer_menu1",
                                             "path": "sections.footer.menus.menu1",
                                             "type": "tc_menu",
@@ -417,21 +417,21 @@
                                             "value": null
                                         },
                                         {
-                                            "name": "Show Secend Menu",
+                                            "name": "show_secend_menu",
                                             "path": "sections.footer.menus.menu2_active",
                                             "type": "tc_checkbox",
                                             "translatable": false,
                                             "value": true
                                         },
                                         {
-                                            "name": "Secend Menu Title",
+                                            "name": "secend_menu_title",
                                             "path": "sections.footer.menus.menu2_title",
                                             "type": "tc_input",
                                             "translatable": true,
                                             "value": "MENU 2"
                                         },
                                         {
-                                            "name": "Secend Menu",
+                                            "name": "secend_menu",
                                             "note": "your_website_footer_menu2",
                                             "path": "sections.footer.menus.menu2",
                                             "type": "tc_menu",
@@ -441,7 +441,7 @@
                                     ]
                                 },
                                 {
-                                    "name": "Language",
+                                    "name": "language",
                                     "values": [
                                         {
                                             "name": "show_language",
@@ -450,7 +450,7 @@
                                             "value": true
                                         },
                                         {
-                                            "name": "Language Text",
+                                            "name": "language_text",
                                             "path": "sections.footer.icons.language_text",
                                             "type": "tc_input",
                                             "translatable": true,
@@ -459,7 +459,7 @@
                                     ]
                                 },
                                 {
-                                    "name": "Currency Text",
+                                    "name": "currency",
                                     "values": [
                                         {
                                             "name": "show_currency",
@@ -468,7 +468,7 @@
                                             "value": true
                                         },
                                         {
-                                            "name": "Currency Text",
+                                            "name": "currency_text",
                                             "path": "sections.footer.icons.currency_text",
                                             "type": "tc_input",
                                             "translatable": true,
@@ -477,10 +477,10 @@
                                     ]
                                 },
                                 {
-                                    "name": "Payment Methods",
+                                    "name": "payment_methods",
                                     "values": [
                                         {
-                                            "name": "Payment Methods Title",
+                                            "name": "payment_methods_title",
                                             "note": "about_your_website",
                                             "path": "sections.footer.methods.title",
                                             "type": "tc_input",
@@ -488,31 +488,31 @@
                                             "value": "PAYMENT METHODS"
                                         },
                                         {
-                                            "name": "Show Visa",
+                                            "name": "show_visa",
                                             "path": "sections.footer.methods.visa",
                                             "type": "tc_checkbox",
                                             "value": true
                                         },
                                         {
-                                            "name": "Show Mastercard",
+                                            "name": "show_mastercard",
                                             "path": "sections.footer.methods.mastercard",
                                             "type": "tc_checkbox",
                                             "value": true
                                         },
                                         {
-                                            "name": "Show BankTransfer",
+                                            "name": "show_transfer",
                                             "path": "sections.footer.methods.transfer",
                                             "type": "tc_checkbox",
                                             "value": true
                                         },
                                         {
-                                            "name": "Show Cash",
+                                            "name": "show_cash",
                                             "path": "sections.footer.methods.cash",
                                             "type": "tc_checkbox",
                                             "value": true
                                         },
                                         {
-                                            "name": "Show Paypal",
+                                            "name": "show_paypal",
                                             "path": "sections.footer.methods.paypal",
                                             "type": "tc_checkbox",
                                             "translatable": false,
@@ -532,7 +532,7 @@
                                             "value": "Copyright © __YEAR__. All rights reserved. <a href='//storeino.com'>storeino.com</a>"
                                         },
                                         {
-                                            "name": "Copyright Menu",
+                                            "name": "copyright_menu",
                                             "note": "your_website_copyright_menu",
                                             "path": "sections.footer.copyright.menu",
                                             "type": "tc_menu",
@@ -553,7 +553,7 @@
                             "icon": "select_all",
                             "blocks": [
                                 {
-                                    "name": "collectios",
+                                    "name": "collections",
                                     "values": [
                                         {
                                             "name": "show_collections",
@@ -562,7 +562,7 @@
                                             "value": true
                                         },
                                         {
-                                            "name": "Collections Description",
+                                            "name": "collections_description",
                                             "path": "sections.collections.description",
                                             "type": "tc_input",
                                             "translatable": true,
@@ -581,10 +581,10 @@
                     ]
                 },
                 {
-                    "name": "Collections Page",
+                    "name": "collections_page",
                     "sections": [
                         {
-                            "name": "Collections Page",
+                            "name": "collections_page",
                             "icon": "select_all",
                             "blocks": [
                                 {
