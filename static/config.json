@@ -2563,18 +2563,18 @@
         }
     },
     "images": [
-        "https://storeno.b-cdn.net/themes/NewTheme/NewTheme-cover.jpg"
+        "https://storeno.b-cdn.net/themes/palest/logo.png"
     ],
     "isActive": false,
     "autoRenew": false,
     "expiryDate": "2050-12-12T00:00:00.000Z",
-    "name": "NewTheme",
-    "url": "/themes/NewTheme",
-    "route": "NewTheme",
+    "name": "dior",
+    "url": "/themes/dior",
+    "route": "dior",
     "defaults": [],
     "paymentType": "yearly",
     "payments": [],
     "price": 22,
     "description": "✔ Simple and easy theme to use ✔ Well presented and convertible store and product page ✔ SEO optimized ✔ Responsive to all devices",
-    "publicName": "Bazar - Multipurpose Responsive E-commerce Template"
+    "publicName": "Dior - Multipurpose Responsive E-commerce Template"
 }
