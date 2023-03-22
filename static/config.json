@@ -29,7 +29,7 @@
                     "name": "global_options",
                     "sections": [
                         {
-                            "name": "Colors",
+                            "name": "colors",
                             "icon": "select_all",
                             "blocks": [
                                 {
@@ -2549,18 +2549,18 @@
         }
     },
     "images": [
-        "https://storeno.b-cdn.net/themes/palest/logo.png"
+        "https://storeno.b-cdn.net/stores/3-2023/1679483426687.png"
     ],
     "isActive": false,
     "autoRenew": false,
     "expiryDate": "2050-12-12T00:00:00.000Z",
-    "name": "dior",
-    "url": "/themes/dior",
-    "route": "dior",
+    "name": "lux",
+    "url": "/themes/lux",
+    "route": "lux",
     "defaults": [],
     "paymentType": "yearly",
     "payments": [],
     "price": 22,
     "description": "✔ Simple and easy theme to use ✔ Well presented and convertible store and product page ✔ SEO optimized ✔ Responsive to all devices",
-    "publicName": "Dior - Multipurpose Responsive E-commerce Template"
+    "publicName": "lux - Multipurpose Responsive E-commerce Template"
 }

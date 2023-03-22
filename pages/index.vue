@@ -1,12 +1,8 @@
 <template>
   <div>
+    <si-app-loader  placement="AFTER_HERO"/>
     <sections-collections v-if="$settings.sections.collections.active"></sections-collections>
-    <!-- <template v-for="i in 5">
-      <sections-products :key="i" :data-key="i" v-if="$settings.sections[`products_${i}`].active" :section="$settings.sections[`products_${i}`]"></sections-products>
-    </template> -->
-    <!-- <sections-posts v-if="$settings.sections.posts.active"></sections-posts> -->
-    <!-- <sections-services v-if="$settings.sections.services.active"></sections-services> -->
-    <div class="container">
+    <div class="px-5 xl:px-10">
       <si-app-loader  placement="BEFORE_HOME_FOOTER"/>
     </div>
   </div>

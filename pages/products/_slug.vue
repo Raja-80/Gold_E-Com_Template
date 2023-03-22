@@ -206,7 +206,9 @@
                     <div v-if="item && $settings.sections.product.reviews.active" class="reviews">
                         <sections-reviews v-show="!$store.state.apps.find(a=>a.placement.indexOf('REPLACE_REVIEWS') >= 0)" :item="item"></sections-reviews>
                     </div>
-                    <si-app-loader  placement="REPLACE_REVIEWS"/>
+                    <div class="px-5 xl:px-10">
+                        <si-app-loader  placement="REPLACE_REVIEWS"/>
+                    </div>
                 </div>
                 <!-- upsells  -->
                 <div v-if="item && $settings.sections.product.upsell.active" class="upsells">
