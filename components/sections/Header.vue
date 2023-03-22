@@ -59,7 +59,7 @@
                             <div class="w-auto lg:w-1/5">
                                 <div class="">
                                     <router-link class="" to="/">
-                                        <si-image width="70" height="50" property="height" class="h-14 w-full object-contain" :src="section.logo ? section.logo.src : $store.state.defaults.logo" alt="Store logo"/>
+                                        <si-image width="70" height="50" property="height" class="h-10 md:h-12 lg:h-14 w-full object-contain" :src="section.logo ? section.logo.src : $store.state.defaults.logo" alt="Store logo"/>
                                     </router-link>
                                 </div>
                             </div>
