@@ -159,8 +159,8 @@
                                     </a>
                                 </li>
                                 <transition name="slide">
-                                    <div class="relative" >
-                                        <div v-if="item._id == active.Id3" class="footer-color footer-text h-56 z-10 overflow-auto absolute bottom-6 left-0 right-0 border border-gray-200 px-6 py-3 bg-white">
+                                    <div v-if="item._id == active.Id3" class="relative" >
+                                        <div class="footer-color footer-text h-56 z-10 overflow-auto absolute bottom-6 left-0 right-0 border border-gray-200 px-6 py-3 bg-white">
                                             <div class="pb-1" v-for="(item,i) in item.childrens" :key="i" >
                                                 <a class="text-sml link-hover" :href="item.url">{{item.text}}</a>
                                                 <ul v-if="item.childrens && item.childrens.length > 0">
@@ -199,8 +199,8 @@
                                     </a>
                                 </li>
                                 <transition name="slide">
-                                    <div class="relative" >
-                                        <div v-if="item._id == active.Id3" class="footer-color footer-text h-56 z-10 overflow-auto absolute bottom-6 left-0 right-0 border border-gray-200 px-6 py-3 bg-white">
+                                    <div v-if="item._id == active.Id3" class="relative" >
+                                        <div class="footer-color footer-text h-56 z-10 overflow-auto absolute bottom-6 left-0 right-0 border border-gray-200 px-6 py-3 bg-white">
                                             <div class="pb-1" v-for="(item,i) in item.childrens" :key="i" >
                                                 <a class="text-sml link-hover" :href="item.url">{{item.text}}</a>
                                                 <ul v-if="item.childrens && item.childrens.length > 0">
@@ -227,13 +227,15 @@
                             <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
                         </span>
                     </div> 
-                    <div class="lg:block" v-if="windowWidth < 1024 ? isVisible.PaymentMethods : true">
-                        <div class="payment_images flex flex-wrap mt-4">
-                            <div class="footer-text flex ml-mr-4 mt-4" v-for="item in methods.filter(m=>$settings.sections.footer.methods[m.name])" :key="item.name" >
-                                <svg class="opacity-90" width="40" height="40" :viewBox="item.view" fill="none" xmlns="http://www.w3.org/2000/svg"><path :d="item.image" fill="currentColor"></path></svg>
+                    <transition name="slide">
+                        <div class="lg:block" v-if="windowWidth < 1024 ? isVisible.PaymentMethods : true">
+                            <div class="payment_images flex flex-wrap mt-4">
+                                <div class="footer-text flex ml-mr-4 mt-4" v-for="item in methods.filter(m=>$settings.sections.footer.methods[m.name])" :key="item.name" >
+                                    <svg class="opacity-90" width="40" height="40" :viewBox="item.view" fill="none" xmlns="http://www.w3.org/2000/svg"><path :d="item.image" fill="currentColor"></path></svg>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </transition>
                 </div>
                 <!-- payment_methods -->
             </div>

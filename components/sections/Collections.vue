@@ -23,9 +23,9 @@
                     <h2 v-if="this.$store.state.language.code == 'AR'" class="text-lg lg:text-xl font-bold text-center-res">{{ 'ليس لديك أي مجموعات' }}</h2>
                     <h2 v-else-if="this.$store.state.language.code == 'FR'" class="text-lg lg:text-xl font-bold text-center-res">{{ 'Vous n\'avez aucune collection' }}</h2>
                     <h2 v-else class="text-lg lg:text-xl font-bold text-center-res">{{ 'You don\'t have any collection' }}</h2>
-                    <p v-if="this.$store.state.language.code == 'AR'" class="text-sml mt-2 text-center-res">{{ 'انتقل إلى مسؤول المتجر الخاص بك > المنتجات > المجموعات' }} <a href="//business.storeino.com/stores/collections" target="_blank" class="text-primary underline primary-hover">{{ 'اضف جديد' }}</a></p>
-                    <p v-else-if="this.$store.state.language.code == 'FR'" class="text-sml mt-2 text-center-res">{{ 'Accédez à l\'administration de votre boutique > produits > collections >' }} <a href="//business.storeino.com/stores/collections" target="_blank" class="text-primary underline primary-hover">{{ 'Ajouter nouveau' }}</a></p>
-                    <p v-else class="text-sml mt-2 text-center-res">{{ 'Go to your store admin > products > collections >' }} <a href="//business.storeino.com/stores/collections" target="_blank" class="text-primary underline primary-hover">{{ 'Add new' }}</a></p>
+                    <p v-if="this.$store.state.language.code == 'AR'" class="text-sml mt-2 text-center-res">{{ 'انتقل إلى مسؤول المتجر الخاص بك > المنتجات > المجموعات' }} <a href="#" target="_blank" class="text-primary underline primary-hover">{{ 'اضف جديد' }}</a></p>
+                    <p v-else-if="this.$store.state.language.code == 'FR'" class="text-sml mt-2 text-center-res">{{ 'Accédez à l\'administration de votre boutique > produits > collections >' }} <a href="#" target="_blank" class="text-primary underline primary-hover">{{ 'Ajouter nouveau' }}</a></p>
+                    <p v-else class="text-sml mt-2 text-center-res">{{ 'Go to your store admin > products > collections >' }} <a href="#" target="_blank" class="text-primary underline primary-hover">{{ 'Add new' }}</a></p>
                     <div class="flex justify-center lg:justify-start">
                         <nuxt-link class="mt-4 h-10 px-8 flex justify-center items-center border border-primary ml-font-bold-hover rounded-full transition-all ease-linear delay-75" to="/shop">
                             <span v-if="this.$store.state.language.code == 'AR'" class="text-sml">{{'شاهد العرض التوضيحي للسمة'}}</span>

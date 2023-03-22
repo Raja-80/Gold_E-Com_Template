@@ -30,9 +30,7 @@ const createStore = () => {
           search: '',
           defaults: {
               image: "https://storeno.b-cdn.net/themes/palest/default-shop.jpg",
-              sliderImage: "https://storeno.b-cdn.net/themes/palest/slider.jpeg",
-              sideBanner: "https://storeno.b-cdn.net/themes/palest/side-banner.jpeg",
-              logo: "https://storeno.b-cdn.net/themes/palest/logo.png?height=60",
+              logo: "https://storeno.b-cdn.net/themes/bazar/Logo.png",
               icon: "https://storeno.b-cdn.net/themes/palest/icon.png"
           },
           baseURL: 'https://api-stores.storeino.world/api',

@@ -76,8 +76,8 @@
                                     </a>
                                 </li>
                                 <transition name="slide">
-                                    <div class="relative" >
-                                        <div v-if="item._id == active.Id3" class="header-color h-56 overflow-auto absolute top-full left-0 right-0 border border-gray-200 px-6 py-3 bg-white">
+                                    <div v-if="item._id == active.Id3" class="relative" >
+                                        <div class="header-color h-56 overflow-auto absolute top-full left-0 right-0 border border-gray-200 px-6 py-3 bg-white">
                                             <div class="pb-1" v-for="(item,i) in item.childrens" :key="i" >
                                                 <a class="text-sml link-hover" :href="item.url">{{item.text}}</a>
                                                 <ul v-if="item.childrens && item.childrens.length > 0">
@@ -113,8 +113,8 @@
                                     </a>
                                 </li>
                                 <transition name="slide">
-                                    <div class="relative" >
-                                        <div v-if="item._id == active.Id3" class="header-color h-56 overflow-auto absolute top-full left-0 right-0 border border-gray-200 px-6 py-3 bg-white">
+                                    <div v-if="item._id == active.Id3" class="relative" >
+                                        <div class="header-color h-56 overflow-auto absolute top-full left-0 right-0 border border-gray-200 px-6 py-3 bg-white">
                                             <div class="pb-1" v-for="(item,i) in item.childrens" :key="i" >
                                                 <a class="text-sml link-hover" :href="item.url">{{item.text}}</a>
                                                 <ul v-if="item.childrens && item.childrens.length > 0">

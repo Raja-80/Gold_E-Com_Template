@@ -296,7 +296,7 @@ body{
 /* slide */
 .slide-enter-active,
 .slide-leave-active {
-  transition-duration: 0.5s;
+  transition-duration: 0.3s;
 }
 
 .slide-enter-active {
@@ -342,7 +342,7 @@ body{
 
 /* fade trinsition */
 .fade-enter-active {
-  transition: opacity 0.5s ease-in;
+  transition: opacity 0.3s ease-in;
 }
 
 .fade-leave-active {

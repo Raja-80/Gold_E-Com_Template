@@ -645,12 +645,12 @@ export default {
 }
 
 .pb-1\/5-res{
-  padding-bottom: 40%;
+  padding-bottom: 30%;
 }
 
 @media (min-width: 640px) {
     .pb-1\/5-res{
-        padding-bottom: 30%;
+        padding-bottom: 25%;
     }
 }
 
