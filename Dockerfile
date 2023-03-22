@@ -14,4 +14,4 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["pm2-runtime", "start","npm","--name","theme-dior","--","run","start"]
+CMD ["pm2-runtime", "start","npm","--name","theme-lux","--","run","start"]

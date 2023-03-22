@@ -1,4 +1,4 @@
-# palest-theme
+# lux-theme
 
 ## Build Setup
 

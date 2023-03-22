@@ -2554,13 +2554,13 @@
     "isActive": false,
     "autoRenew": false,
     "expiryDate": "2050-12-12T00:00:00.000Z",
-    "name": "lux",
-    "url": "/themes/lux",
-    "route": "lux",
+    "name": "Lux",
+    "url": "/themes/Lux",
+    "route": "Lux",
     "defaults": [],
     "paymentType": "yearly",
     "payments": [],
     "price": 22,
     "description": "✔ Simple and easy theme to use ✔ Well presented and convertible store and product page ✔ SEO optimized ✔ Responsive to all devices",
-    "publicName": "lux - Multipurpose Responsive E-commerce Template"
+    "publicName": "Lux - Multipurpose Responsive E-commerce Template"
 }
