@@ -173,11 +173,11 @@
                                         <span class="text-sml ml-font-bold">{{ $settings.sections.product.description.title }}</span>
                                     </div>
                                     <div>
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                        <svg width="20" height="20" :class="description ? 'rotate-180 transition-all delay-150 ease-linear':''" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                     </div>
                                 </div>
                                 <transition name="slide">
-                                    <div class="pt-3" v-if="description == true">
+                                    <div class="pt-3" v-if="description == true && item.html.length > 0">
                                         <div id="description" v-html="item.html"></div>
                                     </div>
                                 </transition>

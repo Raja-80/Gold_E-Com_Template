@@ -72,8 +72,10 @@ export default {
 </script>
 
 <style scoped>
-.collections:not(:nth-last-child(-n+1)) {
-    padding-bottom: 3px;
+@media (min-width:0px) and (max-width:1024px) {
+    .collections:not(:nth-last-child(-n+1)) {
+        padding-bottom: 3px;
+    }
 }
 
 @media (min-width: 1024px) {
