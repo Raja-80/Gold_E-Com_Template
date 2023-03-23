@@ -92,6 +92,7 @@ export default {
             footer_text: { r: 0, g: 130, b: 70 },
             copyright_rgb: { r: 0, g: 130, b: 70 },
             copyright_text: { r: 0, g: 130, b: 70 },
+            otherLinks: []
         }
     },
     async fetch(){
