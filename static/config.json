@@ -833,39 +833,39 @@
                                             "name": "default_sort",
                                             "path": "sections.shop.default_sort",
                                             "type": "tc_select",
-                                            "value": "createdAt: -1",
+                                            "value": {"createdAt": -1},
                                             "values": [
                                                 {
                                                     "name": "Newest",
-                                                    "value": "createdAt: -1"
+                                                    "value": {"createdAt": -1}
                                                 },
                                                 {
                                                     "name": "Oldest",
-                                                    "value": "createdAt: 1"
+                                                    "value": {"createdAt": 1}
                                                 },
                                                 {
                                                     "name": "Name (A-Z)",
-                                                    "value": "'name': 1"
+                                                    "value": {"name": 1}
                                                 },
                                                 {
                                                     "name": "Name (Z-A)",
-                                                    "value": "'name': -1"
+                                                    "value": {"name": -1}
                                                 },
                                                 {
                                                     "name": "Price (low to high)",
-                                                    "value": "'price.salePrice': 1"
+                                                    "value": {"price.salePrice": 1}
                                                 },
                                                 {
                                                     "name": "Price (high to low)",
-                                                    "value": "'price.salePrice': -1"
+                                                    "value": {"price.salePrice": -1}
                                                 },
                                                 {
                                                     "name": "Rating (low to high)",
-                                                    "value": "'review.rating': 1"
+                                                    "value": {"review.rating": 1}
                                                 },
                                                 {
                                                     "name": "Rating (high to low)",
-                                                    "value": "'review.rating': -1"
+                                                    "value": {"review.rating": -1}
                                                 }
                                             ]
                                         },
@@ -2483,7 +2483,7 @@
                     "title": "",
                     "description": "",
                     "sort_name": "Order by",
-                    "default_sort": "createdAt: -1",
+                    "default_sort": {"createdAt": -1},
                     "sorts": {
                         "newest": "Newest",
                         "oldest": "Oldest",
