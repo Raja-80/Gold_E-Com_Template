@@ -137,7 +137,6 @@ export default {
             this.loading.upsells = false;
         },
         async initCart(){
-            console.log("Init");
             this.items = [];
             const ids = this.$store.state.cart.map(item => item._id);
             this.loading.cart = true;
@@ -165,7 +164,6 @@ export default {
                             cartItem.price = cartItem.price - discount;
                         }
                         cartItem.total = cartItem.price * cartItem.quantity.value;
-                        console.log("Push");
                         this.items.push(cartItem);
                     }
                     this.calcTotal();

@@ -38,8 +38,8 @@
                                 <div class="flex items-center justify-between py-5 lg:hidden border-b lg:border-0 px-5">
                                     <h2 class="text-sml ml-font-bold">{{ $settings.sections.shop.sidebar.filters_name }}</h2>
                                     <div class="flex items-center" @click="showBodyScroll">
-                                        <button class="flex items-center" @click="showSideBar=false">
-                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.71 10l4.65-4.66a.495.495 0 10-.7-.7L10 9.29 5.34 4.64a.495.495 0 00-.7.7L9.29 10l-4.65 4.66a.48.48 0 000 .7.481.481 0 00.7 0L10 10.71l4.66 4.65a.482.482 0 00.7 0 .48.48 0 000-.7L10.71 10z" fill="currentColor"></path></svg>
+                                        <button aria-label="show side bar button" class="flex items-center" @click="showSideBar=false">
+                                            <svg aria-label="chivron icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.71 10l4.65-4.66a.495.495 0 10-.7-.7L10 9.29 5.34 4.64a.495.495 0 00-.7.7L9.29 10l-4.65 4.66a.48.48 0 000 .7.481.481 0 00.7 0L10 10.71l4.66 4.65a.482.482 0 00.7 0 .48.48 0 000-.7L10.71 10z" fill="currentColor"></path></svg>
                                         </button>
                                     </div>
                                 </div>
@@ -48,7 +48,7 @@
                                     <div v-if="$settings.sections.shop.sidebar.collections.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.collections=true : null" @mouseleave="windowWidth >= 1024 ? isVisible.collections=false : null">
                                         <div @click="showCollections" class="flex items-center lg:gap-1  justify-between cursor-pointer py-5">
                                             <h2 class="text-sml ml-font-bold-hover" :class="isVisible.collections==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.collections.title }}</h2>
-                                            <svg :class="isVisible.collections == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                            <svg aria-label="chivron icon" :class="isVisible.collections == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </div>
                                         <transition name="slide">
                                             <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.collections && collections.length > 0">
@@ -60,7 +60,7 @@
                                                                     <div  class="w-full lg:w-auto flex lg:gap-1 flex-col cursor-pointer" v-if="item.childrens && item.childrens.length > 0" @mouseover="windowWidth >= 1024 ? setActiveOver(i+'fit',i+'ret') : null" @mouseleave="windowWidth >= 1024 ? setActiveLeave(i+'fit',i+'ret') : null">
                                                                         <label :for="item.slug" :id="i+'ret'" @click="setActive(i+'fit',i+'ret')" class="cursor-pointer flex items-center lg:gap-1 justify-between primary-hover rotated">
                                                                             <span class="text-sml cursor-pointer">{{ item.name }}</span>
-                                                                            <svg  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                                                            <svg aria-label="chivron icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                                                         </label>
                                                                         <div :id="i+'fit'" class="fit-collapsible text-primary" :class="item.childrens.length > 0 ? 'sub-collections' : ''">
                                                                             <div class="list-sub-collections fit-collapsible-content" v-if="item.childrens && item.childrens.length > 0" >
@@ -68,7 +68,7 @@
                                                                                     <label class="relative flex items-center">
                                                                                         <input hidden type="checkbox" class="form-checkbox absolute top-0 left-0" style="z-index: -1" :checked="params['collections.slug-in'] && params['collections.slug-in'].indexOf(child.slug) >= 0" :id="child.slug" @change="setParams($event, 'collections.slug-in', child.slug)">
                                                                                         <div class="flex justify-center items-center">
-                                                                                            <svg class="fill-current "  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
+                                                                                            <svg aria-label="chivron icon" class="fill-current "  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
                                                                                         </div>
                                                                                         <label  :for="child.slug" class="cursor-pointer text-sml primary-hover">{{ child.name }}</label>
                                                                                     </label>
@@ -81,7 +81,7 @@
                                                                     <div class="flex items-center" v-if="item.childrens && item.childrens.length == 0">
                                                                         <input hidden  type="checkbox" class="form-checkbox absolute top-0 left-0"  style="z-index: -1" :checked="params['collections.slug-in'] && params['collections.slug-in'].indexOf(item.slug) >= 0" :id="item.slug" @change="setParams($event, 'collections.slug-in', item.slug)">
                                                                         <div class="flex justify-center items-center">
-                                                                            <svg class="fill-current "  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
+                                                                            <svg aria-label="chivron icon" class="fill-current"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
                                                                         </div>
                                                                         <label class="cursor-pointer text-sml primary-hover" :for="item.slug">{{ item.name }}</label>
                                                                     </div>
@@ -98,7 +98,7 @@
                                     <div v-if="$settings.sections.shop.sidebar.prices.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.prices=true: null" @mouseleave="windowWidth >= 1024 ? isVisible.prices=false:null">
                                         <div @click="showPrices" class="flex items-center lg:gap-1 justify-between cursor-pointer py-5">
                                             <h2 class="text-sml ml-font-bold-hover" :class="isVisible.prices==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.prices.title }}</h2>
-                                            <svg  :class="isVisible.prices == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                            <svg aria-label="chivron icon" :class="isVisible.prices == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </div>
                                         <transition name="slide">
                                             <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.prices && filters">
@@ -115,7 +115,7 @@
                                     <div v-if="$settings.sections.shop.sidebar.sizes.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.sizes=true : null" @mouseleave="windowWidth >= 1024 ? isVisible.sizes=false : null">
                                         <div @click="showSizes" class="flex items-center lg:gap-1 justify-between cursor-pointer py-5">
                                             <h2 class="text-sml ml-font-bold-hover" :class="isVisible.sizes==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.sizes.title }}</h2>
-                                            <svg  :class="isVisible.sizes == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                            <svg aria-label="chivron icon" :class="isVisible.sizes == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </div>
                                         <transition name="slide">
                                             <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.sizes && filters && filters.sizes.length > 0">
@@ -125,7 +125,7 @@
                                                             <label class="relative flex items-center cursor-pointer">
                                                                 <input hidden type="checkbox" class="absolute top-0 left-0" style="z-index: -1" :checked="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0" :id="item.value1" @change="setParams($event, 'options.values.value1', item.value1)">
                                                                 <div class="flex justify-center items-center">
-                                                                    <svg class="fill-current "  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
+                                                                    <svg aria-label="chivron icon" class="fill-current"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
                                                                 </div>
                                                                 <label class="text-sml cursor-pointer primary-hover" :for="item.value1">{{ item.value1 }}</label>
                                                             </label>
@@ -140,7 +140,7 @@
                                     <div v-if="$settings.sections.shop.sidebar.colors.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.colors=true : null" @mouseleave="windowWidth >= 1024 ? isVisible.colors=false: null">
                                         <div @click="showColors" class="flex items-center lg:gap-1 justify-between cursor-pointer py-5">
                                             <h2 class="text-sml ml-font-bold-hover" :class="isVisible.colors==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.colors.title }}</h2>
-                                            <svg  :class="isVisible.colors == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                            <svg aria-label="chivron icon" :class="isVisible.colors == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </div>
                                         <transition name="slide">
                                             <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.colors && filters && filters.colors.length > 0">
@@ -150,7 +150,7 @@
                                                             <label class="relative flex items-center cursor-pointer">
                                                                 <input hidden type="checkbox" class="absolute top-0 left-0" style="z-index: -1" :id="item.value1" :checked="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0" @change="setParams($event, 'options.values.value1', item.value1)">
                                                                 <div class="flex justify-center items-center">
-                                                                    <svg class="fill-current "  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
+                                                                    <svg aria-label="chivron icon" class="fill-current "  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
                                                                 </div>
                                                                 <label class="cursor-pointer text-sml primary-hover" :for="item.value1" :aria-label="item.value1">{{ item.value1 }}</label>
                                                             </label>
@@ -165,7 +165,7 @@
                                     <div v-if="$settings.sections.shop.sidebar.tags.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.tags=true: null" @mouseleave="windowWidth >= 1024 ? isVisible.tags=false:null">
                                         <div @click="showTags" class="flex items-center lg:gap-1 justify-between cursor-pointer py-5">
                                             <h2 class="text-sml ml-font-bold-hover" :class="isVisible.tags==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.tags.title }}</h2>
-                                            <svg  :class="isVisible.tags == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                            <svg aria-label="chivron icon" :class="isVisible.tags == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </div>
                                         <transition name="slide">
                                             <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.tags && filters && filters.tags.length > 0">
@@ -175,7 +175,7 @@
                                                             <label class="relative flex items-center cursor-pointer">
                                                                 <input hidden type="checkbox" class="absolute top-0 left-0" style="z-index: -1" :checked="params['tags-in'] && params['tags-in'].indexOf(tag) >= 0" :id="`tag_${tag}`" @change="setParams($event, 'tags-in', tag)">
                                                                 <div class="flex justify-center items-center">
-                                                                    <svg class="fill-current "  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
+                                                                    <svg aria-label="chivron icon" class="fill-current "  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
                                                                 </div>
                                                                 <label class="cursor-pointer text-sml primary-hover" :for="`tag_${tag}`">{{ tag }}</label>
                                                             </label>
@@ -190,7 +190,7 @@
                                     <div  v-if="$settings.sections.shop.sidebar.brands.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.brands=true : null" @mouseleave="windowWidth >= 1024 ? isVisible.brands=false : null">
                                         <div @click="showBrands" class="flex items-center lg:gap-1 justify-between cursor-pointer py-5">
                                             <h2 class="text-sml ml-font-bold-hover" :class="isVisible.brands==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.brands.title }}</h2>
-                                            <svg  :class="isVisible.brands == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                            <svg aria-label="chivron icon" :class="isVisible.brands == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </div>
                                         <transition name="slide">
                                             <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-if="isVisible.brands && filters && brands.length > 0">
@@ -201,7 +201,7 @@
                                                                 <label class="relative flex items-center cursor-pointer">
                                                                     <input hidden  type="checkbox" class="absolute top-0 left-0" style="z-index: -1" :id="item.slug" :checked="params['brand.slug-in'] && params['brand.slug-in'].indexOf(item.slug) >= 0" @change="setParams($event, 'brand.slug-in', item.slug)">
                                                                     <div class="flex justify-center items-center">
-                                                                        <svg class="fill-current "  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
+                                                                        <svg aria-label="chivron icon" class="fill-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
                                                                     </div>
                                                                     <label class="cursor-pointer text-sml primary-hover" :for="item.slug">{{ item.name }}</label>
                                                                 </label>
@@ -250,7 +250,7 @@
                             <div @click="hideBodyScroll">
                                 <div @click="showSort" class="flex items-center justify-between py-3.5 lg:py-5 cursor-pointer underline lg:no-underline">
                                     <h2 class="text-sml ml-font-bold-hover" :class="isVisible.sort==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sort_name }}</h2>
-                                    <svg class="lg:ml-1 hidden lg:block" :class="isVisible.sort == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                    <svg aria-label="chivron icon" class="lg:ml-1 hidden lg:block" :class="isVisible.sort == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                 </div>
                             </div>
                             <transition :name="windowWidth < 1024 ? 'fade' : 'slide'">
@@ -260,8 +260,8 @@
                                             <div class="flex items-center justify-between py-5 lg:hidden border-b border-gray-300 px-5">
                                                 <h2 class="text-sml ml-font-bold">{{ $settings.sections.shop.sort_name }}</h2>
                                                 <div class="flex items-center" @click="showBodyScroll">
-                                                    <button class="flex items-center" @click="isVisible.sort=false">
-                                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.71 10l4.65-4.66a.495.495 0 10-.7-.7L10 9.29 5.34 4.64a.495.495 0 00-.7.7L9.29 10l-4.65 4.66a.48.48 0 000 .7.481.481 0 00.7 0L10 10.71l4.66 4.65a.482.482 0 00.7 0 .48.48 0 000-.7L10.71 10z" fill="currentColor"></path></svg>
+                                                    <button aria-label="show sort button" class="flex items-center" @click="isVisible.sort=false">
+                                                        <svg aria-label="close icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.71 10l4.65-4.66a.495.495 0 10-.7-.7L10 9.29 5.34 4.64a.495.495 0 00-.7.7L9.29 10l-4.65 4.66a.48.48 0 000 .7.481.481 0 00.7 0L10 10.71l4.66 4.65a.482.482 0 00.7 0 .48.48 0 000-.7L10.71 10z" fill="currentColor"></path></svg>
                                                     </button>
                                                 </div>
                                             </div>
@@ -271,7 +271,7 @@
                                                         <label class="relative flex items-center cursor-pointer">
                                                             <input hidden type="radio" class="absolute top-0 left-0" style="z-index: -1" v-model="params.sort" :value="sort.field" :id="sort.name">
                                                             <div class="flex justify-center items-center">
-                                                                <svg class="fill-current "  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
+                                                                <svg aria-label="chivron icon" class="fill-current "  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
                                                             </div>
                                                             <label class="cursor-pointer text-sml primary-hover" :for="sort.name">{{ sort.name }}</label>
                                                         </label>
@@ -311,49 +311,49 @@
             <div :class="items.length != 0?'lg:mx-10 py-2.5 lg:border-t border-gray-300 ':''">
                 <div class="flex justify-center items-center flex-wrap">
                     <!-- chivron left -->
-                    <button v-if="paginate.last_page > 0" class="mx-2 p-3 flex items-center primary-hover" @click="getItems(paginate.current_page-1)">
-                        <svg class="w-3 h-3 translate" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path></svg>
+                    <button aria-label="chivron left button"  v-if="paginate.last_page > 0" class="mx-2 p-3 flex items-center primary-hover" @click="getItems(paginate.current_page-1)">
+                        <svg aria-label="chivron left icon" class="w-3 h-3 translate" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path></svg>
                     </button>
                     <!-- chivron left -->
                     <!-- pages -->
-                    <button v-if="paginate.last_page > 1" :class="[(this.style),((paginate.last_page - (paginate.last_page -1)) == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page - (paginate.last_page -1))">
-                        <span class="text-sm font-bold">{{ paginate.last_page - (paginate.last_page -1) }}</span>
+                    <button aria-label="paggination button" v-if="paginate.last_page > 1" :class="[(this.style),((paginate.last_page - (paginate.last_page -1)) == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page - (paginate.last_page -1))">
+                        <span aria-label="paggination icon" class="text-sm font-bold">{{ paginate.last_page - (paginate.last_page -1) }}</span>
                     </button> 
-                    <button v-if="paginate.last_page > 2" :class="[(this.style),((paginate.last_page - (paginate.last_page -2)) == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page - (paginate.last_page -2))">
-                        <span class="text-sm font-bold">{{ paginate.last_page - (paginate.last_page -2) }}</span>
+                    <button aria-label="paggination button" v-if="paginate.last_page > 2" :class="[(this.style),((paginate.last_page - (paginate.last_page -2)) == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page - (paginate.last_page -2))">
+                        <span aria-label="paggination icon" class="text-sm font-bold">{{ paginate.last_page - (paginate.last_page -2) }}</span>
                     </button> 
-                    <button v-if="paginate.last_page > 3" :class="[(this.style),((paginate.last_page - (paginate.last_page -3)) == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page - (paginate.last_page -3))">
-                        <span class="text-sm font-bold">{{ paginate.last_page - (paginate.last_page -3) }}</span>
+                    <button aria-label="paggination button" v-if="paginate.last_page > 3" :class="[(this.style),((paginate.last_page - (paginate.last_page -3)) == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page - (paginate.last_page -3))">
+                        <span aria-label="paggination icon" class="text-sm font-bold">{{ paginate.last_page - (paginate.last_page -3) }}</span>
                     </button> 
-                    <button v-if="paginate.last_page > 4" :class="[(this.style),((paginate.last_page - (paginate.last_page -4)) == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page - (paginate.last_page -4))">
-                        <span class="text-sm font-bold">{{ paginate.last_page - (paginate.last_page -4) }}</span>
+                    <button aria-label="paggination button" v-if="paginate.last_page > 4" :class="[(this.style),((paginate.last_page - (paginate.last_page -4)) == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page - (paginate.last_page -4))">
+                        <span aria-label="paggination icon" class="text-sm font-bold">{{ paginate.last_page - (paginate.last_page -4) }}</span>
                     </button> 
-                    <button v-if="paginate.last_page > 5" :class="[(this.style),((paginate.last_page - (paginate.last_page -5)) == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page - (paginate.last_page -5))">
-                        <span class="text-sm font-bold">{{ paginate.last_page - (paginate.last_page -5) }}</span>
+                    <button aria-label="paggination button" v-if="paginate.last_page > 5" :class="[(this.style),((paginate.last_page - (paginate.last_page -5)) == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page - (paginate.last_page -5))">
+                        <span aria-label="paggination icon" class="text-sm font-bold">{{ paginate.last_page - (paginate.last_page -5) }}</span>
                     </button> 
                     <!-- More Page exists -->
-                    <button v-if="paginate.last_page > 5" :class="[(this.style),(paginate.current_page > (paginate.last_page - (paginate.last_page -5)) &&  paginate.current_page < (paginate.last_page)   ? 'text-primary' : '')]" >
-                        <span class="text-sm font-bold">{{paginate.current_page > (paginate.last_page - (paginate.last_page -5)) &&  paginate.current_page < (paginate.last_page)? paginate.current_page:'...'}}</span>
+                    <button aria-label="paggination button" v-if="paginate.last_page > 5" :class="[(this.style),(paginate.current_page > (paginate.last_page - (paginate.last_page -5)) &&  paginate.current_page < (paginate.last_page)   ? 'text-primary' : '')]" >
+                        <span aria-label="paggination icon" class="text-sm font-bold">{{paginate.current_page > (paginate.last_page - (paginate.last_page -5)) &&  paginate.current_page < (paginate.last_page)? paginate.current_page:'...'}}</span>
                     </button> 
-                    <button v-if="paginate.current_page > (paginate.last_page - (paginate.last_page -5)) &&  paginate.current_page < (paginate.last_page)" :class="this.style">
-                        <span class="text-sm font-bold">...</span>      
+                    <button aria-label="paggination button" v-if="paginate.current_page > (paginate.last_page - (paginate.last_page -5)) &&  paginate.current_page < (paginate.last_page)" :class="this.style">
+                        <span aria-label="paggination icon" class="text-sm font-bold">...</span>      
                     </button> 
                     <!-- More Page exists -->
                     <!-- pages -->
                     <div v-if="paginate.last_page > 5">
-                        <button v-if="paginate.last_page == paginate.current_page"  :class="[(this.style),(paginate.last_page == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page)">
-                            <span class="text-sm font-bold">{{ paginate.last_page }}</span>
+                        <button aria-label="paggination button" v-if="paginate.last_page == paginate.current_page"  :class="[(this.style),(paginate.last_page == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page)">
+                            <span aria-label="paggination icon" class="text-sm font-bold">{{ paginate.last_page }}</span>
                         </button> 
                     </div>
                     <div v-else>
-                        <button v-if="paginate.last_page > 0" :class="[(this.style),(paginate.last_page == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page)">
-                            <span class="text-sm font-bold">{{ paginate.last_page }}</span>
+                        <button aria-label="paggination button" v-if="paginate.last_page > 0" :class="[(this.style),(paginate.last_page == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page)">
+                            <span aria-label="paggination icon" class="text-sm font-bold">{{ paginate.last_page }}</span>
                         </button> 
                     </div>
                     <!-- pages -->
                     <!-- chivron right -->
-                    <button v-if="paginate.last_page > 0" class="mx-2 p-3 flex items-center primary-hover" @click="getItems(paginate.current_page+1)">
-                        <svg class="w-3 h-3 translate" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"></path></svg>
+                    <button aria-label="chivron right button" v-if="paginate.last_page > 0" class="mx-2 p-3 flex items-center primary-hover" @click="getItems(paginate.current_page+1)">
+                        <svg aria-label="chivron right icon" class="w-3 h-3 translate" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"></path></svg>
                     </button>
                     <!-- chivron right -->
                 </div>
@@ -481,7 +481,6 @@ export default {
             for(let i=0; i<this.collections.length; i++){
                 for(let j=0; j<this.collections.length; j++){ 
                     if(this.collections[i].parent == this.collections[j]._id ){
-                    console.log('this item _____',this.collections[i]);
                     let childObject = this.collections[i];
                     this.collections[j].childrens.push(childObject);
                     this.collections.splice(i,1);

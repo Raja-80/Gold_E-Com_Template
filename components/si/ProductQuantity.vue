@@ -1,7 +1,7 @@
 <template>
     <div class="flex items-center justify-center border border-primary rounded-full overflow-hidden">
-        <button @click="inc(-1)" class="py-1.5 lg:py-2.5 px-3 lg:px-4">
-            <svg class="w-2.5 h-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.45h-11a.55.55 0 000 1.1h11a.55.55 0 000-1.1z" fill="currentColor"></path></svg>
+        <button aria-label="plus button" @click="inc(-1)" class="py-1.5 lg:py-2.5 px-3 lg:px-4">
+            <svg aria-label="plus icon" class="w-2.5 h-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.45h-11a.55.55 0 000 1.1h11a.55.55 0 000-1.1z" fill="currentColor"></path></svg>
         </button>
         <div class="flex">
             <label class="relative py-1.5 lg:py-2.5 h-full">
@@ -10,8 +10,8 @@
             </label>
             <span class="flex items-center bg-white px-2 text-sml" v-if="quantity.unit">{{ quantity.unit }}</span>
         </div>
-        <button @click="inc(1)" class="py-1.5 lg:py-2.5 px-3 lg:px-4">
-            <svg class="w-2.5 h-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
+        <button aria-label="minus button" @click="inc(1)" class="py-1.5 lg:py-2.5 px-3 lg:px-4">
+            <svg aria-label="minus icon" class="w-2.5 h-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
         </button>
     </div>
 </template>

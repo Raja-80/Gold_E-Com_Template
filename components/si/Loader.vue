@@ -1,6 +1,6 @@
 <template>
   <div>
-    <svg
+    <svg aria-label="loader icon"
       width="200"
       height="100"
       viewBox="0 0 187.3 93.7"

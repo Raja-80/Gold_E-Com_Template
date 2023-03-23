@@ -5,14 +5,14 @@
             <!--  -->
             <div v-if="!option.hasOwnProperty('style') || option.style == '' || option.style == null  || (option.style !== 'LIST' && option.style !== 'CHECK' && option.style !== 'RADIO') && (option.key !== 'color' && option.style == 'SIZE') || (option.key == 'color' && option.style == 'COLOR') " class="options-list">
                 <div v-for="(val, ii) in option.values" :key="ii" class="option mr-f-2">
-                    <button :class="selected[`option${i+1}`] && selected[`option${i+1}`].value == val._id ? 'active': ''" @click="setVariant(i+1, val._id)" :id="val._id" :style="`${option.key == 'color' ? `background-color:${val.value2}` : ''}`"><small>{{ val.value1 }}</small></button>
+                    <button aria-label="colors button" :class="selected[`option${i+1}`] && selected[`option${i+1}`].value == val._id ? 'active': ''" @click="setVariant(i+1, val._id)" :id="val._id" :style="`${option.key == 'color' ? `background-color:${val.value2}` : ''}`"><small>{{ val.value1 }}</small></button>
                 </div>
             </div>
             
             <!-- Size style for Color option -->
             <div v-if="option.key == 'color' && option.style == 'SIZE'" class="options-list">
                 <div v-for="(val, ii) in option.values" :key="ii" class="option mr-f-2">
-                    <button class="size-style " :class="selected[`option${i+1}`] && selected[`option${i+1}`].value == val._id ? 'active': ''" @click="setVariant(i+1, val._id)" :id="val._id" :style="``"><small>{{ val.value1 }}</small></button>
+                    <button aria-label="sizes button" class="size-style " :class="selected[`option${i+1}`] && selected[`option${i+1}`].value == val._id ? 'active': ''" @click="setVariant(i+1, val._id)" :id="val._id" :style="``"><small>{{ val.value1 }}</small></button>
                 </div>
             </div>
 
@@ -202,7 +202,6 @@ export default {
                     if(this.options[i].style == 'LIST' && this.options[i].key == 'color'){
                         this.listStyleColorValue.index = i+1;
                         this.listStyleColorValue.value = this.options[i].values[0]._id;
-                        // console.log('List Style color ===>',this.listStyleColorValue);
                     }
                     if(this.options[i].style == 'LIST' && this.options[i].key == 'size'){
                         this.listStyleSizeValue.index = i+1;

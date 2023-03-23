@@ -9,7 +9,7 @@
                         <div @click="hideBodyScroll">
                             <div @click="showCollections" class="flex items-center justify-between py-3.5 lg:py-5 cursor-pointer underline lg:no-underline ml-mr-4">
                                 <h2 class="text-sml ml-font-bold-hover" :class="isVisible.collections ==true? 'ml-font-bold' : ''">{{ $settings.sections.blog.sidebar.categories.title }}</h2>
-                                <svg class="lg:mx-1 hidden lg:block" :class="isVisible.collections == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                <svg aria-label="chivron bottom" class="lg:mx-1 hidden lg:block" :class="isVisible.collections == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                             </div>
                         </div>
                         <transition :name="windowWidth < 1024 ? 'fade' : 'slide'">
@@ -19,8 +19,8 @@
                                         <div class="flex items-center justify-between py-5 lg:hidden border-b border-gray-300 px-5">
                                             <h2 class="text-sml ml-font-bold">{{ $settings.sections.blog.sidebar.categories.title }}</h2>
                                             <div class="flex items-center" @click="showBodyScroll">
-                                                <button class="flex items-center" @click="isVisible.collections=false">
-                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.71 10l4.65-4.66a.495.495 0 10-.7-.7L10 9.29 5.34 4.64a.495.495 0 00-.7.7L9.29 10l-4.65 4.66a.48.48 0 000 .7.481.481 0 00.7 0L10 10.71l4.66 4.65a.482.482 0 00.7 0 .48.48 0 000-.7L10.71 10z" fill="currentColor"></path></svg>
+                                                <button aria-label="close filter" class="flex items-center" @click="isVisible.collections=false">
+                                                    <svg aria-label="chivron bottom" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.71 10l4.65-4.66a.495.495 0 10-.7-.7L10 9.29 5.34 4.64a.495.495 0 00-.7.7L9.29 10l-4.65 4.66a.48.48 0 000 .7.481.481 0 00.7 0L10 10.71l4.66 4.65a.482.482 0 00.7 0 .48.48 0 000-.7L10.71 10z" fill="currentColor"></path></svg>
                                                 </button>
                                             </div>
                                         </div>
@@ -30,7 +30,7 @@
                                                     <label class="relative flex items-center cursor-pointer">
                                                         <input hidden type="checkbox" class="absolute top-0 left-0" style="z-index: -1" :id="item.slug" :checked="params['categories.slug-in'] && params['categories.slug-in'].indexOf(item.slug) >= 0" @change="setParams($event, 'categories.slug-in', item.slug)">
                                                         <div class="flex justify-center items-center">
-                                                            <svg class="fill-current "  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
+                                                            <svg aria-label="chivron bottom" class="fill-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
                                                         </div>
                                                         <label class="cursor-pointer text-sml primary-hover" :for="item.slug">{{ item.name }}</label>
                                                     </label>
@@ -68,7 +68,7 @@
                     <div @click="hideBodyScroll">
                         <div @click="showSort" class="flex items-center justify-between py-3.5 lg:py-5 cursor-pointer underline lg:no-underline">
                             <h2 class="text-sml ml-font-bold-hover" :class="isVisible.sort==true? 'ml-font-bold' : ''">{{ $settings.sections.blog.sort_name }}</h2>
-                            <svg class="lg:mx-1 hidden lg:block" :class="isVisible.sort == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                            <svg aria-label="chivron bottom" class="lg:mx-1 hidden lg:block" :class="isVisible.sort == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                         </div>
                     </div>
                     <transition :name="windowWidth < 1024 ? 'fade' : 'slide'">
@@ -78,8 +78,8 @@
                                     <div class="flex items-center justify-between py-5 lg:hidden border-b border-gray-300 px-5">
                                         <h2 class="text-sml ml-font-bold">{{ $settings.sections.blog.sort_name }}</h2>
                                         <div class="flex items-center" @click="showBodyScroll">
-                                            <button class="flex items-center" @click="isVisible.sort=false">
-                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.71 10l4.65-4.66a.495.495 0 10-.7-.7L10 9.29 5.34 4.64a.495.495 0 00-.7.7L9.29 10l-4.65 4.66a.48.48 0 000 .7.481.481 0 00.7 0L10 10.71l4.66 4.65a.482.482 0 00.7 0 .48.48 0 000-.7L10.71 10z" fill="currentColor"></path></svg>
+                                            <button aria-label="close sort button" class="flex items-center" @click="isVisible.sort=false">
+                                                <svg aria-label="chivron bottom" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.71 10l4.65-4.66a.495.495 0 10-.7-.7L10 9.29 5.34 4.64a.495.495 0 00-.7.7L9.29 10l-4.65 4.66a.48.48 0 000 .7.481.481 0 00.7 0L10 10.71l4.66 4.65a.482.482 0 00.7 0 .48.48 0 000-.7L10.71 10z" fill="currentColor"></path></svg>
                                             </button>
                                         </div>
                                     </div>
@@ -89,7 +89,7 @@
                                                 <label class="relative flex items-center cursor-pointer">
                                                     <input hidden type="radio" class="absolute top-0 left-0" style="z-index: -1" v-model="params.sort" :value="sort.field" :id="sort.name">
                                                     <div class="flex justify-center items-center">
-                                                        <svg class="fill-current "  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
+                                                        <svg aria-label="chivron bottom" class="fill-current"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
                                                     </div>
                                                     <label class="cursor-pointer text-sml primary-hover" :for="sort.name">{{ sort.name }}</label>
                                                 </label>

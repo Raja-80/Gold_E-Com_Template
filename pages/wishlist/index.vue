@@ -53,7 +53,6 @@ export default {
     },
     methods: {
         async initWishlist(){
-            console.log("Init");
             this.items = [];
             const ids = this.$store.state.wishlist.map(item => item._id);
             this.loading.wishlist = true;

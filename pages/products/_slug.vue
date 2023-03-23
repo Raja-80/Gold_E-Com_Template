@@ -16,19 +16,19 @@
                         <div v-if="showImageSlider" class="bg-white fixed inset-0 z-50">
                             <div @click="showBodyScroll">
                                 <div @click="showImageSlider=false" class="absolute top-0 right-0 z-50 cursor-pointer py-8 px-4 md:px-10 md:py-10">
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.71 10l4.65-4.66a.495.495 0 10-.7-.7L10 9.29 5.34 4.64a.495.495 0 00-.7.7L9.29 10l-4.65 4.66a.48.48 0 000 .7.481.481 0 00.7 0L10 10.71l4.66 4.65a.482.482 0 00.7 0 .48.48 0 000-.7L10.71 10z" fill="currentColor"></path></svg>
+                                    <svg aria-label="close icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.71 10l4.65-4.66a.495.495 0 10-.7-.7L10 9.29 5.34 4.64a.495.495 0 00-.7.7L9.29 10l-4.65 4.66a.48.48 0 000 .7.481.481 0 00.7 0L10 10.71l4.66 4.65a.482.482 0 00.7 0 .48.48 0 000-.7L10.71 10z" fill="currentColor"></path></svg>
                                 </div>  
                             </div>
                             <div class="flex items-center flex-wrap justify-between h-full lg:p-10 relative">
                                 <div class="hidden lg:flex flex-col items-center">
                                     <div @click="increaseSize" class=" border border-gray-300 hover:border-primary transition delay-150 ease-in-out m-2.5 w-7 h-7 flex items-center justify-center cursor-pointer">
-                                        <svg class="w-2.5 h-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
+                                        <svg aria-label="plus icon" class="w-2.5 h-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
                                     </div>
                                     <div class="flex items-center justify-center ">
                                         <span class="text-base"> {{ zoom }} %</span>
                                     </div>
                                     <div @click="decreaseSize" class=" border border-gray-300 hover:border-primary transition delay-150 ease-in-out m-2.5 w-7 h-7 flex items-center justify-center cursor-pointer">
-                                        <svg class="w-2.5 h-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.45h-11a.55.55 0 000 1.1h11a.55.55 0 000-1.1z" fill="currentColor"></path></svg>
+                                        <svg aria-label="minus icon" class="w-2.5 h-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.45h-11a.55.55 0 000 1.1h11a.55.55 0 000-1.1z" fill="currentColor"></path></svg>
                                     </div>
                                 </div>
                                 <div class="flex-1 lg:px-20 xl:px-40 lg:relative">
@@ -39,16 +39,16 @@
                                     </div>
                                     <div class="absolute lg:static my-8 md:my-10 lg:my-0 bottom-0 lg:bottom-auto left-1/2 lg:left-auto transform lg:transform-none -translate-x-1/2 lg:translate-x-0">
                                         <div class="flex lg:block items-center">
-                                            <button v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:left-1 xl:left-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150  rounded-full border border-gray-300 hover:border-primary" @click="prev">
-                                                <svg class="rotate-chivron w-5 h-5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 15.54a.54.54 0 01-.39-.16L6.72 10l5.39-5.4a.551.551 0 11.78.78L8.28 10l4.61 4.61a.56.56 0 010 .78.54.54 0 01-.39.15z" fill="currentColor"></path></svg>
+                                            <button aria-label="chivron-down" v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:left-1 xl:left-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150  rounded-full border border-gray-300 hover:border-primary" @click="prev">
+                                                <svg aria-label="chivron icon" class="rotate-chivron w-5 h-5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 15.54a.54.54 0 01-.39-.16L6.72 10l5.39-5.4a.551.551 0 11.78.78L8.28 10l4.61 4.61a.56.56 0 010 .78.54.54 0 01-.39.15z" fill="currentColor"></path></svg>
                                             </button>
                                             <div v-if="item.images.length > 1" class="flex items-center justify-center lg:hidden">
                                                 <div class="mx-1" v-for="(image, index) in item.images" :key="index" >
                                                     <div class="h-1.5 w-1.5 rounded-full cursor-pointer" :class="visibleSlide == index ? 'bg-primary w-2 h-2' : 'bg-gray-300'" @click="setImage(index)"></div>
                                                 </div>
                                             </div>
-                                            <button v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:right-1 xl:right-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150 rounded-full border border-gray-300 hover:border-primary" @click="next">
-                                                <svg class="rotate-chivron w-5 h-5"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.89 4.6a.552.552 0 00-.78.78L11.72 10l-4.61 4.6a.56.56 0 000 .78.56.56 0 00.78 0L13.28 10 7.89 4.6z" fill="currentColor"></path></svg>
+                                            <button aria-label="chivron-down" v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:right-1 xl:right-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150 rounded-full border border-gray-300 hover:border-primary" @click="next">
+                                                <svg aria-label="chivron icon" class="rotate-chivron w-5 h-5"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.89 4.6a.552.552 0 00-.78.78L11.72 10l-4.61 4.6a.56.56 0 000 .78.56.56 0 00.78 0L13.28 10 7.89 4.6z" fill="currentColor"></path></svg>
                                             </button>
                                         </div>
                                     </div>
@@ -72,13 +72,13 @@
                                     </div>
                                     <div v-if="$settings.sections.products.add_to_wishlist.active">
                                         <transition name="fade">
-                                            <button v-if="$store.state.wishlist.find(i=>i._id==item._id)" @click="removeFromWishlist" title="Wishlist" class="box-shadow-xs bg-white rounded-full absolute z-10 top-0 right-0 m-2 md:m-3 p-3 md:p-3.5 transition-all ease-linear delay-150  hover-bg">
-                                                <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 translate text-primary align-middle"><path fill="currentColor" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
+                                            <button aria-label="chivron-left" v-if="$store.state.wishlist.find(i=>i._id==item._id)" @click="removeFromWishlist" title="Wishlist" class="box-shadow-xs bg-white rounded-full absolute z-10 top-0 right-0 m-2 md:m-3 p-3 md:p-3.5 transition-all ease-linear delay-150  hover-bg">
+                                                <svg aria-label="chivron left icon" aria-hidden="true" focusable="false" data-prefix="far" data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 translate text-primary align-middle"><path fill="currentColor" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
                                             </button>
                                         </transition>
                                         <transition name="fade">
-                                            <button v-if="!$store.state.wishlist.find(i=>i._id==item._id)" @click="addToWishlist" title="Wishlist" class="box-shadow-xs bg-white rounded-full absolute z-10 top-0 right-0 m-2 md:m-3 p-3 md:p-3.5 transition-all ease-linear delay-150 hover-bg">
-                                                <svg class="w-5 h-5 translate" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.48 3.91a3.25 3.25 0 012.68 1.62L10 6.85l.83-1.33a3.12 3.12 0 012.63-1.61 2.8 2.8 0 012.08.93c1.48 1.59 1.33 3.78-.37 5.57L10 15.66l-5.22-5.3c-1.67-1.85-1.8-4-.36-5.53a2.8 2.8 0 012.06-.92zm0-1a3.8 3.8 0 00-2.79 1.24C1.94 6 2 8.73 4 11l6 6.06 5.9-6c2.16-2.27 2.15-5.06.4-6.95a3.871 3.871 0 00-2.82-1.25A4.1 4.1 0 0010 5a4.23 4.23 0 00-3.52-2.09z" fill="currentColor"></path></svg>
+                                            <button aria-label="chivron-right" v-if="!$store.state.wishlist.find(i=>i._id==item._id)" @click="addToWishlist" title="Wishlist" class="box-shadow-xs bg-white rounded-full absolute z-10 top-0 right-0 m-2 md:m-3 p-3 md:p-3.5 transition-all ease-linear delay-150 hover-bg">
+                                                <svg aria-label="chivron right icon" class="w-5 h-5 translate" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.48 3.91a3.25 3.25 0 012.68 1.62L10 6.85l.83-1.33a3.12 3.12 0 012.63-1.61 2.8 2.8 0 012.08.93c1.48 1.59 1.33 3.78-.37 5.57L10 15.66l-5.22-5.3c-1.67-1.85-1.8-4-.36-5.53a2.8 2.8 0 012.06-.92zm0-1a3.8 3.8 0 00-2.79 1.24C1.94 6 2 8.73 4 11l6 6.06 5.9-6c2.16-2.27 2.15-5.06.4-6.95a3.871 3.871 0 00-2.82-1.25A4.1 4.1 0 0010 5a4.23 4.23 0 00-3.52-2.09z" fill="currentColor"></path></svg>
                                             </button>
                                         </transition>
                                     </div>
@@ -120,7 +120,7 @@
                                 <div class="flex items-center justify-start" v-if="$settings.sections.product.reviews.active">
                                     <div class="flex mx-1">
                                         <span class="mx-0.5 bg-text-primary" v-for="(star,i) in 5" :class="star <= item.review.rating ? 'text-yellow-500 ': ''" :key="i">
-                                            <svg class="w-3 h-3" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="3 3 18 18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.83,9.15l-6-.52L12.46,3.08h-.92L9.18,8.63l-6,.52L2.89,10l4.55,4L6.08,19.85l.75.55L12,17.3l5.17,3.1.75-.55L16.56,14l4.55-4Z"></path></svg>
+                                            <svg aria-label="stars icon" class="w-3 h-3" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="3 3 18 18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.83,9.15l-6-.52L12.46,3.08h-.92L9.18,8.63l-6,.52L2.89,10l4.55,4L6.08,19.85l.75.55L12,17.3l5.17,3.1.75-.55L16.56,14l4.55-4Z"></path></svg>
                                         </span>
                                     </div>
                                     <span class="text-sml" key="count">({{ item.review.reviews.length }} {{$settings.sections.product.reviews.name}})</span>
@@ -137,7 +137,7 @@
                             <!-- product cart -->
                             <!-- product quantity -->
                             <div class="flex items-center justify-between my-3" :class="item.type!='variable'?'border-t border-gray-300 pt-3':''">
-                                <h2 class="text-sml ">{{ $settings.sections.product.quantity.text }}</h2>
+                                <h2 class="text-sml">{{ $settings.sections.product.quantity.text }}</h2>
                                 <div class="">
                                     <si-product-quantity @selected="quantitySelected" :quantity="quantity" page="product"></si-product-quantity>
                                 </div>
@@ -147,7 +147,7 @@
                             <div v-if="$settings.sections.product.add_to_cart.active || $settings.sections.product.buy_now.active" class="py-3">
                                 <si-app-loader placement="BEFORE_ADD_TO_CART"/>
                                 <!-- add to cart -->
-                                <button v-if="$settings.sections.product.add_to_cart.active" :class="$settings.sections.product.buy_now.active ? 'mb-3':''" @click="addToCart" class="text-sml ml-font-bold-hover w-full flex  justify-center border border-primary rounded-full p-4 px-5 click-effect">
+                                <button aria-label="add to cart button" v-if="$settings.sections.product.add_to_cart.active" :class="$settings.sections.product.buy_now.active ? 'mb-3':''" @click="addToCart" class="text-sml ml-font-bold-hover w-full flex  justify-center border border-primary rounded-full p-4 px-5 click-effect">
                                     <span>{{ $settings.sections.product.add_to_cart.text }}</span>
                                 </button>
                                 <!-- add to cart -->
@@ -155,7 +155,7 @@
                                 <si-app-loader placement="BEFORE_BUYNOW"/>
                                 <si-app-loader placement="REPLACE_BUYNOW"/>
                                 <!-- buy now -->
-                                <button v-if="$settings.sections.product.buy_now.active" v-show="!$store.state.apps.find(a=>a.placement.indexOf('REPLACE_BUYNOW') >= 0)" @click="buyNow" class="text-sml ml-font-bold-hover w-full flex  justify-center border border-primary rounded-full p-4 px-5 click-effect">
+                                <button aria-label="buy now" v-if="$settings.sections.product.buy_now.active" v-show="!$store.state.apps.find(a=>a.placement.indexOf('REPLACE_BUYNOW') >= 0)" @click="buyNow" class="text-sml ml-font-bold-hover w-full flex  justify-center border border-primary rounded-full p-4 px-5 click-effect">
                                     <span>{{ $settings.sections.product.buy_now.text }}</span>
                                 </button>
                                 <si-app-loader placement="AFTER_BUYNOW"/>
@@ -173,7 +173,7 @@
                                         <span class="text-sml ml-font-bold">{{ $settings.sections.product.description.title }}</span>
                                     </div>
                                     <div>
-                                        <svg width="20" height="20" :class="description ? 'rotate-180 transition-all delay-150 ease-linear':''" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                        <svg aria-label="chivron icon" width="20" height="20" :class="description ? 'rotate-180 transition-all delay-150 ease-linear':''" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                     </div>
                                 </div>
                                 <transition name="slide">
@@ -191,7 +191,7 @@
                             <div class="flex items-center justify-center lg:justify-start gap-3">
                                 <div v-for="item in socialMedia.filter(s=>$settings.sections.product.share_buttons[s.name])" :key="item.name" class="flex items-center justify-center">
                                     <a class="h-full flex" :href="item.url" target="_blank" rel="noopener noreferrer">
-                                        <svg class="opacity-90" fill-rule="evenodd" width="30" height="30" :viewBox="item.view" fill="none" xmlns="http://www.w3.org/2000/svg"><path :d="item.image" fill="currentColor"></path></svg>
+                                        <svg aria-label="social media icons" class="opacity-90" fill-rule="evenodd" width="30" height="30" :viewBox="item.view" fill="none" xmlns="http://www.w3.org/2000/svg"><path :d="item.image" fill="currentColor"></path></svg>
                                     </a>
                                 </div>
                             </div>

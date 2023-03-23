@@ -33,7 +33,7 @@
             <div class="flex justify-center gap-4 pt-4 mb-7">
                 <div v-for="item in socialMedia.filter(s=>$settings.sections.post.share_buttons[s.name])" :key="item.name">
                     <a :href="item.url" target="_blank" rel="noopener noreferrer">
-                        <svg class="opacity-90" fill-rule="evenodd" width="30" height="30" :viewBox="item.view" fill="none" xmlns="http://www.w3.org/2000/svg"><path :d="item.image" fill="currentColor"></path></svg>
+                        <svg aria-label="social media" class="opacity-90" fill-rule="evenodd" width="30" height="30" :viewBox="item.view" fill="none" xmlns="http://www.w3.org/2000/svg"><path :d="item.image" fill="currentColor"></path></svg>
                     </a>
                 </div>
             </div>
