@@ -43,6 +43,7 @@
         <sections-footer></sections-footer>
         <sections-copyright></sections-copyright>
         <si-full-image></si-full-image>
+        <div v-if="$settings.other_scripts" class="other-scripts" v-html="$settings.other_scripts"></div>
     </div>
 </template>
 <script>
@@ -75,6 +76,7 @@ export default {
                 { rel: "dns-prefetch", href: 'https://storeno.b-cdn.net/stores/' },
                 { rel: 'preconnect', href: 'https://connect.facebook.net', crossorigin: "anonymous" },
                 { rel: 'preload', href: 'https://connect.facebook.net/en_US/fbevents.js', as: 'script' },
+                ...this.otherLinks
             ],
             htmlAttrs: {
                 lang: this.$store.state.language.code,

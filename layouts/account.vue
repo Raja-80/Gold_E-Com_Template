@@ -74,6 +74,7 @@ export default {
             link: [
                 { rel: 'icon', type: 'image/x-icon', href: this.$settings.store_favicon ? this.$settings.store_favicon.src : this.$store.state.defaults.icon },
                 { rel: "dns-prefetch", href: 'https://storeno.b-cdn.net/stores/' },
+                ...this.otherLinks
             ],
             htmlAttrs: {
                 lang: this.$store.state.language.code,
