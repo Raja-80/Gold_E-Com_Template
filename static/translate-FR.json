@@ -122,6 +122,7 @@
     "no_produts_text": "Texte pour l'absence de produits",
     "sorts": "Trier",
     "sort_name": "Nom du tri",
+    "default_sort": "Tri par défaut",
     "newest": "Le plus récent",
     "oldest": "Le plus ancien",
     "name_asc": "Nom A-Z",

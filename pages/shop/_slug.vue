@@ -29,11 +29,6 @@
                     </div>
                 </div>
             </div>
-            <div>
-                >>>>>>>>>>>>{{ typeof(this.$settings.sections.shop.default_sort) }}
-
-            </div>
-            
             <div class="flex items-center justify-between lg:relative under-border"> 
                 <transition name="fade">
                     <!-- v-if="$settings.sections.shop.sidebar.active" -->
@@ -397,8 +392,8 @@ export default {
             brands: [],
             style: 'mx-2 h-10 w-10 primary-hover',
             paginate: { page: 1, limit: this.$settings.sections.shop.pagination.limit, total: 12 },
-            params: { page: 1, search: this.$route.query.search, limit: this.$settings.sections.shop.pagination.limit, 'collections.slug-in': [], sort: {"createdAt": -1}},
-            lastParams: { page: 1, search: this.$route.query.search, limit: this.$settings.sections.shop.pagination.limit, 'collections.slug-in': [], sort: {"createdAt": -1} },
+            params: { page: 1, search: this.$route.query.search, limit: this.$settings.sections.shop.pagination.limit, 'collections.slug-in': [], sort: this.$settings.sections.shop.default_sort },
+            lastParams: { page: 1, search: this.$route.query.search, limit: this.$settings.sections.shop.pagination.limit, 'collections.slug-in': [], sort: this.$settings.sections.shop.default_sort },
             sorts: [
                 { field: { 'price.salePrice': 1 }, name: this.$settings.sections.shop.sorts.price_asc },
                 { field: { 'price.salePrice': -1 }, name: this.$settings.sections.shop.sorts.price_desc },

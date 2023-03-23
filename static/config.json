@@ -836,35 +836,35 @@
                                             "value": {"createdAt": -1},
                                             "values": [
                                                 {
-                                                    "name": "Newest",
+                                                    "name": "newest",
                                                     "value": {"createdAt": -1}
                                                 },
                                                 {
-                                                    "name": "Oldest",
+                                                    "name": "oldest",
                                                     "value": {"createdAt": 1}
                                                 },
                                                 {
-                                                    "name": "Name (A-Z)",
+                                                    "name": "name_asc",
                                                     "value": {"name": 1}
                                                 },
                                                 {
-                                                    "name": "Name (Z-A)",
+                                                    "name": "name_desc",
                                                     "value": {"name": -1}
                                                 },
                                                 {
-                                                    "name": "Price (low to high)",
+                                                    "name": "price_asc",
                                                     "value": {"price.salePrice": 1}
                                                 },
                                                 {
-                                                    "name": "Price (high to low)",
+                                                    "name": "price_desc",
                                                     "value": {"price.salePrice": -1}
                                                 },
                                                 {
-                                                    "name": "Rating (low to high)",
+                                                    "name": "rating_asc",
                                                     "value": {"review.rating": 1}
                                                 },
                                                 {
-                                                    "name": "Rating (high to low)",
+                                                    "name": "rating_desc",
                                                     "value": {"review.rating": -1}
                                                 }
                                             ]
