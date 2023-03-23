@@ -2482,6 +2482,8 @@
                     },
                     "title": "",
                     "description": "",
+                    "sort_name": "Order by",
+                    "default_sort": "createdAt: -1",
                     "sorts": {
                         "newest": "Newest",
                         "oldest": "Oldest",
@@ -2492,7 +2494,6 @@
                         "rating_asc": "Rating (low to high)",
                         "rating_desc": "Rating (high to low)"
                     },
-                    "sort_name": "Order by",
                     "pagination": {
                         "limit": 12
                     },

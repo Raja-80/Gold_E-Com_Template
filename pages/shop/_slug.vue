@@ -29,6 +29,11 @@
                     </div>
                 </div>
             </div>
+            <div>
+                >>>>>>>>>>>>{{ $settings.sections.shop.default_sort}}
+
+            </div>
+            
             <div class="flex items-center justify-between lg:relative under-border"> 
                 <transition name="fade">
                     <!-- v-if="$settings.sections.shop.sidebar.active" -->
