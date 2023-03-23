@@ -392,8 +392,8 @@ export default {
             brands: [],
             style: 'mx-2 h-10 w-10 primary-hover',
             paginate: { page: 1, limit: this.$settings.sections.shop.pagination.limit, total: 12 },
-            params: { page: 1, search: this.$route.query.search, limit: this.$settings.sections.shop.pagination.limit, 'collections.slug-in': [], sort: { createdAt: -1 } },
-            lastParams: { page: 1, search: this.$route.query.search, limit: this.$settings.sections.shop.pagination.limit, 'collections.slug-in': [], sort: { createdAt: -1 } },
+            params: { page: 1, search: this.$route.query.search, limit: this.$settings.sections.shop.pagination.limit, 'collections.slug-in': [], sort: { 'price.salePrice': 1 } },
+            lastParams: { page: 1, search: this.$route.query.search, limit: this.$settings.sections.shop.pagination.limit, 'collections.slug-in': [], sort: {'price.salePrice': 1 } },
             sorts: [
                 { field: { 'price.salePrice': 1 }, name: this.$settings.sections.shop.sorts.price_asc },
                 { field: { 'price.salePrice': -1 }, name: this.$settings.sections.shop.sorts.price_desc },

@@ -830,6 +830,46 @@
                                             "value": "Order by"
                                         },
                                         {
+                                            "name": "default_sort",
+                                            "path": "sections.shop.default_sort",
+                                            "type": "tc_select",
+                                            "value": "createdAt: -1",
+                                            "values": [
+                                                {
+                                                    "name": "Newest",
+                                                    "value": "createdAt: -1"
+                                                },
+                                                {
+                                                    "name": "Oldest",
+                                                    "value": "createdAt: 1"
+                                                },
+                                                {
+                                                    "name": "Name (A-Z)",
+                                                    "value": "'name': 1"
+                                                },
+                                                {
+                                                    "name": "Name (Z-A)",
+                                                    "value": "'name': -1"
+                                                },
+                                                {
+                                                    "name": "Price (low to high)",
+                                                    "value": "'price.salePrice': 1"
+                                                },
+                                                {
+                                                    "name": "Price (high to low)",
+                                                    "value": "'price.salePrice': -1"
+                                                },
+                                                {
+                                                    "name": "Rating (low to high)",
+                                                    "value": "'review.rating': 1"
+                                                },
+                                                {
+                                                    "name": "Rating (high to low)",
+                                                    "value": "'review.rating': -1"
+                                                }
+                                            ]
+                                        },
+                                        {
                                             "name": "newest",
                                             "path": "sections.shop.sorts.newest",
                                             "type": "tc_input",
