@@ -1399,7 +1399,7 @@
                                             "value": "Name (Z-A)"
                                         },
                                         {
-                                            "name": "Sort Name",
+                                            "name": "sort_name",
                                             "path": "sections.blog.sort_name",
                                             "type": "tc_input",
                                             "translatable": true,
