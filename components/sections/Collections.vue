@@ -5,7 +5,7 @@
             <div v-if="loading" class="flex justify-center items-center my-5">
                 <si-loader></si-loader>
             </div>
-            <div v-if="!loading && items.length>0" class="flex flex-wrap">
+            <div v-if="!loading && items.length>0" class="flex flex-wrap home-collections">
                 <div v-for="(item,i) in items" :key="i" class="w-full lg:w-1/2">
                     <si-collection :item="item"></si-collection>
                 </div>
@@ -57,6 +57,9 @@
               }else{
                   const { data } = await this.$storeino.collections.search(filter)
                   this.items = data.results;
+                  console.log("------------------------------------------------")
+                  console.log(this.items);
+                  console.log("------------------------------------------------")
               }
           }catch(e){
               console.log({e});
