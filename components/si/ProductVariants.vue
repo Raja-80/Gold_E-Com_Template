@@ -131,7 +131,7 @@
                             
                         </span>
                         <span :class="selected[`option${i+1}`] && selected[`option${i+1}`].value == value._id ? 'active': ''"  @click="setVariant(i+1, value._id)" v-if="value.images && value.images.length > 0" class="image-style-image syles-image">
-                            <img  :src="value.images[0].src+`?width=70&height=70`">
+                            <si-image  :src="value.images[0].src+`?width=70&height=70`"/>
                         </span>
                     </div>
                 </div>

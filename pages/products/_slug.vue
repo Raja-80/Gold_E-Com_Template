@@ -132,7 +132,7 @@
                             <p class="text-sml pt-3">{{ item.description }}</p>
                             <!-- short description -->
                             <!-- variant -->
-                            <si-product-variants class="flex text-sml" v-if="item.type=='variable'" :options="item.options" :variants="item.variants" @selected="variantSelected"></si-product-variants>
+                            <si-product-variants class="flex text-sml" v-if="item.type=='variable'" :options="item.options" :images="item.images" :variants="item.variants" @selected="variantSelected"></si-product-variants>
                             <!-- variant -->
                             <!-- product cart -->
                             <!-- product quantity -->
