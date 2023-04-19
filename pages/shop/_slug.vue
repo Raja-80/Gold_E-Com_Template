@@ -364,6 +364,14 @@
 </template>
 <script>
 export default {
+    // Ormana Relod Page
+    asyncData({ route }) {
+        if (route.path === '/shop/decouvrez-plus-ormana') {
+            if (process.client) {
+                window.location.reload();
+            }
+        }
+    },
     data() {
         return {
             urlSlugs: [],
