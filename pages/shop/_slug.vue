@@ -365,11 +365,9 @@
 <script>
 export default {
     // Ormana Relod Page
-    asyncData({ route }) {
+    asyncData({ route, redirect }) {
         if (route.path === '/shop/decouvrez-plus-ormana') {
-            if (process.client) {
-                window.location.reload();
-            }
+            redirect('/pages/ormana');
         }
     },
     data() {
