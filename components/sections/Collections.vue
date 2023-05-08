@@ -57,9 +57,6 @@
               }else{
                   const { data } = await this.$storeino.collections.search(filter)
                   this.items = data.results;
-                  console.log("------------------------------------------------")
-                  console.log(this.items);
-                  console.log("------------------------------------------------")
               }
           }catch(e){
               console.log({e});
