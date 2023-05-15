@@ -23,7 +23,7 @@
             .border-primary { border-color: var(--primary-color); }
             .text-primary { color: var(--text-color); }
             .primary-hover {
-                transition: all .1.5s ease-in-out;
+                transition: color .1.5s ease-in-out;
             }
             .primary-hover:hover {
                 color: var(--text-color);
