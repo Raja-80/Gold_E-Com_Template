@@ -362,7 +362,11 @@
                     ifram.style.height=null;
                     ifram.setAttribute('width','');
                     ifram.setAttribute('height','');
-                    div.appendChild(ifram)
+                    if (parentNode.nodeType !== Node.COMMENT_NODE) {
+                        div.appendChild(ifram)
+                    } else {
+                        console.error('Cannot append child to a Comment node');
+                    }
                 }
                 }
             }

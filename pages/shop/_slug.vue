@@ -365,11 +365,11 @@
 <script>
 export default {
     // Ormana Relod Page
-    // async asyncData({ route, redirect }) {
-    //     if (route.path === '/shop/decouvrez-plus-ormana') {
-    //         redirect('/pages/ormana');
-    //     }
-    // },
+    async asyncData({ route, redirect }) {
+        if (route.path === '/shop/decouvrez-plus-ormana') {
+            redirect('/pages/ormana');
+        }
+    },
     data() {
         return {
             urlSlugs: [],
