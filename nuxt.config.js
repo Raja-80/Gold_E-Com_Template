@@ -8,6 +8,7 @@ export default {
     ],
     link: []
   },
+  mode: 'universal',
   target: 'server',
   css: [
     '~/assets/css/icons.css',
