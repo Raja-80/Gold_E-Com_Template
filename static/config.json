@@ -200,7 +200,7 @@
                                     "values": [
                                         {
                                             "name": "header_logo",
-                                            "note": "recommended dimension 250 x 150 px",
+                                            "note": "Recommended Dimensions (200 x 48) Pixel",
                                             "path": "sections.header.logo",
                                             "type": "tc_image",
                                             "value": null
