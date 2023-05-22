@@ -95,7 +95,7 @@
                                     </div>
                                     <!-- Collections --> 
                                     <!-- Prices -->
-                                    <div v-show="$settings.sections.shop.sidebar.prices.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.prices=true: null" @mouseleave="windowWidth >= 1024 ? isVisible.prices=false:null">
+                                    <div v-show=" $settings.sections && $settings.sections.shop.sidebar && $settings.sections.shop.sidebar.prices.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.prices=true: null" @mouseleave="windowWidth >= 1024 ? isVisible.prices=false:null">
                                         <div @click="showPrices" class="flex items-center lg:gap-1 justify-between cursor-pointer py-5">
                                             <h2 class="text-sml ml-font-bold-hover" :class="isVisible.prices==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.prices.title }}</h2>
                                             <svg aria-label="chivron icon" :class="isVisible.prices == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
