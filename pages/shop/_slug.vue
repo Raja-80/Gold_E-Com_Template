@@ -103,7 +103,7 @@
                                         <transition name="slide">
                                             <div class="bg-white lg:absolute lg:top-full lg:inset-x-0 lg:w-full lg:z-30 lg:px-10" v-show="isVisible.prices && filters">
                                                 <div class="pb-5 lg:pt-5 lg:border-t border-gray-300">
-                                                    <div class="flex flex-col" dir="ltr">
+                                                    <div class="flex flex-col" dir="ltr" v-if="filters && filters.prices">
                                                         <si-price-range @change="setParams" :min="filters.prices.min" :max="filters.prices.max" />
                                                     </div>
                                                 </div>
