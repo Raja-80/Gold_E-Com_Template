@@ -57,20 +57,20 @@
                                                         <div  class="flex items-center w-full">
                                                             <label class="w-full lg:w-auto relative flex items-center transition delay-300 ease-in-out">
                                                                 <div>
-                                                                    <div  class="w-full lg:w-auto flex lg:gap-1 flex-col cursor-pointer" v-if="item.childrens && item.childrens.length > 0" @mouseover="windowWidth >= 1024 ? setActiveOver(i+'fit',i+'ret') : null" @mouseleave="windowWidth >= 1024 ? setActiveLeave(i+'fit',i+'ret') : null">
+                                                                    <div class="w-full lg:w-auto flex lg:gap-1 flex-col cursor-pointer" v-if="item.childrens && item.childrens.length > 0" @mouseover="windowWidth >= 1024 ? setActiveOver(i+'fit',i+'ret') : null" @mouseleave="windowWidth >= 1024 ? setActiveLeave(i+'fit',i+'ret') : null">
                                                                         <label :for="item.slug" :id="i+'ret'" @click="setActive(i+'fit',i+'ret')" class="cursor-pointer flex items-center lg:gap-1 justify-between primary-hover rotated">
                                                                             <span class="text-sml cursor-pointer">{{ item.name }}</span>
                                                                             <svg aria-label="chivron icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                                                         </label>
                                                                         <div :id="i+'fit'" class="fit-collapsible text-primary" :class="item.childrens.length > 0 ? 'sub-collections' : ''">
                                                                             <div class="list-sub-collections fit-collapsible-content" v-if="item.childrens && item.childrens.length > 0" >
-                                                                                <div v-for="(child, i) in item.childrens" :key="i" class="pt-3">
+                                                                                <div v-for="(child, ii) in item.childrens" :key="ii" class="pt-3">
                                                                                     <label class="relative flex items-center">
                                                                                         <input hidden type="checkbox" class="form-checkbox absolute top-0 left-0" style="z-index: -1" :checked="params['collections.slug-in'] && params['collections.slug-in'].indexOf(child.slug) >= 0" :id="child.slug" @change="setParams($event, 'collections.slug-in', child.slug)">
                                                                                         <div class="flex justify-center items-center">
                                                                                             <svg aria-label="chivron icon" class="fill-current "  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
                                                                                         </div>
-                                                                                        <label  :for="child.slug" class="cursor-pointer text-sml primary-hover">{{ child.name }}</label>
+                                                                                        <label :for="child.slug" class="cursor-pointer text-sml primary-hover">{{ child.name }}</label>
                                                                                     </label>
                                                                                 </div>
                                                                             </div>
@@ -112,7 +112,7 @@
                                     </div>
                                     <!-- Prices -->
                                     <!-- Sizes -->
-                                    <div v-if="$settings.sections.shop.sidebar.sizes.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.sizes=true : null" @mouseleave="windowWidth >= 1024 ? isVisible.sizes=false : null">
+                                    <!-- <div v-if="$settings.sections.shop.sidebar.sizes.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.sizes=true : null" @mouseleave="windowWidth >= 1024 ? isVisible.sizes=false : null">
                                         <div @click="showSizes" class="flex items-center lg:gap-1 justify-between cursor-pointer py-5">
                                             <h2 class="text-sml ml-font-bold-hover" :class="isVisible.sizes==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.sizes.title }}</h2>
                                             <svg aria-label="chivron icon" :class="isVisible.sizes == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
@@ -134,10 +134,10 @@
                                                 </div>
                                             </div>
                                         </transition>
-                                    </div>
+                                    </div> -->
                                     <!-- Sizes -->
                                     <!-- Colors -->
-                                    <div v-if="$settings.sections.shop.sidebar.colors.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.colors=true : null" @mouseleave="windowWidth >= 1024 ? isVisible.colors=false: null">
+                                    <!-- <div v-if="$settings.sections.shop.sidebar.colors.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.colors=true : null" @mouseleave="windowWidth >= 1024 ? isVisible.colors=false: null">
                                         <div @click="showColors" class="flex items-center lg:gap-1 justify-between cursor-pointer py-5">
                                             <h2 class="text-sml ml-font-bold-hover" :class="isVisible.colors==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.colors.title }}</h2>
                                             <svg aria-label="chivron icon" :class="isVisible.colors == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
@@ -159,10 +159,10 @@
                                                 </div>
                                             </div>
                                         </transition>
-                                    </div>
+                                    </div> -->
                                     <!-- Colors -->
                                     <!-- tags -->
-                                    <div v-if="$settings.sections.shop.sidebar.tags.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.tags=true: null" @mouseleave="windowWidth >= 1024 ? isVisible.tags=false:null">
+                                    <!-- <div v-if="$settings.sections.shop.sidebar.tags.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.tags=true: null" @mouseleave="windowWidth >= 1024 ? isVisible.tags=false:null">
                                         <div @click="showTags" class="flex items-center lg:gap-1 justify-between cursor-pointer py-5">
                                             <h2 class="text-sml ml-font-bold-hover" :class="isVisible.tags==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.tags.title }}</h2>
                                             <svg aria-label="chivron icon" :class="isVisible.tags == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
@@ -184,10 +184,10 @@
                                                 </div>
                                             </div>
                                         </transition>
-                                    </div>
+                                    </div> -->
                                     <!-- tags -->
                                     <!-- brands -->
-                                    <div  v-if="$settings.sections.shop.sidebar.brands.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.brands=true : null" @mouseleave="windowWidth >= 1024 ? isVisible.brands=false : null">
+                                    <!-- <div  v-if="$settings.sections.shop.sidebar.brands.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.brands=true : null" @mouseleave="windowWidth >= 1024 ? isVisible.brands=false : null">
                                         <div @click="showBrands" class="flex items-center lg:gap-1 justify-between cursor-pointer py-5">
                                             <h2 class="text-sml ml-font-bold-hover" :class="isVisible.brands==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sidebar.brands.title }}</h2>
                                             <svg aria-label="chivron icon" :class="isVisible.brands == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
@@ -211,7 +211,7 @@
                                                 </div>
                                             </div>
                                         </transition>
-                                    </div>
+                                    </div> -->
                                     <!-- brand -->
                                 </div>
                             </div>
