@@ -136,7 +136,7 @@
                             <!-- variant -->
                             <!-- product cart -->
                             <!-- product quantity -->
-                            <div class="flex items-center justify-between my-3" :class="item.type!='variable'?'border-t border-gray-300 pt-3':''">
+                            <div id="quantityProduct" class="flex items-center justify-between my-3" :class="item.type!='variable'?'border-t border-gray-300 pt-3':''">
                                 <h2 class="text-sml">{{ $settings.sections.product.quantity.text }}</h2>
                                 <div class="">
                                     <si-product-quantity @selected="quantitySelected" :quantity="quantity" page="product"></si-product-quantity>
