@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="flex-1 lg:px-20 xl:px-40 lg:relative">
                                     <div class="overflow-hidden" @dblclick="toggleZoom" @mousedown.prevent @mousedown="startDrag" @mousemove="dragImage" @mouseup="stopDrag">
-                                        <div class="pb-3/5-res relative" ref="image" :style="{ transform: 'scale(' + imageScale + ') translate(' + posX + 'px, ' + posY + 'px)'}" v-show="visibleSlide === index" v-for="(image, index) in item.images" :key="index" :index="index">
+                                        <div class="pb-3/5-res relative" ref="image" :style="{ transform: 'scale(' + imageScale + ') translate(' + posX + 'px, ' + posY + 'px)'}">
                                             <si-image width="400" height="400" class="h-full w-full absolute inset-0 object-contain cursor-pointer" :src="image ? image.src : null " :alt="item.name" />
                                         </div>
                                     </div>
@@ -42,7 +42,7 @@
                                             <button aria-label="chivron-down" v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:left-1 xl:left-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150  rounded-full border border-gray-300 hover:border-primary" @click="prev">
                                                 <svg aria-label="chivron icon" class="rotate-chivron w-5 h-5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 15.54a.54.54 0 01-.39-.16L6.72 10l5.39-5.4a.551.551 0 11.78.78L8.28 10l4.61 4.61a.56.56 0 010 .78.54.54 0 01-.39.15z" fill="currentColor"></path></svg>
                                             </button>
-                                            <div v-if="item.images.length > 1" class="flex items-center justify-center lg:hidden">
+                                            <div v-if="item.images.length > 1" class="items-center justify-center hidden">
                                                 <div class="mx-1" v-for="(image, index) in item.images" :key="index" >
                                                     <div class="h-1.5 w-1.5 rounded-full cursor-pointer" :class="visibleSlide == index ? 'bg-primary w-2 h-2' : 'bg-gray-300'" @click="setImage(index)"></div>
                                                 </div>
@@ -62,11 +62,11 @@
                         </div>
                     </transition>
                     <!-- shows images when click -->
-                    <!--  -->
+                    <!-- product images -->
                     <div style="height: fit-content;"  class="w-full lg:w-3/5 lg:sticky lg:top-7">
                         <div class="flex flex-col">
                             <div class="w-full">
-                                <div v-show="visibleSlide === index" v-for="(image, index) in item.images" :key="index" :index="index" class="pb-2/3-res relative overflow-hidden">
+                                <div class="pb-2/3-res relative overflow-hidden">
                                     <div @click="hideBodyScroll">
                                         <si-image width="400" height="400" class="h-full w-full absolute inset-0 object-cover cursor-pointer" @click="showImageSlider=true" :src="image ? image.src : null " :alt="item.name" />
                                     </div>
@@ -92,15 +92,15 @@
                                 </div>
                             </div>
                             <div class="hidden lg:flex flex-wrap pt-2.5">
-                                <div class="w-1/2 products-padding py-2.5" v-for="(image, index) in item.images.slice(1)"  :key="index">
+                                <div class="w-1/2 products-padding py-2.5" v-for="(image, index) in item.images"  :key="index">
                                     <div @click="hideBodyScroll" class="pb-full relative overflow-hidden">
-                                        <si-image  class="h-full w-full absolute inset-0 object-cover cursor-pointer" @click="showImageSlider=true;setImage(index)"  :src="image.src" :alt="`${item.name} - ${image.title}`"/>
+                                        <si-image  class="h-full w-full absolute inset-0 object-cover cursor-pointer" @click="setImage(index);showImageSlider=true" :src="image.src" :alt="`${item.name} - ${image.title}`"/>
                                     </div>   
                                 </div>
                             </div> 
                         </div>
                     </div>
-                    <!--  -->
+                    <!-- product images -->
                     <!-- Product content -->
                     <div style="height: fit-content;"  class="content-part w-full lg:w-2/5 pl-6% lg:sticky lg:top-5">
                         <div class="px-5 lg:px-0 pt-5 lg:pt-0">
@@ -229,6 +229,7 @@
     export default {
         data() {
             return {
+                // images slider popup
                 showImageSlider:false,
                 zoomed: false,
                 zoom: 0,
@@ -238,16 +239,21 @@
                 isDragging: false,
                 startMouseX: 0,
                 startMouseY: 0,
-                description: true,
-                Reviews: false,
                 visibleSlide: 0,
                 direction:'',
+
+                // product content
+                description: true,
+                Reviews: false,
                 loading: true,
                 item: null,
                 image: null,
                 tab: 'description',
+                outofstock: false,
                 quantity: {},
                 variant: null,
+                showVariantDiv:false,
+                showVarianteModal:false,
                 price: { salePrice: 0, comparePrice: 0 },
                 socialMedia: [
                     {
@@ -284,8 +290,9 @@
         async fetch() {
             const { slug } = this.$route.params;
             try{
-                const { data } = await this.$storeino.products.get({ slug }) 
+                const { data } = await this.$storeino.products.get({ slug })
                 this.item = data;
+
                 this.$store.state.seo.title = (this.item.seo.title || this.item.name) + ' - ' + this.$settings.store_name;
                 this.$store.state.seo.description = this.item.seo.description || this.item.description || this.$settings.store_description;
                 this.$store.state.seo.keywords = this.item.seo.keywords.length > 0 ? this.item.seo.keywords || [] : this.$settings.store_keywords || [];
@@ -304,6 +311,12 @@
                 if(this.item.images.length > 0) this.setImage(0);
                 // Set default variant if exists
                 if(this.item.type == 'variable' && this.item.variants.length > 0) this.variantSelected(this.item.variants[0]);
+                if(this.item.type == 'simple'){
+                    // Check outof stock
+                    if(!this.item.outStock.disabled && this.item.quantity.instock <= 0){
+                        this.outofstock = true;
+                    }
+                }
                 // Set default quantity
                 this.quantitySelected(this.quantity.default);
                 // Generate share urls
@@ -312,24 +325,28 @@
                     button.url = button.url.replace(/\{title\}/gi, this.item.name).replace(/\{url\}/gi, url);
                 }
                 if(!process.server){
+                    console.log("Send facebook events");
                     this.$storeino.fbpx('PageView')
-                this.$storeino.fbpx('ViewContent',{
-                content_name: this.item.name?this.item.name:'',
-                content_ids: [this.item._id],
-                content_type: "product",
-                value: this.item.price.salePrice,
-                currency: this.$store.state.currency.code
-                })
+                    this.$storeino.fbpx('ViewContent',{
+                        content_name: this.item.name?this.item.name:'',
+                        content_ids: [this.item._id],
+                        content_type: "product",
+                        value: this.item.price.salePrice,
+                        currency: this.$store.state.currency.code
+                    });
                     this.$tools.call('PAGE_VIEW', this.item);
                 }
+
             }catch(e){
                 // Redirect to error page if product not exists
+                console.log(e);
                 this.$nuxt.error({ statusCode: 404, message: 'product_not_found' })
             }
         },
         mounted() {
             if(this.item) this.$tools.call('PAGE_VIEW', this.item);
-            window.addEventListener("APP_LOADER", () => {
+            window.addEventListener("APP_LOADER", e => {
+                console.log("Despatching event CURRENT_PRODUCT APP_LOADER");
                 window.dispatchEvent(new CustomEvent('CURRENT_PRODUCT', {
                     detail: {
                         product_id: this.item._id,
@@ -341,33 +358,31 @@
                 }));
             });
             if(this.item){
-                this.$storeino.fbpx('PageView')
-                this.$storeino.fbpx('ViewContent',{
-                    content_name: this.item.name?this.item.name:'',
-                    content_ids: [this.item._id],
-                    content_type: "product",
-                    value: this.item.price.salePrice,
-                    currency: this.$store.state.currency.code
+            this.$storeino.fbpx('PageView')
+            this.$storeino.fbpx('ViewContent',{
+                content_name: this.item.name?this.item.name:'',
+                content_ids: [this.item._id],
+                content_type: "product",
+                value: this.item.price.salePrice,
+                currency: this.$store.state.currency.code
                 })
             }
             if(this.item){
                 const iframes=document.querySelectorAll('iframe')
                 for(const ifram of iframes){
+                const width = ifram.getAttribute('width')
+                const height = ifram.getAttribute('height')
                 const parent = ifram.parentNode
-                if (!parent.classList.contains('video-wrapper')) {
-                    const div = document.createElement("div");
-                    ifram.after(div)
-                    div.classList.add('video-wrapper');
-                    ifram.style.width=null;
-                    ifram.style.height=null;
-                    ifram.setAttribute('width','');
-                    ifram.setAttribute('height','');
-                    if (parentNode.nodeType !== Node.COMMENT_NODE) {
+                    if (!parent.classList.contains('video-wrapper')) {
+                        const div = document.createElement("div");
+                        ifram.after(div)
+                        div.classList.add('video-wrapper');
+                        ifram.style.width=null;
+                        ifram.style.height=null;
+                        ifram.setAttribute('width','');
+                        ifram.setAttribute('height','');
                         div.appendChild(ifram)
-                    } else {
-                        console.error('Cannot append child to a Comment node');
                     }
-                }
                 }
             }
         },
@@ -375,25 +390,23 @@
             slidesLen() {
                 return this.item.images.length
             }
-        }
-        ,
+        },
         methods: {
             toggleZoom() {
-
-                    if(window.innerWidth < 1024) {
-                        if (this.zoomed) {
-                            // Zoom out
-                            this.imageScale = 1;
-                            this.zoom = 0;
-                            this.zoomed = false
-                        } else {
-                            // Zoom in
-                            this.imageScale = 4;
-                            this.zoom = 60;
-                            this.zoomed = true
-                        }
+                if(window.innerWidth < 1024) {
+                    if (this.zoomed) {
+                        // Zoom out
+                        this.imageScale = 1;
+                        this.zoom = 0;
+                        this.zoomed = false
+                    } else {
+                        // Zoom in
+                        this.imageScale = 4;
+                        this.zoom = 60;
+                        this.zoomed = true
                     }
-                },
+                }
+            },
             startDrag(event) {
                 this.isDragging = true;
                 this.startMouseX = event.clientX;
@@ -430,19 +443,45 @@
             },
             next(){
                 if(this.visibleSlide >= this.slidesLen - 1 ){
-                    this.visibleSlide = 0
+                    this.image = this.$tools.copy(this.item.images[this.visibleSlide = 0]);
                 }else {
-                    this.visibleSlide ++
+                    this.image = this.$tools.copy(this.item.images[this.visibleSlide = this.visibleSlide + 1]);
                 }
                 this.direction = 'left'
             },
             prev() {
                 if(this.visibleSlide <= 0 ){
-                    this.visibleSlide = this.slidesLen - 1
+                    this.image = this.$tools.copy(this.item.images[this.visibleSlide = this.slidesLen - 1]);
                 }else {
-                    this.visibleSlide --
+                    this.image = this.$tools.copy(this.item.images[this.visibleSlide = this.visibleSlide - 1]);
                 }
                 this.direction = 'right'
+            },
+            t(key){
+                const langs = {
+                    price_title_products: {
+                        EN: "Price:	",
+                        FR: "Prix:	",
+                        AR: "السعر: ",
+                        ES: "Prezo: ",
+                        PT: "Preço: "
+                    },
+                    check_choice:{
+                        EN: "Please check your choice :",
+                        FR: "Veuillez vérifier votre choix:	",
+                        AR: "يرجى تأكيد الإختيار: ",
+                        ES: "Por favor marque su elección: ",
+                        PT :"Por favor, verifique a sua escolha: "
+                    },
+                    can_change_choice:{
+                        EN: "You can change your choice :",
+                        FR: "Vous pouvez modifier votre choix :	",
+                        AR: "يمكنك تغيير اختيارك: ",
+                        ES: "Puede cambiar su elección: ",
+                        PT:"Você pode alterar sua escolha: "
+                    }
+                }
+                return langs[key] && langs[key][this.$store.state.language.code] || '';
             },
             addToCart() {
                 // Call add to cart event
@@ -458,12 +497,12 @@
                     }, 500);
                 }
                 this.$storeino.fbpx('AddToCart',{
-               content_name: this.item.name,
-               content_ids: [this.item._id],
-               content_type: "product",
-               value: this.variant?this.variant.price.salePrice : this.item.price.salePrice,
-               currency: this.$store.state.currency && this.$store.state.currency.code ? this.$store.state.currency.code : "USD"
-            })
+                    content_name: this.item.name,
+                    content_ids: [this.item._id],
+                    content_type: "product",
+                    value: this.variant?this.variant.price.salePrice : this.item.price.salePrice,
+                    currency: this.$store.state.currency && this.$store.state.currency.code ? this.$store.state.currency.code : "USD"
+                })
                 this.$tools.toast(this.$settings.sections.alerts.added_to_cart);
             },
             addToWishlist(){
@@ -476,6 +515,10 @@
             },
             buyNow() {
                 // Add to cart and redirect to checkout
+                if (this.$settings.checkout_required_fields.show_variante_reminder && this.item.type =='variable' && !this.showVarianteModal) {
+                    this.showVarianteModal = true
+                    return;
+                }
                 this.addToCart();
                 setTimeout(() => {
                     window.location.href = '/checkout2';
@@ -490,21 +533,41 @@
                     this.price.salePrice = this.item.price.salePrice * quantity;
                     this.price.comparePrice = this.item.price.comparePrice * quantity;
                 }
+                if(!process.server){
+                    console.log("Despatching event CURRENT_PRODUCT quantitySelected");
+                    window.dispatchEvent(new CustomEvent('CURRENT_PRODUCT', {
+                        detail: {
+                            product_id: this.item._id,
+                            product_quantity: this.quantity.value,
+                            product_variant: this.variant ? this.variant._id : undefined,
+                            product_currency: this.$store.state.currency.code,
+                            product_price: this.price
+                        }
+                    }));
+                }
             },
             variantSelected(variant) {
                 this.variant = variant;
                 if(variant.imageId && this.item.images.length > 0){
                     let index = this.item.images.findIndex(i=>i._id == variant.imageId);
                     if(index == -1) index = 0;
+                    this.visibleSlide = index;
                     this.image = this.item.images[index];
                 }else if(this.item.images.length > 0){
+                    this.visibleSlide = 0
                     this.image = this.item.images[0];
+                }
+                // Check outof stock
+                if(!this.item.outStock.disabled && this.variant.quantity.instock <= 0){
+                    this.outofstock = true;
+                }else{
+                    this.outofstock = false;
                 }
                 this.quantitySelected(this.item.quantity.value);
             },
             setImage(index){
                 this.visibleSlide = index
-                //   this.image = this.$tools.copy(this.item.images[index]);
+                this.image = this.$tools.copy(this.item.images[index]);
             },
             setTab(tab){
                 this.tab = tab;
