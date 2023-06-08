@@ -17,7 +17,7 @@
                             <div @click="showBodyScroll">
                                 <div @click="showImageSlider=false" class="absolute top-0 right-0 z-50 cursor-pointer py-8 px-4 md:px-10 md:py-10">
                                     <svg aria-label="close icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.71 10l4.65-4.66a.495.495 0 10-.7-.7L10 9.29 5.34 4.64a.495.495 0 00-.7.7L9.29 10l-4.65 4.66a.48.48 0 000 .7.481.481 0 00.7 0L10 10.71l4.66 4.65a.482.482 0 00.7 0 .48.48 0 000-.7L10.71 10z" fill="currentColor"></path></svg>
-                                </div>  
+                                </div>
                             </div>
                             <div class="flex items-center flex-wrap justify-between h-full lg:p-10 relative">
                                 <div class="hidden lg:flex flex-col items-center">
@@ -42,10 +42,12 @@
                                             <button aria-label="chivron-down" v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:left-1 xl:left-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150  rounded-full border border-gray-300 hover:border-primary" @click="prev">
                                                 <svg aria-label="chivron icon" class="rotate-chivron w-5 h-5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 15.54a.54.54 0 01-.39-.16L6.72 10l5.39-5.4a.551.551 0 11.78.78L8.28 10l4.61 4.61a.56.56 0 010 .78.54.54 0 01-.39.15z" fill="currentColor"></path></svg>
                                             </button>
-                                            <div v-if="item.images.length > 1" class="items-center justify-center flex lg:hidden">
-                                                <div class="mx-1" v-for="(image, index) in item.images" :key="index">
-                                                    <div class="h-1.5 w-1.5 rounded-full cursor-pointer" :class="visibleSlide == index ? 'bg-primary w-2 h-2' : 'bg-gray-300'" @click="setImage(index)"></div>
-                                                </div>
+                                            <div class="lg:hidden">
+                                              <div v-if="item.images.length > 1" class="items-center justify-center flex">
+                                                  <div class="mx-1" v-for="(image, index) in item.images" :key="index">
+                                                      <div class="h-1.5 w-1.5 rounded-full cursor-pointer" :class="visibleSlide == index ? 'bg-primary w-2 h-2' : 'bg-gray-300'" @click="setImage(index)"></div>
+                                                  </div>
+                                              </div>
                                             </div>
                                             <button aria-label="chivron-down" v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:right-1 xl:right-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150 rounded-full border border-gray-300 hover:border-primary" @click="next">
                                                 <svg aria-label="chivron icon" class="rotate-chivron w-5 h-5"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.89 4.6a.552.552 0 00-.78.78L11.72 10l-4.61 4.6a.56.56 0 000 .78.56.56 0 00.78 0L13.28 10 7.89 4.6z" fill="currentColor"></path></svg>
@@ -95,9 +97,9 @@
                                 <div class="w-1/2 products-padding py-2.5" v-for="(image, index) in item.images"  :key="index">
                                     <div @click="hideBodyScroll" class="pb-full relative overflow-hidden">
                                         <si-image  class="h-full w-full absolute inset-0 object-cover cursor-pointer" @click="setImage(index);showImageSlider=true" :src="image.src" :alt="`${item.name} - ${image.title}`"/>
-                                    </div>   
+                                    </div>
                                 </div>
-                            </div> 
+                            </div>
                         </div>
                     </div>
                     <!-- product images -->
@@ -424,8 +426,8 @@
             },
             stopDrag() {
                 this.isDragging = false;
-                this.posX  = 0; 
-                this.posY  = 0; 
+                this.posX  = 0;
+                this.posY  = 0;
             },
             increaseSize() {
                 const currentScale = this.imageScale;
@@ -612,7 +614,7 @@
 }
 
 /* Product padding */
-@media (min-width: 1024px) { 
+@media (min-width: 1024px) {
   .products-padding:nth-child(odd) {
     padding-right: 0.625rem;
   }
@@ -668,4 +670,3 @@
     display: none;
 }
 </style>
-  
