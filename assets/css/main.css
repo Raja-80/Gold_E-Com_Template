@@ -135,14 +135,6 @@ h4{ font-size: 1em; }
 h5{ font-size: .83em; }
 h6{ font-size: .67em; }
 
-.two-lines{
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  min-height: 2.8em;
-}
-
 /* Toast */
 .toast {
   position: fixed;
@@ -297,13 +289,13 @@ h6{ font-size: .67em; }
   transition-timing-function: ease-out;
 }
 
-.slide-enter, 
+.slide-enter,
 .slide-leave-to {
   max-height: 0;
   opacity: 0;
 }
 
-.slide-enter-to, 
+.slide-enter-to,
 .slide-leave {
   max-height: 100px;
   opacity: 1;

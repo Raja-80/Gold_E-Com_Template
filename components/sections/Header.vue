@@ -1,16 +1,16 @@
 <template>
-<div>  
+<div>
     <si-app-loader placement="BEFORE_HEADER"/>
     <!-- header -->
         <div class="relative border-b border-gray-300">
-            <div class="header-color header-text h-60.8 h-124"></div>
+            <div class="header-color header-text" :class="checkSubMenu()? 'header-height' : 'header-height-no-menu'" ></div>
             <transition name="header-slide">
                 <header>
                     <div id="header" class="header header-color absolute top-0 left-0 right-0 z-20">
                         <div style="height: 3.8rem;" class="flex justify-between flex-wrap items-center relative px-5 lg:px-10">
                             <!-- NavBar -->
                             <nav class="hidden lg:block lg:w-2/5 header-text">
-                                <div v-if="menu"  class="hidden lg:flex items-center text-sml scroll">
+                                <div v-if="menu" class="hidden lg:flex items-center text-sml scroll">
                                     <ul  v-for="(item, i) in menu.items" :key="i" @mouseover="activeId = activeId = item._id" @mouseleave="activeId = activeId = null">
                                         <!-- main child -->
                                         <li class="chivron-box flex items-center ml-mr-2 py-5">
@@ -29,7 +29,7 @@
                                                     <div v-for="(item,i) in item.childrens" :key="i" @mouseover="subItems = subItems = item.collectionId" @mouseleave="subItems = subItems = null">
                                                         <div class="chivron-box flex items-center ml-mr-2 py-5">
                                                             <router-link class="ml-font-bold-hover ml-mr-1" :to="item.url" :class="item.childrens.length > 0 ? '':'ml-mr-2'">
-                                                                <span class="truncate">{{item.text}}</span> 
+                                                                <span class="truncate">{{item.text}}</span>
                                                             </router-link>
                                                             <button aria-label="chivron-down" class="chivron-down opacity-0" v-if="item.childrens.length > 0" @click="subItems = subItems != item.collectionId ? item.collectionId : null">
                                                                 <svg aria-label="chivron icon" width="6" height="5"  :class="[subItems==item.collectionId ? 'rotate-180 transition-all delay-150 ease-linear' : '']"  viewBox="0 0 12 7" xmlns="http://www.w3.org/2000/svg"><path d="M11.39.6a.54.54 0 00-.78 0L6 5.21 1.39.6a.54.54 0 00-.78 0 .55.55 0 000 .77L6 6.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
@@ -40,7 +40,7 @@
                                                                 <div class="flex flex-col pt-5 mb-2" v-if="item.childrens && item.childrens.length > 0">
                                                                     <div class="mb-3" v-for="(child,ii) in item.childrens" :key="ii">
                                                                         <nuxt-link  class="ml-font-bold-hover" :to="child.url">
-                                                                        <span class="truncate">{{ child.text }}</span> 
+                                                                        <span class="truncate">{{ child.text }}</span>
                                                                         </nuxt-link>
                                                                     </div>
                                                                 </div>
@@ -53,7 +53,7 @@
                                         <!-- sub child -->
                                     </ul>
                                 </div>
-                            </nav> 
+                            </nav>
                             <!-- Nav Bar -->
                             <!-- logo -->
                             <div class="w-auto lg:w-1/5">
@@ -201,6 +201,11 @@ export default {
                 this.lastScrollPosition = currentScrollPosition;
             }
         },
+        checkSubMenu() {
+          const hasChildren = this.menu && this.menu.items.find(parent => parent.childrens && parent.childrens.length > 0);
+          if (hasChildren) return true;
+          else return false;
+        }
     },
 }
 </script>
@@ -212,7 +217,7 @@ export default {
 
 .h-4\.5 {
   height: 18px;
-} 
+}
 
 @keyframes opacity {
   0% {
@@ -289,14 +294,18 @@ input[type="search"]:focus::-webkit-search-cancel-button {
     background-color: #757575;
 }
 
+.header-height-no-menu {
+  height: 60.8px;
+}
+
 @media (max-width: 1024px) {
-    .h-60\.8 {
+    .header-height {
         height: 60.8px;
     }
 }
 
 @media (min-width: 1024px) {
-    .h-124 {
+    .header-height {
         height: 123px;
     }
 }

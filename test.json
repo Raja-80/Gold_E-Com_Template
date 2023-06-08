@@ -1,0 +1,104 @@
+{
+  "_id": "62d1d1175a1f1c0986594427",
+  "name": "Header menu",
+  "position": "",
+  "items": [
+      {
+          "target": "_self",
+          "childrens": [],
+          "_id": "62d1d1175a1f1c0986594428",
+          "text": "Home",
+          "url": "/"
+      },
+      {
+          "target": "_self",
+          "childrens": [],
+          "_id": "62d80b9f5a1f1c09865955e6",
+          "text": "Shop",
+          "url": "/shop",
+          "collectionId": "62d7bf2b5a1f1c0986595401"
+      },
+      {
+          "target": "_self",
+          "childrens": [
+              {
+                  "text": "Jewelry",
+                  "url": "/shop/jewelry",
+                  "target": "_self",
+                  "collectionId": "63e4b1d016c8a50e78544548",
+                  "childrens": []
+              },
+              {
+                  "text": "DIY & Crafts",
+                  "url": "/shop/diy-and-crafts",
+                  "target": "_self",
+                  "collectionId": "63e4b19c16c8a50e78544540",
+                  "childrens": []
+              },
+              {
+                  "text": "On Sale",
+                  "url": "/shop/on-sale",
+                  "target": "_self",
+                  "collectionId": "63e4b20416c8a50e78544550",
+                  "childrens": [
+                      {
+                          "text": "On Sale",
+                          "url": "/shop/on-sale",
+                          "target": "_self",
+                          "collectionId": "63e4b20416c8a50e78544550",
+                          "childrens": [
+                              {
+                                  "text": "Wedding & Engagement",
+                                  "url": "/shop/wedding-and-engagement",
+                                  "target": "_self",
+                                  "collectionId": "63e4b1e816c8a50e7854454c",
+                                  "childrens": []
+                              }
+                          ]
+                      }
+                  ]
+              },
+              {
+                  "text": "For Kids & Babies",
+                  "url": "/shop/for-kids-and-babies",
+                  "target": "_self",
+                  "collectionId": "63e4b1b516c8a50e78544544",
+                  "childrens": [
+                      {
+                          "text": "Personalized Gifts",
+                          "url": "/shop/personalized-gifts",
+                          "target": "_self",
+                          "collectionId": "63e4b18e16c8a50e7854453c",
+                          "childrens": []
+                      }
+                  ]
+              }
+          ],
+          "_id": "62d80b9f5a1f1c09865955e7",
+          "text": "Product",
+          "url": "/shop/-products-jaime-carey",
+          "collectionId": "62d6b8b35a1f1c098659501d"
+      },
+      {
+          "target": "_self",
+          "childrens": [],
+          "_id": "62d67f8e5a1f1c0986594f00",
+          "text": "Blog",
+          "url": "/blog"
+      }
+  ],
+  "translates": [
+      {
+          "properties": [],
+          "_id": "63f63cdb9848600fcaafdd6b",
+          "language": "FR"
+      },
+      {
+          "properties": [],
+          "_id": "63f63cdb9848600fcaafdd6c",
+          "language": "AR"
+      }
+  ],
+  "storeId": "618f01ef6faf3c019e5da2e1",
+  "__v": 0
+}
