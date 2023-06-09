@@ -29,7 +29,7 @@
                             <span v-if="footer.gmail" class="mt-5 text-sml text-md-responsive ">
                                 <a class="link-hover" :href="'mail:'+footer.gmail">{{ footer.gmail }}</a>
                             </span>
-                            <span v-if=" footer.number " class="mt-5 text-sml text-md-responsive ">    
+                            <span v-if=" footer.number " class="mt-5 text-sml text-md-responsive ">
                                 <a class="link-hover" :href="'tel:'+footer.number">{{ footer.number }}</a>
                             </span>
                         </div>
@@ -61,16 +61,16 @@
                     </transition>
                 </div>
                 <!--  Social Media  -->
-            </div> 
+            </div>
             <!-- Social Media & follow us -->
-            <!-- menu1 --> 
+            <!-- menu1 -->
             <div v-if="menus.menu1_active" class="menu1 border-t lg:border-0 border-gray-200 py-8 px-5 lg:py-0 lg:px-3 w-full" :class="menus.menu1_active && menus.menu2_active ? 'lg:w-1/4' : 'lg:w-1/3'">
                 <div @click="showMenu1" class="flex items-center justify-between transition-all ease-in-out delay-150 cursor-pointer lg:cursor-auto">
                     <h4 class="ml-font-bold text-sml">{{ menus.menu1_title }}</h4>
                     <span class="lg:hidden" :class="[isVisible.Menu1 ? 'rotate-45 transition-all delay-150 ease-linear' : ''] ">
                         <svg aria-label="chivron icon" width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
                     </span>
-                </div> 
+                </div>
                 <!-- Header Menu -->
                 <transition name="slide">
                     <div v-if="windowWidth < 1024 ? isVisible.Menu1 : true">
@@ -100,14 +100,14 @@
                 <!-- Header Menu -->
             </div>
             <!-- menu1  -->
-            <!-- menu2 --> 
+            <!-- menu2 -->
             <div v-if="menus.menu2_active" class="menu2 border-t lg:border-0 border-gray-200 py-8 px-5 lg:py-0 lg:px-3 w-full" :class="menus.menu1_active && menus.menu2_active ? 'lg:w-1/4' : 'lg:w-1/3'">
                 <div @click="showMenu2" class="flex items-center justify-between transition-all ease-in-out delay-150  cursor-pointer lg:cursor-auto">
                     <h4 class="ml-font-bold text-sml">{{ menus.menu2_title }}</h4>
                     <span class="lg:hidden" :class="[isVisible.Menu2 ? 'rotate-45 transition-all delay-150 ease-linear' : ''] ">
                         <svg aria-label="chivron icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
                     </span>
-                </div> 
+                </div>
                 <!-- Header Menu -->
                 <transition name="slide">
                     <div v-if="windowWidth < 1024 ? isVisible.Menu2 : true">
@@ -166,7 +166,7 @@
                                                 <div v-if="item.childrens && item.childrens.length > 0">
                                                     <div class="px-2 pt-1" v-for="(child,ii) in item.childrens" :key="ii">
                                                         <a :href="child.url">
-                                                           <span class="text-sml link-hover" > > {{ child.text }}</span> 
+                                                           <span class="text-sml link-hover" > > {{ child.text }}</span>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -206,7 +206,7 @@
                                                 <div v-if="item.childrens && item.childrens.length > 0">
                                                     <div class="px-2 pt-1" v-for="(child,ii) in item.childrens" :key="ii">
                                                         <a :href="child.url">
-                                                            <span class="text-sml link-hover" > {{ child.text }}</span> 
+                                                            <span class="text-sml link-hover" > {{ child.text }}</span>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -226,7 +226,7 @@
                         <span class="lg:hidden" :class="[isVisible.PaymentMethods ? 'rotate-45 transition-all delay-150 ease-linear' : ''] ">
                             <svg aria-label="chivron icon" width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
                         </span>
-                    </div> 
+                    </div>
                     <transition name="slide">
                         <div class="lg:block" v-if="windowWidth < 1024 ? isVisible.PaymentMethods : true">
                             <div class="payment_images flex flex-wrap mt-4">
@@ -247,7 +247,7 @@
       <si-app-loader placement="AFTER_FOOTER"/>
     </div>
   </template>
-  
+
   <script>
     export default {
       data() {
@@ -372,10 +372,10 @@
                         }
                     })
                 },
-            ].filter(item=> item.active) 
+            ].filter(item=> item.active)
         };
       },
-      mounted() {
+        mounted() {
             this.getWindowWidth();
             window.addEventListener('resize', this.getWindowWidth);
         },
@@ -424,7 +424,7 @@
     }
 };
   </script>
-    
+
 <style scoped>
 .menus-text:first-child {
     margin-top: 2rem;
@@ -439,4 +439,3 @@
     margin-right: 0;
 }
 </style>
-    

@@ -13,7 +13,7 @@
                 <div class="flex flex-wrap justify-between">
                     <!-- shows images when click -->
                     <transition name="fade">
-                        <div v-if="showImageSlider" class="bg-white fixed inset-0 z-50">
+                        <div v-if="showImageSlider" class="bg-white fixed inset-0 z-index">
                             <div @click="showBodyScroll">
                                 <div @click="showImageSlider=false" class="absolute top-0 right-0 z-50 cursor-pointer py-8 px-4 md:px-10 md:py-10">
                                     <svg aria-label="close icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.71 10l4.65-4.66a.495.495 0 10-.7-.7L10 9.29 5.34 4.64a.495.495 0 00-.7.7L9.29 10l-4.65 4.66a.48.48 0 000 .7.481.481 0 00.7 0L10 10.71l4.66 4.65a.482.482 0 00.7 0 .48.48 0 000-.7L10.71 10z" fill="currentColor"></path></svg>
@@ -32,11 +32,21 @@
                                     </div>
                                 </div>
                                 <div class="flex-1 lg:px-20 xl:px-40 lg:relative">
-                                    <div class="overflow-hidden" @dblclick="toggleZoom" @mousedown.prevent @mousedown="startDrag" @mousemove="dragImage" @mouseup="stopDrag">
-                                        <div class="pb-3/5-res relative" ref="image" :style="{ transform: 'scale(' + imageScale + ') translate(' + posX + 'px, ' + posY + 'px)'}">
-                                            <si-image width="400" height="400" class="h-full w-full absolute inset-0 object-contain cursor-pointer" :src="image ? image.src : null " :alt="item.name" />
+                                    <!-- images -->
+                                    <div class="overflow-hidden" @dblclick="toggleZoom">
+                                        <div
+                                        @mousedown.prevent="startDrag"
+                                        @touchstart.prevent="startDrag"
+                                        @mousemove="dragImage"
+                                        @touchmove="dragImage"
+                                        @mouseup="stopDrag"
+                                        @touchend="stopDrag">
+                                            <div class="pb-3/5-res relative" :class="cursor" ref="image" :style="{ transform: 'scale(' + imageScale + ') translate(' + posX + 'px, ' + posY + 'px)'}" v-show="visibleSlide === index" v-for="(image, index) in item.images" :key="index" :index="index">
+                                                <si-image width="400" height="400" class="h-full w-full absolute inset-0 object-contain" :src="image ? image.src : null " :alt="item.name" />
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- images -->
                                     <div class="absolute lg:static my-8 md:my-10 lg:my-0 bottom-0 lg:bottom-auto left-1/2 lg:left-auto transform lg:transform-none -translate-x-1/2 lg:translate-x-0">
                                         <div class="flex lg:block items-center">
                                             <button aria-label="chivron-down" v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:left-1 xl:left-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150  rounded-full border border-gray-300 hover:border-primary" @click="prev">
@@ -69,21 +79,31 @@
                         <div class="flex flex-col">
                             <div class="w-full">
                                 <div class="pb-2/3-res relative overflow-hidden">
-                                    <div @click="hideBodyScroll">
-                                        <si-image width="400" height="400" class="h-full w-full absolute inset-0 object-cover cursor-pointer" @click="showImageSlider=true" :src="image ? image.src : null " :alt="item.name" />
+                                    <div
+                                      @touchstart.prevent="startDrag"
+                                      @touchmove="dragImage"
+                                      @touchend="stopDrag">
+                                        <si-image width="400" height="400" class="h-full w-full absolute inset-0 object-cover cursor-pointer" @click="hideBodyScroll();showImageSlider=true" :src="image ? image.src : null " :alt="item.name" />
                                     </div>
                                     <div v-if="$settings.sections.products.add_to_wishlist.active">
                                         <transition name="fade">
                                             <button aria-label="chivron-left" v-if="$store.state.wishlist.find(i=>i._id==item._id)" @click="removeFromWishlist" title="Wishlist" class="box-shadow-xs bg-white rounded-full absolute z-10 top-0 right-0 m-2 md:m-3 p-3 md:p-3.5 transition-all ease-linear delay-150  hover-bg">
-                                                <svg aria-label="chivron left icon" aria-hidden="true" focusable="false" data-prefix="far" data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 translate text-primary align-middle"><path fill="currentColor" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
+                                                <svg aria-label="chivron left icon" class="w-4 h-4 translate text-primary align-middle" aria-hidden="true" focusable="false" data-prefix="far" data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
                                             </button>
                                         </transition>
                                         <transition name="fade">
-                                            <button aria-label="chivron-right" v-if="!$store.state.wishlist.find(i=>i._id==item._id)" @click="addToWishlist" title="Wishlist" class="box-shadow-xs bg-white rounded-full absolute z-10 top-0 right-0 m-2 md:m-3 p-3 md:p-3.5 transition-all ease-linear delay-150 hover-bg">
+                                            <button aria-label="chivron-right" v-if="!$store.state.wishlist.find(i=>i._id==item._id)" @click="addToWishlist" title="Wishlist" class="box-shadow-xs bg-white rounded-full absolute z-10 top-0 right-0 m-2 md:m-3 p-2.5 md:p-3 transition-all ease-linear delay-150 hover-bg">
                                                 <svg aria-label="chivron right icon" class="w-5 h-5 translate" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.48 3.91a3.25 3.25 0 012.68 1.62L10 6.85l.83-1.33a3.12 3.12 0 012.63-1.61 2.8 2.8 0 012.08.93c1.48 1.59 1.33 3.78-.37 5.57L10 15.66l-5.22-5.3c-1.67-1.85-1.8-4-.36-5.53a2.8 2.8 0 012.06-.92zm0-1a3.8 3.8 0 00-2.79 1.24C1.94 6 2 8.73 4 11l6 6.06 5.9-6c2.16-2.27 2.15-5.06.4-6.95a3.871 3.871 0 00-2.82-1.25A4.1 4.1 0 0010 5a4.23 4.23 0 00-3.52-2.09z" fill="currentColor"></path></svg>
                                             </button>
                                         </transition>
                                     </div>
+                                    <!-- big screen -->
+                                    <div class="box-shadow-xs bg-white rounded-full absolute z-10 bottom-0 right-0 m-2 md:m-3 p-3 md:p-3.5 transition-all ease-linear delay-150 hover-bg cursor-pointer lg:hidden" @click="hideBodyScroll();showImageSlider=true">
+                                      <svg class="w-4 h-4" width="20" height="20" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M416 176V86.63L246.6 256L416 425.4V336c0-8.844 7.156-16 16-16s16 7.156 16 16v128c0 8.844-7.156 16-16 16h-128c-8.844 0-16-7.156-16-16s7.156-16 16-16h89.38L224 278.6L54.63 448H144C152.8 448 160 455.2 160 464S152.8 480 144 480h-128C7.156 480 0 472.8 0 464v-128C0 327.2 7.156 320 16 320S32 327.2 32 336v89.38L201.4 256L32 86.63V176C32 184.8 24.84 192 16 192S0 184.8 0 176v-128C0 39.16 7.156 32 16 32h128C152.8 32 160 39.16 160 48S152.8 64 144 64H54.63L224 233.4L393.4 64H304C295.2 64 288 56.84 288 48S295.2 32 304 32h128C440.8 32 448 39.16 448 48v128C448 184.8 440.8 192 432 192S416 184.8 416 176z"></path>
+                                      </svg>
+                                    </div>
+                                    <!-- big screen -->
                                     <div v-if="item.images.length > 1" class="absolute bottom-0 left-1/2 transform -translate-x-1/2 lg:hidden">
                                         <div class="flex py-5">
                                             <div class="mx-1" v-for="(image, index) in item.images" :key="index" >
@@ -233,17 +253,15 @@
             return {
                 // images slider popup
                 showImageSlider:false,
-                zoomed: false,
+                cursor: "cursor-zoom-in",
                 zoom: 0,
                 imageScale: 1,
                 posX: 0,
                 posY: 0,
                 isDragging: false,
-                startMouseX: 0,
-                startMouseY: 0,
+                startX: 0,
+                startY: 0,
                 visibleSlide: 0,
-                direction:'',
-
                 // product content
                 description: true,
                 Reviews: false,
@@ -394,71 +412,90 @@
             }
         },
         methods: {
-            toggleZoom() {
-                if(window.innerWidth < 1024) {
-                    if (this.zoomed) {
-                        // Zoom out
-                        this.imageScale = 1;
-                        this.zoom = 0;
-                        this.zoomed = false
-                    } else {
-                        // Zoom in
-                        this.imageScale = 4;
-                        this.zoom = 60;
-                        this.zoomed = true
+          toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen();
+                    this.fullScreen = true
+                } else {
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                        this.fullScreen = false
                     }
                 }
             },
-            startDrag(event) {
-                this.isDragging = true;
-                this.startMouseX = event.clientX;
-                this.startMouseY = event.clientY;
-            },
-            dragImage(event) {
-                if (this.isDragging && this.imageScale > 1) {
-                    const deltaX = event.clientX - this.startMouseX;
-                    const deltaY = event.clientY - this.startMouseY;
-                    this.posX += deltaX;
-                    this.posY += deltaY;
-                    this.startMouseX = event.clientX;
-                    this.startMouseY = event.clientY;
-                }
-            },
-            stopDrag() {
-                this.isDragging = false;
-                this.posX  = 0;
-                this.posY  = 0;
-            },
-            increaseSize() {
-                const currentScale = this.imageScale;
-                if (currentScale < 6) {
-                    this.imageScale = currentScale + 1;
-                    this.zoom = this.zoom + 20;
-                }
-            },
-            decreaseSize() {
-                const currentScale = this.imageScale;
-                if (currentScale > 1) {
-                    this.imageScale = currentScale - 1;
-                    this.zoom = this.zoom - 20;
-                }
-            },
-            next(){
-                if(this.visibleSlide >= this.slidesLen - 1 ){
-                    this.image = this.$tools.copy(this.item.images[this.visibleSlide = 0]);
-                }else {
-                    this.image = this.$tools.copy(this.item.images[this.visibleSlide = this.visibleSlide + 1]);
-                }
-                this.direction = 'left'
-            },
-            prev() {
-                if(this.visibleSlide <= 0 ){
-                    this.image = this.$tools.copy(this.item.images[this.visibleSlide = this.slidesLen - 1]);
-                }else {
-                    this.image = this.$tools.copy(this.item.images[this.visibleSlide = this.visibleSlide - 1]);
-                }
-                this.direction = 'right'
-            },
+        toggleZoom() {
+            if (this.imageScale > 1) {
+                this.imageScale = 1;
+                this.zoom = 0;
+                this.cursor = 'cursor-zoom-in'
+
+            } else {
+                this.imageScale = 2;
+                this.zoom = 100;
+                this.cursor = 'cursor-zoom-out'
+            }
+        },
+        startDrag(event) {
+            this.isDragging = true;
+            this.startX = event.clientX || event.touches[0].clientX;
+            this.startY = event.clientY || event.touches[0].clientY;
+        },
+        dragImage(event) {
+            if (this.isDragging && this.imageScale > 1) {
+                const clientX = event.clientX || event.touches[0].clientX;
+                const clientY = event.clientY || event.touches[0].clientY;
+                const deltaX = clientX - this.startX;
+                const deltaY = clientY - this.startY;
+                this.posX += deltaX;
+                this.posY += deltaY;
+                this.startX = clientX;
+                this.startY = clientY;
+            }
+        },
+        stopDrag() {
+            this.isDragging = false;
+            this.posX = 0;
+            this.posY = 0;
+            //change image
+            const endX = event.clientX || event.changedTouches[0].clientX;
+            const difference = this.startX - endX;
+            if (difference > 0) {
+                this.next();
+            } else if (difference < 0) {
+                this.prev();
+            }
+            this.startX = null;
+        },
+        increaseSize() {
+            const currentScale = this.imageScale;
+            if (currentScale < 1.99) {
+                this.imageScale = currentScale + 0.2;
+                this.zoom = this.zoom + 20;
+                this.cursor = 'cursor-zoom-out'
+            }
+        },
+        decreaseSize() {
+            const currentScale = this.imageScale;
+            if (currentScale > 1) {
+                this.imageScale = currentScale - 0.2;
+                this.zoom = this.zoom - 20;
+                this.cursor = 'cursor-zoom-out'
+            }
+        },
+        next() {
+            if(this.visibleSlide >= this.slidesLen - 1 ){
+                this.image = this.$tools.copy(this.item.images[this.visibleSlide = 0]);
+            }else {
+                this.image = this.$tools.copy(this.item.images[this.visibleSlide = this.visibleSlide + 1]);
+            }
+        },
+        prev() {
+            if(this.visibleSlide <= 0 ){
+                this.image = this.$tools.copy(this.item.images[this.visibleSlide = this.slidesLen - 1]);
+            }else {
+                this.image = this.$tools.copy(this.item.images[this.visibleSlide = this.visibleSlide - 1]);
+            }
+        },
             t(key){
                 const langs = {
                     price_title_products: {
@@ -589,6 +626,17 @@
 </script>
 
 <style scoped>
+.z-index {
+  z-index: 99999;
+}
+.cursor-zoom-in {
+    cursor: zoom-in;
+}
+
+.cursor-zoom-out {
+    cursor: zoom-out;
+}
+
 @media (max-width: 1024px) {
     [dir='rtl'] svg.rotate-chivron{
       transform: rotateY(180deg);

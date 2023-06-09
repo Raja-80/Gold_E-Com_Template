@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            <div class="flex items-center justify-between lg:relative under-border"> 
+            <div class="flex items-center justify-between lg:relative under-border">
                 <transition name="fade">
                     <!-- v-show="$settings.sections.shop.sidebar.active" -->
                     <div v-show="windowWidth < 1024 ? showSideBar : true"  :class="showSideBar ? 'show':'hide'" class="bg-white fixed lg:static hidden lg:block w-full lg:w-auto h-full lg:h-auto inset-0 lg:inset-auto z-50 lg:z-auto overflow-auto">
@@ -75,7 +75,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div> 
+                                                                    </div>
                                                                 </div>
                                                                 <div>
                                                                     <div class="flex items-center" v-show="item.childrens && item.childrens.length == 0">
@@ -86,14 +86,14 @@
                                                                         <label class="cursor-pointer text-sml primary-hover" :for="item.slug">{{ item.name }}</label>
                                                                     </div>
                                                                 </div>
-                                                            </label>                         
+                                                            </label>
                                                         </div>
-                                                    </div> 
+                                                    </div>
                                                 </div>
                                             </div>
                                         </transition>
                                     </div>
-                                    <!-- Collections --> 
+                                    <!-- Collections -->
                                     <!-- Prices -->
                                     <div v-show=" $settings.sections && $settings.sections.shop.sidebar && $settings.sections.shop.sidebar.prices.active" class="border-b lg:border-0 lg:ml-mr-3" @mouseover="windowWidth >= 1024 ? isVisible.prices=true: null" @mouseleave="windowWidth >= 1024 ? isVisible.prices=false:null">
                                         <div @click="showPrices" class="flex items-center lg:gap-1 justify-between cursor-pointer py-5">
@@ -219,7 +219,7 @@
                                 <div @click="showSideBar=false" class="lg:hidden bg-black py-5 px-8 mx-5 rounded-full cursor-pointer ml-font-bold-hover my-5">
                                     <div class="flex items-center justify-center text-sml text-white">
                                         <span>{{ $settings.sections.shop.sidebar.button_text1}} <span> {{ items.length }} </span> {{ $settings.sections.shop.sidebar.button_text2 }}</span>
-                                    </div>   
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -283,14 +283,14 @@
                                             <div @click="isVisible.sort=false" class="lg:hidden bg-black py-5 px-8 mx-5 rounded-full cursor-pointer  ml-font-bold-hover my-5">
                                                 <div class="flex items-center justify-center text-sml text-white">
                                                     <span>{{ $settings.sections.shop.sidebar.button_text1}} <span> {{ items.length }} </span> {{ $settings.sections.shop.sidebar.button_text2 }}</span>
-                                                </div>   
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </transition>
                         </div>
-                        <!-- Sort --> 
+                        <!-- Sort -->
                     </div>
                 </div>
             </div>
@@ -309,50 +309,50 @@
             </div>
             <!-- Pagination -->
             <div :class="items.length != 0?'lg:mx-10 py-2.5 lg:border-t border-gray-300 ':''">
-                <div class="flex justify-center items-center flex-wrap">
+                <div class="flex justify-center items-center flex-wrap" v-show="paginate.last_page > 0">
                     <!-- chivron left -->
-                    <button aria-label="chivron left button"  v-show="paginate.last_page > 0" class="mx-2 p-3 flex items-center primary-hover" @click="getItems(paginate.current_page-1)">
+                    <button aria-label="chivron left button" v-show="paginate.current_page > 1" class="mx-2 p-3 flex items-center primary-hover" @click="getItems(paginate.current_page-1)">
                         <svg aria-label="chivron left icon" class="w-3 h-3 translate" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path></svg>
                     </button>
                     <!-- chivron left -->
                     <!-- pages -->
                     <button aria-label="paggination button" v-show="paginate.last_page > 1" :class="[(this.style),((paginate.last_page - (paginate.last_page -1)) == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page - (paginate.last_page -1))">
                         <span aria-label="paggination icon" class="text-sm font-bold">{{ paginate.last_page - (paginate.last_page -1) }}</span>
-                    </button> 
+                    </button>
                     <button aria-label="paggination button" v-show="paginate.last_page > 2" :class="[(this.style),((paginate.last_page - (paginate.last_page -2)) == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page - (paginate.last_page -2))">
                         <span aria-label="paggination icon" class="text-sm font-bold">{{ paginate.last_page - (paginate.last_page -2) }}</span>
-                    </button> 
+                    </button>
                     <button aria-label="paggination button" v-show="paginate.last_page > 3" :class="[(this.style),((paginate.last_page - (paginate.last_page -3)) == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page - (paginate.last_page -3))">
                         <span aria-label="paggination icon" class="text-sm font-bold">{{ paginate.last_page - (paginate.last_page -3) }}</span>
-                    </button> 
+                    </button>
                     <button aria-label="paggination button" v-show="paginate.last_page > 4" :class="[(this.style),((paginate.last_page - (paginate.last_page -4)) == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page - (paginate.last_page -4))">
                         <span aria-label="paggination icon" class="text-sm font-bold">{{ paginate.last_page - (paginate.last_page -4) }}</span>
-                    </button> 
+                    </button>
                     <button aria-label="paggination button" v-show="paginate.last_page > 5" :class="[(this.style),((paginate.last_page - (paginate.last_page -5)) == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page - (paginate.last_page -5))">
                         <span aria-label="paggination icon" class="text-sm font-bold">{{ paginate.last_page - (paginate.last_page -5) }}</span>
-                    </button> 
+                    </button>
                     <!-- More Page exists -->
                     <button aria-label="paggination button" v-show="paginate.last_page > 5" :class="[(this.style),(paginate.current_page > (paginate.last_page - (paginate.last_page -5)) &&  paginate.current_page < (paginate.last_page)   ? 'text-primary' : '')]" >
                         <span aria-label="paggination icon" class="text-sm font-bold">{{paginate.current_page > (paginate.last_page - (paginate.last_page -5)) &&  paginate.current_page < (paginate.last_page)? paginate.current_page:'...'}}</span>
-                    </button> 
+                    </button>
                     <button aria-label="paggination button" v-show="paginate.current_page > (paginate.last_page - (paginate.last_page -5)) &&  paginate.current_page < (paginate.last_page)" :class="this.style">
-                        <span aria-label="paggination icon" class="text-sm font-bold">...</span>      
-                    </button> 
+                        <span aria-label="paggination icon" class="text-sm font-bold">...</span>
+                    </button>
                     <!-- More Page exists -->
                     <!-- pages -->
                     <div v-if="paginate.last_page > 5">
                         <button aria-label="paggination button" v-show="paginate.last_page == paginate.current_page"  :class="[(this.style),(paginate.last_page == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page)">
                             <span aria-label="paggination icon" class="text-sm font-bold">{{ paginate.last_page }}</span>
-                        </button> 
+                        </button>
                     </div>
                     <div v-else>
                         <button aria-label="paggination button" v-show="paginate.last_page > 0" :class="[(this.style),(paginate.last_page == paginate.current_page ? 'text-primary' : '')]" @click="getItems(paginate.last_page)">
                             <span aria-label="paggination icon" class="text-sm font-bold">{{ paginate.last_page }}</span>
-                        </button> 
+                        </button>
                     </div>
                     <!-- pages -->
                     <!-- chivron right -->
-                    <button aria-label="chivron right button" v-show="paginate.last_page > 0" class="mx-2 p-3 flex items-center primary-hover" @click="getItems(paginate.current_page+1)">
+                    <button aria-label="chivron right button" v-show="paginate.current_page < paginate.last_page" class="mx-2 p-3 flex items-center primary-hover" @click="getItems(paginate.current_page+1)">
                         <svg aria-label="chivron right icon" class="w-3 h-3 translate" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"></path></svg>
                     </button>
                     <!-- chivron right -->
@@ -485,7 +485,7 @@ export default {
                 if(itm.childrens && itm.childrens.length>0) itm.childrens = [];
             }
             for(let i=0; i<this.collections.length; i++){
-                for(let j=0; j<this.collections.length; j++){ 
+                for(let j=0; j<this.collections.length; j++){
                     if(this.collections[i].parent == this.collections[j]._id ){
                     let childObject = this.collections[i];
                     this.collections[j].childrens.push(childObject);
@@ -674,7 +674,7 @@ export default {
     }
 }
 
-@media (min-width:0px) and (max-width:1024px) { 
+@media (min-width:0px) and (max-width:1024px) {
     .products-padding:nth-child(odd) {
         padding-right: 1rem;
     }
@@ -710,7 +710,7 @@ export default {
     transition: transform .3s ease-in-out;
 }
 
-@media (min-width: 1024px) {    
+@media (min-width: 1024px) {
     .under-border::before {
       margin: 0 40px;
     }
