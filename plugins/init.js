@@ -188,9 +188,7 @@ export default async function ({ $axios, $http ,route, $tools, $storeino, store,
             snapPixel(pixel.id, pixel.email);
           }
         }
-        if(route.name == 'thanks' && route.query.pixel){
-          window.snapPurchase({});
-        }
+       
       }
       
       // google ads d
