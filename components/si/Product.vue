@@ -23,15 +23,15 @@
         <div class="h-full flex relative ">
             <div class="w-full flex flex-col h-full">
                 <!-- product image -->
-                <div class="image_box pb-full relative zoom overflow-hidden" @mouseover="activeId = activeId = item._id" @mouseleave="activeId = activeId = null">
+                <div class="image_box relative zoom overflow-hidden" :class="$settings.sections.products.images ? $settings.sections.products.images.ratio : 'pb-full'" @mouseover="activeId = activeId = item._id" @mouseleave="activeId = activeId = null">
                     <nuxt-link :to="`/products/${item.slug}`" :aria-label="item.name">
-                        <si-image  width="400" height="400" class="image_zoom h-full w-full absolute inset-0 object-cover" :src="item.images.length > 0 ? item.images[0].src : null" :alt="item.name"/>
+                        <si-image  width="400" height="400" class="image_zoom h-full w-full absolute inset-0" :class="$settings.sections.products.images ? $settings.sections.products.images.fit : 'object-cover'" :src="item.images.length > 0 ? item.images[0].src : null" :alt="item.name"/>
                     </nuxt-link>
                     <transition name="fade">
                         <div v-if="item._id == activeId">
                             <nuxt-link :to="`/products/${item.slug}`" :aria-label="item.name">
-                                <si-image  width="400" height="400" class="image_zoom h-full w-full absolute inset-0 object-cover" :src="item.images.length > 1 ? item.images[1].src : item.images.length > 0 ? item.images[0].src : null" :alt="item.name"/>
-                            </nuxt-link>  
+                                <si-image  width="400" height="400" class="image_zoom h-full w-full absolute inset-0" :class="$settings.sections.products.images ? $settings.sections.products.images.fit : 'object-cover'" :src="item.images.length > 1 ? item.images[1].src : item.images.length > 0 ? item.images[0].src : null" :alt="item.name"/>
+                            </nuxt-link>
                         </div>
                     </transition>
                 </div>
@@ -170,10 +170,10 @@ export default {
 }
 </script>
 <style scoped>
-    .wishlist-box { 
+    .wishlist-box {
         transition: all 0.3s ease-in-out;
     }
-    
+
     .wishlist {
         transition: all 0.3s ease-in-out;
     }
@@ -183,4 +183,3 @@ export default {
     }
 
 </style>
-    
