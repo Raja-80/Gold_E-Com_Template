@@ -18,6 +18,16 @@ export default {
 	mounted() {
 		this.$tools.call('PAGE_VIEW');
 		this.$storeino.fbpx('Purchase');
+		if (this.$route.query.pixel) {
+    let pixelData = JSON.parse(this.$route.query.pixel);
+    window.snapPurchase({
+          price: pixelData.total,
+          transaction_id: this.$route.query.code,
+          currency: this.$store.state.currency && this.$store.state.currency.code ? this.$store.state.currency.code : "",
+          item_ids:pixelData.content_ids,
+          click_id:this.$route.query.ScCid ? this.$route.query.ScCid  : null
+        });
+  }
 	}
 }
 </script>
