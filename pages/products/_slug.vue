@@ -1,7 +1,7 @@
 <template>
     <div class="bg-white">
         <!-- Loader -->
-        <div v-if="loading" class="flex justify-center items-center my-5">
+        <div v-if="loading" class="flex items-center justify-center my-5">
             <si-loader></si-loader>
         </div>
         <!-- Loader -->
@@ -13,14 +13,14 @@
                 <div class="flex flex-wrap justify-between">
                     <!-- shows images when click -->
                     <transition name="fade">
-                        <div v-if="showImageSlider" class="bg-white fixed inset-0 z-index">
+                        <div v-if="showImageSlider" class="fixed inset-0 bg-white z-index">
                             <div @click="showBodyScroll">
-                                <div @click="showImageSlider=false" class="absolute top-0 right-0 z-50 cursor-pointer py-8 px-4 md:px-10 md:py-10">
+                                <div @click="showImageSlider=false" class="absolute top-0 right-0 z-50 px-4 py-8 cursor-pointer md:px-10 md:py-10">
                                     <svg aria-label="close icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.71 10l4.65-4.66a.495.495 0 10-.7-.7L10 9.29 5.34 4.64a.495.495 0 00-.7.7L9.29 10l-4.65 4.66a.48.48 0 000 .7.481.481 0 00.7 0L10 10.71l4.66 4.65a.482.482 0 00.7 0 .48.48 0 000-.7L10.71 10z" fill="currentColor"></path></svg>
                                 </div>
                             </div>
-                            <div class="flex items-center flex-wrap justify-between h-full lg:p-10 relative">
-                                <div class="hidden lg:flex flex-col items-center">
+                            <div class="relative flex flex-wrap items-center justify-between h-full lg:p-10">
+                                <div class="flex-col items-center hidden lg:flex">
                                     <div @click="increaseSize" class=" border border-gray-300 hover:border-primary transition delay-150 ease-in-out m-2.5 w-7 h-7 flex items-center justify-center cursor-pointer">
                                         <svg aria-label="plus icon" class="w-2.5 h-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
                                     </div>
@@ -41,33 +41,33 @@
                                         @touchmove="dragImage"
                                         @mouseup="stopDrag"
                                         @touchend="stopDrag">
-                                            <div class="pb-3/5-res relative" :class="cursor" ref="image" :style="{ transform: 'scale(' + imageScale + ') translate(' + posX + 'px, ' + posY + 'px)'}" v-show="visibleSlide === index" v-for="(image, index) in item.images" :key="index" :index="index">
-                                                <si-image width="400" height="400" class="h-full w-full absolute inset-0 object-contain" :src="image ? image.src : null " :alt="item.name" />
+                                            <div class="relative pb-3/5-res" :class="cursor" ref="image" :style="{ transform: 'scale(' + imageScale + ') translate(' + posX + 'px, ' + posY + 'px)'}" v-show="visibleSlide === index" v-for="(image, index) in item.images" :key="index" :index="index">
+                                                <si-image width="400" height="400" class="absolute inset-0 object-contain w-full h-full" :src="image ? image.src : null " :alt="item.name" />
                                             </div>
                                         </div>
                                     </div>
                                     <!-- images -->
-                                    <div class="absolute lg:static my-8 md:my-10 lg:my-0 bottom-0 lg:bottom-auto left-1/2 lg:left-auto transform lg:transform-none -translate-x-1/2 lg:translate-x-0">
-                                        <div class="flex lg:block items-center">
+                                    <div class="absolute bottom-0 my-8 transform -translate-x-1/2 lg:static md:my-10 lg:my-0 lg:bottom-auto left-1/2 lg:left-auto lg:transform-none lg:translate-x-0">
+                                        <div class="flex items-center lg:block">
                                             <button aria-label="chivron-down" v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:left-1 xl:left-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150  rounded-full border border-gray-300 hover:border-primary" @click="prev">
-                                                <svg aria-label="chivron icon" class="rotate-chivron w-5 h-5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 15.54a.54.54 0 01-.39-.16L6.72 10l5.39-5.4a.551.551 0 11.78.78L8.28 10l4.61 4.61a.56.56 0 010 .78.54.54 0 01-.39.15z" fill="currentColor"></path></svg>
+                                                <svg aria-label="chivron icon" class="w-5 h-5 rotate-chivron" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 15.54a.54.54 0 01-.39-.16L6.72 10l5.39-5.4a.551.551 0 11.78.78L8.28 10l4.61 4.61a.56.56 0 010 .78.54.54 0 01-.39.15z" fill="currentColor"></path></svg>
                                             </button>
                                             <div class="lg:hidden">
-                                              <div v-if="item.images.length > 1" class="items-center justify-center flex">
+                                              <div v-if="item.images.length > 1" class="flex items-center justify-center">
                                                   <div class="mx-1" v-for="(image, index) in item.images" :key="index">
                                                       <div class="h-1.5 w-1.5 rounded-full cursor-pointer" :class="visibleSlide == index ? 'bg-primary w-2 h-2' : 'bg-gray-300'" @click="setImage(index)"></div>
                                                   </div>
                                               </div>
                                             </div>
                                             <button aria-label="chivron-down" v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:right-1 xl:right-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150 rounded-full border border-gray-300 hover:border-primary" @click="next">
-                                                <svg aria-label="chivron icon" class="rotate-chivron w-5 h-5"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.89 4.6a.552.552 0 00-.78.78L11.72 10l-4.61 4.6a.56.56 0 000 .78.56.56 0 00.78 0L13.28 10 7.89 4.6z" fill="currentColor"></path></svg>
+                                                <svg aria-label="chivron icon" class="w-5 h-5 rotate-chivron"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.89 4.6a.552.552 0 00-.78.78L11.72 10l-4.61 4.6a.56.56 0 000 .78.56.56 0 00.78 0L13.28 10 7.89 4.6z" fill="currentColor"></path></svg>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="hidden lg:block scroll overflow-y-scroll">
+                                <div class="hidden overflow-y-scroll lg:block scroll">
                                     <div style="max-height: 70vh;">
-                                        <si-image  class="w-16 h-16 cursor-pointer object-cover mb-4" :class="visibleSlide == index ? 'opacity-100' : 'opacity-50'" v-for="(image, index) in item.images" @click="setImage(index)" :key="index" :src="image.src" :alt="`${item.name} - ${image.title}`"/>
+                                        <si-image  class="object-cover w-16 h-16 mb-4 cursor-pointer" :class="visibleSlide == index ? 'opacity-100' : 'opacity-50'" v-for="(image, index) in item.images" @click="setImage(index)" :key="index" :src="image.src" :alt="`${item.name} - ${image.title}`"/>
                                     </div>
                                 </div>
                             </div>
@@ -78,17 +78,17 @@
                     <div style="height: fit-content;"  class="w-full lg:w-3/5 lg:sticky lg:top-7">
                         <div class="flex flex-col">
                             <div class="w-full">
-                                <div class="pb-2/3-res relative overflow-hidden">
+                                <div class="relative overflow-hidden pb-2/3-res">
                                     <div
-                                      @touchstart.prevent="startDrag"
-                                      @touchmove="dragImage"
-                                      @touchend="stopDrag">
-                                        <si-image width="400" height="400" class="h-full w-full absolute inset-0 object-cover cursor-pointer" @click="hideBodyScroll();showImageSlider=true" :src="image ? image.src : null " :alt="item.name" />
+                                        @touchstart.prevent="startDrag"
+                                        @touchmove="dragImage"
+                                        @touchend="stopDrag">
+                                        <si-image width="400" height="400" class="absolute inset-0 object-cover w-full h-full cursor-pointer" @click="hideBodyScroll();showImageSlider=true" :src="image ? image.src : null " :alt="item.name" />
                                     </div>
                                     <div v-if="$settings.sections.products.add_to_wishlist.active">
                                         <transition name="fade">
                                             <button aria-label="chivron-left" v-if="$store.state.wishlist.find(i=>i._id==item._id)" @click="removeFromWishlist" title="Wishlist" class="box-shadow-xs bg-white rounded-full absolute z-10 top-0 right-0 m-2 md:m-3 p-3 md:p-3.5 transition-all ease-linear delay-150  hover-bg">
-                                                <svg aria-label="chivron left icon" class="w-4 h-4 translate text-primary align-middle" aria-hidden="true" focusable="false" data-prefix="far" data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
+                                                <svg aria-label="chivron left icon" class="w-4 h-4 align-middle translate text-primary" aria-hidden="true" focusable="false" data-prefix="far" data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
                                             </button>
                                         </transition>
                                         <transition name="fade">
@@ -104,7 +104,7 @@
                                       </svg>
                                     </div>
                                     <!-- big screen -->
-                                    <div v-if="item.images.length > 1" class="absolute bottom-0 left-1/2 transform -translate-x-1/2 lg:hidden">
+                                    <div v-if="item.images.length > 1" class="absolute bottom-0 transform -translate-x-1/2 left-1/2 lg:hidden">
                                         <div class="flex py-5">
                                             <div class="mx-1" v-for="(image, index) in item.images" :key="index" >
                                                 <div class="h-1.5 w-1.5 rounded-full cursor-pointer" :class="visibleSlide == index ? 'bg-primary w-2. h-2' : 'bg-gray-300'" @click="setImage(index)"></div>
@@ -115,8 +115,8 @@
                             </div>
                             <div class="hidden lg:flex flex-wrap pt-2.5">
                                 <div class="w-1/2 products-padding py-2.5" v-for="(image, index) in item.images"  :key="index">
-                                    <div @click="hideBodyScroll" class="pb-full relative overflow-hidden">
-                                        <si-image  class="h-full w-full absolute inset-0 object-cover cursor-pointer" @click="setImage(index);showImageSlider=true" :src="image.src" :alt="`${item.name} - ${image.title}`"/>
+                                    <div @click="hideBodyScroll" class="relative overflow-hidden pb-full">
+                                        <si-image  class="absolute inset-0 object-cover w-full h-full cursor-pointer" @click="setImage(index);showImageSlider=true" :src="image.src" :alt="`${item.name} - ${image.title}`"/>
                                     </div>
                                 </div>
                             </div>
@@ -125,16 +125,16 @@
                     <!-- product images -->
                     <!-- Product content -->
                     <div style="height: fit-content;"  class="content-part w-full lg:w-2/5 pl-6% lg:sticky lg:top-5">
-                        <div class="px-5 lg:px-0 pt-5 lg:pt-0">
+                        <div class="px-5 pt-5 lg:px-0 lg:pt-0">
                             <div class="bg-white ">
                             <!--  product name hidden-->
                             <meta itemprop="name" :content="item.name" />
                             <!--  product name hidden-->
                             <!--  Product Name -->
-                            <h4 class="text-xl md:text-2xl my-3">{{ item.name }}</h4>
+                            <h4 class="my-3 text-xl md:text-2xl">{{ item.name }}</h4>
                             <!--  Product Name -->
                             <!-- Price  -->
-                            <div class="flex justify-between items-center">
+                            <div class="flex items-center justify-between">
                                 <!-- Price -->
                                 <si-product-price class="flex items-center text-base" :type="'simple'" :price="price" :variants="[]"></si-product-price>
                                 <!-- Price -->
@@ -151,14 +151,14 @@
                             </div>
                             <!-- Price -->
                             <!-- short description -->
-                            <p class="text-sml pt-3">{{ item.description }}</p>
+                            <p class="pt-3 text-sml">{{ item.description }}</p>
                             <!-- short description -->
                             <!-- variant -->
                             <si-product-variants class="flex text-sml" v-if="item.type=='variable'" :options="item.options" :images="item.images" :variants="item.variants" @selected="variantSelected"></si-product-variants>
                             <!-- variant -->
                             <!-- product cart -->
                             <!-- product quantity -->
-                            <div id="quantityProduct" class="flex items-center justify-between my-3" :class="item.type!='variable'?'border-t border-gray-300 pt-3':''">
+                            <div v-show="!outofstock" id="quantityProduct" class="flex items-center justify-between my-3" :class="item.type!='variable'?'border-t border-gray-300 pt-3':''">
                                 <h2 class="text-sml">{{ $settings.sections.product.quantity.text }}</h2>
                                 <div class="">
                                     <si-product-quantity @selected="quantitySelected" :quantity="quantity" page="product"></si-product-quantity>
@@ -168,16 +168,25 @@
                             <!--  -->
                             <div v-if="$settings.sections.product.add_to_cart.active || $settings.sections.product.buy_now.active" class="py-3">
                                 <si-app-loader placement="BEFORE_ADD_TO_CART"/>
+                                <!-- out of stock -->
+                                <div v-show="outofstock"  aria-label="Out Of Stock Button" :class="$settings.sections.product.buy_now.active ? 'mb-3':''" class="flex justify-center w-full p-4 px-5 border rounded-full text-sml ml-font-bold-hover border-red-600">
+                                    <span class="text-red-600" >{{ $settings.sections.products.out_of_stock_text ? $settings.sections.products.out_of_stock_text : 'Out Of Stock' }}</span>
+                                </div>
+                                <!-- out of stock -->
                                 <!-- add to cart -->
-                                <button aria-label="add to cart button" v-if="$settings.sections.product.add_to_cart.active" :class="$settings.sections.product.buy_now.active ? 'mb-3':''" @click="addToCart" class="text-sml ml-font-bold-hover w-full flex  justify-center border border-primary rounded-full p-4 px-5 click-effect">
+                                <button v-show="!outofstock"  aria-label="add to cart button" v-if="$settings.sections.product.add_to_cart.active" :class="$settings.sections.product.buy_now.active ? 'mb-3':''" @click="addToCart" class="flex justify-center w-full p-4 px-5 border rounded-full text-sml ml-font-bold-hover border-primary click-effect">
                                     <span>{{ $settings.sections.product.add_to_cart.text }}</span>
                                 </button>
                                 <!-- add to cart -->
                                 <si-app-loader placement="AFTER_ADD_TO_CART"/>
                                 <si-app-loader placement="BEFORE_BUYNOW"/>
-                                <si-app-loader placement="REPLACE_BUYNOW"/>
+                                <!-- express checkout -->
+                                <div v-show="!outofstock">
+                                    <si-app-loader placement="REPLACE_BUYNOW"/>
+                                </div>
+                                <!-- express checkout  -->
                                 <!-- buy now -->
-                                <button aria-label="buy now" v-if="$settings.sections.product.buy_now.active" v-show="!$store.state.apps.find(a=>a.placement.indexOf('REPLACE_BUYNOW') >= 0)" @click="buyNow" class="text-sml ml-font-bold-hover w-full flex  justify-center border border-primary rounded-full p-4 px-5 click-effect">
+                                <button aria-label="buy now" v-if="$settings.sections.product.buy_now.active" v-show="!$store.state.apps.find(a=>a.placement.indexOf('REPLACE_BUYNOW') >= 0)" @click="buyNow" class="flex justify-center w-full p-4 px-5 border rounded-full text-sml ml-font-bold-hover border-primary click-effect">
                                     <span>{{ $settings.sections.product.buy_now.text }}</span>
                                 </button>
                                 <si-app-loader placement="AFTER_BUYNOW"/>
@@ -189,8 +198,8 @@
                         <!-- Description -->
                         <div class="pt-3">
                             <si-app-loader placement="BEFORE_DESCRIPTION"/>
-                            <div class="border-t border-b lg:border-l lg:border-r border-gray-300 text-sml lg:rounded-md p-5">
-                                <div @click="showDescription" class="flex justify-between items-center cursor-pointer">
+                            <div class="p-5 border-t border-b border-gray-300 lg:border-l lg:border-r text-sml lg:rounded-md">
+                                <div @click="showDescription" class="flex items-center justify-between cursor-pointer">
                                     <div>
                                         <span class="text-sml ml-font-bold">{{ $settings.sections.product.description.title }}</span>
                                     </div>
@@ -209,10 +218,10 @@
                         <!-- Description -->
                         <!-- share products icons -->
                         <div v-if="$settings.sections.product.share_buttons.active">
-                            <h3 class="text-center-res text-sml ml-font-bold py-3">{{ $settings.sections.product.share_buttons.title }}</h3>
-                            <div class="flex items-center justify-center lg:justify-start gap-3">
+                            <h3 class="py-3 text-center-res text-sml ml-font-bold">{{ $settings.sections.product.share_buttons.title }}</h3>
+                            <div class="flex items-center justify-center gap-3 lg:justify-start">
                                 <div v-for="item in socialMedia.filter(s=>$settings.sections.product.share_buttons[s.name])" :key="item.name" class="flex items-center justify-center">
-                                    <a class="h-full flex" :href="item.url" target="_blank" rel="noopener noreferrer">
+                                    <a class="flex h-full" :href="item.url" target="_blank" rel="noopener noreferrer">
                                         <svg aria-label="social media icons" class="opacity-90" fill-rule="evenodd" width="30" height="30" :viewBox="item.view" fill="none" xmlns="http://www.w3.org/2000/svg"><path :d="item.image" fill="currentColor"></path></svg>
                                     </a>
                                 </div>
@@ -652,13 +661,13 @@
 }
 
 @media (min-width: 1024px) {
-    .pb-3\/5-res{
-        padding-bottom: 60%;
-    }
+  .pb-3\/5-res{
+      padding-bottom: 60%;
+  }
 
-    .pb-2\/3-res{
-        padding-bottom: 66.6667%;
-    }
+  .pb-2\/3-res{
+      padding-bottom: 66.6667%;
+  }
 }
 
 /* Product padding */

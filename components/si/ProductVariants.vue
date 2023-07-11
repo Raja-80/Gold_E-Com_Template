@@ -172,7 +172,7 @@ export default {
         await this.getImageStyle();
     },
     mounted() {
-       
+
     },
     methods: {
         getImageStyle(){

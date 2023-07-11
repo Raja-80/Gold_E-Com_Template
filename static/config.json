@@ -153,6 +153,13 @@
                       "type": "tc_input",
                       "translatable": true,
                       "value": "CONFIRMER"
+                    },
+                    {
+                      "name": "out_of_stock_text",
+                      "path": "sections.products.out_of_stock_text",
+                      "type": "tc_input",
+                      "translatable": true,
+                      "value": "Out Of Stock"
                     }
                   ]
                 },
@@ -1681,6 +1688,7 @@
           },
           "added_text": "ADDED",
           "confirm_text": "CONFIRMER",
+          "out_of_stock_text": "Out Of Stock",
           "images": {
             "fit": "object-cover",
             "ratio": "pb-full"
@@ -1972,6 +1980,10 @@
             {
               "name": "sections.products.confirm_text",
               "value": "تأكيد"
+            },
+            {
+              "name": "sections.products.out_of_stock_text",
+              "value": "غير متوفر"
             },
             {
               "name": "sections.alerts.added_to_cart",
@@ -2325,6 +2337,10 @@
             {
               "name": "sections.products.confirm_text",
               "value": "CONFIRMER"
+            },
+            {
+              "name": "sections.products.out_of_stock_text",
+              "value": "Rupture de Stock"
             },
             {
               "name": "sections.alerts.added_to_cart",
