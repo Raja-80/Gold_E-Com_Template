@@ -2,12 +2,20 @@
     <div class="options">
         <div v-for="(option, i) in options" :key="i" :class="option.key" class="p-5 mt-3 border rounded-md border-gray-300">
             <b class="capitalize option-name mb-2 flex">{{ option.name }}</b>
-            <!--  -->
-            <div v-if="!option.hasOwnProperty('style') || option.style == '' || option.style == null  || (option.style !== 'LIST' && option.style !== 'CHECK' && option.style !== 'RADIO') && (option.key !== 'color' && option.style == 'SIZE') || (option.key == 'color' && option.style == 'COLOR') " class="options-list">
+            
+            <!-- <div v-if="!option.hasOwnProperty('style') || option.style == '' || option.style == null  || (option.style !== 'LIST' && option.style !== 'CHECK' && option.style !== 'RADIO') && (option.key !== 'color' && option.style == 'SIZE') || (option.key == 'color' && option.style == 'COLOR') " class="options-list">
                 <div v-for="(val, ii) in option.values" :key="ii" class="option mr-f-2">
                     <button aria-label="colors button" :class="selected[`option${i+1}`] && selected[`option${i+1}`].value == val._id ? 'active': ''" @click="setVariant(i+1, val._id)" :id="val._id" :style="`${option.key == 'color' ? `background-color:${val.value2}` : ''}`"><small>{{ val.value1 }}</small></button>
                 </div>
+            </div> -->
+
+            <!--  -->
+            <div v-if="!option.hasOwnProperty('style') || option.style == '' || option.style == null  || (option.style !== 'LIST' && option.style !== 'CHECK' && option.style !== 'RADIO') && (option.key !== 'color' && option.style == 'SIZE') || (option.key == 'color' && option.style == 'COLOR') " class="options-list">
+                <div v-for="(val, ii) in option.values" :key="ii" class="option mr-f-2">
+                    <button  aria-label="colors button" :class="[(selected[`option${i+1}`] && selected[`option${i+1}`].value == val._id && checkOutOfStock(i+1, val._id ) ? 'active': '') , (!checkOutOfStock(i+1, val._id ) ? 'cursor-not-allowed' : '')]" @click="checkOutOfStock(i+1, val._id ) ?  setVariant(i+1, val._id) : false" :id="val._id" :style="`${option.key == 'color' ? `background-color:${val.value2}` : ''}`"><small>{{ val.value1 }}</small></button>
+                </div>
             </div>
+            <!--  -->
             
             <!-- Size style for Color option -->
             <div v-if="option.key == 'color' && option.style == 'SIZE'" class="options-list">
@@ -152,29 +160,38 @@ export default {
     },
     data() {
         return {
+            firstIndexActive: true,
             selected: this.variants[0],
-            listStyleColorValue:{
-                // index: 1,
-                // value: "61f7e86fdf0bff1286fbde94"
-            },
-            listStyleSizeValue:{
-
-            },
-            listStyleOtherOption:{
-
-            },
+            listStyleColorValue:{},
+            listStyleSizeValue:{},
+            listStyleOtherOption:{},
             loadImages : false
-
         }
     },
     async fetch(){
         await this.stylesOptions();
         await this.getImageStyle();
     },
-    mounted() {
-
-    },
     methods: {
+        checkOutOfStock(index, value) {
+            for(let variant of this.variants){
+                if (variant.option3 || variant.option2 || !variant.option1) {
+                    return true;
+                } 
+                if(variant.option1.value === value) {
+                    if(variant.quantity.instock > 0){
+                        if(this.firstIndexActive) {
+                            this.setVariant(index,value);
+                            this.firstIndexActive = false;
+                        }
+                        return true;
+                    }
+                    else {
+                        return false; 
+                    } 
+                }
+            }
+        },
         getImageStyle(){
             for(let option of this.options){
                 if(option.style && option.style == 'IMAGE'){
@@ -182,12 +199,12 @@ export default {
                         for(let variant of this.variants){
                             if(( variant.option1 && val._id == variant.option1.value) 
                             || (variant.option2 && val._id == variant.option2.value) ||
-                             (variant.option3 && val._id == variant.option3.value) ){
+                                (variant.option3 && val._id == variant.option3.value) ){
                                 for(let img of this.images){
                                     if(variant.imageId == img._id){
                                         if(!val.images) val.images = [];
                                         val.images.push(img);
-                                    }
+                                    }   
                                 }
                             }
                         }
@@ -270,6 +287,11 @@ export default {
 }
 </script>
 <style scoped>
+/* Cursor Not allowed */
+.cursor-not-allowed {
+    cursor: not-allowed !important;
+}
+
 .mr-f-2 {
     margin-right: 0.5rem;
 

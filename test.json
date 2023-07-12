@@ -1,159 +1,2666 @@
-client.js:57 {
-  user: {
-    _id: '62543b435af78f0044b57c7e',
-    firstname: 'abdelali',
-    lastname: 'rafik'
+[
+  {
+      "style": "",
+      "values": [
+          {
+              "value1": "Red",
+              "value2": "#ff0000",
+              "_id": "64ae9a94e81e2618cd1efaff"
+          },
+          {
+              "value1": "Green",
+              "value2": "#00ff00",
+              "_id": "64ae9a94e81e2618cd1efb13"
+          },
+          {
+              "value1": "Blue",
+              "value2": "#0000ff",
+              "_id": "64ae9a94e81e2618cd1efb20"
+          },
+          {
+              "value1": "Black",
+              "value2": "#000000",
+              "_id": "64ae9a94e81e2618cd1efb2d"
+          },
+          {
+              "value1": "White",
+              "value2": "#ffffff",
+              "_id": "64ae9a94e81e2618cd1efb3a"
+          }
+      ],
+      "_id": "64ae9a94e81e2618cd1efafc",
+      "key": "color",
+      "name": "Color"
   },
-  seo: {
-    hide: false,
-    keywords: [],
-    description: 'The Apple Watch is a popular wearable device developed by Apple Inc. It combines the functionality of a traditional wristwatch with advanced features and integration with other Apple devices and services. The Apple Watch is designed to be worn on t',
-    title: 'Apple Watch V2'
+  {
+      "style": "",
+      "values": [
+          {
+              "value1": "XS",
+              "value2": "XS",
+              "_id": "64ae9a94e81e2618cd1efb00"
+          },
+          {
+              "value1": "S",
+              "value2": "S",
+              "_id": "64ae9a94e81e2618cd1efb07"
+          },
+          {
+              "value1": "M",
+              "value2": "M",
+              "_id": "64ae9a94e81e2618cd1efb0b"
+          },
+          {
+              "value1": "L",
+              "value2": "L",
+              "_id": "64ae9a94e81e2618cd1efb0f"
+          }
+      ],
+      "_id": "64ae9a94e81e2618cd1efafd",
+      "key": "size",
+      "name": "Size"
   },
-  price: { buyingPrice: 120, salePrice: 99, comparePrice: 149 },
-  quantity: {
-    instock: 0,
-    transporting: 0,
-    unit: '',
-    increment: 1,
-    default: 1,
-    min: 1
+  {
+      "style": "",
+      "values": [
+          {
+              "value1": "Shop",
+              "_id": "64ae9a94e81e2618cd1efb01"
+          },
+          {
+              "value1": "Brand",
+              "_id": "64ae9a94e81e2618cd1efb03"
+          },
+          {
+              "value1": "Mixte",
+              "_id": "64ae9a94e81e2618cd1efb05"
+          }
+      ],
+      "_id": "64ae9a94e81e2618cd1efafe",
+      "name": "Types"
+  }
+]
+
+
+[
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efaff"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb00"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb01"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 150,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb02",
+      "name": "Color : Red | Size : XS | Types : Shop"
   },
-  outStock: { hide: false, disabled: false },
-  sizes: {
-    weight: { value: 0, unit: 'kg' },
-    volume: { value: 0, unit: 'ml' },
-    dimensions: { width: 0, height: 0, depth: 0, unit: 'cm' }
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efaff"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb00"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb03"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 110,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb04",
+      "name": "Color : Red | Size : XS | Types : Brand"
   },
-  shipping: { active: false, price: 0, zones: [] },
-  review: {
-    reviews: [
-      '647f0e97538d9217f8cbe4e2',
-      '647f0fce538d9217f8cbe4fc',
-      '647f0ff2538d9217f8cbe4ff'
-    ],
-    rating: 4.333333333333333
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efaff"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb00"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb05"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 140,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb06",
+      "name": "Color : Red | Size : XS | Types : Mixte"
   },
-  html: '<p style="text-align: center;">the Apple Watch features a square or rectangular-shaped display, which is touch-sensitive and can be navigated using taps, swipes, and gestures. It is available in various sizes, allowing users to choose the one that suits their preference and wrist size. The watch is constructed with high-quality materials such as aluminum, stainless steel, or ceramic, with different finishes and bands to match personal style.</p>\n' +
-    '<p style="text-align: center;">&nbsp;</p>\n' +
-    '<p style="text-align: center;">&nbsp;</p>\n' +
-    '<p style="text-align: center;">&nbsp;</p>\n' +
-    '<p style="text-align: center;">&nbsp;</p>\n' +
-    '<p style="text-align: center;">The Apple Watch incorporates a powerful S-series chip, which enables smooth performance and quick access to applications. It runs on the watchOS operating system, specifically designed for the device, which provides a seamless and intuitive user experience. The watch also includes a range of sensors, including an accelerometer, gyroscope, heart rate monitor, and GPS, among others, to track various health and fitness metrics.</p>\n' +
-    '<p>&nbsp;</p>\n' +
-    '<p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://storeno.b-cdn.net/stores/6-2023/1686045540869.jpeg" alt="226292_Apple_Watch_SE_PHO_akrales_0222" height="460" /></p>\n' +
-    '<p>&nbsp;</p>\n' +
-    '<p>the Apple Watch features a square or rectangular-shaped display, which is touch-sensitive and can be navigated using taps, swipes, and gestures. It is available in various sizes, allowing users to choose the one that suits their preference and wrist size. The watch is constructed with high-quality materials such as aluminum, stainless steel, or ceramic, with different finishes and bands to match personal style.</p>',
-  type: 'variable',
-  tags: [ 'apple', 'watch' ],
-  status: 'PUBLISH',
-  _id: '647f03f8538d9217f8cbe427',
-  description: 'The Apple Watch is a popular wearable device developed by Apple Inc. It combines the functionality of a traditional wristwatch with advanced features and integration with other Apple devices and services. The Apple Watch is designed to be worn on t',
-  slug: 'apple-watch-v2',
-  reference: 'R97LT1126173509098',
-  collections: [
-    { _id: '6486f126a359c71812c73698', name: 'test 3', slug: 'test-3' }
-  ],
-  name: 'Apple Watch V2',
-  options: [
-    {
-      style: 'IMAGE',
-      values: [Array],
-      _id: '64abdea5e81e2618cd1eedbd',
-      name: 'types',
-      key: null
-    }
-  ],
-  variants: [
-    {
-      option1: [Object],
-      price: [Object],
-      quantity: [Object],
-      sizes: [Object],
-      unavailable: false,
-      translates: [],
-      _id: '64abdea5e81e2618cd1eedbf',
-      name: 'types : small',
-      imageId: '6475b80a538d9217f8cb9255'
-    },
-    {
-      option1: [Object],
-      price: [Object],
-      quantity: [Object],
-      sizes: [Object],
-      unavailable: false,
-      translates: [],
-      _id: '64abdea5e81e2618cd1eedc1',
-      name: 'types : medium',
-      imageId: '6475c907538d9217f8cb936c'
-    },
-    {
-      option1: [Object],
-      price: [Object],
-      quantity: [Object],
-      sizes: [Object],
-      unavailable: false,
-      translates: [],
-      _id: '64abdea5e81e2618cd1eedc3',
-      name: 'types : large',
-      imageId: '6475c907538d9217f8cb936f'
-    }
-  ],
-  images: [
-    {
-      title: 'MKU93_VW_34FR+watch-41-alum-starlight-nc-8s_VW_34FR_WF_CO_GEO_AE',
-      width: 0,
-      height: 0,
-      _id: '64785e99538d9217f8cbbb21',
-      src: 'https://storeno.b-cdn.net/stores/6-2023/1685610136533.jpeg',
-      storeId: '6475b350e7527122c793bc99'
-    },
-    {
-      title: '4898',
-      width: 0,
-      height: 0,
-      _id: '64785e99538d9217f8cbbb20',
-      src: 'https://storeno.b-cdn.net/stores/6-2023/1685610136453.webp',
-      storeId: '6475b350e7527122c793bc99'
-    },
-    {
-      title: '1679704018196',
-      width: 0,
-      height: 0,
-      _id: '6475b80a538d9217f8cb9255',
-      src: 'https://storeno.b-cdn.net/stores/5-2023/1685436425913.jpeg',
-      storeId: '6475b350e7527122c793bc99'
-    },
-    {
-      title: '1679701602652',
-      width: 0,
-      height: 0,
-      _id: '6475c907538d9217f8cb936c',
-      src: 'https://storeno.b-cdn.net/stores/5-2023/1685440775480.jpeg',
-      storeId: '6475b350e7527122c793bc99'
-    },
-    {
-      title: '1679704075427',
-      width: 0,
-      height: 0,
-      _id: '6475c907538d9217f8cb936f',
-      src: 'https://storeno.b-cdn.net/stores/5-2023/1685440775588.jpeg',
-      storeId: '6475b350e7527122c793bc99'
-    }
-  ],
-  files: [],
-  translates: [
-    {
-      properties: [Array],
-      _id: '64ad7039e81e2618cd1ef360',
-      language: 'FR'
-    },
-    {
-      properties: [Array],
-      _id: '64ad7039e81e2618cd1ef368',
-      language: 'AR'
-    }
-  ],
-  currencies: [],
-  storeId: '6475b350e7527122c793bc99'
-}
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efaff"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb07"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb01"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 190,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb08",
+      "name": "Color : Red | Size : S | Types : Shop"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efaff"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb07"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb03"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 160,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb09",
+      "name": "Color : Red | Size : S | Types : Brand"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efaff"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb07"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb05"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 115,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb0a",
+      "name": "Color : Red | Size : S | Types : Mixte"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efaff"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0b"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb01"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 110,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb0c",
+      "name": "Color : Red | Size : M | Types : Shop"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efaff"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0b"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb03"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 148,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb0d",
+      "name": "Color : Red | Size : M | Types : Brand"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efaff"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0b"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb05"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 178,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb0e",
+      "name": "Color : Red | Size : M | Types : Mixte"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efaff"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0f"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb01"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 158,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb10",
+      "name": "Color : Red | Size : L | Types : Shop"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efaff"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0f"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb03"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 170,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb11",
+      "name": "Color : Red | Size : L | Types : Brand"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efaff"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0f"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb05"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 178,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb12",
+      "name": "Color : Red | Size : L | Types : Mixte"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb13"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb00"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb01"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 115,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb14",
+      "name": "Color : Green | Size : XS | Types : Shop"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb13"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb00"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb03"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 196,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb15",
+      "name": "Color : Green | Size : XS | Types : Brand"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb13"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb00"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb05"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb16",
+      "name": "Color : Green | Size : XS | Types : Mixte"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb13"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb07"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb01"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb17",
+      "name": "Color : Green | Size : S | Types : Shop"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb13"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb07"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb03"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb18",
+      "name": "Color : Green | Size : S | Types : Brand"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb13"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb07"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb05"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb19",
+      "name": "Color : Green | Size : S | Types : Mixte"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb13"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0b"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb01"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb1a",
+      "name": "Color : Green | Size : M | Types : Shop"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb13"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0b"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb03"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb1b",
+      "name": "Color : Green | Size : M | Types : Brand"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb13"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0b"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb05"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb1c",
+      "name": "Color : Green | Size : M | Types : Mixte"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb13"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0f"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb01"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb1d",
+      "name": "Color : Green | Size : L | Types : Shop"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb13"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0f"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb03"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb1e",
+      "name": "Color : Green | Size : L | Types : Brand"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb13"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0f"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb05"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb1f",
+      "name": "Color : Green | Size : L | Types : Mixte"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb20"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb00"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb01"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb21",
+      "name": "Color : Blue | Size : XS | Types : Shop"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb20"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb00"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb03"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb22",
+      "name": "Color : Blue | Size : XS | Types : Brand"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb20"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb00"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb05"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb23",
+      "name": "Color : Blue | Size : XS | Types : Mixte"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb20"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb07"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb01"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb24",
+      "name": "Color : Blue | Size : S | Types : Shop"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb20"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb07"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb03"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb25",
+      "name": "Color : Blue | Size : S | Types : Brand"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb20"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb07"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb05"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb26",
+      "name": "Color : Blue | Size : S | Types : Mixte"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb20"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0b"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb01"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb27",
+      "name": "Color : Blue | Size : M | Types : Shop"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb20"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0b"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb03"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb28",
+      "name": "Color : Blue | Size : M | Types : Brand"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb20"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0b"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb05"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb29",
+      "name": "Color : Blue | Size : M | Types : Mixte"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb20"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0f"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb01"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb2a",
+      "name": "Color : Blue | Size : L | Types : Shop"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb20"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0f"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb03"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb2b",
+      "name": "Color : Blue | Size : L | Types : Brand"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb20"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0f"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb05"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb2c",
+      "name": "Color : Blue | Size : L | Types : Mixte"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb2d"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb00"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb01"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb2e",
+      "name": "Color : Black | Size : XS | Types : Shop"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb2d"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb00"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb03"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb2f",
+      "name": "Color : Black | Size : XS | Types : Brand"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb2d"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb00"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb05"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb30",
+      "name": "Color : Black | Size : XS | Types : Mixte"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb2d"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb07"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb01"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb31",
+      "name": "Color : Black | Size : S | Types : Shop"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb2d"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb07"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb03"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb32",
+      "name": "Color : Black | Size : S | Types : Brand"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb2d"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb07"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb05"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb33",
+      "name": "Color : Black | Size : S | Types : Mixte"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb2d"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0b"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb01"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb34",
+      "name": "Color : Black | Size : M | Types : Shop"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb2d"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0b"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb03"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb35",
+      "name": "Color : Black | Size : M | Types : Brand"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb2d"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0b"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb05"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb36",
+      "name": "Color : Black | Size : M | Types : Mixte"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb2d"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0f"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb01"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb37",
+      "name": "Color : Black | Size : L | Types : Shop"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb2d"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0f"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb03"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb38",
+      "name": "Color : Black | Size : L | Types : Brand"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb2d"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0f"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb05"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb39",
+      "name": "Color : Black | Size : L | Types : Mixte"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb3a"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb00"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb01"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb3b",
+      "name": "Color : White | Size : XS | Types : Shop"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb3a"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb00"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb03"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb3c",
+      "name": "Color : White | Size : XS | Types : Brand"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb3a"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb00"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb05"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb3d",
+      "name": "Color : White | Size : XS | Types : Mixte"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb3a"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb07"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb01"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb3e",
+      "name": "Color : White | Size : S | Types : Shop"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb3a"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb07"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb03"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb3f",
+      "name": "Color : White | Size : S | Types : Brand"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb3a"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb07"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb05"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb40",
+      "name": "Color : White | Size : S | Types : Mixte"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb3a"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0b"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb01"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb41",
+      "name": "Color : White | Size : M | Types : Shop"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb3a"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0b"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb03"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb42",
+      "name": "Color : White | Size : M | Types : Brand"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb3a"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0b"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb05"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb43",
+      "name": "Color : White | Size : M | Types : Mixte"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb3a"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0f"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb01"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb44",
+      "name": "Color : White | Size : L | Types : Shop"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb3a"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0f"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb03"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb45",
+      "name": "Color : White | Size : L | Types : Brand"
+  },
+  {
+      "option1": {
+          "option": "64ae9a94e81e2618cd1efafc",
+          "value": "64ae9a94e81e2618cd1efb3a"
+      },
+      "option2": {
+          "option": "64ae9a94e81e2618cd1efafd",
+          "value": "64ae9a94e81e2618cd1efb0f"
+      },
+      "option3": {
+          "option": "64ae9a94e81e2618cd1efafe",
+          "value": "64ae9a94e81e2618cd1efb05"
+      },
+      "price": {
+          "buyingPrice": 150,
+          "salePrice": 120,
+          "comparePrice": 200
+      },
+      "quantity": {
+          "instock": 10000,
+          "transporting": 0
+      },
+      "sizes": {
+          "weight": {
+              "value": 0,
+              "unite": "kg"
+          },
+          "volume": {
+              "value": 0,
+              "unite": "ml"
+          },
+          "dimensions": {
+              "width": 0,
+              "height": 0,
+              "depth": 0,
+              "unite": "cm"
+          }
+      },
+      "unavailable": false,
+      "translates": [],
+      "_id": "64ae9a94e81e2618cd1efb46",
+      "name": "Color : White | Size : L | Types : Mixte"
+  }
+]

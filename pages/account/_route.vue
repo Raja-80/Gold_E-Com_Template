@@ -26,11 +26,11 @@ export default {
       settings: null
     };
   },
-  watch: {
-    src: function(val) {
-      console.log(`Source ${val}`);
-    }
-  },
+  // watch: {
+  //   src: function(val) {
+  //     console.log(`Source ${val}`);
+  //   }
+  // },
   async fetch() {
     if (this.$route.params && this.$route.params.route)
       this.src = "/checkout2/" + this.$route.params.route;

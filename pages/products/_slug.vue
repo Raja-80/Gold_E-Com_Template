@@ -354,7 +354,6 @@
                     button.url = button.url.replace(/\{title\}/gi, this.item.name).replace(/\{url\}/gi, url);
                 }
                 if(!process.server){
-                    console.log("Send facebook events");
                     this.$storeino.fbpx('PageView')
                     this.$storeino.fbpx('ViewContent',{
                         content_name: this.item.name?this.item.name:'',
@@ -375,7 +374,6 @@
         mounted() {
             if(this.item) this.$tools.call('PAGE_VIEW', this.item);
             window.addEventListener("APP_LOADER", e => {
-                console.log("Despatching event CURRENT_PRODUCT APP_LOADER");
                 window.dispatchEvent(new CustomEvent('CURRENT_PRODUCT', {
                     detail: {
                         product_id: this.item._id,
@@ -582,7 +580,6 @@
                     this.price.comparePrice = this.item.price.comparePrice * quantity;
                 }
                 if(!process.server){
-                    console.log("Despatching event CURRENT_PRODUCT quantitySelected");
                     window.dispatchEvent(new CustomEvent('CURRENT_PRODUCT', {
                         detail: {
                             product_id: this.item._id,
