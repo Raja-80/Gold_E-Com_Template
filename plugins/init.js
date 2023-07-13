@@ -68,7 +68,8 @@ export default async function ({ $axios, $http ,route, $tools, $storeino, store,
       if(route.name == 'thanks'){
         if(cookies['ORDER_ID']) {
           document.cookie = 'ORDER_ID=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-        }else{
+        }
+        else{
           window.location.href = '/';
           return false;
         }
