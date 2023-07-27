@@ -1,14 +1,7 @@
 <template>
     <div class="options">
-        <div v-for="(option, i) in options" :key="i" :class="option.key" class="p-5 mt-3 border rounded-md border-gray-300">
-            <b class="capitalize option-name mb-2 flex">{{ option.name }}</b>
-            
-            <!-- <div v-if="!option.hasOwnProperty('style') || option.style == '' || option.style == null  || (option.style !== 'LIST' && option.style !== 'CHECK' && option.style !== 'RADIO') && (option.key !== 'color' && option.style == 'SIZE') || (option.key == 'color' && option.style == 'COLOR') " class="options-list">
-                <div v-for="(val, ii) in option.values" :key="ii" class="option mr-f-2">
-                    <button aria-label="colors button" :class="selected[`option${i+1}`] && selected[`option${i+1}`].value == val._id ? 'active': ''" @click="setVariant(i+1, val._id)" :id="val._id" :style="`${option.key == 'color' ? `background-color:${val.value2}` : ''}`"><small>{{ val.value1 }}</small></button>
-                </div>
-            </div> -->
-
+        <div v-for="(option, i) in options" :key="i" :class="option.key" class="p-5 mt-3 border border-gray-300 rounded-md">
+            <b class="flex mb-2 capitalize option-name">{{ option.name }}</b>
             <!--  -->
             <div v-if="!option.hasOwnProperty('style') || option.style == '' || option.style == null  || (option.style !== 'LIST' && option.style !== 'CHECK' && option.style !== 'RADIO') && (option.key !== 'color' && option.style == 'SIZE') || (option.key == 'color' && option.style == 'COLOR') " class="options-list">
                 <div v-for="(val, ii) in option.values" :key="ii" class="option mr-f-2">
@@ -253,7 +246,6 @@ export default {
             this.setVariant(index,value);
         },
         setVariant(index, value) {
-            // 1 2 3
             let index1 ,index2;
             if(index == 1){ index1=2; index2=3; }
             if(index == 2){ index1=1; index2=3; }
@@ -432,7 +424,6 @@ export default {
   .check-style{
     width: 20px;
     height: 20px;
-    /*margin-right: 7px;*/
   }
 
   .content-check-style{
@@ -443,7 +434,6 @@ export default {
   .radio-style{
     width: 20px;
     height: 20px;
-    /*margin-right: 7px;*/
   }
 
   .content-radio-style{
@@ -459,7 +449,6 @@ export default {
   .check-style{
     width: 20px;
     height: 20px;
-    /*margin-right: 7px;*/
   }
 
   .content-check-style{
@@ -519,12 +508,6 @@ export default {
         text-align: center;
         padding-top: 17px;
         padding-bottom: 13px;
-    }
-
-    .vr-image-style .content-image-style .image-style-image{
-        /* display: inline-block;
-        cursor: pointer;
-        margin-right: 5px; */
     }
 
     .vr-image-style .content-image-style .image-style-image img{

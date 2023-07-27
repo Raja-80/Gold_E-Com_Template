@@ -169,7 +169,7 @@
                             <div v-if="$settings.sections.product.add_to_cart.active || $settings.sections.product.buy_now.active" class="py-3">
                                 <si-app-loader placement="BEFORE_ADD_TO_CART"/>
                                 <!-- out of stock -->
-                                <div v-show="outofstock"  aria-label="Out Of Stock Button" :class="$settings.sections.product.buy_now.active ? 'mb-3':''" class="flex justify-center w-full p-4 px-5 border rounded-full text-sml ml-font-bold-hover border-red-600">
+                                <div v-show="outofstock"  aria-label="Out Of Stock Button" :class="$settings.sections.product.buy_now.active ? 'mb-3':''" class="flex justify-center w-full p-4 px-5 border border-red-600 rounded-full text-sml ml-font-bold-hover">
                                     <span class="text-red-600" >{{ $settings.sections.products.out_of_stock_text ? $settings.sections.products.out_of_stock_text : 'Out Of Stock' }}</span>
                                 </div>
                                 <!-- out of stock -->
@@ -367,7 +367,7 @@
 
             }catch(e){
                 // Redirect to error page if product not exists
-                console.log(e);
+                console.log({e});
                 this.$nuxt.error({ statusCode: 404, message: 'product_not_found' })
             }
         },

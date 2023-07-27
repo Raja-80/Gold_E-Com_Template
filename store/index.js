@@ -42,7 +42,6 @@ const createStore = () => {
             name: "Unknown",
             code: undefined
           },
-          //
           fullImage: null,
           showHeaderMenu: false
         }

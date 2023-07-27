@@ -20,8 +20,6 @@
     font-display: fallback;
 }
 
-/* arabic font */
-
 @font-face {
     font-family: pingarlt;
     src: url(../../static/fonts/pingarlt/PingARLT-Light.woff2) format("woff2"), 

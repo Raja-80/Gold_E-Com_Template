@@ -7,7 +7,6 @@ module.exports = {
       'eslint:recommended',
       'plugin:nuxt/recommended'
     ],
-    // add your custom rules here
     rules: {}
   }
   

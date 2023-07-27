@@ -1,22 +1,22 @@
 <template>
     <div class="bg-white">
         <!-- Side BAr -->
-        <div class="lg:relative flex items-center justify-between px-5 xl:px-10 under-border">
-            <div class="flex flex-row-reverse lg:flex-row items-center justify-between flex-grow">
+        <div class="flex items-center justify-between px-5 lg:relative xl:px-10 under-border">
+            <div class="flex flex-row-reverse items-center justify-between flex-grow lg:flex-row">
                 <!-- filters -->
                 <div @mouseover="windowWidth >= 1024 ? isVisible.collections=true : null" @mouseleave="windowWidth >= 1024 ? isVisible.collections=false : null">
                     <div v-if="$settings.sections.blog.sidebar.categories.active">
                         <div @click="hideBodyScroll">
                             <div @click="showCollections" class="flex items-center justify-between py-3.5 lg:py-5 cursor-pointer underline lg:no-underline ml-mr-4">
                                 <h2 class="text-sml ml-font-bold-hover" :class="isVisible.collections ==true? 'ml-font-bold' : ''">{{ $settings.sections.blog.sidebar.categories.title }}</h2>
-                                <svg aria-label="chivron bottom" class="lg:mx-1 hidden lg:block" :class="isVisible.collections == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                                <svg aria-label="chivron bottom" class="hidden lg:mx-1 lg:block" :class="isVisible.collections == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                             </div>
                         </div>
                         <transition :name="windowWidth < 1024 ? 'fade' : 'slide'">
-                            <div class="bg-white fixed lg:absolute w-full h-full lg:h-auto inset-0 lg:top-full lg:inset-y-auto lg:bottom-auto z-50 overflow-auto lg:px-10" v-if="isVisible.collections">
+                            <div class="fixed inset-0 z-50 w-full h-full overflow-auto bg-white lg:absolute lg:h-auto lg:top-full lg:inset-y-auto lg:bottom-auto lg:px-10" v-if="isVisible.collections">
                                 <div class="flex flex-col justify-between h-full">
                                     <div>
-                                        <div class="flex items-center justify-between py-5 lg:hidden border-b border-gray-300 px-5">
+                                        <div class="flex items-center justify-between px-5 py-5 border-b border-gray-300 lg:hidden">
                                             <h2 class="text-sml ml-font-bold">{{ $settings.sections.blog.sidebar.categories.title }}</h2>
                                             <div class="flex items-center" @click="showBodyScroll">
                                                 <button aria-label="close filter" class="flex items-center" @click="isVisible.collections=false">
@@ -24,12 +24,12 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        <div class="pb-2 pt-5 lg:border-t border-gray-300 px-5 lg:px-0">
+                                        <div class="px-5 pt-5 pb-2 border-gray-300 lg:border-t lg:px-0">
                                             <div class="flex flex-col">
                                                 <div class="flex items-center pb-3" v-for="(item, i) in categories" :key="i">
                                                     <label class="relative flex items-center cursor-pointer">
                                                         <input hidden type="checkbox" class="absolute top-0 left-0" style="z-index: -1" :id="item.slug" :checked="params['categories.slug-in'] && params['categories.slug-in'].indexOf(item.slug) >= 0" @change="setParams($event, 'categories.slug-in', item.slug)">
-                                                        <div class="flex justify-center items-center">
+                                                        <div class="flex items-center justify-center">
                                                             <svg aria-label="chivron bottom" class="fill-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
                                                         </div>
                                                         <label class="cursor-pointer text-sml primary-hover" :for="item.slug">{{ item.name }}</label>
@@ -39,8 +39,8 @@
                                         </div>
                                     </div>
                                     <div class="flex flex-col justify-end" @click="showBodyScroll">
-                                        <div @click="isVisible.collections=false" class="lg:hidden bg-black py-5 px-8 mx-5 rounded-full cursor-pointer  ml-font-bold-hover my-5">
-                                            <div class="flex items-center justify-center text-sml text-white">
+                                        <div @click="isVisible.collections=false" class="px-8 py-5 mx-5 my-5 bg-black rounded-full cursor-pointer lg:hidden ml-font-bold-hover">
+                                            <div class="flex items-center justify-center text-white text-sml">
                                                 <span>{{ $settings.sections.blog.sidebar.button_text1 }} <span> {{ items.length }} </span> {{ $settings.sections.blog.sidebar.button_text2 }}</span>
                                             </div>   
                                         </div>
@@ -53,10 +53,10 @@
                 <!-- filters --> 
                 <div class="flex items-center">
                     <!-- articles -->
-                    <div class="text-sml text-primary py-2 lg:py-5">
+                    <div class="py-2 text-sml text-primary lg:py-5">
                         <span>{{ items.length }} {{ $settings.sections.blog.articles_name }}</span>
                     </div>
-                    <div class="w-6 hidden lg:flex items-center justify-center">
+                    <div class="items-center justify-center hidden w-6 lg:flex">
                         <div style="width: 0.5px;" class="h-3 bg-gray-500"></div>
                     </div>
                     <!-- articles -->
@@ -68,14 +68,14 @@
                     <div @click="hideBodyScroll">
                         <div @click="showSort" class="flex items-center justify-between py-3.5 lg:py-5 cursor-pointer underline lg:no-underline">
                             <h2 class="text-sml ml-font-bold-hover" :class="isVisible.sort==true? 'ml-font-bold' : ''">{{ $settings.sections.blog.sort_name }}</h2>
-                            <svg aria-label="chivron bottom" class="lg:mx-1 hidden lg:block" :class="isVisible.sort == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
+                            <svg aria-label="chivron bottom" class="hidden lg:mx-1 lg:block" :class="isVisible.sort == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                         </div>
                     </div>
                     <transition :name="windowWidth < 1024 ? 'fade' : 'slide'">
-                        <div class="bg-white fixed lg:absolute w-full h-full lg:h-auto inset-0 lg:top-full lg:inset-y-auto lg:bottom-auto z-50 overflow-auto lg:overflow-hidden lg:px-10" v-if="isVisible.sort">
+                        <div class="fixed inset-0 z-50 w-full h-full overflow-auto bg-white lg:absolute lg:h-auto lg:top-full lg:inset-y-auto lg:bottom-auto lg:overflow-hidden lg:px-10" v-if="isVisible.sort">
                             <div class="flex flex-col justify-between h-full">
                                 <div>
-                                    <div class="flex items-center justify-between py-5 lg:hidden border-b border-gray-300 px-5">
+                                    <div class="flex items-center justify-between px-5 py-5 border-b border-gray-300 lg:hidden">
                                         <h2 class="text-sml ml-font-bold">{{ $settings.sections.blog.sort_name }}</h2>
                                         <div class="flex items-center" @click="showBodyScroll">
                                             <button aria-label="close sort button" class="flex items-center" @click="isVisible.sort=false">
@@ -83,12 +83,12 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="pb-2 pt-5 lg:border-t border-gray-300 px-5 lg:px-0">
+                                    <div class="px-5 pt-5 pb-2 border-gray-300 lg:border-t lg:px-0">
                                         <div class="flex flex-col">
                                             <div class="flex items-center pb-3" v-for="(sort, i) in sorts" :key="i">
                                                 <label class="relative flex items-center cursor-pointer">
                                                     <input hidden type="radio" class="absolute top-0 left-0" style="z-index: -1" v-model="params.sort" :value="sort.field" :id="sort.name">
-                                                    <div class="flex justify-center items-center">
+                                                    <div class="flex items-center justify-center">
                                                         <svg aria-label="chivron bottom" class="fill-current"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15.05a.54.54 0 01-.39-.16l-4-4a.551.551 0 11.78-.78l3.61 3.61 8.61-8.61a.55.55 0 11.78.78l-9 9a.54.54 0 01-.39.16z" fill="currentColor"></path></svg>
                                                     </div>
                                                     <label class="cursor-pointer text-sml primary-hover" :for="sort.name">{{ sort.name }}</label>
@@ -98,8 +98,8 @@
                                     </div>
                                 </div>
                                 <div class="flex flex-col justify-end" @click="showBodyScroll">
-                                    <div @click="isVisible.sort=false" class="lg:hidden bg-black py-5 px-8 mx-5 rounded-full cursor-pointer  ml-font-bold-hover my-5">
-                                        <div class="flex items-center justify-center text-sml text-white">
+                                    <div @click="isVisible.sort=false" class="px-8 py-5 mx-5 my-5 bg-black rounded-full cursor-pointer lg:hidden ml-font-bold-hover">
+                                        <div class="flex items-center justify-center text-white text-sml">
                                             <span>{{ $settings.sections.blog.sidebar.button_text1 }} <span> {{ items.length }} </span> {{ $settings.sections.blog.sidebar.button_text2 }}</span>
                                         </div>   
                                     </div>
@@ -115,10 +115,10 @@
         <!-- blogs -->
         <!-- loader and empty -->
         <div>
-            <div v-if="loading.pages" class="flex justify-center items-center my-5">
+            <div v-if="loading.pages" class="flex items-center justify-center my-5">
                 <si-loader></si-loader>
             </div>
-            <div v-if="!loading.pages && items.length == 0" class="flex justify-center items-center my-5">
+            <div v-if="!loading.pages && items.length == 0" class="flex items-center justify-center my-5">
                 <h1 class="py-3 text-xl">{{ $settings.sections.blog.empty_text }}</h1>
             </div>
         </div>
@@ -130,7 +130,7 @@
                     <si-post page="blog" :item="item"></si-post>
                 </div>
             </div>
-            <div v-if="$settings.sections.blog.sidebar.products.active" class="mb-16 px-2">
+            <div v-if="$settings.sections.blog.sidebar.products.active" class="px-2 mb-16">
                 <div v-if="products.length > 0" class="w-full">
                     <si-carousel :size="100" component="si-product"  :title="$settings.sections.blog.sidebar.products.title" :list="products" itemClass="w-full"></si-carousel>
                 </div>
@@ -280,7 +280,7 @@ export default {
 
 <style scoped>
 .ml-mr-4 {
-    margin-right: 1rem/* 16px */;
+    margin-right: 1rem;
 }
 
 [dir="rtl"] .ml-mr-4 {

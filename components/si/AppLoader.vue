@@ -38,8 +38,8 @@
             css = css.replace(new RegExp(`#app_${app.route}`, "g"),`#app_${app.route}_${uid}`);
             js = js.replace(new RegExp(`app_${app.route}`, "g"),`app_${app.route}_${uid}`);
             app[`loaded_${uid}`] = { manifest, html, css, js };
-          } catch (error) {
-              console.log(error);
+          } catch (e) {
+              console.log({e});
           }
         }
         const html = document.createElement(`div`);
