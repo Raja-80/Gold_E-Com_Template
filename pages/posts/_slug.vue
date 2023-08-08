@@ -1,25 +1,25 @@
 <template>
     <div class="">
         <!-- loader -->
-        <div v-if="loading" class="flex justify-center items-center my-5">
+        <div v-if="loading" class="flex items-center justify-center my-5">
             <si-loader></si-loader>
         </div>
         <!-- loader -->
         <div v-if="!loading && item" class="">
             <!-- title -->
-            <div class="flex justify-center mt-10 mb-6 px-5 xl:px-10">
+            <div class="flex justify-center px-5 mt-10 mb-6 xl:px-10">
                 <h1 class="text-xl text-center">{{ item.title }}</h1>
             </div>
             <!-- title -->
             <!-- image -->
-            <div class="relative pb-full-res-post overflow-hidden px-5 xl:px-10">
-                <si-image  width="400" height="400" class="h-full w-full absolute inset-0 object-cover bg-no-repeat" :src="item.image ? item.image.url : null" :alt="item.name"/>
+            <div class="relative px-5 overflow-hidden pb-full-res-post xl:px-10">
+                <si-image  width="400" height="400" class="absolute inset-0 object-cover w-full h-full bg-no-repeat" :src="item.image ? item.image.url : null" :alt="item.name"/>
             </div>
             <!-- image -->
             <!-- texts -->
-            <div class="flex flex-col justify-center my-10 px-5 xl:px-10">
+            <div class="flex flex-col justify-center px-5 my-10 xl:px-10">
                 <!-- short description -->
-                <p class="text-sml text-primary mb-3">{{ item.excerpt }}</p>
+                <p class="mb-3 text-sml text-primary">{{ item.excerpt }}</p>
                 <!-- short description -->
                 <!-- description -->
                 <div v-if="item">
@@ -31,9 +31,9 @@
             <!-- share products icons -->
             <div v-if="$settings.sections.post.share_buttons.active">
                 <div class="flex items-center">
-                    <div class="flex-grow flex border-b border-gray-300"></div>
-                    <h3 class="text-base mx-2">{{ $settings.sections.post.share_buttons.title }}</h3>
-                    <div class="flex-grow flex border-b border-gray-300"></div>
+                    <div class="flex flex-grow border-b border-gray-300"></div>
+                    <h3 class="mx-2 text-base">{{ $settings.sections.post.share_buttons.title }}</h3>
+                    <div class="flex flex-grow border-b border-gray-300"></div>
                 </div>
                 <div class="flex justify-center gap-4 pt-3 mb-7">
                     <div v-for="item in socialMedia.filter(s=>$settings.sections.post.share_buttons[s.name])" :key="item.name">
@@ -121,7 +121,8 @@ export default {
     }
   },
   mounted() {
-    this.$storeino.fbpx("PageView");
+    this.$storeino.fbpx('PageView');
+    this.$tools.call('PAGE_VIEW');
   }
 };
 </script>

@@ -191,7 +191,8 @@ export default {
         this.$store.state.seo.description = this.$settings.sections.blog.description || this.$settings.store_description;
     },
     mounted() {
-        this.$storeino.fbpx('PageView')
+        this.$storeino.fbpx('PageView');
+        this.$tools.call('PAGE_VIEW');
         this.getWindowWidth();
         window.addEventListener('resize', this.getWindowWidth);
     },

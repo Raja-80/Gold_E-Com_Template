@@ -14,8 +14,8 @@ export default {
     this.$store.state.seo.description = this.$settings.store_description;
   },
   mounted() {
+    this.$storeino.fbpx('PageView');
     this.$tools.call('PAGE_VIEW');
-    this.$storeino.fbpx('PageView')
   },
 }
 </script>

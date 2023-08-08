@@ -353,8 +353,9 @@
                 for (const button of this.socialMedia) {
                     button.url = button.url.replace(/\{title\}/gi, this.item.name).replace(/\{url\}/gi, url);
                 }
+
                 if(!process.server){
-                    this.$storeino.fbpx('PageView')
+                    this.$storeino.fbpx('PageView');
                     this.$storeino.fbpx('ViewContent',{
                         content_name: this.item.name?this.item.name:'',
                         content_ids: [this.item._id],
@@ -372,8 +373,10 @@
             }
         },
         mounted() {
-            if(this.item) this.$tools.call('PAGE_VIEW', this.item);
-            window.addEventListener("APP_LOADER", e => {
+            if(this.item) {
+                this.$tools.call('PAGE_VIEW', this.item);
+            }
+            window.addEventListener("APP_LOADER", ()=> {
                 window.dispatchEvent(new CustomEvent('CURRENT_PRODUCT', {
                     detail: {
                         product_id: this.item._id,
@@ -385,31 +388,29 @@
                 }));
             });
             if(this.item){
-            this.$storeino.fbpx('PageView')
-            this.$storeino.fbpx('ViewContent',{
-                content_name: this.item.name?this.item.name:'',
-                content_ids: [this.item._id],
-                content_type: "product",
-                value: this.item.price.salePrice,
-                currency: this.$store.state.currency.code
+                this.$storeino.fbpx('PageView');
+                this.$storeino.fbpx('ViewContent',{
+                    content_name: this.item.name?this.item.name:'',
+                    content_ids: [this.item._id],
+                    content_type: "product",
+                    value: this.item.price.salePrice,
+                    currency: this.$store.state.currency.code
                 })
             }
             if(this.item){
                 const iframes=document.querySelectorAll('iframe')
                 for(const ifram of iframes){
-                const width = ifram.getAttribute('width')
-                const height = ifram.getAttribute('height')
                 const parent = ifram.parentNode
-                    if (!parent.classList.contains('video-wrapper')) {
-                        const div = document.createElement("div");
-                        ifram.after(div)
-                        div.classList.add('video-wrapper');
-                        ifram.style.width=null;
-                        ifram.style.height=null;
-                        ifram.setAttribute('width','');
-                        ifram.setAttribute('height','');
-                        div.appendChild(ifram)
-                    }
+                if (!parent.classList.contains('video-wrapper')) {
+                    const div = document.createElement("div");
+                    ifram.after(div)
+                    div.classList.add('video-wrapper');
+                    ifram.style.width=null;
+                    ifram.style.height=null;
+                    ifram.setAttribute('width','');
+                    ifram.setAttribute('height','');
+                    div.appendChild(ifram)
+                }
                 }
             }
         },

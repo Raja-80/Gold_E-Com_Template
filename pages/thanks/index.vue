@@ -36,18 +36,18 @@ export default {
     };
   },
   mounted() {
-    this.$tools.call('PAGE_VIEW');
     this.$storeino.fbpx('PageView');
     this.$storeino.fbpx('Purchase');
+    this.$tools.call('PAGE_VIEW');
     if (this.$route.query.pixel) {
       let pixelData = JSON.parse(this.$route.query.pixel);
       window.snapPurchase({
-            price: pixelData.total,
-            click_id:this.$route.query.ScCid ? this.$route.query.ScCid  : null,
-            transaction_id: this.$route.query.code,
-            currency: this.$store.state.currency && this.$store.state.currency.code ? this.$store.state.currency.code : "",
-            item_ids:pixelData.content_ids,
-          });
+        price: pixelData.total,
+        click_id:this.$route.query.ScCid ? this.$route.query.ScCid  : null,
+        transaction_id: this.$route.query.code,
+        currency: this.$store.state.currency && this.$store.state.currency.code ? this.$store.state.currency.code : "",
+        item_ids:pixelData.content_ids,
+      });
     }
     // take OrderId from url
     const url = new URL(window.location.href);

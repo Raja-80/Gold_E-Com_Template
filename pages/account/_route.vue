@@ -1,6 +1,6 @@
 <template>
   <div v-if="routes.includes(this.$route.params.route)" class="container relative items-center w-full px-10 py-5 overflow-hidden padding-0 margin-0">
-    <div class="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center bg-white  zi-9999"  v-if="$store.state.loading"  >
+    <div class="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center bg-white zi-9999"  v-if="$store.state.loading"  >
       <si-loaderGlobal class="container" />
     </div>
       <iframe class="form-ifrem"  height="100%" width="100%" id="iframe" name="iframe-account" frameborder="0" @load="load"> </iframe>
@@ -15,9 +15,6 @@
 <script>
 export default {
   layout: "account",
-  head() {
-    // return this.seo();
-  },
   data() {
     return {
       iframe: null,
@@ -39,7 +36,8 @@ export default {
     ) {
       document.querySelector("#account").submit();
     }
-    this.$storeino.fbpx("PageView");
+    this.$storeino.fbpx('PageView');
+    this.$tools.call('PAGE_VIEW');
   },
   methods: {
     load() {

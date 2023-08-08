@@ -412,6 +412,13 @@ export default {
             ]
         }
     },
+    mounted() {
+        this.$storeino.fbpx('PageView');
+        this.$tools.call('PAGE_VIEW');
+        this.getWindowWidth();
+        window.addEventListener('resize', this.getWindowWidth);
+        this.currentSlug();
+    },
     watch: {
         params: {
             handler(val) {
@@ -451,11 +458,6 @@ export default {
         await this.getCollections();
         await this.getBrands();
         this.subCollections();
-    },
-    mounted() {
-        this.getWindowWidth();
-        window.addEventListener('resize', this.getWindowWidth);
-        this.currentSlug()
     },
     beforeDestroy() {
         window.removeEventListener('resize', this.getWindowWidth);
