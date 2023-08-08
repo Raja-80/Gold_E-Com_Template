@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="loading" class="flex justify-center items-center my-5">
+        <div v-if="loading" class="flex items-center justify-center my-5">
             <si-loader></si-loader>
         </div>
         <div v-if="!loading && item" class="px-5 xl:px-10">
@@ -26,9 +26,9 @@
             <!-- contact page -->
             <!-- share page -->
             <div class="flex items-center">
-                <div class="flex-grow flex border-b border-gray-300"></div>
-                <h3 class="text-base mx-2">{{ $settings.sections.post.share_buttons.title }}</h3>
-                <div class="flex-grow flex border-b border-gray-300"></div>
+                <div class="flex flex-grow border-b border-gray-300"></div>
+                <h3 class="mx-2 text-base">{{ $settings.sections.post.share_buttons.title }}</h3>
+                <div class="flex flex-grow border-b border-gray-300"></div>
             </div>
             <div class="flex justify-center gap-4 pt-4 mb-7">
                 <div v-for="item in socialMedia.filter(s=>$settings.sections.post.share_buttons[s.name])" :key="item.name">
@@ -101,7 +101,8 @@ export default {
         }
     },
     mounted(){
-      this.$storeino.fbpx('PageView')
+        this.$storeino.fbpx('PageView');
+        this.$tools.call('PAGE_VIEW');
     }
 }
 </script>

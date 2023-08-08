@@ -1,21 +1,21 @@
 <template>
     <div>
         <!-- Loader -->
-        <div v-if="loading.subCollections && loading.posts" class="flex justify-center items-center my-5">
+        <div v-if="loading.subCollections && loading.posts" class="flex items-center justify-center my-5">
             <si-loader></si-loader>
         </div>
         <!-- Loader -->
         <!-- Sub Collections -->
         <div>
             <div v-if="subCollections.length>0" class="flex flex-wrap">
-                <div v-for="(item,i) in subCollections" :key="i" class="collections w-full lg:w-1/2">
+                <div v-for="(item,i) in subCollections" :key="i" class="w-full collections lg:w-1/2">
                     <si-collection :item="item"  page="collections"></si-collection>
                 </div>
             </div>
         </div>
         <!-- Sub Collections -->
         <!-- One Blog -->
-        <div v-if="posts.length > 0" class="px-3 lg:px-7 mt-16 pb-16 lg:pb-20">
+        <div v-if="posts.length > 0" class="px-3 pb-16 mt-16 lg:px-7 lg:pb-20">
             <div class="">
                 <h2 class="text-base text-center ml-font-bold">{{ $settings.sections.posts.title  }}</h2>
             </div>
@@ -67,7 +67,8 @@ export default {
         this.loading.posts = false;
     },
     mounted() {
-      this.$storeino.fbpx('PageView')
+        this.$storeino.fbpx('PageView');
+        this.$tools.call('PAGE_VIEW');
     }
 }
 </script>
