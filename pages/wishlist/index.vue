@@ -1,14 +1,14 @@
 <template>
     <div>
         <!-- loader -->
-        <div v-if="loading.wishlist" class="flex justify-center items-center my-5">
+        <div v-if="loading.wishlist" class="flex items-center justify-center my-5">
             <si-loader></si-loader>
         </div>
         <!-- empty -->
         <div v-if="!loading.wishlist && items.length == 0" class="flex justify-center p-5">
             <div class="flex flex-col items-center">
-                <h2 class="w-full text-center text-lg mb-3">{{ $settings.sections.wishlist.empty_text }}</h2>
-                <nuxt-link to="/shop" class="flex items-center py-2 px-4 justify-center border border-primary rounded-full">
+                <h2 class="w-full mb-3 text-lg text-center">{{ $settings.sections.wishlist.empty_text }}</h2>
+                <nuxt-link to="/shop" class="flex items-center justify-center px-4 py-2 border rounded-full border-primary">
                     <span class="w-full text-sml ml-font-bold-hover">{{ $settings.sections.wishlist.buttons.back_to_shop_text }}</span>
                 </nuxt-link>
             </div>
@@ -17,13 +17,13 @@
         <!-- Content -->
         <div class="mb-16" v-if="items.length > 0">
                 <!-- title -->
-                <div class="my-5 px-5 xl:px-10">
+                <div class="px-5 my-5 xl:px-10">
                     <h2 class="text-lg ml-font-bold">{{ $settings.sections.wishlist.title }}</h2>
                 </div>
                 <!-- title -->
                 <!--  -->
                 <div class="flex flex-wrap mx-1 xl:mx-5">
-                    <div v-for="(item, i) in items" :key="i" class="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 px-4 xl:px-5 mb-4 lg:mb-8">
+                    <div v-for="(item, i) in items" :key="i" class="w-1/2 px-4 mb-4 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:px-5 lg:mb-8">
                         <si-product :item="item" page="wishlist" ></si-product>
                     </div>
                 </div>
@@ -45,6 +45,10 @@ export default {
         this.$store.state.seo.title = this.$settings.sections.wishlist.title + ' - ' + this.$settings.store_name;
         this.$store.state.seo.description = this.$settings.sections.wishlist.description || this.$settings.store_description;
         await this.initWishlist();
+    },
+    mounted(){
+        this.$storeino.fbpx('PageView');
+        this.$tools.call('PAGE_VIEW');
     },
     watch: {
         async "$store.state.wishlist"(){

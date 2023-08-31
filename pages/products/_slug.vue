@@ -321,7 +321,6 @@
             try{
                 const { data } = await this.$storeino.products.get({ slug })
                 this.item = data;
-
                 this.$store.state.seo.title = (this.item.seo.title || this.item.name) + ' - ' + this.$settings.store_name;
                 this.$store.state.seo.description = this.item.seo.description || this.item.description || this.$settings.store_description;
                 this.$store.state.seo.keywords = this.item.seo.keywords.length > 0 ? this.item.seo.keywords || [] : this.$settings.store_keywords || [];
@@ -420,90 +419,90 @@
             }
         },
         methods: {
-          toggleFullscreen() {
-            if (!document.fullscreenElement) {
-                    document.documentElement.requestFullscreen();
-                    this.fullScreen = true
-                } else {
-                    if (document.exitFullscreen) {
-                        document.exitFullscreen();
-                        this.fullScreen = false
+            toggleFullscreen() {
+                if (!document.fullscreenElement) {
+                        document.documentElement.requestFullscreen();
+                        this.fullScreen = true
+                    } else {
+                        if (document.exitFullscreen) {
+                            document.exitFullscreen();
+                            this.fullScreen = false
+                        }
                     }
+                },
+            toggleZoom() {
+                if (this.imageScale > 1) {
+                    this.imageScale = 1;
+                    this.zoom = 0;
+                    this.cursor = 'cursor-zoom-in'
+
+                } else {
+                    this.imageScale = 2;
+                    this.zoom = 100;
+                    this.cursor = 'cursor-zoom-out'
                 }
             },
-        toggleZoom() {
-            if (this.imageScale > 1) {
-                this.imageScale = 1;
-                this.zoom = 0;
-                this.cursor = 'cursor-zoom-in'
-
-            } else {
-                this.imageScale = 2;
-                this.zoom = 100;
-                this.cursor = 'cursor-zoom-out'
-            }
-        },
-        startDrag(event) {
-            this.isDragging = true;
-            this.startX = event.clientX || event.touches[0].clientX;
-            this.startY = event.clientY || event.touches[0].clientY;
-        },
-        dragImage(event) {
-            if (this.isDragging && this.imageScale > 1) {
-                const clientX = event.clientX || event.touches[0].clientX;
-                const clientY = event.clientY || event.touches[0].clientY;
-                const deltaX = clientX - this.startX;
-                const deltaY = clientY - this.startY;
-                this.posX += deltaX;
-                this.posY += deltaY;
-                this.startX = clientX;
-                this.startY = clientY;
-            }
-        },
-        stopDrag() {
-            this.isDragging = false;
-            this.posX = 0;
-            this.posY = 0;
-            //change image
-            const endX = event.clientX || event.changedTouches[0].clientX;
-            const difference = this.startX - endX;
-            if (difference > 0) {
-                this.next();
-            } else if (difference < 0) {
-                this.prev();
-            }
-            this.startX = null;
-        },
-        increaseSize() {
-            const currentScale = this.imageScale;
-            if (currentScale < 1.99) {
-                this.imageScale = currentScale + 0.2;
-                this.zoom = this.zoom + 20;
-                this.cursor = 'cursor-zoom-out'
-            }
-        },
-        decreaseSize() {
-            const currentScale = this.imageScale;
-            if (currentScale > 1) {
-                this.imageScale = currentScale - 0.2;
-                this.zoom = this.zoom - 20;
-                this.cursor = 'cursor-zoom-out'
-            }
-        },
-        next() {
-            if(this.visibleSlide >= this.slidesLen - 1 ){
-                this.image = this.$tools.copy(this.item.images[this.visibleSlide = 0]);
-            }else {
-                this.image = this.$tools.copy(this.item.images[this.visibleSlide = this.visibleSlide + 1]);
-            }
-        },
-        prev() {
-            if(this.visibleSlide <= 0 ){
-                this.image = this.$tools.copy(this.item.images[this.visibleSlide = this.slidesLen - 1]);
-            }else {
-                this.image = this.$tools.copy(this.item.images[this.visibleSlide = this.visibleSlide - 1]);
-            }
-        },
+            startDrag(event) {
+                this.isDragging = true;
+                this.startX = event.clientX || event.touches[0].clientX;
+                this.startY = event.clientY || event.touches[0].clientY;
+            },
+            dragImage(event) {
+                if (this.isDragging && this.imageScale > 1) {
+                    const clientX = event.clientX || event.touches[0].clientX;
+                    const clientY = event.clientY || event.touches[0].clientY;
+                    const deltaX = clientX - this.startX;
+                    const deltaY = clientY - this.startY;
+                    this.posX += deltaX;
+                    this.posY += deltaY;
+                    this.startX = clientX;
+                    this.startY = clientY;
+                }
+            },
+            stopDrag() {
+                this.isDragging = false;
+                this.posX = 0;
+                this.posY = 0;
+                //change image
+                const endX = event.clientX || event.changedTouches[0].clientX;
+                const difference = this.startX - endX;
+                if (difference > 0) {
+                    this.next();
+                } else if (difference < 0) {
+                    this.prev();
+                }
+                this.startX = null;
+            },
+            increaseSize() {
+                const currentScale = this.imageScale;
+                if (currentScale < 1.99) {
+                    this.imageScale = currentScale + 0.2;
+                    this.zoom = this.zoom + 20;
+                    this.cursor = 'cursor-zoom-out'
+                }
+            },
+            decreaseSize() {
+                const currentScale = this.imageScale;
+                if (currentScale > 1) {
+                    this.imageScale = currentScale - 0.2;
+                    this.zoom = this.zoom - 20;
+                    this.cursor = 'cursor-zoom-out'
+                }
+            },
+            next() {
+                if(this.visibleSlide >= this.slidesLen - 1 ){
+                    this.image = this.$tools.copy(this.item.images[this.visibleSlide = 0]);
+                }else {
+                    this.image = this.$tools.copy(this.item.images[this.visibleSlide = this.visibleSlide + 1]);
+                }
+            },
+            prev() {
+                if(this.visibleSlide <= 0 ){
+                    this.image = this.$tools.copy(this.item.images[this.visibleSlide = this.slidesLen - 1]);
+                }else {
+                    this.image = this.$tools.copy(this.item.images[this.visibleSlide = this.visibleSlide - 1]);
+                }
+            },
             t(key){
                 const langs = {
                     price_title_products: {
@@ -634,7 +633,7 @@
 
 <style scoped>
 .z-index {
-  z-index: 99999;
+    z-index: 99999;
 }
 .cursor-zoom-in {
     cursor: zoom-in;
@@ -646,45 +645,45 @@
 
 @media (max-width: 1024px) {
     [dir='rtl'] svg.rotate-chivron{
-      transform: rotateY(180deg);
+        transform: rotateY(180deg);
     }
 }
 
 .pb-3\/5-res{
-  padding-bottom: 70%;
+    padding-bottom: 70%;
 }
 
 .pb-2\/3-res{
-  padding-bottom: 100%;
+    padding-bottom: 100%;
 }
 
 @media (min-width: 1024px) {
-  .pb-3\/5-res{
-      padding-bottom: 60%;
-  }
+    .pb-3\/5-res{
+            padding-bottom: 60%;
+    }
 
-  .pb-2\/3-res{
-      padding-bottom: 66.6667%;
-  }
+    .pb-2\/3-res{
+        padding-bottom: 66.6667%;
+    }
 }
 
 /* Product padding */
 @media (min-width: 1024px) {
-  .products-padding:nth-child(odd) {
-    padding-right: 0.625rem;
-  }
-  .products-padding:nth-child(even) {
-    padding-left: 0.625rem;
-  }
+    .products-padding:nth-child(odd) {
+        padding-right: 0.625rem;
+    }
+    .products-padding:nth-child(even) {
+        padding-left: 0.625rem;
+    }
 
-  [dir="rtl"] .products-padding:nth-child(odd) {
-    padding-left: 0.625rem;
-    padding-right: 0;
-  }
-  [dir="rtl"] .products-padding:nth-child(even) {
-    padding-right: 0.625rem;
-    padding-left: 0;
-  }
+    [dir="rtl"] .products-padding:nth-child(odd) {
+        padding-left: 0.625rem;
+        padding-right: 0;
+    }
+    [dir="rtl"] .products-padding:nth-child(even) {
+        padding-right: 0.625rem;
+        padding-left: 0;
+    }
 }
 
 /* Product padding */

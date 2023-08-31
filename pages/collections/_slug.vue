@@ -62,7 +62,7 @@ export default {
             const { data } = await this.$storeino.pages.search( { status: 'PUBLISH' ,'categories.slug-in': [this.collection.slug], type: 'POST' } )
             this.posts = data.results
         }catch(e){
-          console.log({e});
+            console.log({e});
         }
         this.loading.posts = false;
     },
