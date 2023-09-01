@@ -46,8 +46,10 @@ export default {
         this.$store.state.seo.description = this.$settings.sections.wishlist.description || this.$settings.store_description;
         await this.initWishlist();
     },
-    mounted(){
+    mounted() {
+        // fb pixel
         this.$storeino.fbpx('PageView');
+        // snap pixel
         this.$tools.call('PAGE_VIEW');
     },
     watch: {
