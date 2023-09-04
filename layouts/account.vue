@@ -39,7 +39,7 @@
         <sections-header-top></sections-header-top>
         <sections-header></sections-header>
         <sections-header-menu></sections-header-menu>
-        <Nuxt />
+        <Nuxt/>
         <sections-footer></sections-footer>
         <sections-copyright></sections-copyright>
         <si-full-image></si-full-image>

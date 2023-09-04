@@ -7,6 +7,7 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
   async fetch(){
@@ -16,6 +17,6 @@ export default {
   mounted() {
     this.$storeino.fbpx('PageView');
     this.$tools.call('PAGE_VIEW');
-  },
+  }
 }
 </script>
