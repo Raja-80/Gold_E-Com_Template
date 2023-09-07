@@ -24,8 +24,26 @@ export default {
   ],
   components: true,
   buildModules: [
-    '@nuxtjs/tailwindcss',
+    '@nuxtjs/google-fonts',
+    '@nuxtjs/tailwindcss'
   ],
+  googleFonts: {
+    display: 'swap',
+    prefetch: true,
+    preconnect: true,
+    useStylesheet: true,
+    families: {
+      Almarai: [400],
+      Tajawal: [400],
+      'Playfair+Display': [400],
+      Sora: [400],
+      Poppins: [400],
+      Amiri: [400],
+      Cairo: [400],
+      'Readex+Pro': [400],
+      Oswald: [400]
+    }
+  },
   modules: [
     '@nuxt/image',
     '@nuxtjs/axios'

@@ -75,8 +75,8 @@ export default {
                 { rel: 'icon', type: 'image/x-icon', href: this.$settings.store_favicon ? this.$settings.store_favicon.src : this.$store.state.defaults.icon },
                 { rel: "dns-prefetch", href: 'https://storeno.b-cdn.net/stores/' },
                 { rel: 'preconnect', href: 'https://connect.facebook.net', crossorigin: "anonymous" },
-                { rel: 'preload', href: 'https://connect.facebook.net/en_US/fbevents.js', as: 'script' },
-                ...this.otherLinks
+                { rel: 'preload', href: 'https://connect.facebook.net/en_US/fbevents.js', as: 'script' }
+                ...this.
             ],
             htmlAttrs: {
                 lang: this.$store.state.language.code,
@@ -93,9 +93,7 @@ export default {
             footer_rgb: { r: 0, g: 130, b: 70 },
             footer_text: { r: 0, g: 130, b: 70 },
             copyright_rgb: { r: 0, g: 130, b: 70 },
-            copyright_text: { r: 0, g: 130, b: 70 },
-            otherLinks: []
-
+            copyright_text: { r: 0, g: 130, b: 70 }
         }
     },
     async fetch(){

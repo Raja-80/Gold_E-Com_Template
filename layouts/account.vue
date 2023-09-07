@@ -74,8 +74,7 @@ export default {
             ],
             link: [
                 { rel: 'icon', type: 'image/x-icon', href: this.$settings.store_favicon ? this.$settings.store_favicon.src : this.$store.state.defaults.icon },
-                { rel: "dns-prefetch", href: 'https://storeno.b-cdn.net/stores/' },
-                ...this.otherLinks
+                { rel: "dns-prefetch", href: 'https://storeno.b-cdn.net/stores/' }
             ],
             htmlAttrs: {
                 lang: this.$store.state.language.code,
@@ -92,8 +91,7 @@ export default {
             footer_rgb: { r: 0, g: 130, b: 70 },
             footer_text: { r: 0, g: 130, b: 70 },
             copyright_rgb: { r: 0, g: 130, b: 70 },
-            copyright_text: { r: 0, g: 130, b: 70 },
-            otherLinks: []
+            copyright_text: { r: 0, g: 130, b: 70 }
         }
     },
     async fetch(){
