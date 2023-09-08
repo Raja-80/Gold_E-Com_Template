@@ -411,6 +411,10 @@ export default {
   margin-right: 17px;
 }
 
+.list-radio {
+    flex-direction: column;
+  }
+
   .list-checkbox-colors,
   .list-radio{
     display: flex;
