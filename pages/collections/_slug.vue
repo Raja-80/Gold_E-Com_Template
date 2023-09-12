@@ -51,8 +51,8 @@ export default {
             this.collection = data;
             const { data : { results } } = await this.$storeino.collections.search({ parent: data._id });
             this.subCollections = results;
-        }catch(e){
-            console.log({e});
+        }catch(err){
+            this.$sentry.captureException(err);
         }
         this.loading.subCollections = false;
 
@@ -61,8 +61,8 @@ export default {
         try{
             const { data } = await this.$storeino.pages.search( { status: 'PUBLISH' ,'categories.slug-in': [this.collection.slug], type: 'POST' } )
             this.posts = data.results
-        }catch(e){
-            console.log({e});
+        }catch(err){
+            this.$sentry.captureException(err);
         }
         this.loading.posts = false;
     },

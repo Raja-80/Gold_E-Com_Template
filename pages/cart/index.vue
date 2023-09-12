@@ -131,8 +131,8 @@ export default {
                 try{
                     const response = await this.$storeino.upsells.search({ 'with': ['products'],'product._id-in': ids, limit: 1000 });
                     this.upsells = response.data.results;
-                }catch(e){
-                    console.log(e);
+                }catch(err){
+                    this.$sentry.captureException(err);
                 }
             }
             this.loading.upsells = false;
@@ -168,8 +168,8 @@ export default {
                         this.items.push(cartItem);
                     }
                     this.calcTotal();
-                }catch(e){
-                    console.log(e);
+                }catch(err){
+                    this.$sentry.captureException(err);
                 }
             }
             this.loading.cart = false;

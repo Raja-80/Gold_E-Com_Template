@@ -114,8 +114,8 @@ export default {
           .replace(/\{url\}/gi, url);
       }
       this.loading = false;
-    } catch (e) {
-      console.log({ e });
+    } catch (err) {
+      this.$sentry.captureException(err);
       // Redirect to error page if product not exists
       this.$nuxt.error({ statusCode: 404, message: "post_not_found" });
     }

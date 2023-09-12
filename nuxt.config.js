@@ -45,9 +45,19 @@ export default {
     }
   },
   modules: [
+    '@nuxtjs/sentry',
     '@nuxt/image',
     '@nuxtjs/axios'
   ],
+  sentry: {
+    dsn: 'https://a3d9f22ad105e362a240b918370270b2@logs.storeino.com/10',
+    config: {
+      debug: true
+    },
+    clientConfig: {
+      dsn: 'https://a3d9f22ad105e362a240b918370270b2@logs.storeino.com/10'
+    }
+  },
   axios: {},
   pwa: {
     manifest: {

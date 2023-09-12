@@ -564,8 +564,8 @@ export default {
             try{
                 const { data } = await this.$storeino.products.filters({});
                 this.filters = data;
-            }catch(e){
-                console.log({e});
+            }catch(err){
+                this.$sentry.captureException(err);
             }
             this.loading.filters = false;
         },
@@ -575,8 +575,8 @@ export default {
             try{
                 const { data } = await this.$storeino.collections.search({});
                 this.collections = data.results;
-            }catch(e){
-                console.log({e});
+            }catch(err){
+                this.$sentry.captureException(err);
             }
             this.loading.collections = false;
         },
@@ -586,8 +586,8 @@ export default {
             try{
                 const { data } = await this.$storeino.brands.search({});
                 this.brands = data.results;
-            }catch(e){
-                console.log({e});
+            }catch(err){
+                this.$sentry.captureException(err);
             }
             this.loading.brands = false;
         },
@@ -603,8 +603,8 @@ export default {
                 const {data} = await this.$storeino.products.search(this.params);
                 this.items = data.results;
                 this.paginate = data.paginate;
-            }catch(e){
-                console.log({e});
+            }catch(err){
+                this.$sentry.captureException(err);
             }
             this.loading.products = false;
         },

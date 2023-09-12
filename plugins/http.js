@@ -3,10 +3,6 @@ export default async function ({ $axios, store, $tools, app, route }, inject) {
   if(process.server) {
     const config = app.context.req.config;
     if(config.env == 'production') store.state.baseURL = "https://api-stores.storeino.com/api";
-    try{ 
-    }catch(e){ 
-      console.log(e);
-    }
     const cookies = $tools.cookieToObject(app.context.req.headers.cookie);
     // Set Currency and language
     if(route.query.cur) {
@@ -30,7 +26,7 @@ export default async function ({ $axios, store, $tools, app, route }, inject) {
         const response = await $axios.post(store.state.baseURL+'/stores/auth', token);
         store.state.token = response.data.accessToken;
       } catch (err) {
-        console.log({err});
+        this.$sentry.captureException(err);
       }
     }
 

@@ -365,9 +365,9 @@
                     this.$tools.call('PAGE_VIEW', this.item);
                 }
 
-            }catch(e){
+            }catch(err){
                 // Redirect to error page if product not exists
-                console.log({e});
+                this.$sentry.captureException(err);
                 this.$nuxt.error({ statusCode: 404, message: 'product_not_found' })
             }
         },

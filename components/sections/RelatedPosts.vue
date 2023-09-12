@@ -43,8 +43,8 @@ export default {
               "categories._id-in": ids
             })
           this.items = data.results
-      }catch(e){
-        console.log({e});
+      }catch(err){
+        this.$sentry.captureException(err);
       }
       this.loading = false;
   }

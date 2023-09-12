@@ -237,8 +237,8 @@ export default {
             try{
                 const { data } = await this.$storeino.products.search({limit: 5});
                 this.products = data.results;
-            }catch(e){
-                console.log({e});
+            }catch(err){
+                this.$sentry.captureException(err);
             }
             this.loading.products = false;
         },
@@ -248,8 +248,8 @@ export default {
             try{
                 const { data } = await this.$storeino.categories.search({});
                 this.categories = data.results;
-            }catch(e){
-                console.log({e});
+            }catch(err){
+                this.$sentry.captureException(err);
             }
             this.loading.categories = false;
         },
@@ -260,8 +260,8 @@ export default {
                 this.lastParams = this.$tools.copy(this.params);
                 const { data } = await this.$storeino.pages.search(this.params);
                 this.items = data.results
-            }catch(e){
-                console.log({e});
+            }catch(err){
+                this.$sentry.captureException(err);
             }
             this.loading.pages = false;
         },

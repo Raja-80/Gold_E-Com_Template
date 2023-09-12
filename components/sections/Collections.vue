@@ -58,8 +58,8 @@
                   const { data } = await this.$storeino.collections.search(filter)
                   this.items = data.results;
               }
-          }catch(e){
-              console.log({e});
+          }catch(err){
+              this.$sentry.captureException(err);
       }
       this.loading = false;
   },
