@@ -22,7 +22,10 @@ const createStore = () => {
           settings: null,
           domain: 'www.storeino.com',
           apps: [],
-          token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdG9yZSI6eyJfaWQiOiI2NGY5YTRjNDgzYjllZjFiZjkxNTZjOWUifSwic291cmNlIjoiVEhFTUVTIiwiaWF0IjoxNjk0MDgyMzI4LCJleHAiOjE3MjU2MTgzMjh9.44ovBryq6qf-CHEmSxhIUeEgEGG7r-xSImsb_BWo6FY',
+          // DEV TOKEN
+          token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdG9yZSI6eyJfaWQiOiI2NTAxNzQ2ZjgzYjllZjFiZjkxNTZlNGEifSwic291cmNlIjoiVEhFTUVTIiwiaWF0IjoxNjk1MDM0NzA3LCJleHAiOjE3MjY1NzA3MDd9.oZ-LNGERaTkvqW1ob-zL0qfUgKrPly5EtYyRgF4GO3g',
+          // PROD TOKEN
+          // token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdG9yZSI6eyJfaWQiOiI2NGY5YTRjNDgzYjllZjFiZjkxNTZjOWUifSwic291cmNlIjoiVEhFTUVTIiwiaWF0IjoxNjk0MDgyMzI4LCJleHAiOjE3MjU2MTgzMjh9.44ovBryq6qf-CHEmSxhIUeEgEGG7r-xSImsb_BWo6FY',
           primary: {
             rgb: { r:0, g:0, b:0 },
             color: '#000000'
