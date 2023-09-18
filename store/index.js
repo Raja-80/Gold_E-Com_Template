@@ -26,7 +26,7 @@ const createStore = () => {
         token:
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdG9yZSI6eyJfaWQiOiI2NTAxNzQ2ZjgzYjllZjFiZjkxNTZlNGEifSwic291cmNlIjoiVEhFTUVTIiwiaWF0IjoxNjk1MDM0NzA3LCJleHAiOjE3MjY1NzA3MDd9.oZ-LNGERaTkvqW1ob-zL0qfUgKrPly5EtYyRgF4GO3g",
         // PROD TOKEN
-        // token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdG9yZSI6eyJfaWQiOiI2NGY5YTRjNDgzYjllZjFiZjkxNTZjOWUifSwic291cmNlIjoiVEhFTUVTIiwiaWF0IjoxNjk0MDgyMzI4LCJleHAiOjE3MjU2MTgzMjh9.44ovBryq6qf-CHEmSxhIUeEgEGG7r-xSImsb_BWo6FY',
+        // token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdG9yZSI6eyJfaWQiOiI2NDFkODYxMmM1OTIzZTAwZGJhZjJlMTcifSwic291cmNlIjoiVEhFTUVTIiwiaWF0IjoxNjk1MDU0Nzc2LCJleHAiOjE3MjY1OTA3NzZ9.2cX0_wUQdeizPK8x4n_gZgDqr_sBqnzgveRFbKMfe2k',
         primary: {
           rgb: { r: 0, g: 0, b: 0 },
           color: "#000000",

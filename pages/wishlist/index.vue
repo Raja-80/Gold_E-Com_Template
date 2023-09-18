@@ -47,9 +47,9 @@ export default {
         await this.initWishlist();
     },
     mounted() {
-        // fb pixel
+        // All Pixels
         this.$storeino.fbpx('PageView');
-        // snap pixel
+        // Fb Pixels
         this.$tools.call('PAGE_VIEW');
     },
     watch: {

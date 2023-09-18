@@ -23,20 +23,24 @@ export default {
       settings: null
     };
   },
-  async fetch() {
-    if (this.$route.params && this.$route.params.route)
-      this.src = "/checkout2/" + this.$route.params.route;
-    if (this.$route.query && this.$route.query.orderId)
-      this.src = this.src + "?orderId=" + this.$route.query.orderId;
-  },
   mounted() {
+    // Src Redirect
+    if (this.$route.params && this.$route.params.route) {
+      this.src = "/checkout2/" + this.$route.params.route;
+    }
+    if (this.$route.query && this.$route.query.orderId) {
+      this.src = this.src + "?orderId=" + this.$route.query.orderId;
+    }
+    // Account Submit
     if (
       this.routes.includes(this.$route.params.route) &&
       document.querySelector("#account")
     ) {
       document.querySelector("#account").submit();
     }
+    // All Pixels
     this.$storeino.fbpx('PageView');
+    // Fb Pixels
     this.$tools.call('PAGE_VIEW');
   },
   methods: {

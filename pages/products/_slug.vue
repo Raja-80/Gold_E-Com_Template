@@ -21,14 +21,14 @@
                             </div>
                             <div class="relative flex flex-wrap items-center justify-between h-full lg:p-10">
                                 <div class="flex-col items-center hidden lg:flex">
-                                    <div @click="increaseSize" class=" border border-gray-300 hover:border-primary transition delay-150 ease-in-out m-2.5 w-7 h-7 flex items-center justify-center cursor-pointer">
-                                        <svg aria-label="plus icon" class="w-2.5 h-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
+                                    <div @click="increaseSize" class="flex items-center justify-center m-3 transition ease-in-out delay-150 border border-gray-300 cursor-pointer hover:border-primary w-7 h-7">
+                                        <svg aria-label="plus icon" class="w-3 h-3" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
                                     </div>
                                     <div class="flex items-center justify-center ">
                                         <span class="text-base"> {{ zoom }} %</span>
                                     </div>
-                                    <div @click="decreaseSize" class=" border border-gray-300 hover:border-primary transition delay-150 ease-in-out m-2.5 w-7 h-7 flex items-center justify-center cursor-pointer">
-                                        <svg aria-label="minus icon" class="w-2.5 h-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.45h-11a.55.55 0 000 1.1h11a.55.55 0 000-1.1z" fill="currentColor"></path></svg>
+                                    <div @click="decreaseSize" class="flex items-center justify-center m-3 transition ease-in-out delay-150 border border-gray-300 cursor-pointer hover:border-primary w-7 h-7">
+                                        <svg aria-label="minus icon" class="w-3 h-3" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.45h-11a.55.55 0 000 1.1h11a.55.55 0 000-1.1z" fill="currentColor"></path></svg>
                                     </div>
                                 </div>
                                 <div class="flex-1 lg:px-20 xl:px-40 lg:relative">
@@ -49,17 +49,17 @@
                                     <!-- images -->
                                     <div class="absolute bottom-0 my-8 transform -translate-x-1/2 lg:static md:my-10 lg:my-0 lg:bottom-auto left-1/2 lg:left-auto lg:transform-none lg:translate-x-0">
                                         <div class="flex items-center lg:block">
-                                            <button aria-label="chivron-down" v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:left-1 xl:left-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150  rounded-full border border-gray-300 hover:border-primary" @click="prev">
+                                            <button aria-label="chivron-down" v-if="item.images.length > 1" class="p-2 mx-5 transition-all ease-linear delay-150 bg-white border border-gray-300 rounded-full lg:absolute lg:top-1/2 lg:left-1 xl:left-5 lg:transform lg:-translate-y-1/2 md:p-3 hover:border-primary" @click="prev">
                                                 <svg aria-label="chivron icon" class="w-5 h-5 rotate-chivron" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 15.54a.54.54 0 01-.39-.16L6.72 10l5.39-5.4a.551.551 0 11.78.78L8.28 10l4.61 4.61a.56.56 0 010 .78.54.54 0 01-.39.15z" fill="currentColor"></path></svg>
                                             </button>
                                             <div class="lg:hidden">
                                                 <div v-if="item.images.length > 1" class="flex items-center justify-center">
-                                                    <div class="mx-1" v-for="(image, index) in item.images" :key="index">
-                                                        <div class="h-1.5 w-1.5 rounded-full cursor-pointer" :class="visibleSlide == index ? 'bg-primary w-2 h-2' : 'bg-gray-300'" @click="setImage(index)"></div>
+                                                    <div class="mx-1" v-for="(_, index) in item.images" :key="index">
+                                                        <div class="w-2 h-2 rounded-full cursor-pointer" :class="visibleSlide == index ? 'bg-primary w-2 h-2' : 'bg-gray-300'" @click="setImage(index)"></div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <button aria-label="chivron-down" v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:right-1 xl:right-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150 rounded-full border border-gray-300 hover:border-primary" @click="next">
+                                            <button aria-label="chivron-down" v-if="item.images.length > 1" class="p-2 mx-5 transition-all ease-linear delay-150 bg-white border border-gray-300 rounded-full lg:absolute lg:top-1/2 lg:right-1 xl:right-5 lg:transform lg:-translate-y-1/2 md:p-3 hover:border-primary" @click="next">
                                                 <svg aria-label="chivron icon" class="w-5 h-5 rotate-chivron"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.89 4.6a.552.552 0 00-.78.78L11.72 10l-4.61 4.6a.56.56 0 000 .78.56.56 0 00.78 0L13.28 10 7.89 4.6z" fill="currentColor"></path></svg>
                                             </button>
                                         </div>
@@ -87,18 +87,18 @@
                                     </div>
                                     <div v-if="$settings.sections.products.add_to_wishlist.active">
                                         <transition name="fade">
-                                            <button aria-label="chivron-left" v-if="$store.state.wishlist.find(i=>i._id==item._id)" @click="removeFromWishlist" title="Wishlist" class="box-shadow-xs bg-white rounded-full absolute z-10 top-0 right-0 m-2 md:m-3 p-3 md:p-3.5 transition-all ease-linear delay-150  hover-bg">
+                                            <button aria-label="chivron-left" v-if="$store.state.wishlist.find(i=>i._id==item._id)" @click="removeFromWishlist" title="Wishlist" class="absolute top-0 right-0 z-10 p-3 m-2 transition-all ease-linear delay-150 bg-white rounded-full box-shadow-xs md:m-3 md:p-4 hover-bg">
                                                 <svg aria-label="chivron left icon" class="w-4 h-4 align-middle translate text-primary" aria-hidden="true" focusable="false" data-prefix="far" data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
                                             </button>
                                         </transition>
                                         <transition name="fade">
-                                            <button aria-label="chivron-right" v-if="!$store.state.wishlist.find(i=>i._id==item._id)" @click="addToWishlist" title="Wishlist" class="box-shadow-xs bg-white rounded-full absolute z-10 top-0 right-0 m-2 md:m-3 p-2.5 md:p-3 transition-all ease-linear delay-150 hover-bg">
+                                            <button aria-label="chivron-right" v-if="!$store.state.wishlist.find(i=>i._id==item._id)" @click="addToWishlist" title="Wishlist" class="absolute top-0 right-0 z-10 p-3 m-2 transition-all ease-linear delay-150 bg-white rounded-full box-shadow-xs md:m-3 md:p-3 hover-bg">
                                                 <svg aria-label="chivron right icon" class="w-5 h-5 translate" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.48 3.91a3.25 3.25 0 012.68 1.62L10 6.85l.83-1.33a3.12 3.12 0 012.63-1.61 2.8 2.8 0 012.08.93c1.48 1.59 1.33 3.78-.37 5.57L10 15.66l-5.22-5.3c-1.67-1.85-1.8-4-.36-5.53a2.8 2.8 0 012.06-.92zm0-1a3.8 3.8 0 00-2.79 1.24C1.94 6 2 8.73 4 11l6 6.06 5.9-6c2.16-2.27 2.15-5.06.4-6.95a3.871 3.871 0 00-2.82-1.25A4.1 4.1 0 0010 5a4.23 4.23 0 00-3.52-2.09z" fill="currentColor"></path></svg>
                                             </button>
                                         </transition>
                                     </div>
                                     <!-- big screen -->
-                                    <div class="box-shadow-xs bg-white rounded-full absolute z-10 bottom-0 right-0 m-2 md:m-3 p-3 md:p-3.5 transition-all ease-linear delay-150 hover-bg cursor-pointer lg:hidden" @click="hideBodyScroll();showImageSlider=true">
+                                    <div class="absolute bottom-0 right-0 z-10 p-3 m-2 transition-all ease-linear delay-150 bg-white rounded-full cursor-pointer box-shadow-xs md:m-3 md:p-4 hover-bg lg:hidden" @click="hideBodyScroll();showImageSlider=true">
                                         <svg class="w-4 h-4" width="20" height="20" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M416 176V86.63L246.6 256L416 425.4V336c0-8.844 7.156-16 16-16s16 7.156 16 16v128c0 8.844-7.156 16-16 16h-128c-8.844 0-16-7.156-16-16s7.156-16 16-16h89.38L224 278.6L54.63 448H144C152.8 448 160 455.2 160 464S152.8 480 144 480h-128C7.156 480 0 472.8 0 464v-128C0 327.2 7.156 320 16 320S32 327.2 32 336v89.38L201.4 256L32 86.63V176C32 184.8 24.84 192 16 192S0 184.8 0 176v-128C0 39.16 7.156 32 16 32h128C152.8 32 160 39.16 160 48S152.8 64 144 64H54.63L224 233.4L393.4 64H304C295.2 64 288 56.84 288 48S295.2 32 304 32h128C440.8 32 448 39.16 448 48v128C448 184.8 440.8 192 432 192S416 184.8 416 176z"></path>
                                         </svg>
@@ -107,14 +107,14 @@
                                     <div v-if="item.images.length > 1" class="absolute bottom-0 transform -translate-x-1/2 left-1/2 lg:hidden">
                                         <div class="flex py-5">
                                             <div class="mx-1" v-for="(image, index) in item.images" :key="index" >
-                                                <div class="h-1.5 w-1.5 rounded-full cursor-pointer" :class="visibleSlide == index ? 'bg-primary w-2. h-2' : 'bg-gray-300'" @click="setImage(index)"></div>
+                                                <div class="w-2 h-2 rounded-full cursor-pointer" :class="visibleSlide == index ? 'bg-primary w-2. h-2' : 'bg-gray-300'" @click="setImage(index)"></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="hidden lg:flex flex-wrap pt-2.5">
-                                <div class="w-1/2 products-padding py-2.5" v-for="(image, index) in item.images"  :key="index">
+                            <div class="flex-wrap hidden pt-3 lg:flex">
+                                <div class="w-1/2 py-3 products-padding" v-for="(image, index) in item.images"  :key="index">
                                     <div @click="hideBodyScroll" class="relative overflow-hidden pb-full">
                                         <si-image  class="absolute inset-0 object-cover w-full h-full cursor-pointer" @click="setImage(index);showImageSlider=true" :src="image.src" :alt="`${item.name} - ${image.title}`"/>
                                     </div>
@@ -347,6 +347,7 @@ export default {
             }
             // Set default quantity
             this.quantitySelected(this.quantity.default);
+            
             // Generate share urls
             const url = `https://${this.$store.state.domain}/posts/${slug}`;
             for (const button of this.socialMedia) {
@@ -354,7 +355,9 @@ export default {
             }
 
             if (!process.server) {
+                // Fb PageView 
                 this.$storeino.fbpx('PageView');
+                // Fb ViewContent
                 this.$storeino.fbpx('ViewContent', {
                     content_name: this.item.name ? this.item.name : '',
                     content_ids: [this.item._id],
@@ -362,6 +365,7 @@ export default {
                     value: this.item.price.salePrice,
                     currency: this.$store.state.currency.code
                 });
+                // All Pixels
                 this.$tools.call('PAGE_VIEW', this.item);
             }
 
@@ -372,6 +376,7 @@ export default {
         }
     },
     mounted() {
+        // All Pixels
         if (this.item) {
             this.$tools.call('PAGE_VIEW', this.item);
         }
@@ -387,7 +392,9 @@ export default {
             }));
         });
         if (this.item) {
+            // Fb PageView
             this.$storeino.fbpx('PageView');
+            // Fb ViewContent
             this.$storeino.fbpx('ViewContent', {
                 content_name: this.item.name ? this.item.name : '',
                 content_ids: [this.item._id],
@@ -537,11 +544,14 @@ export default {
                 price: this.variant ? this.variant.price.salePrice : this.item.price.salePrice,
                 variant: this.variant ? { _id: this.variant._id } : null
             });
+            // Add to cart To Checkout
             if (this.$settings.sections.products.add_to_cart_to_checkout) {
                 setTimeout(() => {
                     window.location.href = '/checkout2';
                 }, 500);
             }
+            
+            // Fb Add to Cart
             this.$storeino.fbpx('AddToCart', {
                 content_name: this.item.name,
                 content_ids: [this.item._id],

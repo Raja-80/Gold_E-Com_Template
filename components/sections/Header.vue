@@ -104,7 +104,7 @@
                                             <div v-if="$settings.sections.header.icons.wishlist" class="transition-all ease-in-out delay-150 heart">
                                                 <router-link  to="/wishlist" title="Wishlist" class="relative flex flex-col justify-center">
                                                     <svg aria-label="wishlist icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.48 3.91a3.25 3.25 0 012.68 1.62L10 6.85l.83-1.33a3.12 3.12 0 012.63-1.61 2.8 2.8 0 012.08.93c1.48 1.59 1.33 3.78-.37 5.57L10 15.66l-5.22-5.3c-1.67-1.85-1.8-4-.36-5.53a2.8 2.8 0 012.06-.92zm0-1a3.8 3.8 0 00-2.79 1.24C1.94 6 2 8.73 4 11l6 6.06 5.9-6c2.16-2.27 2.15-5.06.4-6.95a3.871 3.871 0 00-2.82-1.25A4.1 4.1 0 0010 5a4.23 4.23 0 00-3.52-2.09z" fill="currentColor"></path></svg>
-                                                    <div v-if="$store.state.wishlist.length>0" class="bg-primary -top-2.5 -right-2 rounded-full absolute w-4.5 h-4.5 text-white flex justify-center items-center text-xs">
+                                                    <div v-if="$store.state.wishlist.length>0" class="absolute flex items-center justify-center w-4 h-4 text-xs text-white rounded-full bg-primary -top-2 -right-2">
                                                         <small class="w-auto h-auto">{{ $store.state.wishlist.length }}</small>
                                                     </div>
                                                 </router-link>
@@ -114,7 +114,7 @@
                                             <div v-if="$settings.sections.header.icons.cart" class="py-1 transition-all ease-in-out delay-150 cart">
                                                 <router-link  to="/cart" title="Cart" id="cart-icon" class="relative flex flex-col justify-center">
                                                     <svg aria-label="cart icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.63 17.47l-.6-11a.51.51 0 00-.5-.47h-2v-.43a3.5 3.5 0 00-7 0V6h-2a.51.51 0 00-.5.47l-.62 11a.49.49 0 00.49.53h12.3a.49.49 0 00.43-.53zm-12.31-.42L4.9 7h10.2l.56 10.1-11.34-.05zM7.5 5.57a2.5 2.5 0 115 0V6h-5v-.43z" fill="currentColor"></path></svg>
-                                                    <div v-if="$store.state.cart.length>0" class="bg-primary -top-2.5 -right-2 rounded-full absolute w-4.5 h-4.5 text-white flex justify-center items-center text-xs">
+                                                    <div v-if="$store.state.cart.length>0" class="absolute flex items-center justify-center w-4 h-4 text-xs text-white rounded-full bg-primary -top-2 -right-2">
                                                         <small>{{ $store.state.cart.length }}</small>
                                                     </div>
                                                 </router-link>

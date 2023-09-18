@@ -24,7 +24,7 @@
             <div class="flex flex-col">
                 <!-- cart -->
                 <div class="flex flex-col px-5 cart-items xl:px-10">
-                    <div class="hidden lg:flex pb-2.5">
+                    <div class="hidden pb-3 lg:flex">
                         <div class="flex items-center w-1/12">
                             <span class="text-sml ml-font-bold">{{ $settings.sections.cart.product_text }}</span>
                         </div>
@@ -109,7 +109,9 @@ export default {
         }
     },
     mounted() {
+        // All Pixels
         this.$storeino.fbpx('PageView');
+        // Fb Pixels
         this.$tools.call('PAGE_VIEW');
     },
     watch: {

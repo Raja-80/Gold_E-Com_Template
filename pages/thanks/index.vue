@@ -21,7 +21,7 @@
         <!-- text thank you -->
 
         <!-- button -->
-        <nuxt-link to="/shop" class="inline-flex px-4 py-2.5 text-sm font-medium tracking-wider rounded-full shadow-sm md:px-6 md:py-3 bg-primary text-gray-50 hover:shadow-lg"> 
+        <nuxt-link to="/shop" class="inline-flex px-4 py-3 text-sm font-medium tracking-wider rounded-full shadow-sm md:px-6 md:py-3 bg-primary text-gray-50 hover:shadow-lg"> 
           {{ $settings.sections.thanks.buttons.back_to_shop_text }}
         </nuxt-link>
         <!-- button -->
@@ -38,10 +38,14 @@ export default {
   },
   mounted() {
     // facebook events
+    // Fb PageView
     this.$storeino.fbpx('PageView');
+    // Fb Purshase
     this.$storeino.fbpx('Purchase');
     // snapchat events
+    // Snapchat Pixel
     this.$tools.call('PAGE_VIEW');
+    // Snapchat Twitter
     if (this.$route.query.pixel) {
       const pixelData = JSON.parse(this.$route.query.pixel);
       window.snapPurchase({

@@ -67,7 +67,9 @@ export default {
         this.loading.posts = false;
     },
     mounted() {
+        // All Pixels
         this.$storeino.fbpx('PageView');
+        // Fb Pixels
         this.$tools.call('PAGE_VIEW');
     }
 }

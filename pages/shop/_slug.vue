@@ -248,7 +248,7 @@
                         <!-- Sort -->
                         <div class="" @mouseover="windowWidth >= 1024 ? isVisible.sort=true : null" @mouseleave="windowWidth >= 1024 ? isVisible.sort=false : null">
                             <div @click="hideBodyScroll">
-                                <div @click="showSort" class="flex items-center justify-between py-3.5 lg:py-5 cursor-pointer underline lg:no-underline">
+                                <div @click="showSort" class="flex items-center justify-between py-4 underline cursor-pointer lg:py-5 lg:no-underline">
                                     <h2 class="text-sml ml-font-bold-hover" :class="isVisible.sort==true? 'ml-font-bold' : ''">{{ $settings.sections.shop.sort_name }}</h2>
                                     <svg aria-label="chivron icon" class="hidden lg:ml-1 lg:block" :class="isVisible.sort == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                 </div>
@@ -308,7 +308,7 @@
                 </div>
             </div>
             <!-- Pagination -->
-            <div :class="items.length != 0?'lg:mx-10 py-2.5 lg:border-t border-gray-300 ':''">
+            <div :class="items.length != 0?'lg:mx-10 py-3 lg:border-t border-gray-300 ':''">
                 <div class="flex flex-wrap items-center justify-center" v-show="paginate.last_page > 0">
                     <!-- chivron left -->
                     <button aria-label="chivron left button" v-show="paginate.current_page > 1" class="flex items-center p-3 mx-2 primary-hover" @click="getItems(paginate.current_page-1)">
@@ -414,8 +414,11 @@ export default {
         }
     },
     mounted() {
+        // All Pixels
         this.$storeino.fbpx('PageView');
+        // Fb Pixels
         this.$tools.call('PAGE_VIEW');
+        // Resize Window
         this.getWindowWidth();
         window.addEventListener('resize', this.getWindowWidth);
         this.currentSlug();

@@ -7,7 +7,7 @@
                 <div @mouseover="windowWidth >= 1024 ? isVisible.collections=true : null" @mouseleave="windowWidth >= 1024 ? isVisible.collections=false : null">
                     <div v-if="$settings.sections.blog.sidebar.categories.active">
                         <div @click="hideBodyScroll">
-                            <div @click="showCollections" class="flex items-center justify-between py-3.5 lg:py-5 cursor-pointer underline lg:no-underline ml-mr-4">
+                            <div @click="showCollections" class="flex items-center justify-between py-4 underline cursor-pointer lg:py-5 lg:no-underline ml-mr-4">
                                 <h2 class="text-sml ml-font-bold-hover" :class="isVisible.collections ==true? 'ml-font-bold' : ''">{{ $settings.sections.blog.sidebar.categories.title }}</h2>
                                 <svg aria-label="chivron bottom" class="hidden lg:mx-1 lg:block" :class="isVisible.collections == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                             </div>
@@ -66,7 +66,7 @@
             <div class="w-auto">
                 <div @mouseover="windowWidth >= 1024 ? isVisible.sort=true : null" @mouseleave="windowWidth >= 1024 ? isVisible.sort=false : null">
                     <div @click="hideBodyScroll">
-                        <div @click="showSort" class="flex items-center justify-between py-3.5 lg:py-5 cursor-pointer underline lg:no-underline">
+                        <div @click="showSort" class="flex items-center justify-between py-4 underline cursor-pointer lg:py-5 lg:no-underline">
                             <h2 class="text-sml ml-font-bold-hover" :class="isVisible.sort==true? 'ml-font-bold' : ''">{{ $settings.sections.blog.sort_name }}</h2>
                             <svg aria-label="chivron bottom" class="hidden lg:mx-1 lg:block" :class="isVisible.sort == true ? 'rotate-180 transition-all delay-150 ease-linear':''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                         </div>
@@ -191,8 +191,11 @@ export default {
         this.$store.state.seo.description = this.$settings.sections.blog.description || this.$settings.store_description;
     },
     mounted() {
+        // All Pixels
         this.$storeino.fbpx('PageView');
+        // Fb Pixels
         this.$tools.call('PAGE_VIEW');
+        // Resize Window
         this.getWindowWidth();
         window.addEventListener('resize', this.getWindowWidth);
     },

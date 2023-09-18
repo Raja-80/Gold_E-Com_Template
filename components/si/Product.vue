@@ -62,7 +62,19 @@ export default {
         upsell: { type: Object, default: null },
         item: Object,
     },
-    async fetch() {
+    data() {
+        return {
+            activeId: null,
+            filpped: false,
+            added: false,
+            variant: this.item.type == 'variant' ? this.item.variants[0] : null,
+            quantity: this.item.quantity,
+            price: { salePrice: 0, comparePrice: 0 },
+            discount: this.upsell ? this.upsell.discount : null,
+            outofstock: false
+        }
+    },
+    mounted() {
         if (this.item.type == 'simple') {
             if (this.discount) {
                 this.item.originalPrice = this.$tools.copy(this.item.price);
@@ -96,18 +108,6 @@ export default {
             } else {
                 this.outofstock = false;
             }
-        }
-    },
-    data() {
-        return {
-            activeId: null,
-            filpped: false,
-            added: false,
-            variant: this.item.type == 'variant' ? this.item.variants[0] : null,
-            quantity: this.item.quantity,
-            price: { salePrice: 0, comparePrice: 0 },
-            discount: this.upsell ? this.upsell.discount : null,
-            outofstock: false
         }
     },
     methods: {
@@ -166,7 +166,7 @@ export default {
             this.$tools.call('REMOVE_FROM_WISHLIST', this.item);
             this.$tools.toast(this.$settings.sections.alerts.removed_from_wishlist);
         }
-    },
+    }
 }
 </script>
 

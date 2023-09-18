@@ -94,7 +94,7 @@ export default {
             copyright_text: { r: 0, g: 130, b: 70 }
         }
     },
-    async fetch() {
+    fetch() {
         this.$store.state.seo.title = this.$settings.store_name;
         this.$store.state.seo.description = this.$settings.store_description;
         this.$store.state.seo.keywords = this.$settings.store_keywords || [];
