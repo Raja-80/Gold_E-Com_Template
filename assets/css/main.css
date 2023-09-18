@@ -1,69 +1,58 @@
-body{
+body {
   font-family: Century Gothic Std, arial, sans-serif;
   color: #000;
 }
-
-[dir="rtl"] body{
-  font-family: pingarlt,-apple-system,BlinkMacSystemFont;
+[dir="rtl"] body {
+  font-family: pingarlt, -apple-system, BlinkMacSystemFont;
   font-weight: 300;
   color: #000;
 }
-
 [dir="ltr"] .ml-font-bold {
-  font-family: Century Gothic Std Bold,Noto Sans JP,Noto Sans SC,Noto Sans TC,Noto Sans KR;
+  font-family: Century Gothic Std Bold, Noto Sans JP, Noto Sans SC, Noto Sans TC,
+    Noto Sans KR;
 }
-
 .ml-font-bold-hover {
   transition: all 0.3s ease;
 }
-
 [dir="ltr"] .ml-font-bold-hover:hover {
-  font-family: Century Gothic Std Bold,Noto Sans JP,Noto Sans SC,Noto Sans TC,Noto Sans KR;
+  font-family: Century Gothic Std Bold, Noto Sans JP, Noto Sans SC, Noto Sans TC,
+    Noto Sans KR;
   transition: all 0.3s ease;
 }
-
 [dir="rtl"] .ml-font-bold {
   font-weight: 700;
 }
-
 [dir="rtl"] .ml-font-bold-hover:hover {
   font-weight: 700;
   transition: all 0.3s ease;
 }
-
 .text-sml {
-  font-size: .8125rem;
+  font-size: 0.8125rem;
   line-height: 1.3125rem;
 }
-
 @media (max-width: 1024px) {
   .text-center-res {
-      text-align: center;
+    text-align: center;
   }
 }
-
 /* Rotation */
-[dir='rtl'] svg.translate{
+[dir="rtl"] svg.translate {
   transform: rotateY(180deg);
 }
-
 .rotate-180 {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
-
 .rotate-45 {
-    transform: rotate(45deg);
+  transform: rotate(45deg);
 }
-
 /* Hover link */
 .link-hover {
   position: relative;
   text-decoration: none;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
-
 .link-hover::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   height: 1px;
@@ -73,20 +62,17 @@ body{
   left: 0;
   transform-origin: right;
   transform: scaleX(0);
-  transition: transform .3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
-
 .link-hover:hover {
-    color: var(--text-color);
+  color: var(--text-color);
 }
-
 .link-hover:hover::before {
   transform-origin: left;
   transform: scaleX(1);
 }
-
 /* 1:1 */
-.pb-full{
+.pb-full {
   padding-bottom: 100%;
 }
 /* 1:2 */
@@ -110,7 +96,7 @@ body{
   padding-bottom: 66.666667%;
 }
 /*  */
-.pb-3\/5{
+.pb-3\/5 {
   padding-bottom: 60%;
 }
 /* Chrome, Safari, Edge, Opera */
@@ -119,20 +105,29 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
-
 /* Titles */
-h1{ font-size: 2em; }
-h2{ font-size: 1.5em; }
-h3{ font-size: 1.17em; }
-h4{ font-size: 1em; }
-h5{ font-size: .83em; }
-h6{ font-size: .67em; }
-
+h1 {
+  font-size: 2em;
+}
+h2 {
+  font-size: 1.5em;
+}
+h3 {
+  font-size: 1.17em;
+}
+h4 {
+  font-size: 1em;
+}
+h5 {
+  font-size: 0.83em;
+}
+h6 {
+  font-size: 0.67em;
+}
 /* Toast */
 .toast {
   position: fixed;
@@ -140,44 +135,37 @@ h6{ font-size: .67em; }
   bottom: 20px;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white!important;
+  background-color: white !important;
   box-shadow: 0 5px 10px 0px #00000044;
   border-radius: 5px;
   padding: 10px 20px;
   z-index: 99999999;
   align-items: center;
 }
-
-.toast-progress{
+.toast-progress {
   width: 0%;
   height: 2px;
   position: absolute;
   left: 0;
   bottom: 0;
-  transition: .5s;
+  transition: 0.5s;
   animation: widthToZero 4s linear;
 }
-
-.toast-message{
+.toast-message {
   margin: 5px;
 }
-
-.toast.error .toast-progress{
+.toast.error .toast-progress {
   background-color: #ff5252;
 }
-
-.toast.success .toast-progress{
+.toast.success .toast-progress {
   background-color: var(--primary-color);
 }
-
-.toast.error svg{
+.toast.error svg {
   fill: #ff5252;
 }
-
-.toast.success svg{
+.toast.success svg {
   fill: var(--primary-color);
 }
-
 .toast-close {
   position: absolute;
   top: -10px;
@@ -189,15 +177,12 @@ h6{ font-size: .67em; }
   box-shadow: -1px 2px 5px 0 #00000044;
   cursor: pointer;
 }
-
-.toast-fade-in{
+.toast-fade-in {
   animation: fadeInUp 0.5s ease-in-out;
 }
-
-.toast-fade-out{
+.toast-fade-out {
   animation: fadeOutDown 0.5s ease-in-out;
 }
-
 @keyframes fadeInUp {
   from {
     transform: translate(-50%, 50%);
@@ -208,7 +193,6 @@ h6{ font-size: .67em; }
     opacity: 1;
   }
 }
-
 @keyframes fadeOutDown {
   from {
     transform: translate(-50%, -50%);
@@ -219,7 +203,6 @@ h6{ font-size: .67em; }
     opacity: 0;
   }
 }
-
 @keyframes widthToZero {
   from {
     width: 100%;
@@ -228,13 +211,11 @@ h6{ font-size: .67em; }
     width: 0%;
   }
 }
-
 /* Click effect */
-.click-effect{
+.click-effect {
   position: relative;
   overflow: hidden;
 }
-
 .click-effect::before {
   opacity: 0;
   position: absolute;
@@ -244,16 +225,14 @@ h6{ font-size: .67em; }
   padding: 50%;
   border-radius: 50%;
   background-color: #fff;
-  content: '';
+  content: "";
   transition: transform 1s, opacity 1s;
 }
-
 .click-effect:active::before {
   opacity: 1;
   transform: translate(-50%, -50%) scale(0);
   transition: 0s;
 }
-
 .click-effect::after {
   opacity: 0;
   position: absolute;
@@ -263,77 +242,65 @@ h6{ font-size: .67em; }
   padding: 50%;
   border-radius: 50%;
   background-color: #fff;
-  content: '';
+  content: "";
   transition: transform 2s, opacity 2s;
 }
-
 .click-effect:active::after {
   opacity: 1;
   transform: translate(-50%, -50%) scale(0);
   transition: 0s;
 }
-
 /* slide */
 .slide-enter-active,
 .slide-leave-active {
   transition-duration: 0.3s;
 }
-
 .slide-enter-active {
   transition-timing-function: ease-in;
 }
-
 .slide-leave-active {
   transition-timing-function: ease-out;
 }
-
 .slide-enter,
 .slide-leave-to {
   max-height: 0;
   opacity: 0;
 }
-
 .slide-enter-to,
 .slide-leave {
   max-height: 100px;
   opacity: 1;
 }
-
 /* slide right search */
 .slide-right-enter-active {
   transition-duration: 0.3s;
   transition-timing-function: ease-in;
 }
-
 .slide-right-leave-active {
   transition-duration: 0.3s;
   transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 }
-
-.slide-right-enter-to, .slide-leave {
+.slide-right-enter-to,
+.slide-leave {
   max-width: 100px;
   overflow: hidden;
 }
-
-.slide-right-enter, .slide-leave-to {
+.slide-right-enter,
+.slide-leave-to {
   overflow: hidden;
   max-width: 0;
 }
-
 /* fade trinsition */
 .fade-enter-active {
   transition: opacity 0.3s ease-in;
 }
-
 .fade-leave-active {
   transition: opacity 0.3s ease-out;
 }
-
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
 }
-
 .fade-enter-to,
 .fade-leave {
   opacity: 1;

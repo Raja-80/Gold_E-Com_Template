@@ -53,11 +53,11 @@
                                                 <svg aria-label="chivron icon" class="w-5 h-5 rotate-chivron" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 15.54a.54.54 0 01-.39-.16L6.72 10l5.39-5.4a.551.551 0 11.78.78L8.28 10l4.61 4.61a.56.56 0 010 .78.54.54 0 01-.39.15z" fill="currentColor"></path></svg>
                                             </button>
                                             <div class="lg:hidden">
-                                              <div v-if="item.images.length > 1" class="flex items-center justify-center">
-                                                  <div class="mx-1" v-for="(image, index) in item.images" :key="index">
-                                                      <div class="h-1.5 w-1.5 rounded-full cursor-pointer" :class="visibleSlide == index ? 'bg-primary w-2 h-2' : 'bg-gray-300'" @click="setImage(index)"></div>
-                                                  </div>
-                                              </div>
+                                                <div v-if="item.images.length > 1" class="flex items-center justify-center">
+                                                    <div class="mx-1" v-for="(image, index) in item.images" :key="index">
+                                                        <div class="h-1.5 w-1.5 rounded-full cursor-pointer" :class="visibleSlide == index ? 'bg-primary w-2 h-2' : 'bg-gray-300'" @click="setImage(index)"></div>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <button aria-label="chivron-down" v-if="item.images.length > 1" class="mx-5 lg:absolute lg:top-1/2 lg:right-1 xl:right-5 lg:transform lg:-translate-y-1/2 p-2 md:p-2.5 bg-white transition-all ease-linear delay-150 rounded-full border border-gray-300 hover:border-primary" @click="next">
                                                 <svg aria-label="chivron icon" class="w-5 h-5 rotate-chivron"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.89 4.6a.552.552 0 00-.78.78L11.72 10l-4.61 4.6a.56.56 0 000 .78.56.56 0 00.78 0L13.28 10 7.89 4.6z" fill="currentColor"></path></svg>
@@ -99,9 +99,9 @@
                                     </div>
                                     <!-- big screen -->
                                     <div class="box-shadow-xs bg-white rounded-full absolute z-10 bottom-0 right-0 m-2 md:m-3 p-3 md:p-3.5 transition-all ease-linear delay-150 hover-bg cursor-pointer lg:hidden" @click="hideBodyScroll();showImageSlider=true">
-                                      <svg class="w-4 h-4" width="20" height="20" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M416 176V86.63L246.6 256L416 425.4V336c0-8.844 7.156-16 16-16s16 7.156 16 16v128c0 8.844-7.156 16-16 16h-128c-8.844 0-16-7.156-16-16s7.156-16 16-16h89.38L224 278.6L54.63 448H144C152.8 448 160 455.2 160 464S152.8 480 144 480h-128C7.156 480 0 472.8 0 464v-128C0 327.2 7.156 320 16 320S32 327.2 32 336v89.38L201.4 256L32 86.63V176C32 184.8 24.84 192 16 192S0 184.8 0 176v-128C0 39.16 7.156 32 16 32h128C152.8 32 160 39.16 160 48S152.8 64 144 64H54.63L224 233.4L393.4 64H304C295.2 64 288 56.84 288 48S295.2 32 304 32h128C440.8 32 448 39.16 448 48v128C448 184.8 440.8 192 432 192S416 184.8 416 176z"></path>
-                                      </svg>
+                                        <svg class="w-4 h-4" width="20" height="20" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M416 176V86.63L246.6 256L416 425.4V336c0-8.844 7.156-16 16-16s16 7.156 16 16v128c0 8.844-7.156 16-16 16h-128c-8.844 0-16-7.156-16-16s7.156-16 16-16h89.38L224 278.6L54.63 448H144C152.8 448 160 455.2 160 464S152.8 480 144 480h-128C7.156 480 0 472.8 0 464v-128C0 327.2 7.156 320 16 320S32 327.2 32 336v89.38L201.4 256L32 86.63V176C32 184.8 24.84 192 16 192S0 184.8 0 176v-128C0 39.16 7.156 32 16 32h128C152.8 32 160 39.16 160 48S152.8 64 144 64H54.63L224 233.4L393.4 64H304C295.2 64 288 56.84 288 48S295.2 32 304 32h128C440.8 32 448 39.16 448 48v128C448 184.8 440.8 192 432 192S416 184.8 416 176z"></path>
+                                        </svg>
                                     </div>
                                     <!-- big screen -->
                                     <div v-if="item.images.length > 1" class="absolute bottom-0 transform -translate-x-1/2 left-1/2 lg:hidden">
@@ -257,125 +257,329 @@
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                // images slider popup
-                showImageSlider:false,
-                cursor: "cursor-zoom-in",
-                zoom: 0,
-                imageScale: 1,
-                posX: 0,
-                posY: 0,
-                isDragging: false,
-                startX: 0,
-                startY: 0,
-                visibleSlide: 0,
-                // product content
-                description: true,
-                Reviews: false,
-                loading: true,
-                item: null,
-                image: null,
-                tab: 'description',
-                outofstock: false,
-                quantity: {},
-                variant: null,
-                showVariantDiv:false,
-                showVarianteModal:false,
-                price: { salePrice: 0, comparePrice: 0 },
-                socialMedia: [
-                    {
+export default {
+    data() {
+        return {
+            // images slider popup
+            showImageSlider: false,
+            cursor: "cursor-zoom-in",
+            zoom: 0,
+            imageScale: 1,
+            posX: 0,
+            posY: 0,
+            isDragging: false,
+            startX: 0,
+            startY: 0,
+            visibleSlide: 0,
+            // product content
+            description: true,
+            Reviews: false,
+            loading: true,
+            item: null,
+            image: null,
+            tab: 'description',
+            outofstock: false,
+            quantity: {},
+            variant: null,
+            showVariantDiv: false,
+            showVarianteModal: false,
+            price: { salePrice: 0, comparePrice: 0 },
+            socialMedia: [
+                {
                     name: "whatsapp",
                     url: "https://api.whatsapp.com/send?text={title}%20{url}",
                     image:
                         "M1667 0c920 0 1667 746 1667 1667 0 920-746 1667-1667 1667C747 3334 0 2588 0 1667 0 747 746 0 1667 0zm700 952c-175-175-407-271-655-271-510 0-925 415-925 925 0 163 43 322 124 462l-131 480 491-129c135 74 287 113 442 113 510 0 925-415 925-925 0-247-96-480-271-655zm-654 1424c-138 0-274-37-392-107l-28-17-291 76 78-284-18-29c-77-122-118-264-118-409 0-424 345-769 770-769 205 0 399 80 544 225 145 146 225 338 225 544 0 424-345 770-769 770zm422-576c-23-12-137-67-158-75s-37-12-52 12c-15 23-60 75-73 91-14 15-27 18-50 6s-98-36-186-115c-69-61-115-137-129-160s-2-36 10-47c11-10 23-27 35-41s15-23 23-39c8-15 4-29-2-41s-52-125-71-172c-19-45-38-39-52-40s-29-1-44-1-40 6-62 29c-21 23-81 79-81 193s83 224 94 239c12 15 163 249 395 349 55 24 98 38 132 49 55 17 106 15 146 9 44-7 137-56 156-110s19-100 14-110-21-16-44-28z",
                     view: "0 0 3333 3333"
-                    },
-                    {
+                },
+                {
                     name: "facebook",
                     url: "https://www.facebook.com/sharer.php?u={url}",
                     image:
                         "M30.996 16.091c-0.001-8.281-6.714-14.994-14.996-14.994s-14.996 6.714-14.996 14.996c0 7.455 5.44 13.639 12.566 14.8l0.086 0.012v-10.478h-3.808v-4.336h3.808v-3.302c-0.019-0.167-0.029-0.361-0.029-0.557 0-2.923 2.37-5.293 5.293-5.293 0.141 0 0.281 0.006 0.42 0.016l-0.018-0.001c1.199 0.017 2.359 0.123 3.491 0.312l-0.134-0.019v3.69h-1.892c-0.086-0.012-0.185-0.019-0.285-0.019-1.197 0-2.168 0.97-2.168 2.168 0 0.068 0.003 0.135 0.009 0.202l-0.001-0.009v2.812h4.159l-0.665 4.336h-3.494v10.478c7.213-1.174 12.653-7.359 12.654-14.814v-0z",
                     view: "0 0 32 32"
-                    },
-                    {
+                },
+                {
                     name: "twitter",
                     url: "https://twitter.com/intent/tweet?url={url}&text={title}",
                     image:
                         "M113,145c-141.4,0-256,114.6-256,256s114.6,256,256,256s256-114.6,256-256S254.4,145,113,145z M215.2,361.2  c0.1,2.2,0.1,4.5,0.1,6.8c0,69.5-52.9,149.7-149.7,149.7c-29.7,0-57.4-8.7-80.6-23.6c4.1,0.5,8.3,0.7,12.6,0.7  c24.6,0,47.3-8.4,65.3-22.5c-23-0.4-42.5-15.6-49.1-36.5c3.2,0.6,6.5,0.9,9.9,0.9c4.8,0,9.5-0.6,13.9-1.9  C13.5,430-4.6,408.7-4.6,383.2v-0.6c7.1,3.9,15.2,6.3,23.8,6.6c-14.1-9.4-23.4-25.6-23.4-43.8c0-9.6,2.6-18.7,7.1-26.5  c26,31.9,64.7,52.8,108.4,55c-0.9-3.8-1.4-7.8-1.4-12c0-29,23.6-52.6,52.6-52.6c15.1,0,28.8,6.4,38.4,16.6  c12-2.4,23.2-6.7,33.4-12.8c-3.9,12.3-12.3,22.6-23.1,29.1c10.6-1.3,20.8-4.1,30.2-8.3C234.4,344.5,225.5,353.7,215.2,361.2z",
                     view: "-143 145 512 512"
-                    },
-                    {
+                },
+                {
                     name: "linkedin",
                     url: "https://www.linkedin.com/sharing/share-offsite/?url={url}",
                     image:
                         "M113,145c-141.4,0-256,114.6-256,256s114.6,256,256,256s256-114.6,256-256S254.4,145,113,145z M41.4,508.1H-8.5V348.4h49.9  V508.1z M15.1,328.4h-0.4c-18.1,0-29.8-12.2-29.8-27.7c0-15.8,12.1-27.7,30.5-27.7c18.4,0,29.7,11.9,30.1,27.7  C45.6,316.1,33.9,328.4,15.1,328.4z M241,508.1h-56.6v-82.6c0-21.6-8.8-36.4-28.3-36.4c-14.9,0-23.2,10-27,19.6  c-1.4,3.4-1.2,8.2-1.2,13.1v86.3H71.8c0,0,0.7-146.4,0-159.7h56.1v25.1c3.3-11,21.2-26.6,49.8-26.6c35.5,0,63.3,23,63.3,72.4V508.1z  ",
                     view: "-143 145 512 512"
-                    }
-                ]
+                }
+            ]
+        }
+    },
+    async fetch() {
+        const { slug } = this.$route.params;
+        try {
+            const { data } = await this.$storeino.products.get({ slug })
+            this.item = data;
+            this.$store.state.seo.title = (this.item.seo.title || this.item.name) + ' - ' + this.$settings.store_name;
+            this.$store.state.seo.description = this.item.seo.description || this.item.description || this.$settings.store_description;
+            this.$store.state.seo.keywords = this.item.seo.keywords.length > 0 ? this.item.seo.keywords || [] : this.$settings.store_keywords || [];
+            if (this.item.images.length > 0) { this.$store.state.seo.image = this.item.images[0].src; }
+            // New meta tags
+            [{ hid: "product:price:amount", property: "product:price:amount", content: this.price.salePrice },
+            { hid: "productID", itemprop: "productID", content: this.item && this.item ? this.item._id : 'productID' }
+            ].forEach(meta => {
+                const index = this.$store.state.seo.metaTags.findIndex(m => m.hid === meta.hid);
+                if (index > -1) { this.$store.state.seo.metaTags.splice(index, 1, meta); }
+                this.$store.state.seo.metaTags.push(meta);
+            });
+            this.loading = false;
+            this.quantity = this.item.quantity;
+            // Set default image if exists
+            if (this.item.images.length > 0) this.setImage(0);
+            // Set default variant if exists
+            if (this.item.type == 'variable' && this.item.variants.length > 0) this.variantSelected(this.item.variants[0]);
+            if (this.item.type == 'simple') {
+                // Check outof stock
+                if (!this.item.outStock.disabled && this.item.quantity.instock <= 0) {
+                    this.outofstock = true;
+                }
             }
-        },
-        async fetch() {
-            const { slug } = this.$route.params;
-            try{
-                const { data } = await this.$storeino.products.get({ slug })
-                this.item = data;
-                this.$store.state.seo.title = (this.item.seo.title || this.item.name) + ' - ' + this.$settings.store_name;
-                this.$store.state.seo.description = this.item.seo.description || this.item.description || this.$settings.store_description;
-                this.$store.state.seo.keywords = this.item.seo.keywords.length > 0 ? this.item.seo.keywords || [] : this.$settings.store_keywords || [];
-                if(this.item.images.length > 0){ this.$store.state.seo.image = this.item.images[0].src; }
-                // New meta tags
-                [ { hid: "product:price:amount", property: "product:price:amount", content: this.price.salePrice },
-                { hid: "productID", itemprop: "productID", content: this.item && this.item ? this.item._id : 'productID' }
-                ].forEach(meta=>{
-                    const index = this.$store.state.seo.metaTags.findIndex(m=>m.hid === meta.hid);
-                    if(index > -1){ this.$store.state.seo.metaTags.splice(index, 1, meta); }
-                    this.$store.state.seo.metaTags.push(meta);
+            // Set default quantity
+            this.quantitySelected(this.quantity.default);
+            // Generate share urls
+            const url = `https://${this.$store.state.domain}/posts/${slug}`;
+            for (const button of this.socialMedia) {
+                button.url = button.url.replace(/\{title\}/gi, this.item.name).replace(/\{url\}/gi, url);
+            }
+
+            if (!process.server) {
+                this.$storeino.fbpx('PageView');
+                this.$storeino.fbpx('ViewContent', {
+                    content_name: this.item.name ? this.item.name : '',
+                    content_ids: [this.item._id],
+                    content_type: "product",
+                    value: this.item.price.salePrice,
+                    currency: this.$store.state.currency.code
                 });
-                this.loading = false;
-                this.quantity = this.item.quantity;
-                // Set default image if exists
-                if(this.item.images.length > 0) this.setImage(0);
-                // Set default variant if exists
-                if(this.item.type == 'variable' && this.item.variants.length > 0) this.variantSelected(this.item.variants[0]);
-                if(this.item.type == 'simple'){
-                    // Check outof stock
-                    if(!this.item.outStock.disabled && this.item.quantity.instock <= 0){
-                        this.outofstock = true;
-                    }
-                }
-                // Set default quantity
-                this.quantitySelected(this.quantity.default);
-                // Generate share urls
-                let url = `https://${this.$store.state.domain}/posts/${slug}`;
-                for (const button of this.socialMedia) {
-                    button.url = button.url.replace(/\{title\}/gi, this.item.name).replace(/\{url\}/gi, url);
-                }
-
-                if(!process.server){
-                    this.$storeino.fbpx('PageView');
-                    this.$storeino.fbpx('ViewContent',{
-                        content_name: this.item.name?this.item.name:'',
-                        content_ids: [this.item._id],
-                        content_type: "product",
-                        value: this.item.price.salePrice,
-                        currency: this.$store.state.currency.code
-                    });
-                    this.$tools.call('PAGE_VIEW', this.item);
-                }
-
-            }catch(err){
-                // Redirect to error page if product not exists
-                this.$sentry.captureException(err);
-                this.$nuxt.error({ statusCode: 404, message: 'product_not_found' })
-            }
-        },
-        mounted() {
-            if(this.item) {
                 this.$tools.call('PAGE_VIEW', this.item);
             }
-            window.addEventListener("APP_LOADER", ()=> {
+
+        } catch (err) {
+            // Redirect to error page if product not exists
+            this.$sentry.captureException(err);
+            this.$nuxt.error({ statusCode: 404, message: 'product_not_found' })
+        }
+    },
+    mounted() {
+        if (this.item) {
+            this.$tools.call('PAGE_VIEW', this.item);
+        }
+        window.addEventListener("APP_LOADER", () => {
+            window.dispatchEvent(new CustomEvent('CURRENT_PRODUCT', {
+                detail: {
+                    product_id: this.item._id,
+                    product_quantity: this.quantity.value,
+                    product_variant: this.variant ? this.variant._id : undefined,
+                    product_currency: this.$store.state.currency.code,
+                    product_price: this.price
+                }
+            }));
+        });
+        if (this.item) {
+            this.$storeino.fbpx('PageView');
+            this.$storeino.fbpx('ViewContent', {
+                content_name: this.item.name ? this.item.name : '',
+                content_ids: [this.item._id],
+                content_type: "product",
+                value: this.item.price.salePrice,
+                currency: this.$store.state.currency.code
+            })
+        }
+        if (this.item) {
+            const iframes = document.querySelectorAll('iframe')
+            for (const ifram of iframes) {
+                const parent = ifram.parentNode
+                if (!parent.classList.contains('video-wrapper')) {
+                    const div = document.createElement("div");
+                    ifram.after(div)
+                    div.classList.add('video-wrapper');
+                    ifram.style.width = null;
+                    ifram.style.height = null;
+                    ifram.setAttribute('width', '');
+                    ifram.setAttribute('height', '');
+                    div.appendChild(ifram)
+                }
+            }
+        }
+    },
+    computed: {
+        slidesLen() {
+            return this.item.images.length
+        }
+    },
+    methods: {
+        toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+                this.fullScreen = true
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                    this.fullScreen = false
+                }
+            }
+        },
+        toggleZoom() {
+            if (this.imageScale > 1) {
+                this.imageScale = 1;
+                this.zoom = 0;
+                this.cursor = 'cursor-zoom-in'
+
+            } else {
+                this.imageScale = 2;
+                this.zoom = 100;
+                this.cursor = 'cursor-zoom-out'
+            }
+        },
+        startDrag(event) {
+            this.isDragging = true;
+            this.startX = event.clientX || event.touches[0].clientX;
+            this.startY = event.clientY || event.touches[0].clientY;
+        },
+        dragImage(event) {
+            if (this.isDragging && this.imageScale > 1) {
+                const clientX = event.clientX || event.touches[0].clientX;
+                const clientY = event.clientY || event.touches[0].clientY;
+                const deltaX = clientX - this.startX;
+                const deltaY = clientY - this.startY;
+                this.posX += deltaX;
+                this.posY += deltaY;
+                this.startX = clientX;
+                this.startY = clientY;
+            }
+        },
+        stopDrag() {
+            this.isDragging = false;
+            this.posX = 0;
+            this.posY = 0;
+            //change image
+            const endX = event.clientX || event.changedTouches[0].clientX;
+            const difference = this.startX - endX;
+            if (difference > 0) {
+                this.next();
+            } else if (difference < 0) {
+                this.prev();
+            }
+            this.startX = null;
+        },
+        increaseSize() {
+            const currentScale = this.imageScale;
+            if (currentScale < 1.99) {
+                this.imageScale = currentScale + 0.2;
+                this.zoom = this.zoom + 20;
+                this.cursor = 'cursor-zoom-out'
+            }
+        },
+        decreaseSize() {
+            const currentScale = this.imageScale;
+            if (currentScale > 1) {
+                this.imageScale = currentScale - 0.2;
+                this.zoom = this.zoom - 20;
+                this.cursor = 'cursor-zoom-out'
+            }
+        },
+        next() {
+            if (this.visibleSlide >= this.slidesLen - 1) {
+                this.image = this.$tools.copy(this.item.images[this.visibleSlide = 0]);
+            } else {
+                this.image = this.$tools.copy(this.item.images[this.visibleSlide = this.visibleSlide + 1]);
+            }
+        },
+        prev() {
+            if (this.visibleSlide <= 0) {
+                this.image = this.$tools.copy(this.item.images[this.visibleSlide = this.slidesLen - 1]);
+            } else {
+                this.image = this.$tools.copy(this.item.images[this.visibleSlide = this.visibleSlide - 1]);
+            }
+        },
+        t(key) {
+            const langs = {
+                price_title_products: {
+                    EN: "Price:	",
+                    FR: "Prix:	",
+                    AR: "السعر: ",
+                    ES: "Prezo: ",
+                    PT: "Preço: "
+                },
+                check_choice: {
+                    EN: "Please check your choice :",
+                    FR: "Veuillez vérifier votre choix:	",
+                    AR: "يرجى تأكيد الإختيار: ",
+                    ES: "Por favor marque su elección: ",
+                    PT: "Por favor, verifique a sua escolha: "
+                },
+                can_change_choice: {
+                    EN: "You can change your choice :",
+                    FR: "Vous pouvez modifier votre choix :	",
+                    AR: "يمكنك تغيير اختيارك: ",
+                    ES: "Puede cambiar su elección: ",
+                    PT: "Você pode alterar sua escolha: "
+                }
+            }
+            return langs[key] && langs[key][this.$store.state.language.code] || '';
+        },
+        addToCart() {
+            // Call add to cart event
+            this.$tools.call('ADD_TO_CART', {
+                _id: this.item._id,
+                quantity: this.quantity.value,
+                price: this.variant ? this.variant.price.salePrice : this.item.price.salePrice,
+                variant: this.variant ? { _id: this.variant._id } : null
+            });
+            if (this.$settings.sections.products.add_to_cart_to_checkout) {
+                setTimeout(() => {
+                    window.location.href = '/checkout2';
+                }, 500);
+            }
+            this.$storeino.fbpx('AddToCart', {
+                content_name: this.item.name,
+                content_ids: [this.item._id],
+                content_type: "product",
+                value: this.variant ? this.variant.price.salePrice : this.item.price.salePrice,
+                currency: this.$store.state.currency && this.$store.state.currency.code ? this.$store.state.currency.code : "USD"
+            })
+            this.$tools.toast(this.$settings.sections.alerts.added_to_cart);
+        },
+        addToWishlist() {
+            this.$tools.call('ADD_TO_WISHLIST', this.item);
+            this.$tools.toast(this.$settings.sections.alerts.added_to_wishlist);
+        },
+        removeFromWishlist() {
+            this.$tools.call('REMOVE_FROM_WISHLIST', this.item);
+            this.$tools.toast(this.$settings.sections.alerts.removed_from_wishlist);
+        },
+        buyNow() {
+            // Add to cart and redirect to checkout
+            if (this.$settings.checkout_required_fields.show_variante_reminder && this.item.type == 'variable' && !this.showVarianteModal) {
+                this.showVarianteModal = true
+                return;
+            }
+            this.addToCart();
+            setTimeout(() => {
+                window.location.href = '/checkout2';
+            }, 500);
+        },
+        quantitySelected(quantity) {
+            this.item.quantity.value = quantity;
+            if (this.variant) {
+                this.price.salePrice = this.variant.price.salePrice * quantity;
+                this.price.comparePrice = this.variant.price.comparePrice * quantity;
+            } else {
+                this.price.salePrice = this.item.price.salePrice * quantity;
+                this.price.comparePrice = this.item.price.comparePrice * quantity;
+            }
+            if (!process.server) {
                 window.dispatchEvent(new CustomEvent('CURRENT_PRODUCT', {
                     detail: {
                         product_id: this.item._id,
@@ -385,256 +589,53 @@
                         product_price: this.price
                     }
                 }));
-            });
-            if(this.item){
-                this.$storeino.fbpx('PageView');
-                this.$storeino.fbpx('ViewContent',{
-                    content_name: this.item.name?this.item.name:'',
-                    content_ids: [this.item._id],
-                    content_type: "product",
-                    value: this.item.price.salePrice,
-                    currency: this.$store.state.currency.code
-                })
-            }
-            if(this.item){
-                const iframes=document.querySelectorAll('iframe')
-                for(const ifram of iframes){
-                const parent = ifram.parentNode
-                if (!parent.classList.contains('video-wrapper')) {
-                    const div = document.createElement("div");
-                    ifram.after(div)
-                    div.classList.add('video-wrapper');
-                    ifram.style.width=null;
-                    ifram.style.height=null;
-                    ifram.setAttribute('width','');
-                    ifram.setAttribute('height','');
-                    div.appendChild(ifram)
-                }
-                }
             }
         },
-        computed: {
-            slidesLen() {
-                return this.item.images.length
+        variantSelected(variant) {
+            this.variant = variant;
+            if (variant.imageId && this.item.images.length > 0) {
+                let index = this.item.images.findIndex(i => i._id == variant.imageId);
+                if (index == -1) index = 0;
+                this.visibleSlide = index;
+                this.image = this.item.images[index];
+            } else if (this.item.images.length > 0) {
+                this.visibleSlide = 0
+                this.image = this.item.images[0];
             }
-        },
-        methods: {
-            toggleFullscreen() {
-                if (!document.fullscreenElement) {
-                        document.documentElement.requestFullscreen();
-                        this.fullScreen = true
-                    } else {
-                        if (document.exitFullscreen) {
-                            document.exitFullscreen();
-                            this.fullScreen = false
-                        }
-                    }
-                },
-            toggleZoom() {
-                if (this.imageScale > 1) {
-                    this.imageScale = 1;
-                    this.zoom = 0;
-                    this.cursor = 'cursor-zoom-in'
-
-                } else {
-                    this.imageScale = 2;
-                    this.zoom = 100;
-                    this.cursor = 'cursor-zoom-out'
-                }
-            },
-            startDrag(event) {
-                this.isDragging = true;
-                this.startX = event.clientX || event.touches[0].clientX;
-                this.startY = event.clientY || event.touches[0].clientY;
-            },
-            dragImage(event) {
-                if (this.isDragging && this.imageScale > 1) {
-                    const clientX = event.clientX || event.touches[0].clientX;
-                    const clientY = event.clientY || event.touches[0].clientY;
-                    const deltaX = clientX - this.startX;
-                    const deltaY = clientY - this.startY;
-                    this.posX += deltaX;
-                    this.posY += deltaY;
-                    this.startX = clientX;
-                    this.startY = clientY;
-                }
-            },
-            stopDrag() {
-                this.isDragging = false;
-                this.posX = 0;
-                this.posY = 0;
-                //change image
-                const endX = event.clientX || event.changedTouches[0].clientX;
-                const difference = this.startX - endX;
-                if (difference > 0) {
-                    this.next();
-                } else if (difference < 0) {
-                    this.prev();
-                }
-                this.startX = null;
-            },
-            increaseSize() {
-                const currentScale = this.imageScale;
-                if (currentScale < 1.99) {
-                    this.imageScale = currentScale + 0.2;
-                    this.zoom = this.zoom + 20;
-                    this.cursor = 'cursor-zoom-out'
-                }
-            },
-            decreaseSize() {
-                const currentScale = this.imageScale;
-                if (currentScale > 1) {
-                    this.imageScale = currentScale - 0.2;
-                    this.zoom = this.zoom - 20;
-                    this.cursor = 'cursor-zoom-out'
-                }
-            },
-            next() {
-                if(this.visibleSlide >= this.slidesLen - 1 ){
-                    this.image = this.$tools.copy(this.item.images[this.visibleSlide = 0]);
-                }else {
-                    this.image = this.$tools.copy(this.item.images[this.visibleSlide = this.visibleSlide + 1]);
-                }
-            },
-            prev() {
-                if(this.visibleSlide <= 0 ){
-                    this.image = this.$tools.copy(this.item.images[this.visibleSlide = this.slidesLen - 1]);
-                }else {
-                    this.image = this.$tools.copy(this.item.images[this.visibleSlide = this.visibleSlide - 1]);
-                }
-            },
-            t(key){
-                const langs = {
-                    price_title_products: {
-                        EN: "Price:	",
-                        FR: "Prix:	",
-                        AR: "السعر: ",
-                        ES: "Prezo: ",
-                        PT: "Preço: "
-                    },
-                    check_choice:{
-                        EN: "Please check your choice :",
-                        FR: "Veuillez vérifier votre choix:	",
-                        AR: "يرجى تأكيد الإختيار: ",
-                        ES: "Por favor marque su elección: ",
-                        PT :"Por favor, verifique a sua escolha: "
-                    },
-                    can_change_choice:{
-                        EN: "You can change your choice :",
-                        FR: "Vous pouvez modifier votre choix :	",
-                        AR: "يمكنك تغيير اختيارك: ",
-                        ES: "Puede cambiar su elección: ",
-                        PT:"Você pode alterar sua escolha: "
-                    }
-                }
-                return langs[key] && langs[key][this.$store.state.language.code] || '';
-            },
-            addToCart() {
-                // Call add to cart event
-                this.$tools.call('ADD_TO_CART', {
-                    _id: this.item._id,
-                    quantity: this.quantity.value,
-                    price: this.variant?this.variant.price.salePrice : this.item.price.salePrice,
-                    variant: this.variant ? { _id: this.variant._id } : null
-                });
-                if(this.$settings.sections.products.add_to_cart_to_checkout){
-                    setTimeout(() => {
-                            window.location.href = '/checkout2';
-                    }, 500);
-                }
-                this.$storeino.fbpx('AddToCart',{
-                    content_name: this.item.name,
-                    content_ids: [this.item._id],
-                    content_type: "product",
-                    value: this.variant?this.variant.price.salePrice : this.item.price.salePrice,
-                    currency: this.$store.state.currency && this.$store.state.currency.code ? this.$store.state.currency.code : "USD"
-                })
-                this.$tools.toast(this.$settings.sections.alerts.added_to_cart);
-            },
-            addToWishlist(){
-                this.$tools.call('ADD_TO_WISHLIST', this.item);
-                this.$tools.toast(this.$settings.sections.alerts.added_to_wishlist);
-            },
-            removeFromWishlist(){
-                this.$tools.call('REMOVE_FROM_WISHLIST', this.item);
-                this.$tools.toast(this.$settings.sections.alerts.removed_from_wishlist);
-            },
-            buyNow() {
-                // Add to cart and redirect to checkout
-                if (this.$settings.checkout_required_fields.show_variante_reminder && this.item.type =='variable' && !this.showVarianteModal) {
-                    this.showVarianteModal = true
-                    return;
-                }
-                this.addToCart();
-                setTimeout(() => {
-                    window.location.href = '/checkout2';
-                }, 500);
-            },
-            quantitySelected(quantity) {
-                this.item.quantity.value = quantity;
-                if(this.variant){
-                    this.price.salePrice = this.variant.price.salePrice * quantity;
-                    this.price.comparePrice = this.variant.price.comparePrice * quantity;
-                }else{
-                    this.price.salePrice = this.item.price.salePrice * quantity;
-                    this.price.comparePrice = this.item.price.comparePrice * quantity;
-                }
-                if(!process.server){
-                    window.dispatchEvent(new CustomEvent('CURRENT_PRODUCT', {
-                        detail: {
-                            product_id: this.item._id,
-                            product_quantity: this.quantity.value,
-                            product_variant: this.variant ? this.variant._id : undefined,
-                            product_currency: this.$store.state.currency.code,
-                            product_price: this.price
-                        }
-                    }));
-                }
-            },
-            variantSelected(variant) {
-                this.variant = variant;
-                if(variant.imageId && this.item.images.length > 0){
-                    let index = this.item.images.findIndex(i=>i._id == variant.imageId);
-                    if(index == -1) index = 0;
-                    this.visibleSlide = index;
-                    this.image = this.item.images[index];
-                }else if(this.item.images.length > 0){
-                    this.visibleSlide = 0
-                    this.image = this.item.images[0];
-                }
-                // Check outof stock
-                if(!this.item.outStock.disabled && this.variant.quantity.instock <= 0){
-                    this.outofstock = true;
-                }else{
-                    this.outofstock = false;
-                }
-                this.quantitySelected(this.item.quantity.value);
-            },
-            setImage(index){
-                this.visibleSlide = index
-                this.image = this.$tools.copy(this.item.images[index]);
-            },
-            setTab(tab){
-                this.tab = tab;
-                if(tab == 'reviews' && this.reviews.results.length == 0) this.getReviews();
-            },
-            hideBodyScroll() {
-                document.body.style.overflow = 'hidden';
-            },
-            showBodyScroll() {
-                document.body.style.overflow = 'auto';
-            },
-            showDescription(){
-                this.description = !this.description;
+            // Check outof stock
+            if (!this.item.outStock.disabled && this.variant.quantity.instock <= 0) {
+                this.outofstock = true;
+            } else {
+                this.outofstock = false;
             }
+            this.quantitySelected(this.item.quantity.value);
         },
-    }
+        setImage(index) {
+            this.visibleSlide = index
+            this.image = this.$tools.copy(this.item.images[index]);
+        },
+        setTab(tab) {
+            this.tab = tab;
+            if (tab == 'reviews' && this.reviews.results.length == 0) this.getReviews();
+        },
+        hideBodyScroll() {
+            document.body.style.overflow = 'hidden';
+        },
+        showBodyScroll() {
+            document.body.style.overflow = 'auto';
+        },
+        showDescription() {
+            this.description = !this.description;
+        }
+    },
+}
 </script>
 
 <style scoped>
 .z-index {
     z-index: 99999;
 }
+
 .cursor-zoom-in {
     cursor: zoom-in;
 }
@@ -644,25 +645,25 @@
 }
 
 @media (max-width: 1024px) {
-    [dir='rtl'] svg.rotate-chivron{
+    [dir='rtl'] svg.rotate-chivron {
         transform: rotateY(180deg);
     }
 }
 
-.pb-3\/5-res{
+.pb-3\/5-res {
     padding-bottom: 70%;
 }
 
-.pb-2\/3-res{
+.pb-2\/3-res {
     padding-bottom: 100%;
 }
 
 @media (min-width: 1024px) {
-    .pb-3\/5-res{
-            padding-bottom: 60%;
+    .pb-3\/5-res {
+        padding-bottom: 60%;
     }
 
-    .pb-2\/3-res{
+    .pb-2\/3-res {
         padding-bottom: 66.6667%;
     }
 }
@@ -672,6 +673,7 @@
     .products-padding:nth-child(odd) {
         padding-right: 0.625rem;
     }
+
     .products-padding:nth-child(even) {
         padding-left: 0.625rem;
     }
@@ -680,6 +682,7 @@
         padding-left: 0.625rem;
         padding-right: 0;
     }
+
     [dir="rtl"] .products-padding:nth-child(even) {
         padding-right: 0.625rem;
         padding-left: 0;
@@ -722,5 +725,4 @@
 
 .scroll::-webkit-scrollbar {
     display: none;
-}
-</style>
+}</style>

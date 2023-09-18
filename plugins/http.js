@@ -1,5 +1,5 @@
 import https from 'https';
-export default async function ({ $axios, store, $tools, app, req, res, route }, inject) {
+export default async function ({ $axios, store, $tools, app, req, route }, inject) {
   if (process.server) {
     // Response 
     if (app.context.req && app.context.req.headers && app.context.req.headers.ip) {

@@ -362,6 +362,7 @@
         </div>
     </div>
 </template>
+
 <script>
 export default {
     // Ormana Relod Page
@@ -375,7 +376,7 @@ export default {
             urlSlugs: [],
             windowWidth: 0,
             showSideBar: false,
-            isVisible : {
+            isVisible: {
                 collections: false,
                 prices: false,
                 sizes: false,
@@ -394,7 +395,7 @@ export default {
             param: [],
             filters: null,
             items: [],
-            collections:[],
+            collections: [],
             brands: [],
             style: 'mx-2 h-10 w-10 primary-hover',
             paginate: { page: 1, limit: this.$settings.sections.shop.pagination.limit, total: 12 },
@@ -408,7 +409,7 @@ export default {
                 { field: { 'name': 1 }, name: this.$settings.sections.shop.sorts.name_asc },
                 { field: { 'name': -1 }, name: this.$settings.sections.shop.sorts.name_desc },
                 { field: { 'createdAt': -1 }, name: this.$settings.sections.shop.sorts.newest },
-                { field: { 'createdAt' : 1 }, name: this.$settings.sections.shop.sorts.oldest }
+                { field: { 'createdAt': 1 }, name: this.$settings.sections.shop.sorts.oldest }
             ]
         }
     },
@@ -422,34 +423,34 @@ export default {
     watch: {
         params: {
             handler(val) {
-                if(JSON.stringify(val) !== JSON.stringify(this.lastParams)){
+                if (JSON.stringify(val) !== JSON.stringify(this.lastParams)) {
                     this.getItems();
                 }
             },
             deep: true
         },
-        "$route.query.search"(val){
+        "$route.query.search"(val) {
             this.$set(this.params, 'search', val);
         },
     },
-    async fetch(){
+    async fetch() {
         this.$store.state.seo.title = this.$settings.sections.shop.title + ' - ' + this.$settings.store_name;
         this.$store.state.seo.description = this.$settings.sections.shop.description || this.$settings.store_description;
-        if(this.$route.params.slug){
+        if (this.$route.params.slug) {
             this.param = this.$route.params.slug.split(',');
             this.$route.params.slug.split(',').forEach(item => {
                 this.params['collections.slug-in'].push(item);
             });
         }
         for (const key in this.$route.query) {
-            if(!this.$route.query[key]) continue;
+            if (!this.$route.query[key]) continue;
             switch (key) {
-                case 'price-from': this.$set(this.params, 'price.salePrice-from', this.$route.query[key]);break;
-                case 'price-to': this.$set(this.params, 'price.salePrice-to', this.$route.query[key]);break;
-                case 'colors-size': this.$set(this.params, 'options.values.value1', this.$route.query[key].split(','));break;
-                case 'tags': this.$set(this.params, 'tags-in', this.$route.query[key].split(','));break;
-                case 'brands': this.$set(this.params, 'brand.slug-in', this.$route.query[key].split(','));break;
-                case 'page': this.$set(this.params, 'page', this.$route.query[key]);break;
+                case 'price-from': this.$set(this.params, 'price.salePrice-from', this.$route.query[key]); break;
+                case 'price-to': this.$set(this.params, 'price.salePrice-to', this.$route.query[key]); break;
+                case 'colors-size': this.$set(this.params, 'options.values.value1', this.$route.query[key].split(',')); break;
+                case 'tags': this.$set(this.params, 'tags-in', this.$route.query[key].split(',')); break;
+                case 'brands': this.$set(this.params, 'brand.slug-in', this.$route.query[key].split(',')); break;
+                case 'page': this.$set(this.params, 'page', this.$route.query[key]); break;
             }
         }
         this.lastParams = this.params;
@@ -465,7 +466,7 @@ export default {
     methods: {
         currentSlug() {
             const slug = this.$route.params.slug
-            if( typeof(slug) !== 'undefined') {
+            if (typeof (slug) !== 'undefined') {
                 this.urlSlugs = slug.split(" ");
             }
         },
@@ -482,128 +483,130 @@ export default {
                 document.body.style.overflow = 'auto';
             }
         },
-        subCollections(){
-            for(let itm of this.collections){
-                if(itm.childrens && itm.childrens.length>0) itm.childrens = [];
+        subCollections() {
+            for (const itm of this.collections) {
+                if (itm.childrens && itm.childrens.length > 0) {
+                    itm.childrens = [];
+                } 
             }
-            for(let i=0; i<this.collections.length; i++){
-                for(let j=0; j<this.collections.length; j++){
-                    if(this.collections[i].parent == this.collections[j]._id ){
-                    let childObject = this.collections[i];
-                    this.collections[j].childrens.push(childObject);
-                    this.collections.splice(i,1);
+            for (let i = 0; i < this.collections.length; i++) {
+                for (let j = 0; j < this.collections.length; j++) {
+                    if (this.collections[i].parent == this.collections[j]._id) {
+                        const childObject = this.collections[i];
+                        this.collections[j].childrens.push(childObject);
+                        this.collections.splice(i, 1);
                         i--;
                     }
                 }
             }
         },
-        setActive:function(id,idRet){
+        setActive: function (id, idRet) {
             if (window.innerWidth < 1024) {
-                var element = document.getElementById(id);
-                if(element.classList.contains('active')){
+                let  element = document.getElementById(id);
+                if (element.classList.contains('active')) {
                     element.classList.remove('active');
-                }else{
+                } else {
                     element.classList.add('active');
                 }
-                var icon = document.getElementById(idRet);
-                if(icon.classList.contains('active')){
+                let  icon = document.getElementById(idRet);
+                if (icon.classList.contains('active')) {
                     icon.classList.remove('active');
-                }else{
+                } else {
                     icon.classList.add('active');
                 }
             }
         },
-        setActiveOver:function(id,idRet){
-            var element = document.getElementById(id);
+        setActiveOver: function (id, idRet) {
+            const element = document.getElementById(id);
             element.classList.add('active');
-            var icon = document.getElementById(idRet);
+            const icon = document.getElementById(idRet);
             icon.classList.add('active');
         },
-        setActiveLeave:function(id,idRet){
-            var element = document.getElementById(id);
+        setActiveLeave: function (id, idRet) {
+            const element = document.getElementById(id);
             element.classList.remove('active');
-            var icon = document.getElementById(idRet);
+            const icon = document.getElementById(idRet);
             icon.classList.remove('active');
         },
-        setParams(e, key, value){
-            if(key.indexOf('price') >= 0 || key.indexOf('page') >= 0){
-                this.$set(this.params,key, e.target.value);
+        setParams(e, key, value) {
+            if (key.indexOf('price') >= 0 || key.indexOf('page') >= 0) {
+                this.$set(this.params, key, e.target.value);
                 return false;
-            }else{
-                if(e.target.checked) {
-                    if(!this.params[key]) this.params[key] = this.$set(this.params, key, []);
+            } else {
+                if (e.target.checked) {
+                    if (!this.params[key]) this.params[key] = this.$set(this.params, key, []);
                     this.params[key].push(value);
                 } else {
                     this.params[key] = this.params[key].filter(item => item !== value);
                 }
             }
             for (const key in this.params) {
-                switch(key){
-                    case 'collections.slug-in': this.param = this.params[key]; this.urlSlugs = this.params[key]  ;break;
-                    case 'price.salePrice-from': this.query['price-from'] = this.params[key];break;
-                    case 'price.salePrice-to': this.query['price-to'] = this.params[key];break;
-                    case 'options.values.value1': this.query['colors-size'] = this.params[key];break;
-                    case 'tags-in': this.query['tags'] = this.params[key];break;
-                    case 'brand.slug-in': this.query['brands'] = this.params[key];break;
-                    case 'page': this.query['page'] = [this.params[key]];break;
+                switch (key) {
+                    case 'collections.slug-in': this.param = this.params[key]; this.urlSlugs = this.params[key]; break;
+                    case 'price.salePrice-from': this.query['price-from'] = this.params[key]; break;
+                    case 'price.salePrice-to': this.query['price-to'] = this.params[key]; break;
+                    case 'options.values.value1': this.query['colors-size'] = this.params[key]; break;
+                    case 'tags-in': this.query['tags'] = this.params[key]; break;
+                    case 'brand.slug-in': this.query['brands'] = this.params[key]; break;
+                    case 'page': this.query['page'] = [this.params[key]]; break;
                 }
             }
             let url = `/shop/`;
             url += this.param.length > 0 ? [...new Set(this.param)].join(',') : '';
             for (const key in this.query) {
                 url += url.indexOf('?') == -1 ? '?' : '&';
-                if(typeof this.query[key] == 'object'){
+                if (typeof this.query[key] == 'object') {
                     url += `${key}=${this.query[key].join(',')}`;
-                }else url += `${key}=${this.query[key]}`;
+                } else url += `${key}=${this.query[key]}`;
             }
             window.history.pushState({}, '', url);
         },
-        async getFilters(){
+        async getFilters() {
             this.filters = null;
             this.loading.filters = true;
-            try{
+            try {
                 const { data } = await this.$storeino.products.filters({});
                 this.filters = data;
-            }catch(err){
+            } catch (err) {
                 this.$sentry.captureException(err);
             }
             this.loading.filters = false;
         },
-        async getCollections(){
+        async getCollections() {
             this.collections = [];
             this.loading.collections = true;
-            try{
+            try {
                 const { data } = await this.$storeino.collections.search({});
                 this.collections = data.results;
-            }catch(err){
+            } catch (err) {
                 this.$sentry.captureException(err);
             }
             this.loading.collections = false;
         },
-        async getBrands(){
+        async getBrands() {
             this.brands = [];
             this.loading.brands = true;
-            try{
+            try {
                 const { data } = await this.$storeino.brands.search({});
                 this.brands = data.results;
-            }catch(err){
+            } catch (err) {
                 this.$sentry.captureException(err);
             }
             this.loading.brands = false;
         },
-        async getItems(page=null){
-            if(page != null) this.setParams({target:{value: page}}, 'page', page);
+        async getItems(page = null) {
+            if (page != null) this.setParams({ target: { value: page } }, 'page', page);
             this.items = [];
             this.loading.products = true;
-            try{
+            try {
                 this.params.search = this.$route.query.search;
                 this.params.page = page || this.paginate.current_page;
                 this.params.limit = this.$settings.sections.shop.pagination.limit;
                 this.lastParams = this.$tools.copy(this.params);
-                const {data} = await this.$storeino.products.search(this.params);
+                const { data } = await this.$storeino.products.search(this.params);
                 this.items = data.results;
                 this.paginate = data.paginate;
-            }catch(err){
+            } catch (err) {
                 this.$sentry.captureException(err);
             }
             this.loading.products = false;
@@ -646,17 +649,18 @@ export default {
     },
 }
 </script>
+
 <style scoped>
 .text-shadoow {
     filter: drop-shadow(0 0 0.625rem rgba(0, 0, 0, 0.8));
 }
 
-.pb-1\/5-res{
-  padding-bottom: 40%;
+.pb-1\/5-res {
+    padding-bottom: 40%;
 }
 
 @media (min-width: 640px) {
-    .pb-1\/5-res{
+    .pb-1\/5-res {
         padding-bottom: 30%;
     }
 }
@@ -671,7 +675,7 @@ export default {
         margin-right: 0;
     }
 
-    .pb-1\/5-res{
+    .pb-1\/5-res {
         padding-bottom: 20%;
     }
 }
@@ -680,6 +684,7 @@ export default {
     .products-padding:nth-child(odd) {
         padding-right: 1rem;
     }
+
     .products-padding:nth-child(even) {
         padding-left: 1rem;
     }
@@ -688,6 +693,7 @@ export default {
         padding-left: 1rem;
         padding-right: 0;
     }
+
     [dir="rtl"] .products-padding:nth-child(even) {
         padding-right: 1rem;
         padding-left: 0;
@@ -719,14 +725,14 @@ export default {
 }
 
 /* show filters */
-@media (max-width: 1024px){
+@media (max-width: 1024px) {
     .show {
         display: block !important;
     }
 }
 
-input[type="checkbox"] + div svg,
-input[type="radio"] + div svg {
+input[type="checkbox"]+div svg,
+input[type="radio"]+div svg {
     height: 0;
     width: 0;
     opacity: 0;
@@ -734,41 +740,41 @@ input[type="radio"] + div svg {
     transition: all .3s ease-in-out;
 }
 
-input[type="checkbox"]:checked + div svg ,
-input[type="radio"]:checked + div svg {
+input[type="checkbox"]:checked+div svg,
+input[type="radio"]:checked+div svg {
     height: 1.25rem;
     width: 1.25rem;
     opacity: 1;
 }
 
-input[type="checkbox"]:checked + div svg ,
-input[type="radio"]:checked + div svg {
+input[type="checkbox"]:checked+div svg,
+input[type="radio"]:checked+div svg {
     margin-right: 4px;
 }
 
-[dir="rtl"] input[type="checkbox"]:checked + div svg ,
-[dir="rtl"] input[type="radio"]:checked + div svg {
+[dir="rtl"] input[type="checkbox"]:checked+div svg,
+[dir="rtl"] input[type="radio"]:checked+div svg {
     margin-left: 4px;
     margin-right: 0;
 }
 
-input[type="checkbox"]:checked + div + label ,
-input[type="radio"]:checked + div + label {
+input[type="checkbox"]:checked+div+label,
+input[type="radio"]:checked+div+label {
     transition: all 0.3s ease;
 }
 
-input[type="checkbox"]:checked + div + label ,
-input[type="radio"]:checked + div + label {
-    font-family: Century Gothic Std Bold,Noto Sans JP,Noto Sans SC,Noto Sans TC,Noto Sans KR;
+input[type="checkbox"]:checked+div+label,
+input[type="radio"]:checked+div+label {
+    font-family: Century Gothic Std Bold, Noto Sans JP, Noto Sans SC, Noto Sans TC, Noto Sans KR;
 }
 
-[dir="rtl"] input[type="checkbox"]:checked + div + label ,
-[dir="rtl"] input[type="radio"]:checked + div + label {
-    font-family: pingarlt,-apple-system,BlinkMacSystemFont;
+[dir="rtl"] input[type="checkbox"]:checked+div+label,
+[dir="rtl"] input[type="radio"]:checked+div+label {
+    font-family: pingarlt, -apple-system, BlinkMacSystemFont;
     font-weight: 700;
 }
 
-.fit-collapsible{
+.fit-collapsible {
     overflow: unset;
     text-align: left;
     display: block;
@@ -779,18 +785,18 @@ input[type="radio"]:checked + div + label {
     background: 0 0;
 }
 
-.fit-collapsible .fit-collapsible-content{
+.fit-collapsible .fit-collapsible-content {
     max-height: 0;
     position: relative;
     overflow: hidden;
     transition: 0.4s;
 }
 
-.fit-collapsible.active .fit-collapsible-content{
+.fit-collapsible.active .fit-collapsible-content {
     max-height: 500px;
 }
 
-.rotated > svg{
+.rotated>svg {
     transition-property: all;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
@@ -798,10 +804,9 @@ input[type="radio"]:checked + div + label {
     transition-timing-function: linear;
 }
 
-.rotated.active > svg{
+.rotated.active>svg {
     transform: rotate(180deg);
 }
-
 </style>
 
 

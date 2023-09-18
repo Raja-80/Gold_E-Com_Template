@@ -89,6 +89,7 @@
         </div>
     </div>
 </template>
+
 <script>
 export default {
     data() {
@@ -99,11 +100,11 @@ export default {
             upsells: []
         }
     },
-    async fetch(){
+    async fetch() {
         this.$store.state.seo.title = this.$settings.sections.cart.title + ' - ' + this.$settings.store_name;
         this.$store.state.seo.description = this.$settings.sections.cart.description || this.$settings.store_description;
         await this.initCart();
-        if(this.items.length > 0){
+        if (this.items.length > 0) {
             await this.getUpsells();
         }
     },
@@ -112,37 +113,37 @@ export default {
         this.$tools.call('PAGE_VIEW');
     },
     watch: {
-        async "$store.state.cart.length"(){
+        async "$store.state.cart.length"() {
             await this.initCart();
             await this.getUpsells();
         },
         items: {
             deep: true,
-            handler(){
+            handler() {
                 this.calcTotal();
             }
         }
     },
     methods: {
-        async getUpsells(){
+        async getUpsells() {
             const ids = this.$store.state.cart.map(item => item._id);
             this.loading.upsells = true;
-            if(ids.length > 0){
-                try{
-                    const response = await this.$storeino.upsells.search({ 'with': ['products'],'product._id-in': ids, limit: 1000 });
+            if (ids.length > 0) {
+                try {
+                    const response = await this.$storeino.upsells.search({ 'with': ['products'], 'product._id-in': ids, limit: 1000 });
                     this.upsells = response.data.results;
-                }catch(err){
+                } catch (err) {
                     this.$sentry.captureException(err);
                 }
             }
             this.loading.upsells = false;
         },
-        async initCart(){
+        async initCart() {
             this.items = [];
             const ids = this.$store.state.cart.map(item => item._id);
             this.loading.cart = true;
-            if(ids.length > 0){
-                try{
+            if (ids.length > 0) {
+                try {
                     const response = await this.$storeino.products.search({ '_id-in': ids, limit: 1000 });
                     const products = response.data.results;
                     for (const item of this.$store.state.cart) {
@@ -155,11 +156,11 @@ export default {
                         cartItem.quantity = product.quantity;
                         cartItem.quantity.value = item.quantity;
                         cartItem.image = product.images.length > 0 ? product.images[0].src : '';
-                        if(item.variant && item.variant._id){
+                        if (item.variant && item.variant._id) {
                             cartItem.variant = product.variants.find(variant => variant._id === item.variant._id);
                             cartItem.price = cartItem.variant.price.salePrice;
                         }
-                        if(item.upsell){
+                        if (item.upsell) {
                             cartItem.upsell = item.upsell;
                             const discount = cartItem.upsell.type == 'percentage' ? cartItem.price * (cartItem.upsell.value / 100) : cartItem.upsell.value
                             cartItem.price = cartItem.price - discount;
@@ -168,16 +169,16 @@ export default {
                         this.items.push(cartItem);
                     }
                     this.calcTotal();
-                }catch(err){
+                } catch (err) {
                     this.$sentry.captureException(err);
                 }
             }
             this.loading.cart = false;
         },
-        async remove(item){
+        async remove(item) {
             this.$tools.call('REMOVE_FROM_CART', item);
         },
-        calcTotal(){
+        calcTotal() {
             this.total = this.items.reduce((total, item) => total + (item.price * item.quantity.value), 0);
         }
     },

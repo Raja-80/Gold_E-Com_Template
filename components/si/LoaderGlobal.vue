@@ -6,8 +6,8 @@
 
 <script>
 export default {
-  props: ["isLoading"],
-};
+  props: ["isLoading"]
+}
 </script>
 
 <style>
@@ -39,6 +39,7 @@ export default {
   transition: all ease 0.5s;
   border-left-color: #fff;
 }
+
 .loading-icon {
   animation: rotation 1s infinite linear;
 }
@@ -47,6 +48,7 @@ export default {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(359deg);
   }

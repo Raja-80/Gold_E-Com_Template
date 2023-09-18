@@ -49,7 +49,7 @@
 
 <script>
 export default {
-    head(){
+    head() {
         return {
             title: this.$store.state.seo.title,
             meta: [
@@ -94,12 +94,12 @@ export default {
             copyright_text: { r: 0, g: 130, b: 70 }
         }
     },
-    async fetch(){
+    async fetch() {
         this.$store.state.seo.title = this.$settings.store_name;
         this.$store.state.seo.description = this.$settings.store_description;
         this.$store.state.seo.keywords = this.$settings.store_keywords || [];
-        if(this.$settings.store_og_image){ this.$store.state.seo.image = this.$settings.store_og_image.src; }
-        if(this.$settings.favicon){ this.$store.state.seo.favicon = this.$settings.favicon.src; }
+        if (this.$settings.store_og_image) { this.$store.state.seo.image = this.$settings.store_og_image.src; }
+        if (this.$settings.favicon) { this.$store.state.seo.favicon = this.$settings.favicon.src; }
         this.rgb = this.$tools.hexToRgb(this.$settings.style.primary.primary_color);
         this.text_rgb = this.$tools.hexToRgb(this.$settings.style.primary.primary_text);
         this.header_rgb = this.$tools.hexToRgb(this.$settings.style.header.header_color);
@@ -108,7 +108,6 @@ export default {
         this.footer_text = this.$tools.hexToRgb(this.$settings.style.footer.footer_text);
         this.copyright_rgb = this.$tools.hexToRgb(this.$settings.style.copyright.copyright_color);
         this.copyright_text = this.$tools.hexToRgb(this.$settings.style.copyright.copyright_text);
-    },
-
+    }
 }
 </script>

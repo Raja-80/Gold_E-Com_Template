@@ -1,6 +1,6 @@
 <template>
-    <div class="flex items-center justify-center w-8 h-8 bg-primary rounded-full">
-        <span class="text-sml text-white uppercase">{{ letters }}</span>
+    <div class="flex items-center justify-center w-8 h-8 rounded-full bg-primary">
+        <span class="text-white uppercase text-sml">{{ letters }}</span>
     </div>
 </template>
 
@@ -13,6 +13,6 @@ export default {
         return {
             letters: this.name.split(' ').map(word => word[0]).join('.'),
         }
-    },
+    }
 }
 </script>

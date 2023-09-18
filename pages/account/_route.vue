@@ -56,7 +56,7 @@ export default {
         this.iframe.contentWindow.document.body.scrollWidth + "px";
     },
     seo() {
-      let headTags = {
+      const headTags = {
         title: this.settings
           ? this.settings.store_name + "-Account"
           : "Online-Store-Account",
@@ -84,7 +84,7 @@ export default {
           }
         ],
         script: []
-      };
+      }
       return headTags;
     }
   }

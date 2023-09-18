@@ -46,9 +46,10 @@
         <div v-if="$settings.other_scripts" class="other-scripts" v-html="$settings.other_scripts"></div>
     </div>
 </template>
+
 <script>
 export default {
-    head(){
+    head() {
         return {
             title: this.$store.state.seo.title,
             meta: [
@@ -95,12 +96,12 @@ export default {
             copyright_text: { r: 0, g: 130, b: 70 }
         }
     },
-    async fetch(){
+    async fetch() {
         this.$store.state.seo.title = this.$settings.store_name;
         this.$store.state.seo.description = this.$settings.store_description;
         this.$store.state.seo.keywords = this.$settings.store_keywords || [];
-        if(this.$settings.store_og_image){ this.$store.state.seo.image = this.$settings.store_og_image.src; }
-        if(this.$settings.favicon){ this.$store.state.seo.favicon = this.$settings.favicon.src; }
+        if (this.$settings.store_og_image) { this.$store.state.seo.image = this.$settings.store_og_image.src; }
+        if (this.$settings.favicon) { this.$store.state.seo.favicon = this.$settings.favicon.src; }
         this.rgb = this.$tools.hexToRgb(this.$settings.style.primary.primary_color);
         this.text_rgb = this.$tools.hexToRgb(this.$settings.style.primary.primary_text);
         this.header_rgb = this.$tools.hexToRgb(this.$settings.style.header.header_color);

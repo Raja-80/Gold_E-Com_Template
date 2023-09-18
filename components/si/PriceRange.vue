@@ -1,31 +1,31 @@
 <template>
-<div>
-    <div class="flex justify-between text-sml mb-2">
-        <span>{{ min }}</span>
-        <span>{{ max }}</span>
+    <div>
+        <div class="flex justify-between mb-2 text-sml">
+            <span>{{ min }}</span>
+            <span>{{ max }}</span>
+        </div>
+        <div class="relative flex items-center h-1 px-2 mx-1 bg-gray-200 rounded-md range">
+            <div class="absolute top-0 h-1 range-width" :style="`left:${minVal*100/max}%;width:${(maxVal-minVal)*100/max}%`"></div>
+            <input class="absolute top-0 left-0 w-full h-1 bg-transparent appearance-none min" type="range" v-model="minVal" :min="min" :max="max" @change="setParams($event, 'price.salePrice-from')">
+            <input class="absolute top-0 left-0 w-full h-1 bg-transparent appearance-none max" type="range" v-model="maxVal" :min="min" :max="max" @change="setParams($event, 'price.salePrice-to')">
+        </div>
     </div>
-    <div class="flex items-center px-2 h-1 bg-gray-200 rounded-md relative range mx-1">
-        <div class="absolute top-0 range-width h-1" :style="`left:${minVal*100/max}%;width:${(maxVal-minVal)*100/max}%`"></div>
-        <input class="min w-full h-1 absolute top-0 left-0 appearance-none bg-transparent" type="range" v-model="minVal" :min="min" :max="max" @change="setParams($event, 'price.salePrice-from')">
-        <input class="max w-full h-1 absolute top-0 left-0 appearance-none bg-transparent" type="range" v-model="maxVal" :min="min" :max="max" @change="setParams($event, 'price.salePrice-to')">
-    </div>
-</div>
 </template>
 
 <script>
 export default {
-    props:{
+    props: {
         min: { type: Number, default: 0 },
         max: { type: Number, default: 0 }
     },
     watch: {
-        minVal: function(val) {
-            if(Number(val) > Number(this.maxVal)) {
+        minVal: function (val) {
+            if (Number(val) > Number(this.maxVal)) {
                 this.minVal = this.maxVal;
             }
         },
-        maxVal: function(val) {
-            if(Number(val) < Number(this.minVal)) {
+        maxVal: function (val) {
+            if (Number(val) < Number(this.minVal)) {
                 this.maxVal = this.minVal;
             }
         }
@@ -43,8 +43,9 @@ export default {
     },
 }
 </script>
+
 <style>
-.range input::-webkit-slider-thumb{
+.range input::-webkit-slider-thumb {
     -webkit-appearance: none;
     -moz-appearance: none;
     position: relative;
@@ -56,13 +57,16 @@ export default {
     background: var(--primary-color);
     box-shadow: 0px 1px 10px 2px rgba(0, 0, 0, 0.2);
 }
-.range input.min::-webkit-slider-thumb{
+
+.range input.min::-webkit-slider-thumb {
     right: 5px;
 }
-.range input.max::-webkit-slider-thumb{
+
+.range input.max::-webkit-slider-thumb {
     left: 5px;
 }
-.range .range-width{
+
+.range .range-width {
     background-color: rgb(var(--primary-rgb), 0.6);
 }
 </style>

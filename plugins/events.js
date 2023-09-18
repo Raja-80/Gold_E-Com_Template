@@ -1,7 +1,7 @@
-export default function ({ app, store, router, $tools }, inject) {
+export default function ({ app, store, $tools }) {
     if (!process.server) {
         // To CheckOut
-        window.addEventListener('TO_CHECKOUT', (e) => {
+        window.addEventListener('TO_CHECKOUT', () => {
             window.location.href = '/checkout2'
         });
 

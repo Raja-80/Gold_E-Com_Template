@@ -3,16 +3,16 @@
         <div v-if="page=='collections'">
             <nuxt-link  :to="item.childrens.length > 0 ? `/collections/${item.slug}` : `/shop/${item.slug}`">
                 <div class="text-white">
-                    <div class="pb-col-collection-4/5 relative overflow-hidden">
+                    <div class="relative overflow-hidden pb-col-collection-4/5">
                         <div class="cursor-pointer">
                             <div class="image">
-                                <si-image  width="400" height="400" class="img h-full w-full absolute inset-0 object-cover" :src="item.image ? item.image.src : null" :alt="item.name" srcset=""/>
+                                <si-image  width="400" height="400" class="absolute inset-0 object-cover w-full h-full img" :src="item.image ? item.image.src : null" :alt="item.name" srcset=""/>
                             </div>
                         </div>
-                        <div class="absolute inset-0 flex items-end cursor-pointer p-5 lg:py-6  lg:px-10">
+                        <div class="absolute inset-0 flex items-end p-5 cursor-pointer lg:py-6 lg:px-10">
                             <div class="content">
                                 <h1 class="text-base text-shadoow ml-font-bold">{{ item.name }}</h1>
-                                <span class="text-sml text-shadoow transition ease-in-out delay-100">{{ item.description }}</span>
+                                <span class="transition ease-in-out delay-100 text-sml text-shadoow">{{ item.description }}</span>
                             </div>
                         </div>
                     </div>
@@ -22,16 +22,16 @@
         <div v-else> 
             <nuxt-link  :to="item.childrens.length > 0 ? `/collections/${item.slug}` : `/shop/${item.slug}`">
                 <div class="text-white ml-font-bold">
-                    <div class="pb-col-home-4/5 relative image-container overflow-hidden">
+                    <div class="relative overflow-hidden pb-col-home-4/5 image-container">
                         <div class="cursor-pointer">
                             <div class="image">
-                                <si-image  width="400" height="400" class="img h-full w-full absolute inset-0 object-cover" :src="item.image ? item.image.src : null" :alt="item.name" srcset=""/>
+                                <si-image  width="400" height="400" class="absolute inset-0 object-cover w-full h-full img" :src="item.image ? item.image.src : null" :alt="item.name" srcset=""/>
                             </div>
                         </div>
                         <div class="absolute inset-0 flex items-center justify-center cursor-pointer">
-                            <div class="content text-center">
-                                <h1 class="text-center text-xl lg:text-2xl text-shadoow">{{ item.name }}</h1>
-                                <span class="text-active opacity-100 lg:opacity-0 text-sml underline transition ease-in-out delay-100">{{ $settings.sections.collections.description }}</span>
+                            <div class="text-center content">
+                                <h1 class="text-xl text-center lg:text-2xl text-shadoow">{{ item.name }}</h1>
+                                <span class="underline transition ease-in-out delay-100 opacity-100 text-active lg:opacity-0 text-sml">{{ $settings.sections.collections.description }}</span>
                             </div>
                         </div>
                     </div>
@@ -42,12 +42,12 @@
 </template> 
 
 <script>
-    export default {
-        props: {
-            item: Object,
-            page: {type: String, require: false }
-        },
-    }
+export default {
+    props: {
+        item: Object,
+        page: { type: String, require: false }
+    },
+}
 </script>
 
 <style scoped>
@@ -63,25 +63,25 @@
     padding-bottom: 80%;
 }
 
-@media (min-width:768px) and (max-width:1023px) { 
+@media (min-width:768px) and (max-width:1023px) {
     .pb-col-home-4\/5 {
         padding-bottom: 30%;
     }
 }
 
-.image-container:hover .text-active{
+.image-container:hover .text-active {
     opacity: 1;
 }
 
 .image-container .img {
-	-webkit-transform: scale(1);
-	transform: scale(1);
-	-webkit-transition: .3s ease-in-out;
-	transition: .3s ease-in-out;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
 }
 
 .image-container:hover .img {
-	-webkit-transform: scale(1.1);
-	transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
 }
 </style>

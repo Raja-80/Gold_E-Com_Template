@@ -41,7 +41,7 @@ export default {
             items: []
         }
     },
-    async fetch(){
+    async fetch() {
         this.$store.state.seo.title = this.$settings.sections.wishlist.title + ' - ' + this.$settings.store_name;
         this.$store.state.seo.description = this.$settings.sections.wishlist.description || this.$settings.store_description;
         await this.initWishlist();
@@ -53,26 +53,26 @@ export default {
         this.$tools.call('PAGE_VIEW');
     },
     watch: {
-        async "$store.state.wishlist"(){
+        async "$store.state.wishlist"() {
             await this.initWishlist();
         }
     },
     methods: {
-        async initWishlist(){
+        async initWishlist() {
             this.items = [];
             const ids = this.$store.state.wishlist.map(item => item._id);
             this.loading.wishlist = true;
-            if(ids.length > 0){
-                try{
+            if (ids.length > 0) {
+                try {
                     const response = await this.$storeino.products.search({ '_id-in': ids, limit: 1000 });
                     this.items = response.data.results;
-                }catch(err){
+                } catch (err) {
                     this.$sentry.captureException(err);
                 }
             }
             this.loading.wishlist = false;
         },
-        async remove(item){
+        async remove(item) {
             this.$tools.call('REMOVE_FROM_WISHLIST', item);
         }
     },

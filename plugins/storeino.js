@@ -1,4 +1,4 @@
-export default async function ({ $http, store, app, route }, inject) {
+export default async function ({ $http, store, route }, inject) {
     // Variables
     const storeino = {};
 

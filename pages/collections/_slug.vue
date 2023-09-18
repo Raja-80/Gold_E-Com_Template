@@ -40,28 +40,28 @@ export default {
             loading: {
                 subCollections: true,
                 posts: true
-            } 
+            }
         }
     },
-    async fetch(){
+    async fetch() {
         this.subCollections = [];
         this.loading.subCollections = true;
-        try{
-            const { data } = await this.$storeino.collections.get({ slug: this.$route.params.slug});
+        try {
+            const { data } = await this.$storeino.collections.get({ slug: this.$route.params.slug });
             this.collection = data;
-            const { data : { results } } = await this.$storeino.collections.search({ parent: data._id });
+            const { data: { results } } = await this.$storeino.collections.search({ parent: data._id });
             this.subCollections = results;
-        }catch(err){
+        } catch (err) {
             this.$sentry.captureException(err);
         }
         this.loading.subCollections = false;
 
         this.posts = [];
         this.loading.posts = true;
-        try{
-            const { data } = await this.$storeino.pages.search( { status: 'PUBLISH' ,'categories.slug-in': [this.collection.slug], type: 'POST' } )
+        try {
+            const { data } = await this.$storeino.pages.search({ status: 'PUBLISH', 'categories.slug-in': [this.collection.slug], type: 'POST' })
             this.posts = data.results
-        }catch(err){
+        } catch (err) {
             this.$sentry.captureException(err);
         }
         this.loading.posts = false;
@@ -83,20 +83,21 @@ export default {
 @media (min-width: 1024px) {
     .collections:not(:nth-last-child(-n+2)) {
         padding-bottom: 3px;
-    } 
+    }
 
     .collections:nth-child(odd) {
         padding-right: 1.5px;
     }
-    
+
     .collections:nth-child(even) {
         padding-left: 1.5px;
     }
 
-    [dir="rtl"] .collections:nth-child(odd)  {
+    [dir="rtl"] .collections:nth-child(odd) {
         padding-left: 1.5px;
         padding-right: 0;
     }
+
     [dir="rtl"] .collections:nth-child(even) {
         padding-right: 1.5px;
         padding-left: 0;

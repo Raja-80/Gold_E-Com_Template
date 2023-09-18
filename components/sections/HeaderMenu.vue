@@ -1,15 +1,15 @@
 <template>
     <transition name="fade">
-    <div class="flex fixed inset-0 z-20" v-if="$store.state.showHeaderMenu">
+    <div class="fixed inset-0 z-20 flex" v-if="$store.state.showHeaderMenu">
         <!-- sliderleft shadow -->
         <div @click="showBodyScroll">
             <div class="fixed inset-0 bg-black opacity-50" @click="$store.state.showHeaderMenu=false"></div>
         </div>
         <!-- sliderleft shadow  -->
         <!-- Slide left  -->
-        <div style="width: calc(100% - 1.25rem);" :class="$store.state.showHeaderMenu==true ? hideBodyScroll() : null" class="sidebar bg-white overflow-auto header-color header-text">
+        <div style="width: calc(100% - 1.25rem);" :class="$store.state.showHeaderMenu==true ? hideBodyScroll() : null" class="overflow-auto bg-white sidebar header-color header-text">
             <!-- close slider left botton -->
-            <div class="w-full flex items-center justify-end" @click="showBodyScroll"> 
+            <div class="flex items-center justify-end w-full" @click="showBodyScroll"> 
                 <button class="p-4"  @click="$store.state.showHeaderMenu=false" aria-label="Close button">
                     <svg aria-label="close icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.71 10l4.65-4.66a.495.495 0 10-.7-.7L10 9.29 5.34 4.64a.495.495 0 00-.7.7L9.29 10l-4.65 4.66a.48.48 0 000 .7.481.481 0 00.7 0L10 10.71l4.66 4.65a.482.482 0 00.7 0 .48.48 0 000-.7L10.71 10z" fill="currentColor"></path></svg>
                 </button>
@@ -60,24 +60,24 @@
                 </div>
                 <!-- Header Menu -->
                 <!-- Lang -->
-                <div v-if="$settings.sections.header.icons.language" class="border-t border-gray-200 mt-5">
+                <div v-if="$settings.sections.header.icons.language" class="mt-5 border-t border-gray-200">
                     <div v-for="(item, i) in langMenu" :key="i" class="flex flex-col">
                         <div class="mt-5" >
                             <h4 class="ml-font-bold text-sml">{{ item.title }}</h4>
                         </div>
                         <transition name="slide">
                             <div>
-                                <div class="border-b border-primary mt-8" @click="active.Id3 = active.Id3 != item._id ? item._id : null" :class="item.childrens.length > 0 ? 'primary-hover cursor-pointer' : ''">
+                                <div class="mt-8 border-b border-primary" @click="active.Id3 = active.Id3 != item._id ? item._id : null" :class="item.childrens.length > 0 ? 'primary-hover cursor-pointer' : ''">
                                     <div class="flex items-center justify-between">
                                         <div class="text-sml">{{ item.text }}</div>
-                                        <span class="w-5 flex justify-center lg:justify-end" v-if="item.childrens && item.childrens.length > 0">
+                                        <span class="flex justify-center w-5 lg:justify-end" v-if="item.childrens && item.childrens.length > 0">
                                             <svg aria-label="chivron-down"  width="12" height="7" :class="[active.Id3==item._id ? 'rotate-180 transition-all delay-150 ease-linear' : '']"  viewBox="0 0 12 7" xmlns="http://www.w3.org/2000/svg"><path d="M11.39.6a.54.54 0 00-.78 0L6 5.21 1.39.6a.54.54 0 00-.78 0 .55.55 0 000 .77L6 6.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </span>
                                     </div>
                                 </div>
                                 <transition name="slide">
                                     <div v-if="item._id == active.Id3" class="relative" >
-                                        <div class="header-color h-56 overflow-auto absolute top-full left-0 right-0 border border-gray-200 px-6 py-3 bg-white">
+                                        <div class="absolute left-0 right-0 h-56 px-6 py-3 overflow-auto bg-white border border-gray-200 header-color top-full">
                                             <div class="pb-1" v-for="(item,i) in item.childrens" :key="i" >
                                                 <a class="text-sml link-hover" :href="item.url">{{item.text}}</a>
                                                 <div v-if="item.childrens && item.childrens.length > 0">
@@ -97,24 +97,24 @@
                 </div>
                 <!-- Lang -->
                 <!-- Curr -->
-                <div v-if="$settings.sections.header.icons.currency" class="lang border-t border-gray-200 mt-5">
+                <div v-if="$settings.sections.header.icons.currency" class="mt-5 border-t border-gray-200 lang">
                     <div v-for="(item, i) in currMenu" :key="i" class="flex flex-col">
                         <div @click="showCurr" class="mt-5" >
                             <h4 class="ml-font-bold text-sml">{{ item.title }}</h4>
                         </div>
                         <transition name="slide">
                             <div>
-                                <div class="border-b border-primary mt-8" @click="active.Id3 = active.Id3 != item._id ? item._id : null" :class="item.childrens.length > 0 ? 'primary-hover cursor-pointer' : ''">
+                                <div class="mt-8 border-b border-primary" @click="active.Id3 = active.Id3 != item._id ? item._id : null" :class="item.childrens.length > 0 ? 'primary-hover cursor-pointer' : ''">
                                     <div class="flex items-center justify-between" >
                                         <div class="text-sml">{{ item.text }}</div>
-                                        <span class="w-5 flex justify-center lg:justify-end" v-if="item.childrens && item.childrens.length > 0">
+                                        <span class="flex justify-center w-5 lg:justify-end" v-if="item.childrens && item.childrens.length > 0">
                                             <svg aria-label="chivron-down" width="12" height="7"  :class="[active.Id3==item._id ? 'rotate-180 transition-all delay-150 ease-linear' : '']"  viewBox="0 0 12 7" xmlns="http://www.w3.org/2000/svg"><path d="M11.39.6a.54.54 0 00-.78 0L6 5.21 1.39.6a.54.54 0 00-.78 0 .55.55 0 000 .77L6 6.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
                                         </span>
                                     </div>
                                 </div>
                                 <transition name="slide">
                                     <div v-if="item._id == active.Id3" class="relative" >
-                                        <div class="header-color h-56 overflow-auto absolute top-full left-0 right-0 border border-gray-200 px-6 py-3 bg-white">
+                                        <div class="absolute left-0 right-0 h-56 px-6 py-3 overflow-auto bg-white border border-gray-200 header-color top-full">
                                             <div class="pb-1" v-for="(item,i) in item.childrens" :key="i" >
                                                 <a class="text-sml link-hover" :href="item.url">{{item.text}}</a>
                                                 <div v-if="item.childrens && item.childrens.length > 0">
@@ -138,33 +138,35 @@
         <!-- Slide left  -->
     </div>
 </transition>
+
 </template>
+
 <script>
-    export default {
-        data() {
-            return {
-                subItems: null,
-                show: false,
-                activeId: null,
-                active : {
-                    Id1:null,
-                    Id2:null,
-                    Id3:null,
-                },
-                isVisible : {
-                    Lang: false,
-                    Curr: false
-                },
-                q: this.$route.query.search,
-                menu: this.$settings.sections.header.menu,
-                section: this.$settings.sections.header,
-                langMenu: [
+export default {
+    data() {
+        return {
+            subItems: null,
+            show: false,
+            activeId: null,
+            active: {
+                Id1: null,
+                Id2: null,
+                Id3: null,
+            },
+            isVisible: {
+                Lang: false,
+                Curr: false
+            },
+            q: this.$route.query.search,
+            menu: this.$settings.sections.header.menu,
+            section: this.$settings.sections.header,
+            langMenu: [
                 {
                     _id: "lang",
                     text: this.$store.state.language.code,
                     active: this.$settings.sections.header.icons.language,
                     title: this.$settings.sections.header.icons.language_text,
-                    childrens: this.$settings.store_languages.map(l=> {
+                    childrens: this.$settings.store_languages.map(l => {
                         return {
                             _id: l.code,
                             text: l.name,
@@ -172,14 +174,14 @@
                         }
                     })
                 },
-            ].filter(item=> item.active) ,
+            ].filter(item => item.active),
             currMenu: [
                 {
                     _id: "currency",
                     text: this.$store.state.currency.code,
                     active: this.$settings.sections.header.icons.currency,
                     title: this.$settings.sections.header.icons.currency_text,
-                    childrens: this.$settings.store_currencies.map(c=> {
+                    childrens: this.$settings.store_currencies.map(c => {
                         return {
                             _id: c.code,
                             text: c.name,
@@ -187,28 +189,28 @@
                         }
                     })
                 },
-            ].filter(item=> item.active) 
+            ].filter(item => item.active)
+        }
+    },
+    methods: {
+        showLang() {
+            this.isVisible.Lang = !this.isVisible.Lang;
+        },
+        showCurr() {
+            this.isVisible.Curr = !this.isVisible.Curr;
+        },
+        hideBodyScroll() {
+            if (window.innerWidth < 1024) {
+                document.body.style.overflow = 'hidden';
             }
         },
-        methods : {
-            showLang() {
-                this.isVisible.Lang= !this.isVisible.Lang;
-            },
-            showCurr() {
-                this.isVisible.Curr= !this.isVisible.Curr;
-            },
-            hideBodyScroll() {
-                if (window.innerWidth < 1024) {
-                    document.body.style.overflow = 'hidden';
-                }
-            },
-            showBodyScroll() {
-                if (window.innerWidth < 1024) {
-                    document.body.style.overflow = 'auto';
-                }
-            },
-        }
+        showBodyScroll() {
+            if (window.innerWidth < 1024) {
+                document.body.style.overflow = 'auto';
+            }
+        },
     }
+}
 </script>
 
 <style scoped>

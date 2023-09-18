@@ -1,4 +1,4 @@
-export default function ({ store }, inject) {
+export default function (_, inject) {
     // Tools
     const tools = {};
 

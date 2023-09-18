@@ -146,7 +146,7 @@ export default {
     data() {
         return {
             windowWidth: 0,
-            isVisible : {
+            isVisible: {
                 collections: false,
                 sort: false,
             },
@@ -161,10 +161,10 @@ export default {
             showSideBar: false,
             gridClass: 'w-full md:w-1/2 lg:w-1/3',
             items: [],
-            categories:[],
+            categories: [],
             paginate: { page: 1, limit: 12, total: 12 },
-            params: { status: 'PUBLISH' , 'categories.slug-in': [], sort: { createdAt: -1 }, type: 'POST' },
-            lastParams: {  status: 'PUBLISH' , 'categories.slug-in': [], sort: { createdAt: -1 }, type: 'POST' },
+            params: { status: 'PUBLISH', 'categories.slug-in': [], sort: { createdAt: -1 }, type: 'POST' },
+            lastParams: { status: 'PUBLISH', 'categories.slug-in': [], sort: { createdAt: -1 }, type: 'POST' },
             sorts: [
                 { field: { 'name': 1 }, name: this.$settings.sections.blog.sorts.name_asc },
                 { field: { 'name': -1 }, name: this.$settings.sections.blog.sorts.name_desc },
@@ -176,14 +176,14 @@ export default {
     watch: {
         params: {
             handler(val) {
-                if(JSON.stringify(val) !== JSON.stringify(this.lastParams)){
+                if (JSON.stringify(val) !== JSON.stringify(this.lastParams)) {
                     this.getItems();
                 }
             },
             deep: true
         }
     },
-    async fetch(){
+    async fetch() {
         await this.getItems();
         await this.getCategories();
         await this.getProducts();
@@ -213,54 +213,54 @@ export default {
                 document.body.style.overflow = 'auto';
             }
         },
-        setParams(e, key, value){
-            if(key.indexOf('price') >= 0){
-                this.$set(this.params,key, e.target.value);
-            }else{
-                if(e.target.checked) {
-                    if(!this.params[key]) this.params[key] = this.$set(this.params, key, []);
+        setParams(e, key, value) {
+            if (key.indexOf('price') >= 0) {
+                this.$set(this.params, key, e.target.value);
+            } else {
+                if (e.target.checked) {
+                    if (!this.params[key]) this.params[key] = this.$set(this.params, key, []);
                     this.params[key].push(value);
                 } else {
                     this.params[key] = this.params[key].filter(item => item !== value);
                 }
             }
-            switch(key){
-                case 'categories.slug-in': this.param = [...new Set(...this.param, value)];break;
-                case 'price.salePrice-from': this.query['price-from'] = value;break;
-                case 'price.salePrice-to': this.query['price-to'] = value;break;
-                case 'options.values.value1': this.query['colors'] = value;break;
+            switch (key) {
+                case 'categories.slug-in': this.param = [...new Set(...this.param, value)]; break;
+                case 'price.salePrice-from': this.query['price-from'] = value; break;
+                case 'price.salePrice-to': this.query['price-to'] = value; break;
+                case 'options.values.value1': this.query['colors'] = value; break;
             }
         },
-        async getProducts(){
+        async getProducts() {
             this.products = [];
             this.loading.products = true;
-            try{
-                const { data } = await this.$storeino.products.search({limit: 5});
+            try {
+                const { data } = await this.$storeino.products.search({ limit: 5 });
                 this.products = data.results;
-            }catch(err){
+            } catch (err) {
                 this.$sentry.captureException(err);
             }
             this.loading.products = false;
         },
-        async getCategories(){
+        async getCategories() {
             this.categories = [];
             this.loading.categories = true;
-            try{
+            try {
                 const { data } = await this.$storeino.categories.search({});
                 this.categories = data.results;
-            }catch(err){
+            } catch (err) {
                 this.$sentry.captureException(err);
             }
             this.loading.categories = false;
         },
-        async getItems(){
+        async getItems() {
             this.items = [];
             this.loading.pages = true;
-            try{
+            try {
                 this.lastParams = this.$tools.copy(this.params);
                 const { data } = await this.$storeino.pages.search(this.params);
                 this.items = data.results
-            }catch(err){
+            } catch (err) {
                 this.$sentry.captureException(err);
             }
             this.loading.pages = false;
@@ -307,14 +307,14 @@ export default {
     transition: transform .3s ease-in-out;
 }
 
-@media (min-width: 1024px) {    
+@media (min-width: 1024px) {
     .under-border::before {
-      margin: 0 40px;
+        margin: 0 40px;
     }
 }
 
-input[type="checkbox"] + div svg,
-input[type="radio"] + div svg {
+input[type="checkbox"]+div svg,
+input[type="radio"]+div svg {
     height: 0;
     width: 0;
     opacity: 0;
@@ -322,37 +322,37 @@ input[type="radio"] + div svg {
     transition: all .3s ease-in-out;
 }
 
-input[type="checkbox"]:checked + div svg ,
-input[type="radio"]:checked + div svg {
+input[type="checkbox"]:checked+div svg,
+input[type="radio"]:checked+div svg {
     height: 1.25rem;
     width: 1.25rem;
     opacity: 1;
 }
 
-input[type="checkbox"]:checked + div svg ,
-input[type="radio"]:checked + div svg {
+input[type="checkbox"]:checked+div svg,
+input[type="radio"]:checked+div svg {
     margin-right: 4px;
 }
 
-[dir="rtl"] input[type="checkbox"]:checked + div svg ,
-[dir="rtl"] input[type="radio"]:checked + div svg {
+[dir="rtl"] input[type="checkbox"]:checked+div svg,
+[dir="rtl"] input[type="radio"]:checked+div svg {
     margin-left: 4px;
     margin-right: 0;
 }
 
-input[type="checkbox"]:checked + div + label ,
-input[type="radio"]:checked + div + label {
+input[type="checkbox"]:checked+div+label,
+input[type="radio"]:checked+div+label {
     transition: all 0.3s ease;
 }
 
-input[type="checkbox"]:checked + div + label ,
-input[type="radio"]:checked + div + label {
-    font-family: Century Gothic Std Bold,Noto Sans JP,Noto Sans SC,Noto Sans TC,Noto Sans KR;
+input[type="checkbox"]:checked+div+label,
+input[type="radio"]:checked+div+label {
+    font-family: Century Gothic Std Bold, Noto Sans JP, Noto Sans SC, Noto Sans TC, Noto Sans KR;
 }
 
-[dir="rtl"] input[type="checkbox"]:checked + div + label ,
-[dir="rtl"] input[type="radio"]:checked + div + label {
-    font-family: pingarlt,-apple-system,BlinkMacSystemFont;
+[dir="rtl"] input[type="checkbox"]:checked+div+label,
+[dir="rtl"] input[type="radio"]:checked+div+label {
+    font-family: pingarlt, -apple-system, BlinkMacSystemFont;
     font-weight: 700;
 }
 </style>

@@ -1,20 +1,28 @@
 @font-face {
-    font-family: 'Century Gothic Std';
-    src: url('../../static/fonts/CenturyGothicRegular/CenturyGothicW05-Regular.woff2') format('woff2'),
-        url('../../static/fonts/CenturyGothicRegular/CenturyGothicW05-Regular.woff') format('woff'),
-        url('../../static/fonts/CenturyGothicRegular/CenturyGothicW05-Regular.ttf') format('truetype'),
-        url('../../static/fonts/CenturyGothicRegular/CenturyGothicW05-Regular.eot') format('eot');
+    font-family: "Century Gothic Std";
+    src: url("../../static/fonts/CenturyGothicRegular/CenturyGothicW05-Regular.woff2")
+        format("woff2"),
+        url("../../static/fonts/CenturyGothicRegular/CenturyGothicW05-Regular.woff")
+        format("woff"),
+        url("../../static/fonts/CenturyGothicRegular/CenturyGothicW05-Regular.ttf")
+        format("truetype"),
+        url("../../static/fonts/CenturyGothicRegular/CenturyGothicW05-Regular.eot")
+        format("eot");
     font-weight: normal;
     font-style: normal;
     font-display: fallback;
 }
 
 @font-face {
-    font-family: 'Century Gothic Std Bold';
-    src: url('../../static/fonts/CenturyGothicBold/CenturyGothicW05-Bold.woff2') format('woff2'),
-        url('../../static/fonts/CenturyGothicBold/CenturyGothicW05-Bold.woff') format('woff'),
-        url('../../static/fonts/CenturyGothicBold/CenturyGothicW05-Bold.ttf') format('truetype'),
-        url('../../static/fonts/CenturyGothicBold/CenturyGothicW05-Bold.eot') format('eot');
+    font-family: "Century Gothic Std Bold";
+    src: url("../../static/fonts/CenturyGothicBold/CenturyGothicW05-Bold.woff2")
+        format("woff2"),
+        url("../../static/fonts/CenturyGothicBold/CenturyGothicW05-Bold.woff")
+        format("woff"),
+        url("../../static/fonts/CenturyGothicBold/CenturyGothicW05-Bold.ttf")
+        format("truetype"),
+        url("../../static/fonts/CenturyGothicBold/CenturyGothicW05-Bold.eot")
+        format("eot");
     font-weight: bold;
     font-style: normal;
     font-display: fallback;
@@ -22,8 +30,8 @@
 
 @font-face {
     font-family: pingarlt;
-    src: url(../../static/fonts/pingarlt/PingARLT-Light.woff2) format("woff2"), 
-    url(../../static/fonts/pingarlt/PingARLT-Light.woff) format("woff");
+    src: url(../../static/fonts/pingarlt/PingARLT-Light.woff2) format("woff2"),
+        url(../../static/fonts/pingarlt/PingARLT-Light.woff) format("woff");
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -31,8 +39,8 @@
 
 @font-face {
     font-family: pingarlt;
-    src: url(../../static/fonts/pingarlt/PingARLT-Bold.woff2) format("woff2"), 
-    url(../../static/fonts/pingarlt/PingARLT-Bold.woff) format("woff");
+    src: url(../../static/fonts/pingarlt/PingARLT-Bold.woff2) format("woff2"),
+        url(../../static/fonts/pingarlt/PingARLT-Bold.woff) format("woff");
     font-weight: 700;
     font-style: normal;
     font-display: swap;
