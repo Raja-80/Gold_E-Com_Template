@@ -2,14 +2,14 @@
     <transition name="fade">
     <div class="fixed inset-0 z-20 flex" v-if="$store.state.showHeaderMenu">
         <!-- sliderleft shadow -->
-        <div @click="showBodyScroll">
+        <div class="overlay">
             <div class="fixed inset-0 bg-black opacity-50" @click="$store.state.showHeaderMenu=false"></div>
         </div>
         <!-- sliderleft shadow  -->
         <!-- Slide left  -->
-        <div style="width: calc(100% - 1.25rem);" :class="$store.state.showHeaderMenu==true ? hideBodyScroll() : null" class="overflow-auto bg-white sidebar header-color header-text">
+        <div style="width: calc(100% - 1.25rem);"  class="overflow-auto bg-white sidebar header-color header-text">
             <!-- close slider left botton -->
-            <div class="flex items-center justify-end w-full" @click="showBodyScroll"> 
+            <div class="flex items-center justify-end w-full"> 
                 <button class="p-4"  @click="$store.state.showHeaderMenu=false" aria-label="Close button">
                     <svg aria-label="close icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.71 10l4.65-4.66a.495.495 0 10-.7-.7L10 9.29 5.34 4.64a.495.495 0 00-.7.7L9.29 10l-4.65 4.66a.48.48 0 000 .7.481.481 0 00.7 0L10 10.71l4.66 4.65a.482.482 0 00.7 0 .48.48 0 000-.7L10.71 10z" fill="currentColor"></path></svg>
                 </button>
@@ -138,7 +138,6 @@
         <!-- Slide left  -->
     </div>
 </transition>
-
 </template>
 
 <script>
@@ -190,6 +189,15 @@ export default {
                     })
                 },
             ].filter(item => item.active)
+        }
+    },
+    watch: {
+        "$store.state.showHeaderMenu"() {
+            if(this.$store.state.showHeaderMenu) {
+                this.hideBodyScroll()
+            }else {
+                this.showBodyScroll()
+            }
         }
     },
     methods: {
