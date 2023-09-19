@@ -124,7 +124,7 @@
                     </div>
                     <!-- product images -->
                     <!-- Product content -->
-                    <div style="height: fit-content;"  class="content-part w-full lg:w-2/5 pl-6% lg:sticky lg:top-5">
+                    <div style="height: fit-content;"  class="w-full content-part lg:w-2/5 padding-left-6 lg:sticky lg:top-5">
                         <div class="px-5 pt-5 lg:px-0 lg:pt-0">
                             <div class="bg-white ">
                             <!--  product name hidden-->
@@ -700,16 +700,16 @@ export default {
 }
 
 /* Product padding */
-.pl-6\% {
+.padding-left-6 {
     padding-left: 0%;
 }
 
 @media (min-width: 1024px) {
-    .pl-6\% {
+    .padding-left-6 {
         padding-left: 6%;
     }
 
-    [dir="rtl"] .pl-6\% {
+    [dir="rtl"] .padding-left-6 {
         padding-right: 6%;
         padding-left: 0;
     }
