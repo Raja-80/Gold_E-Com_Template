@@ -115,8 +115,7 @@ export default async function (
     const cookies = $tools.cookieToObject(document.cookie);
     if (route.name == "thanks") {
       if (cookies["ORDER_ID"]) {
-        document.cookie =
-          "ORDER_ID=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/";
+        document.cookie = "ORDER_ID=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/";
         document.cookie = "STOREINO-CART=[];path=/";
         store.state.cart = [];
       } else {
