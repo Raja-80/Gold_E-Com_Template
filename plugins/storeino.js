@@ -54,7 +54,6 @@ export default async function ({ $http, store, route }, inject) {
             store.state.settings &&
             store.state.settings.facebook_multiple_pixel &&
             store.state.settings.facebook_multiple_pixel.length > 0) {
-            
             // Facebook Purchase Without Currency
             if (ev == "Purchase" && !route.query.pixel && !data.currency) {
                 return 0;
