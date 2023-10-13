@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white">
+    <div class="bg-white country-blocker-app">
         <!-- Loader -->
         <div v-if="loading" class="flex items-center justify-center my-5">
             <si-loader></si-loader>
