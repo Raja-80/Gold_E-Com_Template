@@ -10,9 +10,8 @@
             <meta itemprop="productID" :content="item._id" />
             <!-- Product id -->
             <!-- sticky add to cart -->
-            <!-- v-if="showStickyAddToCart" -->
             <transition name="show">
-                <div class="fixed inset-0 top-auto z-30 px-5 py-3 bg-white border-t bg-primary-border" >
+                <div class="fixed inset-0 top-auto z-30 px-5 py-3 bg-white border-t bg-primary-border" v-if="showStickyAddToCart" >
                     <div class="container flex items-center gap-4 md:gap-6">
                         <!--  Product Name -->
                         <div class="items-center hidden gap-4 md:flex md:gap-6 md:w-5/12">
