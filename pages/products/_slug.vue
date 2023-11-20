@@ -9,6 +9,57 @@
             <!-- Product id -->
             <meta itemprop="productID" :content="item._id" />
             <!-- Product id -->
+            <!-- sticky add to cart -->
+            <!-- v-if="showStickyAddToCart" -->
+            <transition name="show">
+                <div class="fixed inset-0 top-auto z-30 px-5 py-3 bg-white border-t bg-primary-border" >
+                    <div class="container flex items-center gap-4 md:gap-6">
+                        <!--  Product Name -->
+                        <div class="items-center hidden gap-4 md:flex md:gap-6 md:w-5/12">
+                            <si-image class="object-cover rounded-sm cursor-pointer w-14 h-14" v-show="visibleSlide === index" v-for="(image, index) in item.images" :key="index" :index="index" @click="$store.state.fullImage=image ? image.src : null" :src="image ? image.src : null " :alt="item.name" />
+                            <h4 class="text-xl font-medium truncate guard-cairo-font">{{ item.name }}</h4>
+                        </div>
+                        <!--  Product Name -->
+                        <!-- Price -->
+                        <div class="hidden md:block md:w-1/12 lg:w-2/12">
+                            <si-product-price class="text-base" :type="'simple'" :price="price" :variants="[]"></si-product-price>
+                        </div>
+                        <!-- Price -->
+                        <!-- product-quantity -->
+                        <div class="w-2/5 md:w-3/12 lg:w-2/12" id="quantityProduct">
+                            <div  v-if="$settings.sections.product.quantity.active != null ? $settings.sections.product.quantity.active : true">
+                                <si-product-quantity @selected="quantitySelected" :quantity="quantity"></si-product-quantity>
+                            </div>
+                        </div>
+                        <!-- product-quantity -->
+                        <!-- add to cart -->
+                        <div class="flex justify-end w-3/5 md:w-3/12" v-if="!outofstock">
+                            <button class="flex justify-center w-full px-5 py-4 border rounded-full text-sml ml-font-bold-hover border-primary click-effect" v-if="$settings.sections.product.add_to_cart.active" @click="addToCart">
+                                <span>{{ $settings.sections.product.add_to_cart.text }}</span>
+                            </button>
+                            <div class="w-full" v-else>
+                                <button v-if="!$store.state.apps.find(a=>a.placement.indexOf('REPLACE_BUYNOW') >= 0)" class="flex justify-center w-full px-5 py-4 border rounded-full text-sml ml-font-bold-hover border-primary click-effect"  @click="buyNow">
+                                    <span>{{ $settings.sections.product.buy_now.text }}</span>
+                                </button>
+                                <a href="#checkout" v-else class="flex justify-center w-full px-5 py-4 border rounded-full text-sml ml-font-bold-hover border-primary click-effect">
+                                    <span>{{ $settings.sections.product.buy_now.text }}</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- add to cart -->
+                        <!-- Out Of Stock -->
+                        <div class="flex justify-start w-3/5 md:w-3/12" v-if="outofstock">
+                            <button class="flex justify-center w-full px-5 py-4 border border-red-600 rounded-full text-sml ml-font-bold-hover click-effect">
+                                <span class="text-red-600">{{ $settings.sections.product.out_of_stock ? $settings.sections.product.out_of_stock.text : 'Out Of Stock' }}</span>
+                            </button>
+                        </div>
+                        <!-- Out Of Stock -->
+                        
+                    </div>
+                </div>
+            </transition>
+            <!-- sticky add to cart -->
+            <!--  -->
             <div class="lg:p-5 xl:py-7 xl:px-10">
                 <div class="flex flex-wrap justify-between">
                     <!-- shows images when click -->
@@ -181,7 +232,7 @@
                                 <si-app-loader placement="AFTER_ADD_TO_CART"/>
                                 <si-app-loader placement="BEFORE_BUYNOW"/>
                                 <!-- express checkout -->
-                                <div v-show="!outofstock">
+                                <div v-show="!outofstock" id="checkout">
                                     <si-app-loader placement="REPLACE_BUYNOW"/>
                                 </div>
                                 <!-- express checkout  -->
@@ -232,6 +283,7 @@
                     <!-- Product content -->
                 </div>
             </div>
+            <!--  -->
             <div class="flex flex-col pb-16">
                 <div class="replace-reviews">
                     <div v-if="item && $settings.sections.product.reviews.active" class="reviews">
@@ -252,6 +304,7 @@
                 </div>
                 <!-- related Products  -->
             </div>
+            <!--  -->
         </div>
     </div>
 </template>
@@ -260,6 +313,8 @@
 export default {
     data() {
         return {
+            // Sticky Cart
+            showStickyAddToCart: false,
             // images slider popup
             showImageSlider: false,
             cursor: "cursor-zoom-in",
@@ -419,6 +474,8 @@ export default {
                 }
             }
         }
+        //show showStickyAddToCart
+        window.addEventListener('scroll', this.handleScroll);
     },
     computed: {
         slidesLen() {
@@ -494,6 +551,13 @@ export default {
                 this.imageScale = currentScale - 0.2;
                 this.zoom = this.zoom - 20;
                 this.cursor = 'cursor-zoom-out'
+            }
+        },
+        handleScroll() {
+            if (window.pageYOffset > 400) {
+                this.showStickyAddToCart = true;
+            } else {
+                this.showStickyAddToCart = false;
             }
         },
         next() {
