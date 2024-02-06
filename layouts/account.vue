@@ -6,7 +6,7 @@
             <sections-maintenance @openStore="openStore" />
         </div>
         <!--  -->
-        <div v-else class="home_page">
+        <div v-else class="nuxt_page">
             <component :is="'style'">
                 :root{  --primary-rgb: {{ rgb.r }}, {{ rgb.g }}, {{ rgb.b }}; 
                         --primary-color: rgb(var(--primary-rgb)); 
