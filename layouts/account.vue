@@ -1,50 +1,60 @@
 <template>
-    <div>
-        <component :is="'style'">
-            :root{  --primary-rgb: {{ rgb.r }}, {{ rgb.g }}, {{ rgb.b }}; 
-                    --primary-color: rgb(var(--primary-rgb)); 
-                    --text-rgb: {{ text_rgb.r }}, {{ text_rgb.g }}, {{ text_rgb.b }}; 
-                    --text-color: rgb(var(--text-rgb));   
-                    --header-rgb: {{ header_rgb.r }}, {{ header_rgb.g }}, {{header_rgb.b }}; 
-                    --header-color: rgb(var(--header-rgb));
-                    --header-text-rgb: {{ header_text.r }}, {{ header_text.g }}, {{ header_text.b }}; 
-                    --header-text: rgb(var(--header-text-rgb)); 
-                    --footer-rgb: {{ footer_rgb.r }}, {{ footer_rgb.g }}, {{footer_rgb.b }}; 
-                    --footer-color: rgb(var(--footer-rgb)); 
-                    --footer-text-rgb: {{ footer_text.r }}, {{ footer_text.g }}, {{ footer_text.b }}; 
-                    --footer-text: rgb(var(--footer-text-rgb));
-                    --copyright-rgb: {{ copyright_rgb.r }}, {{ copyright_rgb.g }}, {{copyright_rgb.b }}; 
-                    --copyright-color: rgb(var(--copyright-rgb)); 
-                    --copyright-text-rgb: {{ copyright_text.r }}, {{ copyright_text.g }}, {{ copyright_text.b }}; 
-                    --copyright-text: rgb(var(--copyright-text-rgb)); 
-            }
-            .bg-primary { background-color: var(--primary-color); }
-            .bg-text-primary { color: var(--primary-color); }
-            .border-primary { border-color: var(--primary-color); }
-            .text-primary { color: var(--text-color); }
-            .primary-hover {
-                transition: all .1.5s ease-in-out;
-            }
-            .primary-hover:hover {
-                color: var(--text-color);
-                border-color: var(--text-color);
-            }
-            .header-color { background-color: var(--header-color); } 
-            .header-text { color: var(--header-text); } 
-            .footer-color { background-color: var(--footer-color); } 
-            .footer-text { color: var(--footer-text); } 
-            .copyright-color { background-color: var(--copyright-color); } 
-            .copyright-text { color: var(--copyright-text); } 
-        </component>
-        <sections-header-top></sections-header-top>
-        <sections-header></sections-header>
-        <sections-header-menu></sections-header-menu>
-        <Nuxt/>
-        <sections-footer></sections-footer>
-        <sections-copyright></sections-copyright>
-        <si-full-image></si-full-image>
-        <div v-if="$settings.other_scripts" class="other-scripts" v-html="$settings.other_scripts"></div>
+    <!--  -->
+    <div class="default_page">
+        <!--  -->
+        <div class="maintenance_page" v-if="$settings.store_maintenance || !show_store_maintenance">
+            <sections-maintenance @openStore="openStore" />
+        </div>
+        <!--  -->
+        <div v-else class="home_page">
+            <component :is="'style'">
+                :root{  --primary-rgb: {{ rgb.r }}, {{ rgb.g }}, {{ rgb.b }}; 
+                        --primary-color: rgb(var(--primary-rgb)); 
+                        --text-rgb: {{ text_rgb.r }}, {{ text_rgb.g }}, {{ text_rgb.b }}; 
+                        --text-color: rgb(var(--text-rgb));   
+                        --header-rgb: {{ header_rgb.r }}, {{ header_rgb.g }}, {{header_rgb.b }}; 
+                        --header-color: rgb(var(--header-rgb));
+                        --header-text-rgb: {{ header_text.r }}, {{ header_text.g }}, {{ header_text.b }}; 
+                        --header-text: rgb(var(--header-text-rgb)); 
+                        --footer-rgb: {{ footer_rgb.r }}, {{ footer_rgb.g }}, {{footer_rgb.b }}; 
+                        --footer-color: rgb(var(--footer-rgb)); 
+                        --footer-text-rgb: {{ footer_text.r }}, {{ footer_text.g }}, {{ footer_text.b }}; 
+                        --footer-text: rgb(var(--footer-text-rgb));
+                        --copyright-rgb: {{ copyright_rgb.r }}, {{ copyright_rgb.g }}, {{copyright_rgb.b }}; 
+                        --copyright-color: rgb(var(--copyright-rgb)); 
+                        --copyright-text-rgb: {{ copyright_text.r }}, {{ copyright_text.g }}, {{ copyright_text.b }}; 
+                        --copyright-text: rgb(var(--copyright-text-rgb)); 
+                }
+                .bg-primary { background-color: var(--primary-color); }
+                .bg-text-primary { color: var(--primary-color); }
+                .border-primary { border-color: var(--primary-color); }
+                .text-primary { color: var(--text-color); }
+                .primary-hover {
+                    transition: all .1.5s ease-in-out;
+                }
+                .primary-hover:hover {
+                    color: var(--text-color);
+                    border-color: var(--text-color);
+                }
+                .header-color { background-color: var(--header-color); } 
+                .header-text { color: var(--header-text); } 
+                .footer-color { background-color: var(--footer-color); } 
+                .footer-text { color: var(--footer-text); } 
+                .copyright-color { background-color: var(--copyright-color); } 
+                .copyright-text { color: var(--copyright-text); } 
+            </component>
+            <sections-header-top></sections-header-top>
+            <sections-header></sections-header>
+            <sections-header-menu></sections-header-menu>
+            <Nuxt />
+            <sections-footer></sections-footer>
+            <sections-copyright></sections-copyright>
+            <si-full-image></si-full-image>
+            <div v-if="$settings.other_scripts" class="other-scripts" v-html="$settings.other_scripts"></div>
+        </div>
+        <!--  -->
     </div>
+    <!--  -->
 </template>
 
 <script>
@@ -91,7 +101,9 @@ export default {
             footer_rgb: { r: 0, g: 130, b: 70 },
             footer_text: { r: 0, g: 130, b: 70 },
             copyright_rgb: { r: 0, g: 130, b: 70 },
-            copyright_text: { r: 0, g: 130, b: 70 }
+            copyright_text: { r: 0, g: 130, b: 70 },
+            show_store_maintenance: true,
+            show_store_maintenance_unlocked: false,
         }
     },
     fetch() {
@@ -108,6 +120,15 @@ export default {
         this.footer_text = this.$tools.hexToRgb(this.$settings.style.footer.footer_text);
         this.copyright_rgb = this.$tools.hexToRgb(this.$settings.style.copyright.copyright_color);
         this.copyright_text = this.$tools.hexToRgb(this.$settings.style.copyright.copyright_text);
+    },
+    methods: {
+        openStore(active) {
+            this.show_store_maintenance = active
+        },
+        closeStore() {
+            document.cookie = `store_maintenance_code=${this.code}`;
+            this.show_store_maintenance = false
+        }
     }
 }
 </script>
