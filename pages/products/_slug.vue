@@ -258,7 +258,7 @@
                                     </div>
                                 </div>
                                 <transition name="slide">
-                                    <div class="pt-3" v-if="description == true && item.html.length > 0">
+                                    <div class="lg-description pt-3" v-if="description == true && item.html.length > 0">
                                         <div id="description" v-html="item.html"></div>
                                     </div>
                                 </transition>
@@ -705,6 +705,10 @@ export default {
 </script>
 
 <style scoped>
+.lg-description table td, th {
+  border: 1px solid #dddddd;
+}
+
 .z-index {
     z-index: 99999;
 }
