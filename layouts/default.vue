@@ -97,6 +97,13 @@ export default {
                 { rel: "dns-prefetch", href: 'https://storeno.b-cdn.net/stores/' },
                 { rel: 'preconnect', href: 'https://connect.facebook.net', crossorigin: "anonymous" },
                 { rel: 'preload', href: 'https://connect.facebook.net/en_US/fbevents.js', as: 'script' }
+            ], 
+            script: [
+                {
+                  src: 'https://umami.storeino.world/script.js',
+                  'data-website-id': this.$settings.analitycs_shere && this.$settings.analitycs_shere[0]['data-website-id'],
+                  rel: "defer"
+                }
             ],
             htmlAttrs: {
                 lang: this.$store.state.language.code,
