@@ -56,6 +56,17 @@ export default {
         item_ids: pixelData.content_ids,
       });
     }
+    if (this.$store.state.settings.analitycs_shere &&
+        this.$store.state.settings.analitycs_shere[0] &&
+        this.$store.state.settings.analitycs_shere[0]['data-website-id'] && window.umami) {
+        window.umami.track('Purchase',{
+            price: pixelData.total,
+            orderId: this.$route.query.code,
+            currency: this.$store.state.currency && this.$store.state.currency.code ? this.$store.state.currency.code : "",
+            item_ids: pixelData.content_ids,
+            click_id: this.$route.query.ScCid ? this.$route.query.ScCid : null
+          })
+    }
     // take OrderId from url
     const url = new URL(window.location.href);
     const params = new URLSearchParams(url.search);
