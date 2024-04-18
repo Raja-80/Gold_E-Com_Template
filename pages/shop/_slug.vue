@@ -1,5 +1,8 @@
 <template>
     <div class="">
+        <!-- Pop-Up Placment -->
+        <si-app-loader placement="SHOP_PAGE" />
+        <!-- Pop-Up Placment -->
         <si-app-loader placement="BEFORE_SHOP_SIDEBAR"/>
         <div class="relative">
             <div class="collection-image">

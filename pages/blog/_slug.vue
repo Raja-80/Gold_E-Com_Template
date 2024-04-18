@@ -1,5 +1,8 @@
 <template>
     <div class="bg-white">
+        <!-- Pop-Up Placment -->
+        <si-app-loader placement="BLOG_PAGE" />
+        <!-- Pop-Up Placment -->
         <!-- Side BAr -->
         <div class="flex items-center justify-between px-5 lg:relative xl:px-10 under-border">
             <div class="flex flex-row-reverse items-center justify-between flex-grow lg:flex-row">

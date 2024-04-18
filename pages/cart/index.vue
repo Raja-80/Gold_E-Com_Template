@@ -1,5 +1,8 @@
 <template>
     <div>
+        <!-- Pop-Up Placment -->
+        <si-app-loader placement="CART_PAGE" />
+        <!-- Pop-Up Placment -->
         <!-- loader -->
         <div v-if="loading.cart && loading.upsells" class="flex items-center justify-center my-5">
             <si-loader></si-loader>
