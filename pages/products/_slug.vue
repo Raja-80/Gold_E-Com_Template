@@ -207,7 +207,9 @@
                             <p class="pt-3 text-sml">{{ item.description }}</p>
                             <!-- short description -->
                             <!-- variant -->
-                            <si-product-variants class="flex text-sml" v-if="item.type=='variable' &&  !settings.checkout_required_fields.show_variant_on_checkout" :options="item.options" :images="item.images" :variants="item.variants" @selected="variantSelected"></si-product-variants>
+                            <div v-show="!settings.checkout_required_fields.show_variant_on_checkout">
+                                <si-product-variants class="flex text-sml" v-if="item.type=='variable'" :options="item.options" :images="item.images" :variants="item.variants" @selected="variantSelected"></si-product-variants>
+                            </div>
                             <!-- variant -->
                             <!-- product cart -->
                             <!-- product quantity -->
