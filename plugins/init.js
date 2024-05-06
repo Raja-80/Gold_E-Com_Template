@@ -153,9 +153,9 @@ export default async function (
         let result;
         try {
             if (method === 'get' || method === 'delete') {
-                result = await $http[method](`/api/${path}`, params);
+                result = await $http[method](`/${path}`, params);
             } else {
-                result = await $http[method](`/api/${path}`, body, params);
+                result = await $http[method](`/${path}`, body, params);
             }
         } catch (error) {
             result = error.response ? error.response : { status: 500, data: error.message };
