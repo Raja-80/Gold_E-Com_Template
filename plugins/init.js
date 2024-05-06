@@ -149,6 +149,20 @@ export default async function (
         });
         return response.data;
       },
+      invoke: async function (method,path,params = {},body = {}){
+        let result;
+        try {
+            if (method === 'get' || method === 'delete') {
+                result = await $http[method](`/api/${path}`, params);
+            } else {
+                result = await $http[method](`/api/${path}`, body, params);
+            }
+        } catch (error) {
+            result = error.response ? error.response : { status: 500, data: error.message };
+        }
+
+        return result.data;
+      }
     };
 
     // vue leflet
