@@ -1,9 +1,9 @@
 <template>
   <div class="">
     <!-- title -->
-    <div class="pt-5 border-t mt-7 lg:mx-5 xl:mx-10">
+    <!-- <div class="pt-5 border-t mt-7 lg:mx-5 xl:mx-10">
       <h2 class="pb-8 text-base text-center">{{ this.title }}</h2>
-    </div>
+    </div> -->
     <!-- title -->
     <!-- content -->
     <div class="relative">

@@ -1,12 +1,12 @@
 <template>
-    <div>
+    <div class="py-4">
         <!-- Collections -->
         <div>
             <div v-if="loading" class="flex items-center justify-center my-5">
                 <si-loader></si-loader>
             </div>
             <div v-if="!loading && items.length>0" class="flex flex-wrap home-collections">
-                <div v-for="(item,i) in items" :key="i" class="w-full lg:w-1/2">
+                <div v-for="(item,i) in items" :key="i" class=" lg:w-1/4 w-1/2">
                     <si-collection :item="item"></si-collection>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-16" v-if="items.length > 0">
+  <div class=" mb-16" v-if="items.length > 0">
     <div class="pt-5 border-t border-gray-300 lg:mx-5 xl:mx-10">
       <h2 class="pb-8 text-base text-center">{{ $settings.sections.post.related.title }}</h2>
       <!-- loader -->

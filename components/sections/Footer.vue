@@ -1,59 +1,370 @@
 <template>
-    <div>
-        <si-app-loader placement="BEFORE_FOOTER"/>
-        <div class="border-gray-300 lg:border-t">
+    <div class="">
+        <si-app-loader placement="BEFORE_FOOTER" />
+        <div class="border-gray-300 lg:border-t w-full ">
             <!-- Start footer Section -->
-            <footer class="footer footer-color footer-text lg:px-7 lg:py-10">
-            <div class="flex flex-wrap justify-between">
-                <!-- Social Media & follow us  -->
-                <div class="w-full px-0 lg:px-3" :class="[menus.menu1_active && !menus.menu2_active ? 'lg:w-1/3' : !menus.menu1_active && menus.menu2_active ? 'lg:w-1/3': !menus.menu1_active && !menus.menu2_active ?'lg:w-1/2':'lg:w-1/4']">
-                    <!-- about -->
-                    <div class="px-5 py-8 border-t border-gray-200 about lg:border-0 lg:py-0 lg:px-0">
-                        <div @click="showContent" class="flex items-center justify-between transition-all ease-in-out delay-150 cursor-pointer lg:cursor-auto">
-                            <h2 class="ml-font-bold text-sml">{{ title }}</h2>
-                            <span class="lg:hidden" :class="[isVisible.Content ? 'rotate-45 transition-all delay-150 ease-linear' : ''] ">
-                                <svg aria-label="chivron icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
-                            </span>
-                        </div>
-                        <!-- Store title -->
-                        <transition name="slide">
-                        <div class="mt-8 lg:block" v-if="windowWidth < 1024 ? isVisible.Content : true">
-                            <!-- Footer About -->
-                                <div v-if="footer.about" class="text-sml text-md-responsive">{{ footer.about }}</div>
-                            <!-- Footer About -->
-                            <!-- Contacts  -->
-                            <div class="flex flex-col contacts">
-                                <span v-if="footer.location" class="mt-5 dfasfs text-sml text-md-responsive ">
-                                    <a class="link-hover" :href="footer.location_link">{{ footer.location }}</a>
-                                </span>
-                                <span v-if="footer.gmail" class="mt-5 text-sml text-md-responsive ">
-                                    <a class="link-hover" :href="'mail:'+footer.gmail">{{ footer.gmail }}</a>
-                                </span>
-                                <span v-if=" footer.number " class="mt-5 text-sml text-md-responsive ">
-                                    <a class="link-hover" :href="'tel:'+footer.number">{{ footer.number }}</a>
-                                </span>
+            <footer class="footer footer-color w-full footer-text lg:px-7 lg:py-10">
+                <div class="lg:mx-5 flex lg:flex-wrap lg:flex-row flex-col justify-between w-full">
+                    <!-- About  -->
+                    <div class="lg:w-2/4 w-full px-5 lg:px-3">
+                        <!-- about -->
+                        <div class=" py-6 about lg:py-0 lg:px-0">
+                            <div @click="showContent"
+                                class="flex items-center justify-between transition-all ease-in-out delay-150 cursor-pointer lg:cursor-auto">
+                                <h2 class="ml-font-bold text-lg">{{ title }}</h2>
+                                <!-- <span class="lg:hidden"
+                                    :class="[isVisible.Content ? 'rotate-45 transition-all delay-150 ease-linear' : '']">
+                                    <svg aria-label="chivron icon" width="20" height="20" viewBox="0 0 20 20"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z"
+                                            fill="currentColor"></path>
+                                    </svg>
+                                </span> -->
                             </div>
+                            <!-- Store title -->
+                            <transition name="slide">
+                                <div class="mt-8 lg:block">
+                                    <!-- Footer About -->
+                                    <div v-if="footer.about" class=" text-md-responsive">{{ footer.about }}
+                                    </div>
+                                    <!-- Footer About -->
+                                    <!-- Contacts  -->
+                                    <div class="flex flex-col contacts">
+                                        <span v-if="footer.location" class="mt-5 dfasfs text-sml text-md-responsive ">
+                                            <a class="link-hover" :href="footer.location_link">{{ footer.location }}</a>
+                                        </span>
+                                        <span v-if="footer.gmail" class="mt-5 text-sml text-md-responsive ">
+                                            <a class="link-hover" :href="'mail:' + footer.gmail">{{ footer.gmail }}</a>
+                                        </span>
+                                        <span v-if="footer.number" class="mt-5 text-sml text-md-responsive ">
+                                            <a class="link-hover" :href="'tel:' + footer.number">{{ footer.number }}</a>
+                                        </span>
+                                    </div>
+                                    <!-- Contacts  -->
+                                </div>
+                            </transition>
+                            {{ $settings.sections.footer.social_media.length }}
                             <!-- Contacts  -->
                         </div>
-                    </transition>
-                    {{ $settings.sections.footer.social_media.length }}
-                        <!-- Contacts  -->
+                        <!-- about -->
+
                     </div>
-                    <!-- about -->
+                    <!-- About -->
+                    <!-- menu1 -->
+                    <div v-if="menu1 && menus.menu1_active" class="lg:w-1/4 w-full py-6 px-5 menu1 lg:py-0 lg:px-3"
+                        :class="menus.menu1_active && menus.menu2_active ? 'lg:w-1/4' : 'lg:w-1/3'">
+                        <div
+                            class="flex items-center justify-between transition-all ease-in-out delay-150 cursor-pointer lg:cursor-auto">
+                            <h4 class="ml-font-bold text-sml">{{ menus.menu1_title }}</h4>
+                            <!-- <span class="lg:hidden"
+                                :class="[isVisible.Menu1 ? 'rotate-45 transition-all delay-150 ease-linear' : '']">
+                                <svg aria-label="chivron icon" width="20" height="20" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z"
+                                        fill="currentColor"></path>
+                                </svg>
+                            </span> -->
+                        </div>
+                        <!-- Header Menu -->
+                        <transition name="slide">
+                            <div>
+                                <div v-if="menu1">
+                                    <div class="flex flex-col mt-2 menus-text" v-for="(item, i) in menu1.items"
+                                        :key="i">
+                                        <div @click="active.Id1 = active.Id1 != item._id ? item._id : null"
+                                            :class="item.childrens.length > 0 ? 'primary-hover cursor-pointer' : ''"
+                                            class="flex items-center justify-between">
+                                            <router-link class="text-sml link-hover" :to="item.url">
+                                                {{ item.text }}
+                                            </router-link>
+                                            <span class="flex justify-center w-5 lg:justify-end"
+                                                v-if="item.childrens && item.childrens.length > 0">
+                                                <svg aria-label="chivron icon" width="12" height="7"
+                                                    :class="[active.Id1 == item._id ? 'rotate-180 transition-all delay-150 ease-linear' : '']"
+                                                    viewBox="0 0 12 7" xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M11.39.6a.54.54 0 00-.78 0L6 5.21 1.39.6a.54.54 0 00-.78 0 .55.55 0 000 .77L6 6.76l5.39-5.39a.55.55 0 000-.77z"
+                                                        fill="currentColor"></path>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <transition name="slide">
+                                            <div v-if="item._id == active.Id1">
+                                                <div class="mt-5" v-for="(item, i) in item.childrens" :key="i">
+                                                    <router-link class="text-sml link-hover text-primary"
+                                                        :to="item.url">
+                                                        {{ item.text }}
+                                                    </router-link>
+                                                </div>
+                                            </div>
+                                        </transition>
+                                    </div>
+                                </div>
+                            </div>
+                        </transition>
+                        <!-- Header Menu -->
+                    </div>
+                    <!-- menu1  -->
+                    <!-- menu2 -->
+                    <div v-if="menu2 && menus.menu2_active" class="lg:w-1/4 w-full px-5 py-6 menu2 lg:py-0 lg:px-3"
+                        :class="menus.menu1_active && menus.menu2_active ? 'lg:w-1/4' : 'lg:w-1/3'">
+                        <div
+                            class="flex items-center justify-between transition-all ease-in-out delay-150 cursor-pointer lg:cursor-auto">
+                            <h4 class="ml-font-bold text-sml">{{ menus.menu2_title }}</h4>
+                            <!-- <span class="lg:hidden"
+                                :class="[isVisible.Menu2 ? 'rotate-45 transition-all delay-150 ease-linear' : '']">
+                                <svg aria-label="chivron icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z"
+                                        fill="currentColor"></path>
+                                </svg>
+                            </span> -->
+                        </div>
+                        <!-- Header Menu -->
+                        <transition name="slide">
+                            <div>
+                                <div v-if="menu2">
+                                    <div class="flex flex-col mt-2 menus-text" v-for="(item, i) in menu2.items"
+                                        :key="i">
+                                        <div @click="active.Id2 = active.Id2 != item._id ? item._id : null"
+                                            :class="item.childrens.length > 0 ? 'primary-hover cursor-pointer' : ''"
+                                            class="flex items-center justify-between">
+                                            <router-link class="text-sml link-hover" :to="item.url">
+                                                {{ item.text }}
+                                            </router-link>
+                                            <span class="flex justify-center w-5 lg:justify-end"
+                                                v-if="item.childrens && item.childrens.length > 0">
+                                                <svg aria-label="chivron icon" width="12" height="7"
+                                                    :class="[active.Id2 == item._id ? 'rotate-180 transition-all delay-150 ease-linear' : '']"
+                                                    viewBox="0 0 12 7" xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M11.39.6a.54.54 0 00-.78 0L6 5.21 1.39.6a.54.54 0 00-.78 0 .55.55 0 000 .77L6 6.76l5.39-5.39a.55.55 0 000-.77z"
+                                                        fill="currentColor"></path>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <transition name="slide">
+                                            <div class="" v-if="item._id == active.Id2">
+                                                <div class="mt-5" v-for="(item, i) in item.childrens" :key="i">
+                                                    <router-link class="text-sml link-hover text-primary"
+                                                        :to="item.url">
+                                                        {{ item.text }}
+                                                    </router-link>
+                                                </div>
+                                            </div>
+                                        </transition>
+                                    </div>
+                                </div>
+                            </div>
+                        </transition>
+                        <!-- Header Menu -->
+                    </div>
+                    <!-- menu2  -->
+
+                </div>
+
+                <!-- courency and language dropdown  -->
+                <div class="flex lg:flex-row flex-col lg:justify-between justify-start lg:items-center items-start w-full lg:px-3 lg:mx-5 lg:mt-12 mt-6">
+                    
+                    <div class="lg:w-2/3 w-1/2 flex lg:flex-row flex-col justify-start lg:items-center items-start">
+                        <!-- Lang -->
+                        <div v-if="$settings.sections.footer.icons.language" class="lg:w-1/5 w-full lg:mr-12 px-5 py-6 lang lg:py-0 lg:px-0">
+                            <div v-for="(item, i) in langMenu" :key="i" class="flex flex-col">
+
+                                <transition name="slide">
+                                    <div>
+                                        <div class="lg:mt-0 mt-8 "
+                                            @click="active.Id3 = active.Id3 != item._id ? item._id : null"
+                                            :class="item.childrens.length > 0 ? 'primary-hover cursor-pointer' : ''">
+                                            <div class="flex items-center justify-between">
+                                                <div class="flex flex-row items-center justify-start">
+                                                    <div class="mr-8" v-if="item.childrens && item.childrens.length > 0"
+                                                        :class="[active.Id3 == item._id ? 'rotate-0 transition-all delay-150 ease-linear' : '']">
+                                                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M20.58 19.37L17.59 11.01C17.38 10.46 16.91 10.12 16.37 10.12C15.83 10.12 15.37 10.46 15.14 11.03L12.16 19.37C12.02 19.76 12.22 20.19 12.61 20.33C13 20.47 13.43 20.27 13.57 19.88L14.19 18.15H18.54L19.16 19.88C19.27 20.19 19.56 20.38 19.87 20.38C19.95 20.38 20.04 20.37 20.12 20.34C20.51 20.2 20.71 19.77 20.57 19.38L20.58 19.37ZM14.74 16.64L16.38 12.05L18.02 16.64H14.74ZM12.19 7.85C9.92999 11.42 7.89 13.58 5.41 15.02C5.29 15.09 5.16 15.12 5.04 15.12C4.78 15.12 4.53 14.99 4.39 14.75C4.18 14.39 4.3 13.93 4.66 13.73C6.75999 12.51 8.48 10.76 10.41 7.86H4.12C3.71 7.86 3.37 7.52 3.37 7.11C3.37 6.7 3.71 6.36 4.12 6.36H7.87V4.38C7.87 3.97 8.21 3.63 8.62 3.63C9.02999 3.63 9.37 3.97 9.37 4.38V6.36H13.12C13.53 6.36 13.87 6.7 13.87 7.11C13.87 7.52 13.53 7.86 13.12 7.86H12.18L12.19 7.85ZM12.23 15.12C12.1 15.12 11.97 15.09 11.85 15.02C11.2 14.64 10.57 14.22 9.97999 13.78C9.64999 13.53 9.58 13.06 9.83 12.73C10.08 12.4 10.55 12.33 10.88 12.58C11.42 12.99 12.01 13.37 12.61 13.72C12.97 13.93 13.09 14.39 12.88 14.75C12.74 14.99 12.49 15.12 12.23 15.12Z"
+                                                                fill="white" />
+                                                        </svg>
+                                                    </div>
+                                                    <div class="text-sml mx-2">{{ item.text }}</div>
+                                                </div>
+                                                <!-- <span class="flex justify-center w-5 lg:justify-end"
+                                                    >
+                                                    <svg aria-label="chivron icon" width="12" height="7"
+                                                        
+                                                        viewBox="0 0 12 7" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M11.39.6a.54.54 0 00-.78 0L6 5.21 1.39.6a.54.54 0 00-.78 0 .55.55 0 000 .77L6 6.76l5.39-5.39a.55.55 0 000-.77z"
+                                                            fill="currentColor"></path>
+                                                    </svg>
+                                                </span> -->
+                                            </div>
+                                        </div>
+                                        <transition name="slide">
+                                            <div v-if="item._id == active.Id3" class="relative">
+                                                <div
+                                                    class="absolute left-0 right-0 z-10 h-56 px-6 py-3 overflow-auto bg-white border border-gray-200 footer-color footer-text bottom-6">
+                                                    <div class="pb-1" v-for="(item, i) in item.childrens" :key="i">
+                                                        <a class="text-sml link-hover" :href="item.url">{{ item.text
+                                                            }}</a>
+                                                        <div v-if="item.childrens && item.childrens.length > 0">
+                                                            <div class="px-2 pt-1" v-for="(child, ii) in item.childrens"
+                                                                :key="ii">
+                                                                <a :href="child.url">
+                                                                    <span class="text-sml link-hover"> > {{ child.text
+                                                                        }}</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </transition>
+                                    </div>
+                                </transition>
+                            </div>
+                        </div>
+                        <!-- Lang -->
+                        <!-- Curr -->
+                        <div v-if="$settings.sections.footer.icons.currency" class="lg:w-1/5 w-full px-5 py-6 Curr lg:py-0 lg:px-0">
+                            <div v-for="(item, i) in currMenu" :key="i" class="flex flex-col">
+                                <!-- {{ item }} -->
+                                <transition name="slide">
+                                    <div>
+                                        <div class="lg:mt-0 mt-8 "
+                                            @click="active.Id3 = active.Id3 != item._id ? item._id : null"
+                                            :class="item.childrens.length > 0 ? 'primary-hover cursor-pointer' : ''">
+                                            <div class="flex items-center justify-between">
+                                                <div class="flex flex-row items-center justify-start">
+                                                    <div class="mr-8" v-if="item.childrens && item.childrens.length > 0"
+                                                        :class="[active.Id3 == item._id ? 'rotate-0 transition-all delay-150 ease-linear' : '']">
+                                                        <svg fill="white" height="18" width="18" version="1.1"
+                                                            id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                            viewBox="0 0 512 512" xml:space="preserve">
+                                                            <g>
+                                                                <g>
+                                                                    <path
+                                                                        d="M490.667,234.667c-12.8,0-21.333,8.533-21.333,21.333c0,117.333-96,213.333-213.333,213.333
+			c-12.8,0-21.333,8.533-21.333,21.333S243.2,512,256,512c140.8,0,256-115.2,256-256C512,243.2,503.467,234.667,490.667,234.667z" />
+                                                                </g>
+                                                            </g>
+                                                            <g>
+                                                                <g>
+                                                                    <path d="M256,0C115.2,0,0,115.2,0,256c0,12.8,8.533,21.333,21.333,21.333c12.8,0,21.333-8.533,21.333-21.333
+			c0-117.333,96-213.333,213.333-213.333c12.8,0,21.333-8.533,21.333-21.333C277.333,8.533,268.8,0,256,0z" />
+                                                                </g>
+                                                            </g>
+                                                            <g>
+                                                                <g>
+                                                                    <path d="M454.4,51.2C439.467,32,413.867,21.333,384,21.333c-44.8,0-85.333,32-85.333,74.667c0,12.8,8.533,21.333,21.333,21.333
+			S341.333,108.8,341.333,96c0-17.067,19.2-32,42.667-32c17.067,0,29.867,4.267,36.267,12.8c6.4,8.533,21.333,10.667,29.867,4.267
+			C458.667,74.667,460.8,59.733,454.4,51.2z" />
+                                                                </g>
+                                                            </g>
+                                                            <g>
+                                                                <g>
+                                                                    <path d="M384,128c-23.467,0-42.667-14.933-42.667-32c0-12.8-8.533-21.333-21.333-21.333S298.667,83.2,298.667,96
+			c0,42.667,40.533,74.667,85.333,74.667c23.467,0,42.667,14.933,42.667,32c0,17.067-19.2,32-42.667,32
+			c-17.067,0-29.867-4.267-36.267-12.8c-6.4-8.533-21.333-10.667-29.867-4.267c-10.667,8.533-10.667,21.333-4.267,29.867
+			c14.933,19.2,40.533,29.867,70.4,29.867c44.8,0,85.333-32,85.333-74.667C469.333,160,428.8,128,384,128z" />
+                                                                </g>
+                                                            </g>
+                                                            <g>
+                                                                <g>
+                                                                    <path d="M384,0c-12.8,0-21.333,8.533-21.333,21.333v256c0,12.8,8.533,21.333,21.333,21.333c12.8,0,21.333-8.533,21.333-21.333
+			v-256C405.333,8.533,396.8,0,384,0z" />
+                                                                </g>
+                                                            </g>
+                                                            <g>
+                                                                <g>
+                                                                    <path d="M181.333,437.333c-12.8,0-21.333,8.533-21.333,21.333c0,8.533-2.133,10.667-10.667,10.667H81.067
+			C83.2,460.8,85.333,454.4,85.333,448V320c0-12.8,8.533-21.333,21.333-21.333S128,307.2,128,320s8.533,21.333,21.333,21.333
+			c12.8,0,21.333-8.533,21.333-21.333c0-36.267-27.733-64-64-64s-64,27.733-64,64v128c0,2.133-2.133,6.4-4.267,10.667
+			c-2.133,6.4-8.533,10.667-17.067,10.667C-6.4,469.333-6.4,512,21.333,512h128c32,0,53.333-21.333,53.333-53.333
+			C202.667,445.867,194.133,437.333,181.333,437.333z" />
+                                                                </g>
+                                                            </g>
+                                                            <g>
+                                                                <g>
+                                                                    <path d="M106.667,362.667H21.333C8.533,362.667,0,371.2,0,384c0,12.8,8.533,21.333,21.333,21.333h85.333
+			c12.8,0,21.333-8.533,21.333-21.333C128,371.2,119.467,362.667,106.667,362.667z" />
+                                                                </g>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="text-sml">{{ item.text }}</div>
+                                                </div>
+                                                <!-- <span class="flex justify-center w-5 lg:justify-end">
+                                                    <svg aria-label="chivron icon" width="12" height="7"
+                                                        
+                                                        viewBox="0 0 12 7" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M11.39.6a.54.54 0 00-.78 0L6 5.21 1.39.6a.54.54 0 00-.78 0 .55.55 0 000 .77L6 6.76l5.39-5.39a.55.55 0 000-.77z"
+                                                            fill="currentColor"></path>
+                                                    </svg>
+                                                </span> -->
+                                            </div>
+                                        </div>
+                                        <transition name="slide">
+                                            <div v-if="item._id == active.Id3" class="relative">
+                                                <div
+                                                    class="absolute left-0 right-0 z-10 h-56 px-6 py-3 overflow-auto bg-white border border-gray-200 footer-color footer-text bottom-6">
+                                                    <div class="pb-1" v-for="(item, i) in item.childrens" :key="i">
+                                                        <a class="text-sml link-hover" :href="item.url">{{ item.text
+                                                            }}</a>
+                                                        <div v-if="item.childrens && item.childrens.length > 0">
+                                                            <div class="px-2 pt-1" v-for="(child, ii) in item.childrens"
+                                                                :key="ii">
+                                                                <a :href="child.url">
+                                                                    <span class="text-sml link-hover"> {{ child.text
+                                                                        }}</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </transition>
+                                    </div>
+                                </transition>
+                            </div>
+                        </div>
+                        <!-- Curr -->
+                    </div>
+
                     <!--  Social Media -->
-                    <div class="px-5 py-8 mt-0 border-t border-gray-200 Social_Media lg:border-0 lg:mt-8 lg:py-0 lg:px-0">
-                        <div @click="showSocialMedia" class="flex items-center justify-between transition-all ease-in-out delay-150 cursor-pointer lg:cursor-auto">
-                            <h4 class="ml-font-bold text-sml">{{ footer.social_media.title }}</h4>
-                            <span class="lg:hidden" :class="[isVisible.SocialMedia ? 'rotate-45 transition-all delay-150 ease-linear' : ''] ">
-                                <svg aria-label="chivron icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
-                            </span>
+                    <div class="lg:w-1/3 w-1/2 px-5 py-6 mt-0 Social_Media lg:mt-4 lg:py-0 lg:px-0 ">
+                        <div
+                            class="flex lg:items-center items-start justify-between transition-all ease-in-out delay-150 cursor-pointer lg:cursor-auto">
+                            <!-- <h4 class="ml-font-bold text-sml">{{ footer.social_media.title }}</h4>
+                                <span class="lg:hidden"
+                                    :class="[isVisible.SocialMedia ? 'rotate-45 transition-all delay-150 ease-linear' : '']">
+                                    <svg aria-label="chivron icon" width="20" height="20" viewBox="0 0 20 20"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z"
+                                            fill="currentColor"></path>
+                                    </svg>
+                                </span> -->
                         </div>
                         <transition name="slide">
-                            <div v-if="windowWidth < 1024 ? isVisible.SocialMedia : true">
-                                <div class="flex flex-wrap mt-4">
-                                    <div v-for="item in socialMedia.filter(s=>$settings.sections.footer.social_media[s.name])" :key="item.name" class="flex items-center justify-center mt-4 ml-mr-4">
-                                        <a class="flex h-full footer-text" :href="$settings.sections.footer.social_media[item.name]" target="_blank" rel="noopener noreferrer">
-                                            <svg aria-label="social media icons" class="opacity-90" fill-rule="evenodd" width="25" height="25" :viewBox="item.view" fill="none" xmlns="http://www.w3.org/2000/svg"><path :d="item.image" fill="currentColor"></path></svg>
+                            <div>
+                                <div class="flex lg:flex-wrap lg:flex-row flex-col lg:items-center items-start justify-end">
+                                    <div v-for="item in socialMedia.filter(s => $settings.sections.footer.social_media[s.name])"
+                                        :key="item.name" class="flex items-center justify-center mt-4 ml-mr-4">
+                                        <a class="flex h-full footer-text"
+                                            :href="$settings.sections.footer.social_media[item.name]" target="_blank"
+                                            rel="noopener noreferrer">
+                                            <svg aria-label="social media icons" class="opacity-90" fill-rule="evenodd"
+                                                width="25" height="25" :viewBox="item.view" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path :d="item.image" fill="currentColor"></path>
+                                            </svg>
                                         </a>
                                     </div>
                                 </div>
@@ -61,190 +372,46 @@
                         </transition>
                     </div>
                     <!--  Social Media  -->
-                </div>
-                <!-- Social Media & follow us -->
-                <!-- menu1 -->
-                <div v-if="menus.menu1_active" class="w-full px-5 py-8 border-t border-gray-200 menu1 lg:border-0 lg:py-0 lg:px-3" :class="menus.menu1_active && menus.menu2_active ? 'lg:w-1/4' : 'lg:w-1/3'">
-                    <div @click="showMenu1" class="flex items-center justify-between transition-all ease-in-out delay-150 cursor-pointer lg:cursor-auto">
-                        <h4 class="ml-font-bold text-sml">{{ menus.menu1_title }}</h4>
-                        <span class="lg:hidden" :class="[isVisible.Menu1 ? 'rotate-45 transition-all delay-150 ease-linear' : ''] ">
-                            <svg aria-label="chivron icon" width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
-                        </span>
-                    </div>
-                    <!-- Header Menu -->
-                    <transition name="slide">
-                        <div v-if="windowWidth < 1024 ? isVisible.Menu1 : true">
-                            <div v-if="menu1">
-                                <div class="flex flex-col mt-5 menus-text" v-for="(item, i) in menu1.items" :key="i">
-                                    <div @click="active.Id1 = active.Id1 != item._id ? item._id : null" :class="item.childrens.length > 0 ? 'primary-hover cursor-pointer' : ''" class="flex items-center justify-between">
-                                        <router-link class="text-sml link-hover" :to="item.url">
-                                            {{ item.text }}
-                                        </router-link>
-                                        <span class="flex justify-center w-5 lg:justify-end" v-if="item.childrens && item.childrens.length > 0">
-                                            <svg aria-label="chivron icon" width="12" height="7" :class="[active.Id1==item._id ? 'rotate-180 transition-all delay-150 ease-linear' : '']"  viewBox="0 0 12 7" xmlns="http://www.w3.org/2000/svg"><path d="M11.39.6a.54.54 0 00-.78 0L6 5.21 1.39.6a.54.54 0 00-.78 0 .55.55 0 000 .77L6 6.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
-                                        </span>
-                                    </div>
-                                    <transition name="slide">
-                                    <div v-if="item._id == active.Id1">
-                                        <div class="mt-5" v-for="(item,i) in item.childrens" :key="i">
-                                            <router-link class="text-sml link-hover text-primary" :to="item.url">
-                                                {{item.text}}
-                                            </router-link>
-                                        </div>
-                                    </div>
-                                    </transition>
-                                </div>
-                            </div>
-                        </div>
-                    </transition>
-                    <!-- Header Menu -->
-                </div>
-                <!-- menu1  -->
-                <!-- menu2 -->
-                <div v-if="menus.menu2_active" class="w-full px-5 py-8 border-t border-gray-200 menu2 lg:border-0 lg:py-0 lg:px-3" :class="menus.menu1_active && menus.menu2_active ? 'lg:w-1/4' : 'lg:w-1/3'">
-                    <div @click="showMenu2" class="flex items-center justify-between transition-all ease-in-out delay-150 cursor-pointer lg:cursor-auto">
-                        <h4 class="ml-font-bold text-sml">{{ menus.menu2_title }}</h4>
-                        <span class="lg:hidden" :class="[isVisible.Menu2 ? 'rotate-45 transition-all delay-150 ease-linear' : ''] ">
-                            <svg aria-label="chivron icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
-                        </span>
-                    </div>
-                    <!-- Header Menu -->
-                    <transition name="slide">
-                        <div v-if="windowWidth < 1024 ? isVisible.Menu2 : true">
-                            <div v-if="menu2">
-                                <div class="flex flex-col mt-5 menus-text" v-for="(item, i) in menu2.items" :key="i">
-                                    <div @click="active.Id2 = active.Id2 != item._id ? item._id : null" :class="item.childrens.length > 0 ? 'primary-hover cursor-pointer' : ''" class="flex items-center justify-between">
-                                        <router-link class="text-sml link-hover" :to="item.url">
-                                            {{ item.text }}
-                                        </router-link>
-                                        <span class="flex justify-center w-5 lg:justify-end" v-if="item.childrens && item.childrens.length > 0">
-                                            <svg aria-label="chivron icon" width="12" height="7"  :class="[active.Id2==item._id ? 'rotate-180 transition-all delay-150 ease-linear' : '']"  viewBox="0 0 12 7" xmlns="http://www.w3.org/2000/svg"><path d="M11.39.6a.54.54 0 00-.78 0L6 5.21 1.39.6a.54.54 0 00-.78 0 .55.55 0 000 .77L6 6.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
-                                        </span>
-                                    </div>
-                                    <transition name="slide">
-                                    <div class="" v-if="item._id == active.Id2">
-                                        <div class="mt-5" v-for="(item,i) in item.childrens" :key="i">
-                                            <router-link class="text-sml link-hover text-primary" :to="item.url">
-                                                {{item.text}}
-                                            </router-link>
-                                        </div>
-                                    </div>
-                                    </transition>
-                                </div>
-                            </div>
-                        </div>
-                    </transition>
-                    <!-- Header Menu -->
-                </div>
-                <!-- menu2  -->
-                <!-- courency and language dropdown & payment_methods  -->
-                <div class="w-full px-0 lg:px-3" :class="[menus.menu1_active && !menus.menu2_active ? 'lg:w-1/3' : !menus.menu1_active && menus.menu2_active ? 'lg:w-1/3':  !menus.menu1_active && !menus.menu2_active ?'lg:w-1/2':'lg:w-1/4']">
-                    <!-- Lang -->
-                    <div v-if="$settings.sections.footer.icons.language" class="px-5 py-8 border-t border-gray-200 lang lg:border-0 lg:py-0 lg:px-0">
-                        <div v-for="(item, i) in langMenu" :key="i" class="flex flex-col">
-                            <div @click="showLang" class="flex items-center justify-between transition-all ease-in-out delay-150 cursor-pointer lg:cursor-auto" >
-                                <h4 class="ml-font-bold text-sml">{{ item.title }}</h4>
-                                <span class="lg:hidden" :class="[isVisible.Lang ? 'rotate-45 transition-all delay-150 ease-linear' : ''] ">
-                                    <svg aria-label="chivron icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
-                                </span>
-                            </div>
-                            <transition name="slide">
-                                <div v-if="windowWidth < 1024 ? isVisible.Lang : true">
-                                    <div class="mt-8 border-b border-primary" @click="active.Id3 = active.Id3 != item._id ? item._id : null" :class="item.childrens.length > 0 ? 'primary-hover cursor-pointer' : ''">
-                                        <div class="flex items-center justify-between" >
-                                            <div class="text-sml">{{ item.text }}</div>
-                                            <span class="flex justify-center w-5 lg:justify-end" v-if="item.childrens && item.childrens.length > 0">
-                                                <svg aria-label="chivron icon" width="12" height="7" :class="[active.Id3==item._id ? 'rotate-180 transition-all delay-150 ease-linear' : '']"  viewBox="0 0 12 7" xmlns="http://www.w3.org/2000/svg"><path d="M11.39.6a.54.54 0 00-.78 0L6 5.21 1.39.6a.54.54 0 00-.78 0 .55.55 0 000 .77L6 6.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <transition name="slide">
-                                        <div v-if="item._id == active.Id3" class="relative" >
-                                            <div class="absolute left-0 right-0 z-10 h-56 px-6 py-3 overflow-auto bg-white border border-gray-200 footer-color footer-text bottom-6">
-                                                <div class="pb-1" v-for="(item,i) in item.childrens" :key="i" >
-                                                    <a class="text-sml link-hover" :href="item.url">{{item.text}}</a>
-                                                    <div v-if="item.childrens && item.childrens.length > 0">
-                                                        <div class="px-2 pt-1" v-for="(child,ii) in item.childrens" :key="ii">
-                                                            <a :href="child.url">
-                                                            <span class="text-sml link-hover" > > {{ child.text }}</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </transition>
-                                </div>
-                            </transition>
-                        </div>
-                    </div>
-                    <!-- Lang -->
-                    <!-- Curr -->
-                    <div v-if="$settings.sections.footer.icons.currency" class="px-5 py-8 border-t border-gray-200 Curr lg:border-0 lg:py-0 lg:px-0" :class="$settings.sections.footer.icons.language ? 'lg:mt-8' : ''">
-                        <div v-for="(item, i) in currMenu" :key="i" class="flex flex-col">
-                            <div @click="showCurr" class="flex items-center justify-between transition-all ease-in-out delay-150 cursor-pointer lg:cursor-auto" >
-                                <h4 class="ml-font-bold text-sml">{{ item.title }}</h4>
-                                <span class="lg:hidden" :class="[isVisible.Curr ? 'rotate-45 transition-all delay-150 ease-linear' : ''] ">
-                                    <svg aria-label="chivron icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
-                                </span>
-                            </div>
-                            <transition name="slide">
-                                <div v-if="windowWidth < 1024 ? isVisible.Curr : true">
-                                    <div class="mt-8 border-b border-primary" @click="active.Id3 = active.Id3 != item._id ? item._id : null" :class="item.childrens.length > 0 ? 'primary-hover cursor-pointer' : ''">
-                                        <div class="flex items-center justify-between">
-                                            <div class="text-sml">{{ item.text }}</div>
-                                            <span class="flex justify-center w-5 lg:justify-end" v-if="item.childrens && item.childrens.length > 0">
-                                                <svg aria-label="chivron icon" width="12" height="7"  :class="[active.Id3==item._id ? 'rotate-180 transition-all delay-150 ease-linear' : '']"  viewBox="0 0 12 7" xmlns="http://www.w3.org/2000/svg"><path d="M11.39.6a.54.54 0 00-.78 0L6 5.21 1.39.6a.54.54 0 00-.78 0 .55.55 0 000 .77L6 6.76l5.39-5.39a.55.55 0 000-.77z" fill="currentColor"></path></svg>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <transition name="slide">
-                                        <div v-if="item._id == active.Id3" class="relative" >
-                                            <div class="absolute left-0 right-0 z-10 h-56 px-6 py-3 overflow-auto bg-white border border-gray-200 footer-color footer-text bottom-6">
-                                                <div class="pb-1" v-for="(item,i) in item.childrens" :key="i" >
-                                                    <a class="text-sml link-hover" :href="item.url">{{item.text}}</a>
-                                                    <div v-if="item.childrens && item.childrens.length > 0">
-                                                        <div class="px-2 pt-1" v-for="(child,ii) in item.childrens" :key="ii">
-                                                            <a :href="child.url">
-                                                                <span class="text-sml link-hover" > {{ child.text }}</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </transition>
-                                </div>
-                            </transition>
-                        </div>
-                    </div>
-                    <!-- Curr -->
+
                     <!-- payment_methods  -->
-                    <div class="px-5 py-8 border-t border-gray-200 payment_methods lg:border-0 lg:py-0 lg:px-0" :class="$settings.sections.footer.icons.language || $settings.sections.footer.icons.currency ? 'lg:mt-8' : ''">
-                        <div @click="showPaymentMethods" class="flex items-center justify-between transition-all ease-in-out delay-150 cursor-pointer lg:cursor-auto">
-                            <h4 class="ml-font-bold text-sml">{{ footer.methods.title }}</h4>
-                            <span class="lg:hidden" :class="[isVisible.PaymentMethods ? 'rotate-45 transition-all delay-150 ease-linear' : ''] ">
-                                <svg aria-label="chivron icon" width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z" fill="currentColor"></path></svg>
-                            </span>
-                        </div>
-                        <transition name="slide">
-                            <div class="lg:block" v-if="windowWidth < 1024 ? isVisible.PaymentMethods : true">
-                                <div class="flex flex-wrap mt-4 payment_images">
-                                    <div class="flex mt-4 footer-text ml-mr-4" v-for="item in methods.filter(m=>$settings.sections.footer.methods[m.name])" :key="item.name" >
-                                        <svg aria-label="payements icons" class="opacity-90" width="40" height="40" :viewBox="item.view" fill="none" xmlns="http://www.w3.org/2000/svg"><path :d="item.image" fill="currentColor"></path></svg>
+                    <!-- <div class="px-3 py-6 payment_methods lg:py-0 lg:px-0"
+                            :class="$settings.sections.footer.icons.language || $settings.sections.footer.icons.currency ? 'lg:mt-8' : ''">
+                            <div 
+                                class="flex items-center justify-between transition-all ease-in-out delay-150 cursor-pointer lg:cursor-auto">
+                                <h4 class="ml-font-bold text-sml">{{ footer.methods.title }}</h4>
+                                <span class="lg:hidden"
+                                    :class="[isVisible.PaymentMethods ? 'rotate-45 transition-all delay-150 ease-linear' : '']">
+                                    <svg aria-label="chivron icon" width="20" height="20" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z"
+                                            fill="currentColor"></path>
+                                    </svg>
+                                </span>
+                            </div>
+                            <transition name="slide">
+                                <div class="lg:block" >
+                                    <div class="flex flex-wrap mt-4 payment_images">
+                                        <div class="flex mt-4 footer-text ml-mr-4"
+                                            v-for="item in methods.filter(m => $settings.sections.footer.methods[m.name])"
+                                            :key="item.name">
+                                            <svg aria-label="payements icons" class="opacity-90" width="40" height="40"
+                                                :viewBox="item.view" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path :d="item.image" fill="currentColor"></path>
+                                            </svg>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </transition>
-                    </div>
+                            </transition>
+                        </div> -->
                     <!-- payment_methods -->
                 </div>
-                <!-- courency and language dropdown & payment_methods  -->
-            </div>
+                <!-- courency and language dropdown  -->
+
             </footer>
             <!-- End fotter Section -->
         </div>
-        <si-app-loader placement="AFTER_FOOTER"/>
+        <si-app-loader placement="AFTER_FOOTER" />
     </div>
 </template>
 

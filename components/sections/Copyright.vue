@@ -1,13 +1,15 @@
 <template>
-  <div class="px-5 py-8 border-t border-gray-300 xl:px-10 lg:py-6 copyright-color copyright-text">
-      <!-- Start copyright Section -->
-      <div class="flex items-center copyright " :class="copyright_menu == null? 'justify-center' : 'justify-between'">
-          <div
-            class="text-sml ml-font-bold" 
-            v-html="description.replace(/__YEAR__/gi, year)"
-          ></div>
-          <!-- Menu -->
-          <div v-if="copyright_menu">
+  <div class="p-5  xl:px-10 lg:py-6 copyright-color copyright-text">
+    <!-- Start copyright Section -->
+    <div class="flex items-center copyright " :class="copyright_menu == null ? 'justify-center' : 'justify-between'">
+      <div class="text-sml ml-font-bold">
+        Made By
+        <a style="color:#03a9f4" class=" text-sm font-normal underline" href="//www.storeino.com/" target="_blank">
+          Storeino.com
+        </a>
+      </div>
+      <!-- Menu -->
+      <!-- <div v-if="copyright_menu">
             <div class="inline-block mt-2 lg:mt-0" v-for="(item,i) in copyright_menu.items" :key="i">
                 <div class="flex flex-row items-center">
                     <h4>
@@ -15,10 +17,10 @@
                     </h4>
                 </div>
             </div>
-          </div>
-          <!-- Menu -->
-      </div>
-      <!-- End fotter Section -->
+          </div> -->
+      <!-- Menu -->
+    </div>
+    <!-- End fotter Section -->
   </div>
 </template>
 
@@ -33,7 +35,7 @@ export default {
   },
 };
 </script>
-    
+
 <style scoped>
 @media screen and (max-width: 1024px) {
   .copyright {
@@ -44,4 +46,3 @@ export default {
 
 }
 </style>
-    

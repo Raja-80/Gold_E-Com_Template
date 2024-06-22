@@ -55,7 +55,7 @@ export default {
     z-index: 3;
     cursor: pointer;
     background: var(--primary-color);
-    box-shadow: 0px 1px 10px 2px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0px 1px 10px 2px rgba(0, 0, 0, 0.2); */
 }
 
 .range input.min::-webkit-slider-thumb {

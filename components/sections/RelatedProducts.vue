@@ -1,5 +1,5 @@
 <template>
-  <div v-if="items.length > 0">
+  <div v-if="items.length > 0" class="">
     <div class="pt-5 border-t border-gray-300 mt-7 lg:mx-5 xl:mx-10">
       <h2 class="pb-8 text-base text-center">{{ $settings.sections.product.related.title }}</h2>
       <!-- loader -->

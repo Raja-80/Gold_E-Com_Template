@@ -1,21 +1,21 @@
 <template>
-    <div class="">
+    <div class="mx-5">
         <!-- Pop-Up Placment -->
         <si-app-loader placement="SHOP_PAGE" />
         <!-- Pop-Up Placment -->
         <si-app-loader placement="BEFORE_SHOP_SIDEBAR"/>
-        <div class="relative">
+        <div class="relative ">
             <div class="collection-image">
                 <div v-show="loading.collections" class="flex items-center justify-center my-5">
                     <si-loader></si-loader>
                 </div>
-                <div v-show="!loading.collections && urlSlugs.length == 1">
+                <!-- <div v-show="!loading.collections && urlSlugs.length == 1">
                     <div v-for="(item, i) in collections" :key="i">
                         <div v-show=" item.slug == urlSlugs[0]">
                             <div class="relative overflow-hidden pb-1/5-res">
                                 <si-image  width="400" height="400" class="absolute inset-0 object-cover w-full h-full img" :src="item.image ? item.image.src : null" :alt="item.name" srcset=""/>
                                 <div class="absolute inset-0 flex items-center justify-center">
-                                    <h1 class="text-xl text-center text-white lg:text-2xl ml-font-bold text-shadoow">{{ item.name }}</h1>
+                                    <h1 class="text-xl text-center text-black lg:text-2xl ml-font-bold text-shadoow">{{ item.name }}</h1>
                                 </div>
                             </div>
                         </div>
@@ -24,15 +24,15 @@
                                 <div class="relative overflow-hidden pb-1/5-res">
                                     <si-image  width="400" height="400" class="absolute inset-0 object-cover w-full h-full img" :src="child.image ? child.image.src : null" :alt="child.name" srcset=""/>
                                     <div class="absolute inset-0 flex items-center justify-center">
-                                        <h1 class="text-xl text-center text-white lg:text-2xl ml-font-bold text-shadoow">{{ child.name }}</h1>
+                                        <h1 class="text-xl text-center text-black lg:text-2xl ml-font-bold text-shadoow">{{ child.name }}</h1>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
-            <div class="flex items-center justify-between lg:relative under-border">
+            <div class="flex items-center justify-between lg:relative under-border ">
                 <transition name="fade">
                     <!-- v-show="$settings.sections.shop.sidebar.active" -->
                     <div v-show="windowWidth < 1024 ? showSideBar : true"  :class="showSideBar ? 'show':'hide'" class="fixed inset-0 z-50 hidden w-full h-full overflow-auto bg-white lg:static lg:block lg:w-auto lg:h-auto lg:inset-auto lg:z-auto">
@@ -305,13 +305,13 @@
             <div v-show="!loading.products && items.length == 0" class="flex items-center justify-center my-5">
                 <h1 class="py-3 text-xl">{{ $settings.sections.shop.empty_text  }}</h1>
             </div>
-            <div class="flex flex-wrap lg:mx-1 xl:mx-5">
-                <div v-for="(item, i) in items" :key="i" class="w-1/2 mb-4 products-padding lg:w-1/3 lg:px-4 xl:px-5 lg:mb-8">
+            <div class="flex flex-wrap lg:mx-10 xl:mx-10 py-10">
+                <div v-for="(item, i) in items" :key="i" class="w-1/2 mb-4 products-padding lg:w-1/4 lg:px-4 xl:px-5 lg:mb-8">
                     <si-product :item="item"></si-product>
                 </div>
             </div>
             <!-- Pagination -->
-            <div :class="items.length != 0?'lg:mx-10 py-3 lg:border-t border-gray-300 ':''">
+            <div :class="items.length != 0?'lg:mx-10 py-10 ':''">
                 <div class="flex flex-wrap items-center justify-center" v-show="paginate.last_page > 0">
                     <!-- chivron left -->
                     <button aria-label="chivron left button" v-show="paginate.current_page > 1" class="flex items-center p-3 mx-2 primary-hover" @click="getItems(paginate.current_page-1)">
@@ -657,9 +657,9 @@ export default {
 </script>
 
 <style scoped>
-.text-shadoow {
+/*.text-shadoow {
     filter: drop-shadow(0 0 0.625rem rgba(0, 0, 0, 0.8));
-}
+}*/
 
 .pb-1\/5-res {
     padding-bottom: 40%;
