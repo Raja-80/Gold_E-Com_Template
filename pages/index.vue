@@ -19,7 +19,16 @@
     <sections-products></sections-products>
 
     <sections-services></sections-services>
+
+    <sections-posts></sections-posts>
+
+    <sections-reviews-section></sections-reviews-section>
     
+    <sections-brands></sections-brands>
+
+
+    <sections-call-to-action></sections-call-to-action>
+
   </div>
 </template>
 

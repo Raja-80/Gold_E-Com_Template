@@ -23,7 +23,7 @@ const createStore = () => {
         domain: "www.storeino.com",
         apps: [],
         // DEV TOKEN
-        token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdG9yZSI6eyJfaWQiOiI2NjY2Y2UwOWZmYjdlYmU0Y2MyZmNkZGIiLCJuYW1lIjoiZ29sZFRoZW1lIiwic3ViZG9tYWluIjoiZ29sZHRoZW1lLnN0b3JlaW5vLndvcmxkIn0sInVzZXIiOnsicG9zaXRpb24iOiJDTElFTlQiLCJfaWQiOiI2NjY2Y2U2N2ZmYjdlYmU0Y2MyZmNlMzQiLCJmaXJzdG5hbWUiOiJyYWphIiwibGFzdG5hbWUiOiJlZyIsImVtYWlsIjoic3RvcmVpbm9yYWphQGdtYWlsLmNvbSJ9LCJjb21wYW55Ijp7InN0YXR1cyI6IlVOQ09NUExFVEVEIiwiX2lkIjoiNjA0MGFjZTg0ZTg3MjQwOTUwYTdkOGM5IiwibmFtZSI6InN0b3JlaW5vIn0sInRva2VuSWQiOiI3NjY1NjdZSUlHQ0g2NTU1NjVSTFBTUE8iLCJpYXQiOjE3MTkwMjgzNjUsImV4cCI6MTcxOTg5MjM2NX0.9UMzYwoLRJN0bIxjbDQU1Ep21H0UZM7wmKvyZj30jgI',
+        token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdG9yZSI6eyJfaWQiOiI2NjY2Y2UwOWZmYjdlYmU0Y2MyZmNkZGIiLCJuYW1lIjoiZ29sZFRoZW1lIiwic3ViZG9tYWluIjoiZ29sZHRoZW1lLnN0b3JlaW5vLndvcmxkIn0sInVzZXIiOnsicG9zaXRpb24iOiJDTElFTlQiLCJfaWQiOiI2NjY2Y2U2N2ZmYjdlYmU0Y2MyZmNlMzQiLCJmaXJzdG5hbWUiOiJyYWphIiwibGFzdG5hbWUiOiJlbCBnaGF6aSIsImVtYWlsIjoic3RvcmVpbm9yYWphQGdtYWlsLmNvbSJ9LCJjb21wYW55Ijp7InN0YXR1cyI6IlVOQ09NUExFVEVEIiwiX2lkIjoiNjA0MGFjZTg0ZTg3MjQwOTUwYTdkOGM5IiwibmFtZSI6InN0b3JlaW5vIn0sInRva2VuSWQiOiIzNjA2MDBUUVJVU1gzNjAzMzZNRk9NS0YiLCJpYXQiOjE3MTkzMDY3MDcsImV4cCI6MTcyMDE3MDcwN30.5NKsGH-HHBFWIenddbpxZYFkHEawv4l6bPuwtekCfcE',
         // PROD TOKEN
         // token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdG9yZSI6eyJfaWQiOiI2NDFkODYxMmM1OTIzZTAwZGJhZjJlMTcifSwic291cmNlIjoiVEhFTUVTIiwiaWF0IjoxNjk1MDU0Nzc2LCJleHAiOjE3MjY1OTA3NzZ9.2cX0_wUQdeizPK8x4n_gZgDqr_sBqnzgveRFbKMfe2k',
         primary: {
@@ -35,6 +35,7 @@ const createStore = () => {
           image: "https://storeno.b-cdn.net/themes/palest/default-shop.jpg",
           logo: "https://storeno.b-cdn.net/stores/5-2023/1683623353701.png",
           icon: "https://storeno.b-cdn.net/themes/palest/icon.png",
+          brandImage:""
         },
         baseURL: "https://api-stores.storeino.world/api",
         currency: {

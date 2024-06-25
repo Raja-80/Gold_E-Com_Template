@@ -28,6 +28,7 @@ export default {
     "~/plugins/storeino.js",
     "~/plugins/init.js",
     "~/plugins/events.js",
+    { src: '~/plugins/vue-carousel.js', mode: 'client' }
   ],
   components: true,
   buildModules: [

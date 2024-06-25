@@ -1,16 +1,17 @@
 <template>
     <div class="options">
         <div v-for="(option, i) in options" :key="i" :class="option.key" class="mt-3 ">
-            <b class="flex mb-2 capitalize option-name">{{ option.name }}</b>
+            <!-- <b class="flex mb-2 capitalize option-name">{{ option.name }}</b> -->
             <!--  -->
             <div v-if="!option.hasOwnProperty('style') || option.style == '' || option.style == null || (option.style !== 'LIST' && option.style !== 'CHECK' && option.style !== 'CHECK2' && option.style !== 'RADIO' && option.style !== 'RADIO2') && (option.key !== 'color' && option.style == 'SIZE') || (option.key == 'color' && option.style == 'COLOR')"
-                class="options-list border border-gray-300 p-5">
+                class="options-list p-5">
                 <div v-for="(val, ii) in option.values" :key="ii" class="option mr-f-2">
                     <button aria-label="colors button"
                         :class="[(selected[`option${i + 1}`] && selected[`option${i + 1}`].value == val._id && checkOutOfStock(i + 1, val._id) ? 'active' : ''), (!checkOutOfStock(i + 1, val._id) ? 'cursor-not-allowed' : '')]"
                         @click="checkOutOfStock(i + 1, val._id) ? setVariant(i + 1, val._id) : false" :id="val._id"
-                        :style="`${option.key == 'color' ? `background-color:${val.value2}` : ''}`"><small>{{ val.value1
-                            }}</small></button>
+                        :style="`${option.key == 'color' ? `background-color:${val.value2}` : ''}`">
+                        <small>{{ val.value1 }}</small>
+                    </button>
                 </div>
             </div>
             <!--  -->
@@ -61,7 +62,8 @@
                 <ul class="list-checkbox-colors" :class="option.style == 'CHECK2' ? 'list-checkbox-colors2' : ''">
                     <li v-for="(value, vindex2) in option.values" :key="vindex2">
                         <div class="content-check-style">
-                            <input :checked="selected[`option${i + 1}`] && selected[`option${i + 1}`].value == value._id"
+                            <input
+                                :checked="selected[`option${i + 1}`] && selected[`option${i + 1}`].value == value._id"
                                 class="check-style" style="cursor:pointer;"
                                 @click="selectOneVarColor(vindex2 + 'check', option.values.length, value._id, i + 1)"
                                 name="color" :id="vindex2 + 'check'" type="checkbox">
@@ -78,7 +80,8 @@
                 <ul class="list-checkbox-colors" :class="option.style == 'CHECK2' ? 'list-checkbox-colors2' : ''">
                     <li v-for="(value, vindex2) in option.values" :key="vindex2">
                         <div class="content-check-style">
-                            <input :checked="selected[`option${i + 1}`] && selected[`option${i + 1}`].value == value._id"
+                            <input
+                                :checked="selected[`option${i + 1}`] && selected[`option${i + 1}`].value == value._id"
                                 class="check-style" style="cursor:pointer;"
                                 @click="selectOneVarSize(vindex2 + 'checksize', option.values.length, value._id, i + 1)"
                                 name="size" :id="vindex2 + 'checksize'" type="checkbox">
@@ -95,7 +98,8 @@
                 <ul class="list-checkbox-colors" :class="option.style == 'CHECK2' ? 'list-checkbox-colors2' : ''">
                     <li v-for="(value, vindex2) in option.values" :key="vindex2">
                         <div class="content-check-style">
-                            <input :checked="selected[`option${i + 1}`] && selected[`option${i + 1}`].value == value._id"
+                            <input
+                                :checked="selected[`option${i + 1}`] && selected[`option${i + 1}`].value == value._id"
                                 class="check-style" style="cursor:pointer;"
                                 @click="selectOneVarOther(vindex2 + 'checkother', option.values.length, value._id, i + 1)"
                                 name="size" :id="vindex2 + 'checkother'" type="checkbox">
