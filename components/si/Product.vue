@@ -50,7 +50,7 @@
                     <nuxt-link :to="`/products/${item.slug}`" :aria-label="item.name">
                         <si-image width="400" height="400" class="absolute inset-0 w-full h-full image_zoom"
                             :class="$settings.sections.products.images ? $settings.sections.products.images.fit : 'object-cover'"
-                            :src="item.images.length > 0 ? item.images[0].src : null" :alt="item.name" />
+                            :src="image ? image.src : null" :alt="item.name" />
                     </nuxt-link>
                     <transition name="fade">
                         <div v-if="item._id == activeId">
@@ -114,7 +114,8 @@ export default {
             price: { salePrice: 0, comparePrice: 0 },
             discount: this.upsell ? this.upsell.discount : null,
             outofstock: false,
-            image: null
+            image: null,
+            visibleSlide: 0,
         }
     },
     async fetch() {
@@ -194,11 +195,13 @@ export default {
         },
         variantSelected(variant) {
             this.variant = variant;
+            console.log("before variantselected", variant)
             if (variant.imageId && this.item.images.length > 0) {
                 let index = this.item.images.findIndex(i => i._id == variant.imageId);
                 if (index == -1) index = 0;
                 this.visibleSlide = index;
                 this.image = this.item.images[index];
+                console.log("after variant image selected", image)
             } else if (this.item.images.length > 0) {
                 this.visibleSlide = 0
                 this.image = this.item.images[0];

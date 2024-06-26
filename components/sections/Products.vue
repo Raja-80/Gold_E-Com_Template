@@ -31,36 +31,35 @@
 export default {
     data() {
         return {
-            /* products: this.$settings.sections.products */
-            /* tags: this.sections.products.tags,
-            collections: this.sections.products.collections, */
+            /* products: this.$settings.sections.products, */
+            /* tags: this.sections.products.tags, */
+            /* collections: this.sections.products.collections, */
             items: []
 
         };
     },
 
     async fetch() {
-        let filter = { status: 'PUBLISH', productType: 'PHYSICAL' };
-        /* if (this.collections.length > 0) filter['collections._id-in'] = this.collections.map(c => c._id);
-        if (this.tags.length > 0) filter['tags._id-in'] = this.tags.split(','); */
+        let filter = { status: 'PUBLISH' };
+        /* if (this.collections.length > 0) filter['collections._id-in'] = this.collections.map(c => c._id); */
         await this.getProducts(filter);
     },
-    methods: {
 
+    methods: {
         async getProducts(filter) {
-            this.loading = true;
+            
             try {
                 /* if (this.$settings.sections.products.items && this.$settings.sections.products.items.length > 0) {
                     this.items = this.$settings.sections.products.items.filter(item => item.productType === 'PHYSICAL');
                     console.log("Physical Products From Customizer", this.items);
                 } else { */
-                const { data } = await this.$storeino.products.search(filter)
+                const { data } = await this.$storeino.products.search({filter})
                 this.items = data.results
                 /* } */
             } catch (e) {
                 console.log({ e });
             }
-            this.loading = false;
+            
         }
     },
 

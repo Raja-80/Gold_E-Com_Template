@@ -9,10 +9,10 @@
 
         </div>
 
-        <div class="py-5">
+        <div class="py-5 w-full">
             <carousel :perPage="5" :navigationEnabled="true">
                 <slide v-for="(item, index) in items" :key="index">
-                    <nuxt-link class="block w-full h-full" :to="`/shop?brands=${item.slug}`">
+                    <nuxt-link class="block w-24 h-24" :to="`/shop?brands=${item.slug}`">
                         <nuxt-img class="w-full h-full object-cover p-2"
                             :src="item.imageSrc ? item.imageSrc : $store.state.defaults.brandImage"
                             alt="brand image" />
@@ -20,14 +20,6 @@
 
                 </slide>
             </carousel>
-        </div>
-
-        <div class="flex flex-col justify-center items-center">
-            <router-link to="/shop"
-                class="button underline text-white text-center py-4 px-8 border border-white hover:bg-white hover:border-white hover:shadow hover:text-black">
-                View All Brands
-                <!-- {{ brands.view_brands }} -->
-            </router-link>
         </div>
 
     </div>

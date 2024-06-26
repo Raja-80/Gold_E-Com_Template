@@ -13,7 +13,11 @@
         
 
             <div class="w-full">
-                <si-carousel component="si-review" :list="reviews.results"></si-carousel>
+                <carousel :perPage="3" :navigationEnabled="true">
+                <slide v-for="(item, index) in items" :key="index">
+                    <review :item="item"></review>
+                </slide>
+            </carousel>
             </div>
 
         </div>
@@ -22,8 +26,12 @@
 </template>
 
 <script>
-export default {
+import review from '~/components/si/review.vue';
 
+export default {
+    components: {
+        review,
+    },
     data() {
         return {
             reviews: { paginate: { page: 0 }, results: [] },
