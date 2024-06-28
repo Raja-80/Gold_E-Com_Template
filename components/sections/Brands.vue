@@ -1,7 +1,7 @@
 <template>
-    <div class="px-12 lg:py-20 py-12 bg-black">
+    <div class="px-12 lg:py-10 py-8 bg-black">
 
-        <div class="flex flex-col justify-center items-center lg:pb-24 pb-14 lg:px-80 px-10">
+        <div class="flex flex-col justify-center items-center pb-12 lg:px-80 px-8">
             <h1 class="text-white font-semibold text-3xl text-center">
 
                 {{ brands.text }}
@@ -9,12 +9,12 @@
 
         </div>
 
-        <div class="py-5 w-full">
+        <div class="w-full">
             <carousel :perPage="5" :navigationEnabled="true">
                 <slide v-for="(item, index) in items" :key="index">
-                    <nuxt-link class="block w-24 h-24" :to="`/shop?brands=${item.slug}`">
-                        <nuxt-img class="w-full h-full object-cover p-2"
-                            :src="item.imageSrc ? item.imageSrc : $store.state.defaults.brandImage"
+                    <nuxt-link class="block w-24 h-20" :to="`/shop?brands=${item.slug}`">
+                        <nuxt-img class="w-full h-full p-2 flex justify-center items-center"
+                            :src="item.imageSrc ? item.imageSrc : $store.state.defaults.image"
                             alt="brand image" />
                     </nuxt-link>
 

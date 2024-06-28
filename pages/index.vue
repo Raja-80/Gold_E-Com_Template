@@ -4,7 +4,7 @@
     <si-app-loader placement="HOME_PAGE" />
     <!-- Pop-Up Placment -->
     <si-app-loader placement="AFTER_HOME_HEADER" />
-    <div class="relative bg-cover "
+    <div v-if="sections.banner.show_section" class="relative bg-cover "
       :style="'background: url(' + bannerBg + ') no-repeat scroll center bottom; background-size: cover;'">
 
       <sections-banner></sections-banner>
@@ -16,18 +16,18 @@
       <si-app-loader placement="BEFORE_HOME_FOOTER" />
     </div>
 
-    <sections-products></sections-products>
+    <sections-products v-if="sections.homepage.products.show_section"></sections-products>
 
-    <sections-services></sections-services>
+    <sections-services v-if="sections.services.show_section"></sections-services>
 
-    <sections-posts></sections-posts>
+    <sections-posts v-if="sections.posts.show_section"></sections-posts>
 
-    <sections-reviews-section></sections-reviews-section>
+    <sections-reviews-section v-if="sections.reveiws.show_section"></sections-reviews-section>
     
-    <sections-brands></sections-brands>
+    <sections-brands v-if="sections.brands.show_section"></sections-brands>
 
 
-    <sections-call-to-action></sections-call-to-action>
+    <sections-call-to-action v-if="sections.callaction.show_section"></sections-call-to-action>
 
   </div>
 </template>
@@ -38,6 +38,7 @@ export default {
   data() {
     return {
       bannerBg:  'https://storeno.b-cdn.net/stores/6-2024/1718440905029.jpeg',
+      sections: this.$settings.sections,
       /* this.$settings.sections.banner.background_img ? this.$settings.sections.banner.background_img.src : */
     };
   },

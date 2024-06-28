@@ -16,7 +16,7 @@
         <!-- v-if="items.length > 0" -->
 
         <div>
-            <carousel :perPage="3" :navigationEnabled="true">
+            <carousel :perPage="3" :navigationEnabled="true" :paginationEnabled="false" :autoplay="true">
                 <slide v-for="(item, index) in items" :key="index">
                     <blog :item="item"></blog>
                 </slide>

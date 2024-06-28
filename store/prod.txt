@@ -1,12 +1,12 @@
 <template>
-    <div class="relative flex flex-col wishlist-box p-2">
+    <div class="relative flex flex-col wishlist-box">
         <!-- wishlist icon -->
         <div :class="page == 'wishlist' ? '' : 'wishlist opacity-0'"
             v-if="$settings.sections.products.add_to_wishlist.active">
             <transition name="fade">
-                <button aria-label="wishlist button" v-if="$store.state.wishlist.find(i => i._id == item._id)"
+                <button aria-label="wishlixt button" v-if="$store.state.wishlist.find(i => i._id == item._id)"
                     @click="removeFromWishlist" title="Wishlist" class="absolute top-0 right-0 z-10 m-4">
-                    <svg aria-label="wishlist button" class="w-5 h-5 translate text-primary" aria-hidden="true"
+                    <svg aria-label="wishlixt button" class="w-5 h-5 translate text-primary" aria-hidden="true"
                         focusable="false" data-prefix="far" data-icon="heart" role="img"
                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <path fill="currentColor"
@@ -16,9 +16,9 @@
                 </button>
             </transition>
             <transition name="fade">
-                <button aria-label="wishlist button" v-if="!$store.state.wishlist.find(i => i._id == item._id)"
+                <button aria-label="wishlixt button" v-if="!$store.state.wishlist.find(i => i._id == item._id)"
                     @click="addToWishlist" title="Wishlist" class="absolute top-0 right-0 z-10 m-4">
-                    <svg aria-label="wishlist button" class="w-5 h-5 text-white translate" aria-hidden="true"
+                    <svg aria-label="wishlixt button" class="w-5 h-5 text-white translate" aria-hidden="true"
                         focusable="false" data-prefix="far" data-icon="heart" role="img"
                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <path fill="currentColor"
@@ -29,7 +29,7 @@
             </transition>
         </div>
         <!-- wishlist icon -->
-
+         
         <!-- Product discount -->
         <div v-if="discount"
             class="absolute top-0 left-0 z-10 flex items-center justify-center px-2 py-1 m-2 text-white rounded-full bg-primary">
@@ -46,7 +46,7 @@
 
                 <div class="relative overflow-hidden image_box zoom"
                     :class="$settings.sections.products.images ? $settings.sections.products.images.ratio : 'pb-full'"
-                    @mouseover="activeId = item._id" @mouseleave="activeId = null">
+                    @mouseover="activeId = activeId = item._id" @mouseleave="activeId = activeId = null">
                     <nuxt-link :to="`/products/${item.slug}`" :aria-label="item.name">
                         <si-image width="400" height="400" class="absolute inset-0 w-full h-full image_zoom"
                             :class="$settings.sections.products.images ? $settings.sections.products.images.fit : 'object-cover'"
@@ -107,9 +107,9 @@ export default {
     data() {
         return {
             activeId: null,
-            flipped: false,
+            filpped: false,
             added: false,
-            variant: this.item.type == 'variable' ? this.item.variants[0] : null,
+            variant: this.item.type == 'variant' ? this.item.variants[0] : null,
             quantity: this.item.quantity,
             price: { salePrice: 0, comparePrice: 0 },
             discount: this.upsell ? this.upsell.discount : null,
@@ -121,15 +121,18 @@ export default {
     async fetch() {
         const { slug } = this.$route.params;
         try {
+            
             // Set default variant if exists
             if (this.item.type == 'variable' && this.item.variants.length > 0) this.variantSelected(this.item.variants[0]);
-
+            
             // Set default quantity
             this.quantitySelected(this.quantity.default);
+
+
         } catch (err) {
             // Redirect to error page if product not exists
             this.$sentry.captureException(err);
-            this.$nuxt.error({ statusCode: 404, message: 'product_not_found' });
+            this.$nuxt.error({ statusCode: 404, message: 'product_not_found' })
         }
     },
     mounted() {
@@ -137,27 +140,27 @@ export default {
             if (this.discount) {
                 this.item.originalPrice = this.$tools.copy(this.item.price);
                 if (this.discount.type == 'percentage') {
-                    this.item.price.salePrice = this.item.price.salePrice - (this.item.price.salePrice * this.discount.value / 100);
-                    this.item.price.comparePrice = this.item.price.comparePrice - (this.item.price.comparePrice * this.discount.value / 100);
+                    this.item.price.salePrice = this.item.price.salePrice - (this.item.price.salePrice * this.discount.value / 100)
+                    this.item.price.comparePrice = this.item.price.comparePrice - (this.item.price.comparePrice * this.discount.value / 100)
                 } else {
-                    this.item.price.salePrice = this.item.price.salePrice - this.discount.value;
-                    this.item.price.comparePrice = this.item.price.comparePrice - this.discount.value;
+                    this.item.price.salePrice = this.item.price.salePrice - this.discount.value
+                    this.item.price.comparePrice = this.item.price.comparePrice - this.discount.value
                 }
             }
-            // Check out of stock
+            // Check outof stock
             if (!this.item.outStock.disabled && this.item.quantity.instock <= 0) {
                 this.outofstock = true;
             }
         } else {
             if (this.discount) {
                 this.item.variants.forEach(variant => {
-                    variant.originalPrice = this.$tools.copy(variant.price);
+                    variant.originalPrice = this.$tools.copy(variant.price)
                     if (this.discount.type == 'percentage') {
-                        variant.price.salePrice = variant.price.salePrice - (variant.price.salePrice * this.discount.value / 100);
-                        variant.price.comparePrice = variant.price.comparePrice - (variant.price.comparePrice * this.discount.value / 100);
+                        variant.price.salePrice = variant.price.salePrice - (variant.price.salePrice * this.discount.value / 100)
+                        variant.price.comparePrice = variant.price.comparePrice - (variant.price.comparePrice * this.discount.value / 100)
                     } else {
-                        variant.price.salePrice = variant.price.salePrice - this.discount.value;
-                        variant.price.comparePrice = variant.price.comparePrice - this.discount.value;
+                        variant.price.salePrice = variant.price.salePrice - this.discount.value
+                        variant.price.comparePrice = variant.price.comparePrice - this.discount.value
                     }
                 });
             }
@@ -192,16 +195,18 @@ export default {
         },
         variantSelected(variant) {
             this.variant = variant;
+            console.log("before variantselected", variant)
             if (variant.imageId && this.item.images.length > 0) {
                 let index = this.item.images.findIndex(i => i._id == variant.imageId);
                 if (index == -1) index = 0;
                 this.visibleSlide = index;
                 this.image = this.item.images[index];
+                console.log("after variant image selected", image)
             } else if (this.item.images.length > 0) {
-                this.visibleSlide = 0;
+                this.visibleSlide = 0
                 this.image = this.item.images[0];
             }
-            // Check out of stock
+            // Check outof stock
             if (!this.item.outStock.disabled && this.variant.quantity.instock <= 0) {
                 this.outofstock = true;
             } else {
@@ -235,7 +240,26 @@ export default {
                 content_type: "product",
                 value: this.variant ? this.variant.price.salePrice : this.item.price.salePrice,
                 currency: this.$store.state.currency && this.$store.state.currency.code ? this.$store.state.currency.code : "USD"
-            });
+            })
+        },
+        variantSelected(variant) {
+            this.variant = variant;
+            if (!this.item.outStock.disabled && this.variant.quantity.instock <= 0) {
+                this.outofstock = true;
+            } else {
+                this.outofstock = false;
+            }
+            this.quantitySelected(this.item.quantity.value);
+        },
+        quantitySelected(quantity) {
+            this.item.quantity.value = quantity;
+            if (this.variant) {
+                this.price.salePrice = this.variant.price.salePrice * quantity;
+                this.price.comparePrice = this.variant.price.comparePrice * quantity;
+            } else {
+                this.price.salePrice = this.item.price.salePrice * quantity;
+                this.price.comparePrice = this.item.price.comparePrice * quantity;
+            }
         },
         addToWishlist() {
             this.$tools.call('ADD_TO_WISHLIST', this.item);

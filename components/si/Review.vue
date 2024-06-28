@@ -1,6 +1,6 @@
 <template>
 
-    <div class="flex flex-col justify-between items-center p-4 overflow-hidden bg-white border border-black rounded-sm h-64">
+    <div class="flex flex-col justify-between items-center p-4 overflow-hidden bg-white border border-black rounded-md h-64">
 
 
         <!-- Rating stars -->

@@ -57,15 +57,6 @@
                         <div
                             class="flex items-center justify-between transition-all ease-in-out delay-150 cursor-pointer lg:cursor-auto">
                             <h4 class="ml-font-bold text-sml">{{ menus.menu1_title }}</h4>
-                            <!-- <span class="lg:hidden"
-                                :class="[isVisible.Menu1 ? 'rotate-45 transition-all delay-150 ease-linear' : '']">
-                                <svg aria-label="chivron icon" width="20" height="20" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z"
-                                        fill="currentColor"></path>
-                                </svg>
-                            </span> -->
                         </div>
                         <!-- Header Menu -->
                         <transition name="slide">
@@ -113,15 +104,6 @@
                         <div
                             class="flex items-center justify-between transition-all ease-in-out delay-150 cursor-pointer lg:cursor-auto">
                             <h4 class="ml-font-bold text-sml">{{ menus.menu2_title }}</h4>
-                            <!-- <span class="lg:hidden"
-                                :class="[isVisible.Menu2 ? 'rotate-45 transition-all delay-150 ease-linear' : '']">
-                                <svg aria-label="chivron icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z"
-                                        fill="currentColor"></path>
-                                </svg>
-                            </span> -->
                         </div>
                         <!-- Header Menu -->
                         <transition name="slide">
@@ -192,16 +174,7 @@
                                                     </div>
                                                     <div class="text-sml mx-2">{{ item.text }}</div>
                                                 </div>
-                                                <!-- <span class="flex justify-center w-5 lg:justify-end"
-                                                    >
-                                                    <svg aria-label="chivron icon" width="12" height="7"
-                                                        
-                                                        viewBox="0 0 12 7" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M11.39.6a.54.54 0 00-.78 0L6 5.21 1.39.6a.54.54 0 00-.78 0 .55.55 0 000 .77L6 6.76l5.39-5.39a.55.55 0 000-.77z"
-                                                            fill="currentColor"></path>
-                                                    </svg>
-                                                </span> -->
+                                                
                                             </div>
                                         </div>
                                         <transition name="slide">
@@ -338,13 +311,13 @@
                     </div>
 
                     <!--  Social Media -->
-                    <div class="lg:w-1/3 w-1/2 px-5 py-6 mt-0 Social_Media lg:mt-4 lg:py-0 lg:px-0 ">
+                    <div class="lg:w-1/3 w-full px-5 py-6 mt-0 Social_Media lg:mt-4 lg:py-0 lg:px-0 ">
                         <!-- <div
                             class="flex lg:items-center items-start justify-between transition-all ease-in-out delay-150 cursor-pointer lg:cursor-auto">
                         </div> -->
                         <transition name="slide">
                             <div>
-                                <div class="flex lg:flex-wrap lg:flex-row flex-col lg:items-center items-start justify-end">
+                                <div class="flex flex-wrap flex-row lg:items-center items-start lg:justify-end justify-start">
                                     <div v-for="item in socialMedia.filter(s => $settings.sections.footer.social_media[s.name])"
                                         :key="item.name" class="flex items-center justify-center mt-4 ml-mr-4">
                                         <a class="flex h-full footer-text"

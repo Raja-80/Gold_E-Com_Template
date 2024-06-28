@@ -13,8 +13,8 @@
         
 
             <div class="w-full">
-                <carousel :perPage="3" :navigationEnabled="true">
-                <slide v-for="(item, index) in items" :key="index">
+                <carousel :perPage="4" :navigationEnabled="true" :paginationEnabled="false" :autoplay="true">
+                <slide v-for="(item, index) in reviews.results" :key="index" class="mx-1">
                     <review :item="item"></review>
                 </slide>
             </carousel>
@@ -26,11 +26,11 @@
 </template>
 
 <script>
-import review from '~/components/si/review.vue';
+import Review from '~/components/si/Review.vue';
 
 export default {
     components: {
-        review,
+        Review,
     },
     data() {
         return {
