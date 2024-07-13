@@ -7,26 +7,29 @@
         <!-- Loader -->
         <!-- Sub Collections -->
         <div>
-            <div v-if="subCollections.length>0" class="flex flex-wrap">
-                <div v-for="(item,i) in subCollections" :key="i" class="w-full collections lg:w-1/2">
-                    <si-collection :item="item"  page="collections"></si-collection>
+            <div v-if="subCollections.length > 0" class="flex flex-wrap justify-center mx-1 xl:mx-5">
+                <div v-for="(item, i) in subCollections" :key="i" class="w-full px-4 mb-4 collections lg:w-1/3 md:w-1/2 sm:w-full xl:px-5">
+                    <si-collection :item="item" page="collections"></si-collection>
                 </div>
             </div>
         </div>
+
         <!-- Sub Collections -->
+
         <!-- One Blog -->
         <div v-if="posts.length > 0" class="px-3 pb-16 mt-16 lg:px-7 lg:pb-20">
             <div class="">
-                <h2 class="text-base text-center ml-font-bold">{{ $settings.sections.posts.title  }}</h2>
+                <h2 class="text-base text-center ml-font-bold">{{ $settings.sections.posts.title }}</h2>
             </div>
             <div class="flex flex-wrap">
-                <div v-for="(item, i) in posts.slice(0,1)" :key="i" class="w-full mt-8 lg:mt-4">
+                <div v-for="(item, i) in posts.slice(0, 1)" :key="i" class="w-full mt-8 lg:mt-4">
                     <si-post :item="item" page="collections"></si-post>
                 </div>
             </div>
 
         </div>
         <!-- One Blog -->
+         
     </div>
 </template>
 

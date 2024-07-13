@@ -13,7 +13,7 @@
             <div class="flex flex-col items-center">
                 <h2 class="w-full mb-3 text-lg text-center">{{ $settings.sections.cart.empty_text }}</h2>
                 <nuxt-link to="/shop" class="flex items-center justify-center px-4 py-2 border rounded-full border-primary">
-                    <span class="w-full text-sml ml-font-bold-hover">{{ $settings.sections.cart.buttons.back_to_shop_text }}</span>
+                    <span class="w-full text-sml hover:font-semibold">{{ $settings.sections.cart.buttons.back_to_shop_text }}</span>
                 </nuxt-link>
             </div>
         </div>
@@ -57,12 +57,12 @@
                         </div>
                         <!--  -->
                         <div class="flex flex-col">
-                            <div class="flex items-center justify-center p-4 border rounded-full cursor-pointer border-primary ml-font-bold-hover">
+                            <div class="flex items-center justify-center p-4 border rounded-full cursor-pointer border-primary hover:font-semibold">
                                 <a href="/checkout2">
                                     <span class="text-sml">{{ $settings.sections.cart.buttons.checkout_text }}</span>
                                 </a>
                             </div>
-                            <div v-if="$settings.sections.cart.buttons.show_back_to_shop" class="flex items-center justify-center p-4 mt-5 border rounded-full cursor-pointer border-primary ml-font-bold-hover">
+                            <div v-if="$settings.sections.cart.buttons.show_back_to_shop" class="flex items-center justify-center p-4 mt-5 border rounded-full cursor-pointer border-primary hover:font-semibold">
                                 <nuxt-link to="/shop">
                                     <span class="text-sml">{{ $settings.sections.cart.buttons.back_to_shop_text }}</span>
                                 </nuxt-link>

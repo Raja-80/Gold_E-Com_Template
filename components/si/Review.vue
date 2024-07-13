@@ -19,7 +19,7 @@
             </template>
         </div>
 
-        <div class=" font-light text-gray-500 leading-loose text-sm text-center h-3/5">
+        <div class=" font-light text-gray-500 leading-loose text-sm text-center text-ellipsis h-3/5">
             {{ item.content }}
         </div>
 

@@ -9,49 +9,55 @@
         <div v-else class="nuxt_page">
             <!--  -->
             <div class="fixed top-0 right-0 z-50" v-if="$settings.store_maintenance_unlocked">
-                <div class="bg-blue-500 p-2 cursor-pointer opacity-70 hover:opacity-100 transition-all" @click="closeStore()">
-                    <svg class="text-white w-6 h-6" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none">
-                        <path d="M6 10V8C6 7.65929 6.0284 7.32521 6.08296 7M18 10V8C18 4.68629 15.3137 2 12 2C10.208 2 8.59942 2.78563 7.5 4.03126" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                        <path d="M11 22H8C5.17157 22 3.75736 22 2.87868 21.1213C2 20.2426 2 18.8284 2 16C2 13.1716 2 11.7574 2.87868 10.8787C3.75736 10 5.17157 10 8 10H16C18.8284 10 20.2426 10 21.1213 10.8787C22 11.7574 22 13.1716 22 16C22 18.8284 22 20.2426 21.1213 21.1213C20.2426 22 18.8284 22 16 22H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <div class="bg-blue-500 p-2 cursor-pointer opacity-70 hover:opacity-100 transition-all"
+                    @click="closeStore()">
+                    <svg class="text-white w-6 h-6" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                        viewBox="0 0 24 24" fill="none">
+                        <path
+                            d="M6 10V8C6 7.65929 6.0284 7.32521 6.08296 7M18 10V8C18 4.68629 15.3137 2 12 2C10.208 2 8.59942 2.78563 7.5 4.03126"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        <path
+                            d="M11 22H8C5.17157 22 3.75736 22 2.87868 21.1213C2 20.2426 2 18.8284 2 16C2 13.1716 2 11.7574 2.87868 10.8787C3.75736 10 5.17157 10 8 10H16C18.8284 10 20.2426 10 21.1213 10.8787C22 11.7574 22 13.1716 22 16C22 18.8284 22 20.2426 21.1213 21.1213C20.2426 22 18.8284 22 16 22H15"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                     </svg>
                 </div>
             </div>
             <!--  -->
             <component :is="'style'">
-                :root{  --primary-rgb: {{ rgb.r }}, {{ rgb.g }}, {{ rgb.b }}; 
-                        --primary-color: rgb(var(--primary-rgb)); 
-                        --text-rgb: {{ text_rgb.r }}, {{ text_rgb.g }}, {{ text_rgb.b }}; 
-                        --text-color: rgb(var(--text-rgb));   
-                        --header-rgb: {{ header_rgb.r }}, {{ header_rgb.g }}, {{header_rgb.b }}; 
-                        --header-color: rgb(var(--header-rgb));
-                        --header-text-rgb: {{ header_text.r }}, {{ header_text.g }}, {{ header_text.b }}; 
-                        --header-text: rgb(var(--header-text-rgb)); 
-                        --footer-rgb: {{ footer_rgb.r }}, {{ footer_rgb.g }}, {{footer_rgb.b }}; 
-                        --footer-color: rgb(var(--footer-rgb)); 
-                        --footer-text-rgb: {{ footer_text.r }}, {{ footer_text.g }}, {{ footer_text.b }}; 
-                        --footer-text: rgb(var(--footer-text-rgb));
-                        --copyright-rgb: {{ copyright_rgb.r }}, {{ copyright_rgb.g }}, {{copyright_rgb.b }}; 
-                        --copyright-color: rgb(var(--copyright-rgb)); 
-                        --copyright-text-rgb: {{ copyright_text.r }}, {{ copyright_text.g }}, {{ copyright_text.b }}; 
-                        --copyright-text: rgb(var(--copyright-text-rgb)); 
+                :root{ --primary-rgb: {{ rgb.r }}, {{ rgb.g }}, {{ rgb.b }};
+                --primary-color: rgb(var(--primary-rgb));
+                --text-rgb: {{ text_rgb.r }}, {{ text_rgb.g }}, {{ text_rgb.b }};
+                --text-color: rgb(var(--text-rgb));
+                --header-rgb: {{ header_rgb.r }}, {{ header_rgb.g }}, {{ header_rgb.b }};
+                --header-color: rgb(var(--header-rgb));
+                --header-text-rgb: {{ header_text.r }}, {{ header_text.g }}, {{ header_text.b }};
+                --header-text: rgb(var(--header-text-rgb));
+                --footer-rgb: {{ footer_rgb.r }}, {{ footer_rgb.g }}, {{ footer_rgb.b }};
+                --footer-color: rgb(var(--footer-rgb));
+                --footer-text-rgb: {{ footer_text.r }}, {{ footer_text.g }}, {{ footer_text.b }};
+                --footer-text: rgb(var(--footer-text-rgb));
+                --copyright-rgb: {{ copyright_rgb.r }}, {{ copyright_rgb.g }}, {{ copyright_rgb.b }};
+                --copyright-color: rgb(var(--copyright-rgb));
+                --copyright-text-rgb: {{ copyright_text.r }}, {{ copyright_text.g }}, {{ copyright_text.b }};
+                --copyright-text: rgb(var(--copyright-text-rgb));
                 }
                 .bg-primary { background-color: var(--primary-color); }
                 .bg-text-primary { color: var(--primary-color); }
                 .border-primary { border-color: var(--primary-color); }
                 .text-primary { color: var(--text-color); }
                 .primary-hover {
-                    transition: color .1.5s ease-in-out;
+                transition: color .1.5s ease-in-out;
                 }
                 .primary-hover:hover {
-                    color: var(--text-color);
-                    border-color: var(--text-color);
+                color: var(--text-color);
+                border-color: var(--text-color);
                 }
-                .header-color { background-color: var(--header-color); } 
-                .header-text { color: var(--header-text); } 
-                .footer-color { background-color: var(--footer-color); } 
-                .footer-text { color: var(--footer-text); } 
-                .copyright-color { background-color: var(--copyright-color); } 
-                .copyright-text { color: var(--copyright-text); } 
+                .header-color { background-color: var(--header-color); }
+                .header-text { color: var(--header-text); }
+                .footer-color { background-color: var(--footer-color); }
+                .footer-text { color: var(--footer-text); }
+                .copyright-color { background-color: var(--copyright-color); }
+                .copyright-text { color: var(--copyright-text); }
             </component>
             <sections-header-top></sections-header-top>
             <sections-header></sections-header>
@@ -97,12 +103,12 @@ export default {
                 { rel: "dns-prefetch", href: 'https://storeno.b-cdn.net/stores/' },
                 { rel: 'preconnect', href: 'https://connect.facebook.net', crossorigin: "anonymous" },
                 { rel: 'preload', href: 'https://connect.facebook.net/en_US/fbevents.js', as: 'script' }
-            ], 
+            ],
             script: [
                 {
-                  src: 'https://umami.storeino.world/script.js',
-                  'data-website-id': this.$settings.analitycs_shere && this.$settings.analitycs_shere[0]['data-website-id'],
-                  rel: "defer"
+                    src: 'https://umami.storeino.world/script.js',
+                    'data-website-id': this.$settings.analitycs_shere && this.$settings.analitycs_shere[0]['data-website-id'],
+                    rel: "defer"
                 }
             ],
             htmlAttrs: {
@@ -117,6 +123,7 @@ export default {
             text_rgb: { r: 0, g: 130, b: 70 },
             header_rgb: { r: 0, g: 130, b: 70 },
             header_text: { r: 0, g: 130, b: 70 },
+            /* banner_text: { r: 0, g: 130, b: 70 }, */
             footer_rgb: { r: 0, g: 130, b: 70 },
             footer_text: { r: 0, g: 130, b: 70 },
             copyright_rgb: { r: 0, g: 130, b: 70 },
@@ -135,6 +142,7 @@ export default {
         this.text_rgb = this.$tools.hexToRgb(this.$settings.style.primary.primary_text);
         this.header_rgb = this.$tools.hexToRgb(this.$settings.style.header.header_color);
         this.header_text = this.$tools.hexToRgb(this.$settings.style.header.header_text);
+        /* this.banner_text = this.$tools.hexToRgb(this.$settings.style.banner.banner_text); */
         this.footer_rgb = this.$tools.hexToRgb(this.$settings.style.footer.footer_color);
         this.footer_text = this.$tools.hexToRgb(this.$settings.style.footer.footer_text);
         this.copyright_rgb = this.$tools.hexToRgb(this.$settings.style.copyright.copyright_color);
@@ -151,5 +159,3 @@ export default {
     }
 }
 </script>
-
-

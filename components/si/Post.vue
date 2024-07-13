@@ -12,7 +12,7 @@
                 <div class="flex flex-col items-center justify-center ">
                     <h3 class="text-base text-center ml-font-bold">{{ item.title }}</h3>
                     <p class="mt-2 text-center text-sml ">{{ item.excerpt }}</p>
-                    <nuxt-link class="flex items-center justify-center h-12 px-12 mt-4 transition-all ease-linear delay-75 border rounded-full border-primary ml-font-bold-hover" :to="`/posts/${item.slug}`"  :aria-label="item.title">
+                    <nuxt-link class="flex items-center justify-center h-12 px-12 mt-4 transition-all ease-linear delay-75 border rounded-full border-primary hover:font-semibold" :to="`/posts/${item.slug}`"  :aria-label="item.title">
                         <span class="text-sml">{{ $settings.sections.posts.button.text }}</span>
                     </nuxt-link>
                 </div>
@@ -38,7 +38,7 @@
                     </nuxt-link>
                 </div>
                 <div class="mt-3">
-                    <nuxt-link class="flex items-center justify-center h-12 px-12 border rounded-full ml-font-bold-hover w-max border-primary" :to="`/posts/${item.slug}`"  :aria-label="item.title">
+                    <nuxt-link class="flex items-center justify-center h-12 px-12 border rounded-full hover:font-semibold w-max border-primary" :to="`/posts/${item.slug}`"  :aria-label="item.title">
                         <span class="text-sml ">{{ $settings.sections.posts.button.text }}</span>
                     </nuxt-link>
                 </div>

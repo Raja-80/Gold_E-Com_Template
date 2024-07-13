@@ -8,18 +8,21 @@
       </div>
     </div>
     <!-- loader -->
+
     <!--related post -->
-    <div class="flex flex-wrap mx-1 xl:mx-5">
-      <div v-for="(item, i) in items" :key="i" class="w-full px-4 mb-5 lg:w-1/2 xl:px-5 lg:mb-10">
+    <div class="flex flex-wrap justify-center mx-1 xl:mx-5">
+      <div v-for="(item, i) in items" :key="i" class="w-full px-4 mb-5 lg:w-1/3 md:w-1/2 sm:w-full xl:px-5">
         <si-post :item="item"></si-post>
       </div>
     </div>
     <!-- related post -->
+
     <div class="flex justify-center" v-if="$settings.sections.posts.show_more_text">
-      <nuxt-link class="flex items-center justify-center h-12 px-12 transition-all ease-linear delay-75 border rounded-full border-primary ml-font-bold-hover" to="/blog">
+      <nuxt-link class="flex items-center justify-center h-12 px-12 transition-all ease-linear delay-75 border rounded-full border-primary hover:font-semibold" to="/blog">
             <span class="text-sml">{{ $settings.sections.posts.show_more_text}}</span>
         </nuxt-link>
     </div>
+
     <!--  -->
   </div>
 </template>

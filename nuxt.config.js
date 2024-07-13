@@ -1,13 +1,10 @@
-const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const purgeCss = require("@fullhuman/postcss-purgecss");
-const TerserPlugin = require("terser-webpack-plugin");
-const cssNano = require("cssnano");
-
+// import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+// import TerserPlugin  from 'terser-webpack-plugin';
+// import purgeCss  from '@fullhuman/postcss-purgecss';
+// import cssNano  from 'cssnano';
 export default {
   head: {
-    title: "lux-theme",
+    title: "gazelle-theme",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -15,7 +12,6 @@ export default {
     ],
     link: [],
   },
-  mode: "universal",
   target: "server",
   css: [
     "~/assets/css/icons.css",
@@ -28,172 +24,48 @@ export default {
     "~/plugins/storeino.js",
     "~/plugins/init.js",
     "~/plugins/events.js",
-    { src: '~/plugins/vue-carousel.js', mode: 'client' }
+    { src: '~/plugins/carousel.js', mode: 'client'}
   ],
   components: true,
   buildModules: [
-    "@nuxtjs/google-fonts",
-    "@nuxtjs/tailwindcss",
-    "nuxt-purgecss",
-    "@nuxtjs/pwa",
+    "@nuxtjs/google-fonts"
+  ],
+  components: true,
+  buildModules: [
+    '@nuxtjs/google-fonts'
+  ],
+  modules: [
+    '@nuxtjs/sentry',
+    '@nuxt/image',
+    '@nuxtjs/axios'
   ],
   googleFonts: {
-    display: "swap",
+    display: 'swap',
     prefetch: true,
     preconnect: true,
     useStylesheet: true,
     families: {
-      Almarai: [400],
-      Tajawal: [400],
-      "Playfair+Display": [400],
-      Sora: [400],
-      Poppins: [400],
-      Amiri: [400],
-      Cairo: [400],
-      "Readex+Pro": [400],
-      Oswald: [400],
-    },
+      Inter: [200, 300, 400, 500, 600, 700, 800, 900],
+    }
   },
-  purgeCSS: {
-    enabled: true,
-    paths: [
-      "components/**/*.vue",
-      "layouts/**/*.vue",
-      "pages/**/*.vue",
-      "plugins/**/*.js",
-      "server/**/*.js",
-      "store/**/*.js",
-      "nuxt.config.js",
-    ],
-    styleExtensions: [".css"],
-    whitelist: ["body", "html", "nuxt-progress"],
-    extractors: [
-      {
-        extractor: (content) => content.match(/[A-z0-9-:\\/]+/g) || [],
-        extensions: ["html", "vue", "js"],
-      },
-    ],
-  },
-  workbox: {
-    runtimeCaching: [
-      {
-        urlPattern: "https://fonts.googleapis.com/.*",
-        handler: "staleWhileRevalidate",
-      },
-    ],
-  },
-  pwa: {
-    icon: false,
-    manifest: {
-      lang: "en",
-    },
-  },
-  modules: [
-    "@nuxtjs/sentry",
-    "@nuxt/image",
-    "@nuxtjs/axios",
-    "nuxt-compress",
-    "nuxt-ssr-cache",
-  ],
+
   sentry: {
-    dsn: "https://a3d9f22ad105e362a240b918370270b2@logs.storeino.com/10",
+    dsn: '',
     config: {
-      debug: true,
+      debug: true
     },
     clientConfig: {
-      dsn: "https://a3d9f22ad105e362a240b918370270b2@logs.storeino.com/10",
-    },
+      dsn: ''
+    }
   },
   axios: {},
-  "nuxt-compress": {
-    gzip: {
-      threshold: 8192,
-    },
-    brotli: {
-      threshold: 8192,
-    },
-  },
-  cache: {
-    useHostPrefix: true,
-    pages: ["/"],
-    store: {
-      type: "memory",
-      max: 100,
-      ttl: 60,
-    },
-  },
-  serverMiddleware: ["~/server/index"],
+
+  serverMiddleware: ['~/server/index'],
   server: {
     port: 3000,
-    host: "0.0.0.0",
+    host: '0.0.0.0'
   },
   build: {
-    terser: true,
-    optimizeCSS: true,
-    treeShaking: true,
-    splitChunks: {
-      layouts: true,
-      pages: true,
-      commons: true,
-    },
-    postcss: {
-      postcssOptions: {
-        plugins: [
-          require("tailwindcss"),
-          require("autoprefixer"),
-          cssNano({
-            preset: "default",
-          }),
-          purgeCss({
-            enabled: true,
-            content: [
-              "./components/**/*.vue",
-              "./layouts/**/*.vue",
-              "./pages/**/*.vue",
-              "./plugins/**/*.js",
-              "./server/**/*.js",
-              "./store/**/*.js",
-              "./nuxt.config.js",
-            ],
-            safelist: ["html", "body"],
-            defaultExtractor: (content) =>
-              content.match(/[\w-/:]+(?<!:)/g) || [],
-          }),
-        ],
-      },
-    },
-    optimization: {
-      splitChunks: {
-        chunks: "all",
-        name: false,
-        cacheGroups: {
-          tailwindConfig: {
-            test: /tailwind\.config/,
-            chunks: "all",
-            priority: 10,
-            name: true,
-          },
-        },
-      },
-      minimizer: [
-        new MiniCssExtractPlugin({
-          filename: "./assets/css/main.css",
-        }),
-        new FixStyleOnlyEntriesPlugin(),
-        new OptimizeCssAssetsPlugin({
-          assetNameRegExp: /\.css$/g,
-          cssProcessorPluginOptions: {
-            preset: ["default", { discardComments: { removeAll: true } }],
-          },
-        }),
-        new TerserPlugin({
-          terserOptions: {
-            compress: {
-              drop_console: true,
-            },
-          },
-        }),
-      ],
-    },
-  },
-};
+
+  }
+}

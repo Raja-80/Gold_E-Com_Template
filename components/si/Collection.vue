@@ -2,17 +2,17 @@
     <div class="m-2">
         <div v-if="page=='collections'">
             <nuxt-link  :to="item.childrens.length > 0 ? `/collections/${item.slug}` : `/shop/${item.slug}`">
-                <div class="text-black">
-                    <div class="relative overflow-hidden pb-col-collection-4/5">
+                <div class="text-black ">
+                    <div class="relative overflow-hidden pb-col-collection-4/5 image-container">
                         <div class="cursor-pointer">
                             <div class="image">
                                 <si-image  width="200" height="200" class="absolute inset-0 object-cover w-full h-full img" :src="item.image ? item.image.src : null" :alt="item.name" srcset=""/>
                             </div>
                         </div>
-                        <div class="absolute inset-20 flex items-end p-5 cursor-pointer lg:py-6 lg:px-10">
-                            <div class="content">
-                                <h1 class="text-base text-shadoow ml-font-bold">{{ item.name }}</h1>
-                                <!-- <span class="transition ease-in-out delay-100 text-sml text-shadoow">{{ item.description }}</span> -->
+                        <div class="absolute inset-0 flex items-end justify-center cursor-pointer pb-5">
+                            <div class="text-center content">
+                                <h1 class="text-xl text-center font-normal hover:underline text-black">{{ item.name }}</h1>
+                                
                             </div>
                         </div>
                     </div>
@@ -21,7 +21,7 @@
         </div>
         <div v-else> 
             <nuxt-link  :to="item.childrens.length > 0 ? `/collections/${item.slug}` : `/shop/${item.slug}`">
-                <div class="text-black font-normal hover:underline">
+                <div class="text-black ">
                     <div class="relative overflow-hidden pb-col-home-4/5 image-container">
                         <div class="cursor-pointer">
                             <div class="image">
@@ -30,8 +30,7 @@
                         </div>
                         <div class="absolute inset-0 flex items-end justify-center cursor-pointer pb-5">
                             <div class="text-center content">
-                                <h1 class="text-xl text-center text-black">{{ item.name }}</h1>
-                                <!-- <span class="underline transition ease-in-out delay-100 opacity-100 text-active lg:opacity-0 text-sml">{{ $settings.sections.collections.description }}</span> -->
+                                <h1 class="text-xl text-center font-normal hover:underline text-black">{{ item.name }}</h1>
                             </div>
                         </div>
                     </div>

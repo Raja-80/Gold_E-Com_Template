@@ -1,5 +1,5 @@
 {
-  "name": "lux-theme",
+  "name": "golds-theme",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -27,17 +27,15 @@
     "@nuxt/image": "^0.7.1",
     "@nuxtjs/google-fonts": "^3.0.2",
     "@nuxtjs/pwa": "^3.3.5",
-    "@nuxtjs/tailwindcss": "^4.2.0",
+    "autoprefixer": "^10.4.19",
     "cssnano": "^6.0.1",
     "eslint": "^8.49.0",
     "eslint-plugin-nuxt": "^4.0.0",
-    "eslint-plugin-vue": "^9.17.0",
-    "mini-css-extract-plugin": "^1.6.2",
     "nuxt-compress": "^5.0.0",
     "nuxt-purgecss": "^1.0.0",
     "optimize-css-assets-webpack-plugin": "^6.0.1",
-    "postcss": "^8.4.29",
-    "terser-webpack-plugin": "^4.2.3",
-    "webpack-fix-style-only-entries": "^0.6.1"
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
+    "terser-webpack-plugin": "^4.2.3"
   }
 }

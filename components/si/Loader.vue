@@ -1,172 +1,114 @@
 <template>
-  <div>
-    <svg aria-label="loader icon" width="150" height="150" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"
-      class="circle-loader">
-      <!-- Background circle with transparent fill -->
-      <circle cx="50" cy="50" r="30" fill="transparent" stroke="none" stroke-width="2" />
-
-      <!-- Gradients definitions -->
-      <defs>
-        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color: var(--primary-color); stop-opacity: 1" />
-          <stop offset="100%" style="stop-color: var(--primary-color); stop-opacity: 0" />
-        </linearGradient>
-        <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color: var(--secondary-color); stop-opacity: 1" />
-          <stop offset="100%" style="stop-color: var(--secondary-color); stop-opacity: 0" />
-        </linearGradient>
-        <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color: var(--tertiary-color); stop-opacity: 1" />
-          <stop offset="100%" style="stop-color: var(--tertiary-color); stop-opacity: 0" />
-        </linearGradient>
-      </defs>
-
-      <!-- Three arc parts -->
-      <path ref="arc1" stroke="url(#grad1)" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"
-        stroke-miterlimit="10" />
-      <path ref="arc2" stroke="url(#grad2)" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"
-        stroke-miterlimit="10" />
-      <path ref="arc3" stroke="url(#grad3)" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"
-        stroke-miterlimit="10" />
-    </svg>
-  </div>
+  <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div></div>
 </template>
-
-<script>
-export default {
-  data() {
-    return {
-      arcPaths: [
-        { angleStart: 0, angleEnd: 120 },
-        { angleStart: 120, angleEnd: 240 },
-        { angleStart: 240, angleEnd: 360 }
-      ]
-    };
-  },
-  mounted() {
-    this.initializePaths();
-  },
-  methods: {
-    initializePaths() {
-      this.arcPaths.forEach((path, index) => {
-        const pathElement = this.$refs[`arc${index + 1}`];
-        pathElement.setAttribute('d', this.describeArc(50, 50, 30, path.angleStart, path.angleEnd));
-        pathElement.style.animation = `rotate-${index + 1} 2s linear infinite`;
-      });
-    },
-    describeArc(x, y, radius, startAngle, endAngle) {
-      const start = this.polarToCartesian(x, y, radius, endAngle);
-      const end = this.polarToCartesian(x, y, radius, startAngle);
-
-      const arcSweep = endAngle - startAngle <= 180 ? "0" : "1";
-
-      const d = [
-        "M", start.x, start.y,
-        "A", radius, radius, 0, arcSweep, 0, end.x, end.y
-      ].join(" ");
-
-      return d;
-    },
-    polarToCartesian(centerX, centerY, radius, angleInDegrees) {
-      const angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
-
-      return {
-        x: centerX + (radius * Math.cos(angleInRadians)),
-        y: centerY + (radius * Math.sin(angleInRadians))
-      };
-    }
-  }
-};
-</script>
-
-<style scoped>
-.circle-loader {
-  animation: rotate 2s linear infinite;
+<style>
+  .lds-roller {
+display: inline-block;
+position: relative;
+width: 70px;
+height: 70px;
 }
-
-@keyframes rotate-1 {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
+.lds-roller div {
+animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+transform-origin: 40px 40px;
 }
-
-@keyframes rotate-2 {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
+.lds-roller div:after {
+content: " ";
+display: block;
+position: absolute;
+width: 6px;
+height: 6px;
+border-radius: 50%;
+background: rgb(129, 126, 126);
+margin: -4px 0 0 -4px;
 }
-
-@keyframes rotate-3 {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
+.lds-roller div:nth-child(1) {
+animation-delay: -0.036s;
+}
+.lds-roller div:nth-child(1):after {
+top: 63px;
+left: 63px;
+}
+.lds-roller div:nth-child(2) {
+animation-delay: -0.072s;
+}
+.lds-roller div:nth-child(2):after {
+top: 68px;
+left: 56px;
+}
+.lds-roller div:nth-child(3) {
+animation-delay: -0.108s;
+}
+.lds-roller div:nth-child(3):after {
+top: 71px;
+left: 48px;
+}
+.lds-roller div:nth-child(4) {
+animation-delay: -0.144s;
+}
+.lds-roller div:nth-child(4):after {
+top: 72px;
+left: 40px;
+}
+.lds-roller div:nth-child(5) {
+animation-delay: -0.18s;
+}
+.lds-roller div:nth-child(5):after {
+top: 71px;
+left: 32px;
+}
+.lds-roller div:nth-child(6) {
+animation-delay: -0.216s;
+}
+.lds-roller div:nth-child(6):after {
+top: 68px;
+left: 24px;
+}
+.lds-roller div:nth-child(7) {
+animation-delay: -0.252s;
+}
+.lds-roller div:nth-child(7):after {
+top: 63px;
+left: 17px;
+}
+.lds-roller div:nth-child(8) {
+animation-delay: -0.288s;
+}
+.lds-roller div:nth-child(8):after {
+top: 56px;
+left: 12px;
+}
+@keyframes lds-roller {
+0% {
+  transform: rotate(0deg);
+}
+100% {
+  transform: rotate(360deg);
+}
 }
 </style>
 
-
-
-
-
 <!-- <template>
   <div>
-    <svg aria-label="loader icon" width="200" height="100" viewBox="0 0 187.3 93.7" preserveAspectRatio="xMidYMid meet" class="infinite-loader">
-      <path stroke="var(--primary-color)" id="outline" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1 				c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z" />
-      <path stroke="var(--primary-color)" id="outline-bg" opacity="0.05" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1 				c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z" />
+    <svg width="100" height="100" viewBox="0 0 100 100" class="sigma-loader">
+      <text x="50" y="50" text-anchor="middle" dominant-baseline="central" font-size="60" fill="var(--primary-color)">
+        Σ
+      </text>
     </svg>
   </div>
 </template>
 
 <style scoped>
-#outline {
-  stroke-dasharray: 2.42777px, 242.77666px;
-  stroke-dashoffset: 0;
-  -webkit-animation: anim 1s linear infinite;
-  animation: anim 1s linear infinite;
+.sigma-loader {
+  animation: spin 2s linear infinite;
 }
 
-@-webkit-keyframes anim {
-  12.5% {
-    stroke-dasharray: 33.98873px, 242.77666px;
-    stroke-dashoffset: -26.70543px;
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-
-  43.75% {
-    stroke-dasharray: 84.97183px, 242.77666px;
-    stroke-dashoffset: -84.97183px;
-  }
-
   100% {
-    stroke-dasharray: 2.42777px, 242.77666px;
-    stroke-dashoffset: -240.34889px;
-  }
-}
-
-@keyframes anim {
-  12.5% {
-    stroke-dasharray: 33.98873px, 242.77666px;
-    stroke-dashoffset: -26.70543px;
-  }
-
-  43.75% {
-    stroke-dasharray: 84.97183px, 242.77666px;
-    stroke-dashoffset: -84.97183px;
-  }
-
-  100% {
-    stroke-dasharray: 2.42777px, 242.77666px;
-    stroke-dashoffset: -240.34889px;
+    transform: rotate(360deg);
   }
 }
 </style>

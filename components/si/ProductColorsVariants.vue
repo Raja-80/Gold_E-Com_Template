@@ -1,8 +1,6 @@
 <template>
     <div class="options">
-        <div v-for="(option, i) in options" :key="i" :class="option.key" class="mt-3 ">
-            <!-- <b class="flex mb-2 capitalize option-name">{{ option.name }}</b> -->
-            <!--  -->
+        <div v-for="(option, i) in relevantOption" :key="i" :class="option.key" class="mt-3 ">
             <div v-if="!option.hasOwnProperty('style') || option.style == '' || option.style == null || (option.style !== 'LIST' && option.style !== 'CHECK' && option.style !== 'CHECK2' && option.style !== 'RADIO' && option.style !== 'RADIO2') && (option.key !== 'color' && option.style == 'SIZE') || (option.key == 'color' && option.style == 'COLOR')"
                 class="options-list p-5">
                 <div v-for="(val, ii) in option.values" :key="ii" class="option mr-f-2">
@@ -14,7 +12,6 @@
                     </button>
                 </div>
             </div>
-            <!--  -->
 
             <!-- Size style for Color option -->
             <div v-if="option.key == 'color' && option.style == 'SIZE'" class="options-list">
@@ -192,6 +189,7 @@
     </div>
 </template>
 
+
 <script>
 export default {
     props: {
@@ -213,6 +211,15 @@ export default {
     async fetch() {
         await this.stylesOptions();
         await this.getImageStyle();
+    },
+    computed: {
+        relevantOption() {
+            let colorOption = this.options.find(option => option.key === 'color');
+            if (colorOption) {
+                return [colorOption];
+            }
+            return this.options.length ? [this.options[0]] : [];
+        }
     },
     methods: {
         checkOutOfStock(index, value) {
@@ -576,3 +583,197 @@ export default {
     object-fit: cover;
 }
 </style>
+
+<!-- <template>
+    <div class="options">
+        <div v-for="(option, i) in options" :key="i" :class="option.key" class="mt-3 ">
+            <b class="flex mb-2 capitalize option-name">{{ option.name }}</b>
+            
+            <div v-if="!option.hasOwnProperty('style') || option.style == '' || option.style == null || (option.style !== 'LIST' && option.style !== 'CHECK' && option.style !== 'CHECK2' && option.style !== 'RADIO' && option.style !== 'RADIO2') && (option.key !== 'color' && option.style == 'SIZE') || (option.key == 'color' && option.style == 'COLOR')"
+                class="options-list p-5">
+                <div v-for="(val, ii) in option.values" :key="ii" class="option mr-f-2">
+                    <button aria-label="colors button"
+                        :class="[(selected[`option${i + 1}`] && selected[`option${i + 1}`].value == val._id && checkOutOfStock(i + 1, val._id) ? 'active' : ''), (!checkOutOfStock(i + 1, val._id) ? 'cursor-not-allowed' : '')]"
+                        @click="checkOutOfStock(i + 1, val._id) ? setVariant(i + 1, val._id) : false" :id="val._id"
+                        :style="`${option.key == 'color' ? `background-color:${val.value2}` : ''}`">
+                        <small>{{ val.value1 }}</small>
+                    </button>
+                </div>
+            </div>
+            
+
+            Size style for Color option
+            <div v-if="option.key == 'color' && option.style == 'SIZE'" class="options-list">
+                <div v-for="(val, ii) in option.values" :key="ii" class="option mr-f-2">
+                    <button aria-label="sizes button" class="size-style "
+                        :class="selected[`option${i + 1}`] && selected[`option${i + 1}`].value == val._id ? 'active' : ''"
+                        @click="setVariant(i + 1, val._id)" :id="val._id" :style="``"><small>{{ val.value1
+                            }}</small></button>
+                </div>
+            </div>
+
+            list style for Color option
+            <div v-if="option.style == 'LIST' && option.key == 'color'" class="options-list">
+                <div class="select-list-option">
+                    <select class="select-list" v-model="listStyleColorValue" @change="changeVarColor($event)">
+                        <option class="option-of-select" v-for="(val, ii) in option.values" :key="ii"
+                            :value="{ index: i + 1, value: val._id }">{{ val.value1 }}</option>
+                    </select>
+                </div>
+            </div>
+
+            list style for size option
+            <div v-if="option.style == 'LIST' && option.key == 'size'" class="options-list">
+                <div class="select-list-option">
+                    <select class="select-list" v-model="listStyleSizeValue" @change="changeVarSize($event)">
+                        <option class="option-of-select" v-for="(val, ii) in option.values" :key="ii"
+                            :value="{ index: i + 1, value: val._id }">{{ val.value1 }}</option>
+                    </select>
+                </div>
+            </div>
+
+            list style for Other option
+            <div v-if="option.style == 'LIST' && option.key !== 'size' && option.key !== 'color'" class="options-list">
+                <div class="select-list-option">
+                    <select class="select-list" v-model="listStyleOtherOption" @change="changeVarOther($event)">
+                        <option class="option-of-select" v-for="(val, ii) in option.values" :key="ii"
+                            :value="{ index: i + 1, value: val._id }">{{ val.value1 }}</option>
+                    </select>
+                </div>
+            </div>
+
+            Checkbox style for color option
+            <div class="list-option"
+                v-if="(option.style == 'CHECK' || option.style == 'CHECK2') && option.key == 'color'">
+                <ul class="list-checkbox-colors" :class="option.style == 'CHECK2' ? 'list-checkbox-colors2' : ''">
+                    <li v-for="(value, vindex2) in option.values" :key="vindex2">
+                        <div class="content-check-style">
+                            <input
+                                :checked="selected[`option${i + 1}`] && selected[`option${i + 1}`].value == value._id"
+                                class="check-style" style="cursor:pointer;"
+                                @click="selectOneVarColor(vindex2 + 'check', option.values.length, value._id, i + 1)"
+                                name="color" :id="vindex2 + 'check'" type="checkbox">
+                            <span class="space-between"></span>
+                            <label style="cursor:pointer;" :for="vindex2 + 'check'">{{ value.value1 }}</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            Checkbox style for size option
+            <div class="list-option"
+                v-if="(option.style == 'CHECK' || option.style == 'CHECK2') && option.key == 'size'">
+                <ul class="list-checkbox-colors" :class="option.style == 'CHECK2' ? 'list-checkbox-colors2' : ''">
+                    <li v-for="(value, vindex2) in option.values" :key="vindex2">
+                        <div class="content-check-style">
+                            <input
+                                :checked="selected[`option${i + 1}`] && selected[`option${i + 1}`].value == value._id"
+                                class="check-style" style="cursor:pointer;"
+                                @click="selectOneVarSize(vindex2 + 'checksize', option.values.length, value._id, i + 1)"
+                                name="size" :id="vindex2 + 'checksize'" type="checkbox">
+                            <span class="space-between"></span>
+                            <label style="cursor:pointer;" :for="vindex2 + 'checksize'">{{ value.value1 }}</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            Checkbox style for size option
+            <div class="list-option"
+                v-if="(option.style == 'CHECK' || option.style == 'CHECK2') && option.key !== 'size' && option.key !== 'color'">
+                <ul class="list-checkbox-colors" :class="option.style == 'CHECK2' ? 'list-checkbox-colors2' : ''">
+                    <li v-for="(value, vindex2) in option.values" :key="vindex2">
+                        <div class="content-check-style">
+                            <input
+                                :checked="selected[`option${i + 1}`] && selected[`option${i + 1}`].value == value._id"
+                                class="check-style" style="cursor:pointer;"
+                                @click="selectOneVarOther(vindex2 + 'checkother', option.values.length, value._id, i + 1)"
+                                name="size" :id="vindex2 + 'checkother'" type="checkbox">
+                            <span class="space-between"></span>
+                            <label style="cursor:pointer;" :for="vindex2 + 'checkother'">{{ value.value1 }}</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            Radiobtn style for color option
+            <div class="list-option"
+                v-if="(option.style == 'RADIO' || option.style == 'RADIO2') && option.key == 'color'">
+                <ul class="list-radio" :class="option.style == 'RADIO2' ? 'list-radio2' : ''">
+                    <li v-for="(value, vindex2) in option.values" :key="vindex2">
+                        <div class="content-radio-style">
+                            <input class="radio-style" style="cursor:pointer;" name="color" :id="vindex2 + 'radiocolor'"
+                                :value="value._id"
+                                :checked="selected[`option${i + 1}`] && selected[`option${i + 1}`].value == value._id"
+                                @change="setVariant(i + 1, value._id)" type="radio">
+                            <span class="space-between"></span>
+                            <label style="cursor:pointer;" :for="vindex2 + 'radiocolor'">{{ value.value1 }}</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            Radiobtn style for size option
+            <div class="list-option"
+                v-if="(option.style == 'RADIO' || option.style == 'RADIO2') && option.key == 'size'">
+                <ul class="list-radio" :class="option.style == 'RADIO2' ? 'list-radio2' : ''">
+                    <li v-for="(value, vindex2) in option.values" :key="vindex2">
+                        <div class="content-radio-style">
+                            <input class="radio-style" style="cursor:pointer;" name="size" :id="vindex2 + 'radiosize'"
+                                :value="value._id"
+                                :checked="selected[`option${i + 1}`] && selected[`option${i + 1}`].value == value._id"
+                                @change="setVariant(i + 1, value._id)" type="radio">
+                            <span class="space-between"></span>
+                            <label style="cursor:pointer;" :for="vindex2 + 'radiosize'">{{ value.value1 }}</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            Radiobtn style for other option
+            <div class="list-option"
+                v-if="(option.style == 'RADIO' || option.style == 'RADIO2') && option.key !== 'size' && option.key !== 'color'">
+                <ul class="list-radio" :class="option.style == 'RADIO2' ? 'list-radio2' : ''">
+                    <li v-for="(value, vindex2) in option.values" :key="vindex2">
+                        <div class="content-radio-style">
+                            <input class="radio-style" style="cursor:pointer;" name="other" :id="vindex2 + 'radioother'"
+                                :value="value._id"
+                                :checked="selected[`option${i + 1}`] && selected[`option${i + 1}`].value == value._id"
+                                @change="setVariant(i + 1, value._id)" type="radio">
+                            <span class="space-between"></span>
+                            <label style="cursor:pointer;" :for="vindex2 + 'radioother'">{{ value.value1 }}</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="image-option-vr" v-if="option.style == 'IMAGE' && loadImages">
+                <div v-for="(value, vindex3) in option.values" :key="vindex3" class="vr-image-style">
+                    <div class="content-image-style">
+                        <span v-if="option.key !== 'color' && value.images && value.images.length == 0"
+                            :class="selected[`option${i + 1}`] && selected[`option${i + 1}`].value == value._id ? 'active' : ''"
+                            @click="setVariant(i + 1, value._id)" class="size-style-image syles-image">
+                            {{ value.value1 }}
+                        </span>
+                        <span v-if="option.key == 'color' && value.images && value.images.length == 0"
+                            @click="setVariant(i + 1, value._id)"
+                            :class="selected[`option${i + 1}`] && selected[`option${i + 1}`].value == value._id ? 'active' : ''"
+                            :style="{ 'background-color': value.value2 }" class="color-style-image syles-image">
+
+                        </span>
+                        <span
+                            :class="selected[`option${i + 1}`] && selected[`option${i + 1}`].value == value._id ? 'active' : ''"
+                            @click="setVariant(i + 1, value._id)" v-if="value.images && value.images.length > 0"
+                            class="image-style-image syles-image">
+                            <si-image :src="value.images[0].src + `?width=70&height=70`" />
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <si-product-price v-if="showPrice" class="flex px-1 text-2xl" :type="'simple'" :price="selected.price"
+            :variants="[]"></si-product-price>
+    </div>
+</template> -->

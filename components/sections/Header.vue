@@ -30,9 +30,9 @@
                             <!-- logo -->
                             <div class=" lg:w-1/6 w-1/3">
                                 <div class="w-full ">
-                                    <router-link class="" to="/">
+                                    <router-link class="flex justify-center w-full" to="/">
                                         <si-image width="60" height="60" property="height"
-                                            class="w-full lg:content-start content-center h-12 md:h-12 lg:h-14"
+                                            class="w-1/2 lg:content-start content-center h-14"
                                             :src="section.logo ? section.logo.src : 'https://storeno.b-cdn.net/stores/6-2024/1718120749011.png'"
                                             alt="Store logo" />
                                     </router-link>
@@ -40,7 +40,7 @@
                             </div>
                             <!-- logo -->
 
-                            <!-- NavBar -->
+                            <!-- NavBar Menu -->
                             <nav class="hidden lg:block lg:w-4/6 header-text">
                                 <div v-if="menu" class="items-center justify-center hidden lg:flex text-sml scroll">
                                     <ul v-for="(item, i) in menu.items" :key="i"
@@ -48,7 +48,7 @@
                                         @mouseleave="activeId = activeId = null">
                                         <!-- main child -->
                                         <li class="flex items-center py-5 chivron-box ml-mr-2">
-                                            <router-link :to="item.url" class="ml-font-bold-hover ml-mr-1"
+                                            <router-link :to="item.url" class=" hover:font-semibold ml-mr-1"
                                                 :class="item.childrens.length > 0 ? '' : 'ml-mr-2'">
                                                 <span class="truncate">{{ item.text }}</span>
                                             </router-link>
@@ -74,7 +74,7 @@
                                                         @mouseover="subItems = subItems = item.collectionId"
                                                         @mouseleave="subItems = subItems = null">
                                                         <div class="flex items-center py-5 chivron-box ml-mr-2">
-                                                            <router-link class="ml-font-bold-hover ml-mr-1"
+                                                            <router-link class="hover:font-semibold ml-mr-1"
                                                                 :to="item.url"
                                                                 :class="item.childrens.length > 0 ? '' : 'ml-mr-2'">
                                                                 <span class="truncate">{{ item.text }}</span>
@@ -100,7 +100,7 @@
                                                                     v-if="item.childrens && item.childrens.length > 0">
                                                                     <div class="mb-3"
                                                                         v-for="(child, ii) in item.childrens" :key="ii">
-                                                                        <nuxt-link class="ml-font-bold-hover"
+                                                                        <nuxt-link class="hover:font-semibold"
                                                                             :to="child.url">
                                                                             <span class="truncate">{{ child.text
                                                                                 }}</span>
@@ -117,7 +117,7 @@
                                     </ul>
                                 </div>
                             </nav>
-                            <!-- Nav Bar -->
+                            <!-- NavBar Menu -->
 
                             <!-- icons-->
                             <div class="w-1/3 lg:w-1/6 header-text">
@@ -397,12 +397,12 @@ input[type="search"]:focus::-webkit-search-cancel-button {
 }
 
 .header-height-no-menu {
-    height: 60.8px;
+    height: 62px;
 }
 
 @media (max-width: 1024px) {
     .header-height {
-        height: 60.8px;
+        height: 62px;
     }
 }
 

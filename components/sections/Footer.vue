@@ -163,7 +163,7 @@
                                             :class="item.childrens.length > 0 ? 'primary-hover cursor-pointer' : ''">
                                             <div class="flex items-center justify-between">
                                                 <div class="flex flex-row items-center justify-start">
-                                                    <div class="mr-8" v-if="item.childrens && item.childrens.length > 0"
+                                                    <div class="mr-8 rounded-full bg-black" v-if="item.childrens && item.childrens.length > 0"
                                                         :class="[active.Id3 == item._id ? 'rotate-0 transition-all delay-150 ease-linear' : '']">
                                                         <svg width="26" height="26" viewBox="0 0 24 24" fill="none"
                                                             xmlns="http://www.w3.org/2000/svg">
@@ -213,7 +213,7 @@
                                             :class="item.childrens.length > 0 ? 'primary-hover cursor-pointer' : ''">
                                             <div class="flex items-center justify-between">
                                                 <div class="flex flex-row items-center justify-start">
-                                                    <div class="mr-8" v-if="item.childrens && item.childrens.length > 0"
+                                                    <div class="mr-8 rounded-full bg-black" v-if="item.childrens && item.childrens.length > 0"
                                                         :class="[active.Id3 == item._id ? 'rotate-0 transition-all delay-150 ease-linear' : '']">
                                                         <svg fill="white" height="18" width="18" version="1.1"
                                                             id="Layer_1" xmlns="http://www.w3.org/2000/svg"
@@ -336,38 +336,6 @@
                     </div>
                     <!--  Social Media  -->
 
-                    <!-- payment_methods  -->
-                    <!-- <div class="px-3 py-6 payment_methods lg:py-0 lg:px-0"
-                            :class="$settings.sections.footer.icons.language || $settings.sections.footer.icons.currency ? 'lg:mt-8' : ''">
-                            <div 
-                                class="flex items-center justify-between transition-all ease-in-out delay-150 cursor-pointer lg:cursor-auto">
-                                <h4 class="ml-font-bold text-sml">{{ footer.methods.title }}</h4>
-                                <span class="lg:hidden"
-                                    :class="[isVisible.PaymentMethods ? 'rotate-45 transition-all delay-150 ease-linear' : '']">
-                                    <svg aria-label="chivron icon" width="20" height="20" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z"
-                                            fill="currentColor"></path>
-                                    </svg>
-                                </span>
-                            </div>
-                            <transition name="slide">
-                                <div class="lg:block" >
-                                    <div class="flex flex-wrap mt-4 payment_images">
-                                        <div class="flex mt-4 footer-text ml-mr-4"
-                                            v-for="item in methods.filter(m => $settings.sections.footer.methods[m.name])"
-                                            :key="item.name">
-                                            <svg aria-label="payements icons" class="opacity-90" width="40" height="40"
-                                                :viewBox="item.view" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path :d="item.image" fill="currentColor"></path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </transition>
-                        </div> -->
-                    <!-- payment_methods -->
                 </div>
                 <!-- courency and language dropdown  -->
 
@@ -403,7 +371,6 @@ export default {
             footer: this.$settings.sections.footer,
             year: new Date().getFullYear(),
             title: this.$settings.sections.footer.copyright.store_name,
-            description: this.$settings.sections.footer.copyright.text,
             methods: [
                 {
                     name: 'visa',

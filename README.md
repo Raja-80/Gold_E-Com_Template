@@ -1,4 +1,3 @@
-# lux-theme
 
 ## Build Setup
 

@@ -1,22 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   font-family: Bricolage-Grotesque, sans-serif;
   color: #000;
 }
 [dir="rtl"] body {
-  font-family: pingarlt, -apple-system, BlinkMacSystemFont;
+  font-family: Bricolage-Grotesque, sans-serif;
   font-weight: 300;
   color: #000;
 }
 [dir="ltr"] .ml-font-bold {
-  font-family: Century Gothic Std Bold, Noto Sans JP, Noto Sans SC, Noto Sans TC,
+  font-family: Bricolage-Grotesque, sans-serif,
     Noto Sans KR;
 }
 .ml-font-bold-hover {
   transition: all 0.3s ease;
 }
 [dir="ltr"] .ml-font-bold-hover:hover {
-  font-family: Century Gothic Std Bold, Noto Sans JP, Noto Sans SC, Noto Sans TC,
-    Noto Sans KR;
   transition: all 0.3s ease;
 }
 [dir="rtl"] .ml-font-bold {

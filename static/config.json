@@ -1,15 +1,38 @@
 {
   "team": {
-    "_id": "5f21374a175b5e8e309be833",
+    "_id": "5f21374a175b5e8e309be962",
     "name": "Storeino Team",
     "url": "https://market.storeino.com/storeino/"
   },
   "config": {
     "schema": {
       "fields": {
-        "products": [],
-        "collections": [],
-        "images": [],
+        "products": [
+          "name",
+          "slug",
+          "images",
+          "price",
+          "variants",
+          "outStock",
+          "type",
+          "quantity",
+          "tags",
+          "collections.name",
+          "collections.slug",
+          "collections.image",
+          "translates"
+        ],
+        "collections": [
+          "name",
+          "slug",
+          "image",
+          "translates",
+          "childrens"
+        ],
+        "images": [
+          "src",
+          "title"
+        ],
         "menus": [],
         "pages": [],
         "brands": []
@@ -73,13 +96,13 @@
                       "name": "footer_color",
                       "path": "style.footer.footer_color",
                       "type": "tc_color",
-                      "value": "#ffffff"
+                      "value": "#000000"
                     },
                     {
                       "name": "footer_text_color",
                       "path": "style.footer.footer_text",
                       "type": "tc_color",
-                      "value": "#000000"
+                      "value": "#ffffff"
                     }
                   ]
                 },
@@ -90,13 +113,13 @@
                       "name": "copyright_color",
                       "path": "style.copyright.copyright_color",
                       "type": "tc_color",
-                      "value": "#ffffff"
+                      "value": "#000000"
                     },
                     {
                       "name": "copyright_text_color",
                       "path": "style.copyright.copyright_text",
                       "type": "tc_color",
-                      "value": "#000000"
+                      "value": "#ffffff"
                     }
                   ]
                 }
@@ -138,28 +161,32 @@
                       "path": "sections.products.add_to_cart.text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "ADD TO CART"
+                      "value": "ADD TO CART",
+                      "translate": "ADD TO CART"
                     },
                     {
                       "name": "added_text",
                       "path": "sections.products.added_text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "ADDED"
+                      "value": "ADDED",
+                      "translate": "ADDED"
                     },
                     {
                       "name": "confirm_text",
                       "path": "sections.products.confirm_text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "CONFIRMER"
+                      "value": "CONFIRMER",
+                      "translate": "CONFIRMER"
                     },
                     {
                       "name": "out_of_stock_text",
                       "path": "sections.products.out_of_stock_text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Out Of Stock"
+                      "value": "Out Of Stock",
+                      "translate": "Out Of Stock"
                     }
                   ]
                 },
@@ -225,28 +252,32 @@
                       "path": "sections.alerts.added_to_cart",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "ADDED TO CART"
+                      "value": "ADDED TO CART",
+                      "translate": "ADDED TO CART"
                     },
                     {
                       "name": "added_to_wishlist",
                       "path": "sections.alerts.added_to_wishlist",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "ADDED TO WISHLIST"
+                      "value": "ADDED TO WISHLIST",
+                      "translate": "ADDED TO WISHLIST"
                     },
                     {
                       "name": "removed_from_cart",
                       "path": "sections.alerts.removed_from_cart",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "REMOVED FROM CART"
+                      "value": "REMOVED FROM CART",
+                      "translate": "REMOVED FROM CART"
                     },
                     {
                       "name": "removed_from_wishlist",
                       "path": "sections.alerts.removed_from_wishlist",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "REMOVED FROM WISHLIST"
+                      "value": "REMOVED FROM WISHLIST",
+                      "translate": "REMOVED FROM WISHLIST"
                     }
                   ]
                 }
@@ -307,21 +338,24 @@
                       "path": "sections.header.icons.language_text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "LANGUAGE"
+                      "value": "LANGUAGE",
+                      "translate": "LANGUAGE"
                     },
                     {
                       "name": "currency_text",
                       "path": "sections.header.icons.currency_text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "CURRENCY"
+                      "value": "CURRENCY",
+                      "translate": "CURRENCY"
                     },
                     {
                       "name": "search_text",
                       "path": "sections.header.search_text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Search for products"
+                      "value": "Search for products",
+                      "translate": "Search for products"
                     }
                   ]
                 },
@@ -351,7 +385,8 @@
                       "path": "sections.footer.copyright.store_name",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "ONLINE STORE"
+                      "value": "ONLINE STORE",
+                      "translate": "ONLINE STORE"
                     },
                     {
                       "name": "footer_about",
@@ -359,14 +394,16 @@
                       "path": "sections.footer.about",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "add a small description about the website"
+                      "value": "add a small description about the website",
+                      "translate": "add a small description about the website"
                     },
                     {
                       "name": "location",
                       "path": "sections.footer.location",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Location"
+                      "value": "Location",
+                      "translate": "Location"
                     },
                     {
                       "name": "location_URL",
@@ -379,14 +416,16 @@
                       "path": "sections.footer.gmail",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Email"
+                      "value": "Email",
+                      "translate": "Email"
                     },
                     {
                       "name": "phone_number",
                       "path": "sections.footer.number",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Phone Number"
+                      "value": "Phone Number",
+                      "translate": "Phone Number"
                     }
                   ]
                 },
@@ -399,7 +438,8 @@
                       "path": "sections.footer.social_media.title",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "FOLLOW US"
+                      "value": "FOLLOW US",
+                      "translate": "FOLLOW US"
                     },
                     {
                       "name": "facebook_url",
@@ -466,7 +506,8 @@
                       "path": "sections.footer.menus.menu1_title",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "MENU 1"
+                      "value": "MENU 1",
+                      "translate": "MENU 1"
                     },
                     {
                       "name": "first_menu",
@@ -486,7 +527,8 @@
                       "path": "sections.footer.menus.menu2_title",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "MENU 2"
+                      "value": "MENU 2",
+                      "translate": "MENU 2"
                     },
                     {
                       "name": "secend_menu",
@@ -511,7 +553,8 @@
                       "path": "sections.footer.icons.language_text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "LANGUAGE"
+                      "value": "LANGUAGE",
+                      "translate": "LANGUAGE"
                     }
                   ]
                 },
@@ -529,70 +572,8 @@
                       "path": "sections.footer.icons.currency_text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "CURRENCY"
-                    }
-                  ]
-                },
-                {
-                  "name": "payment_methods",
-                  "values": [
-                    {
-                      "name": "payment_methods_title",
-                      "note": "about_your_website",
-                      "path": "sections.footer.methods.title",
-                      "type": "tc_input",
-                      "translatable": true,
-                      "value": "PAYMENT METHODS"
-                    },
-                    {
-                      "name": "show_visa",
-                      "path": "sections.footer.methods.visa",
-                      "type": "tc_checkbox",
-                      "value": true
-                    },
-                    {
-                      "name": "show_mastercard",
-                      "path": "sections.footer.methods.mastercard",
-                      "type": "tc_checkbox",
-                      "value": true
-                    },
-                    {
-                      "name": "show_transfer",
-                      "path": "sections.footer.methods.transfer",
-                      "type": "tc_checkbox",
-                      "value": true
-                    },
-                    {
-                      "name": "show_cash",
-                      "path": "sections.footer.methods.cash",
-                      "type": "tc_checkbox",
-                      "value": true
-                    },
-                    {
-                      "name": "show_paypal",
-                      "path": "sections.footer.methods.paypal",
-                      "type": "tc_checkbox",
-                      "value": true
-                    }
-                  ]
-                },
-                {
-                  "name": "copyright",
-                  "values": [
-                    {
-                      "name": "copyright_text",
-                      "note": "use__YEAR__variable",
-                      "path": "sections.footer.copyright.text",
-                      "type": "tc_input",
-                      "translatable": true,
-                      "value": "Copyright © __YEAR__. All rights reserved. <a href='//storeino.com'>storeino.com</a>"
-                    },
-                    {
-                      "name": "copyright_menu",
-                      "note": "your_website_copyright_menu",
-                      "path": "sections.footer.copyright.menu",
-                      "type": "tc_menu",
-                      "value": null
+                      "value": "CURRENCY",
+                      "translate": "CURRENCY"
                     }
                   ]
                 }
@@ -621,13 +602,744 @@
                       "path": "sections.collections.description",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Discover"
+                      "value": "Discover",
+                      "translate": "Discover"
                     },
                     {
                       "name": "selected_collections",
                       "path": "sections.collections.items",
                       "type": "tc_collection",
                       "value": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "banner",
+              "icon": "select_all",
+              "blocks": [
+                {
+                  "name": "show_section",
+                  "values": [
+                    {
+                      "name": "show_section",
+                      "note": "",
+                      "path": "sections.banner.show_section",
+                      "type": "tc_checkbox",
+                      "translatable": false,
+                      "value": true
+                    }
+                  ],
+                  "fixed": true
+                },
+                {
+                  "name": "items[0]",
+                  "values": [
+                    {
+                      "name": "background_image",
+                      "note": "",
+                      "path": "sections.banner.items.item_0.bg_image",
+                      "type": "tc_image",
+                      "translatable": false,
+                      "value": null
+                    },
+                    {
+                      "name": "show_background",
+                      "note": "",
+                      "path": "sections.banner.items.item_0.show_bg",
+                      "type": "tc_checkbox",
+                      "translatable": false,
+                      "value": true
+                    },
+                    {
+                      "name": "title",
+                      "note": "",
+                      "path": "sections.banner.items.item_0.title",
+                      "type": "tc_input",
+                      "translatable": true,
+                      "value": "Stay Sparkling All Summer Along",
+                      "translate": "Summer Essentials have arrived"
+                    },
+                    {
+                      "name": "show_title",
+                      "note": "",
+                      "path": "sections.banner.items.item_0.show_title",
+                      "type": "tc_checkbox",
+                      "translatable": false,
+                      "value": true
+                    },
+                    {
+                      "name": "button_txt",
+                      "note": "",
+                      "path": "sections.banner.items.item_0.btn_txt",
+                      "type": "tc_input",
+                      "translatable": true,
+                      "value": "Show All Pieces",
+                      "translate": "Shop All"
+                    },
+                    {
+                      "name": "button_url",
+                      "note": "",
+                      "path": "sections.banner.items.item_0.btn_url",
+                      "type": "tc_input",
+                      "translatable": false,
+                      "value": "/shop"
+                    },
+                    {
+                      "name": "show_button",
+                      "note": "",
+                      "path": "sections.banner.items.item_0.show_button",
+                      "type": "tc_checkbox",
+                      "translatable": false,
+                      "value": true
+                    }
+                  ]
+                },
+                {
+                  "name": "items[1]",
+                  "values": [
+                    {
+                      "name": "background_image",
+                      "note": "",
+                      "path": "sections.banner.items.item_1.bg_image",
+                      "type": "tc_image",
+                      "translatable": false,
+                      "value": null
+                    },
+                    {
+                      "name": "show_background",
+                      "note": "",
+                      "path": "sections.banner.items.item_1.show_bg",
+                      "type": "tc_checkbox",
+                      "translatable": false,
+                      "value": true
+                    },
+                    {
+                      "name": "title",
+                      "note": "",
+                      "path": "sections.banner.items.item_1.title",
+                      "type": "tc_input",
+                      "translatable": true,
+                      "value": "Summer Essentials have arrived",
+                      "translate": "Summer Essentials have arrived"
+                    },
+                    {
+                      "name": "show_title",
+                      "note": "",
+                      "path": "sections.banner.items.item_1.show_title",
+                      "type": "tc_checkbox",
+                      "translatable": false,
+                      "value": true
+                    },
+                    {
+                      "name": "button_txt",
+                      "note": "",
+                      "path": "sections.banner.items.item_1.btn_txt",
+                      "type": "tc_input",
+                      "translatable": true,
+                      "value": "Discover Our Products",
+                      "translate": "Shop All"
+                    },
+                    {
+                      "name": "button_url",
+                      "note": "",
+                      "path": "sections.banner.items.item_1.btn_url",
+                      "type": "tc_input",
+                      "translatable": false,
+                      "value": "/shop"
+                    },
+                    {
+                      "name": "show_button",
+                      "note": "",
+                      "path": "sections.banner.items.item_1.show_button",
+                      "type": "tc_checkbox",
+                      "translatable": false,
+                      "value": true
+                    }
+                  ]
+                }
+              ],
+              "pushable": true,
+              "default": {
+                "name": "items[9]",
+                "values": [
+                  {
+                    "name": "background_image",
+                    "path": "sections.banner.items.item_9.bg_image",
+                    "type": "tc_image",
+                    "value": null
+                  },
+                  {
+                    "name": "show_background",
+                    "note": "",
+                    "path": "sections.banner.items.item_9.show_bg",
+                    "type": "tc_checkbox",
+                    "translatable": false,
+                    "value": true
+                  },
+                  {
+                    "name": "title",
+                    "note": "",
+                    "path": "sections.banner.items.item_9.title",
+                    "type": "tc_input",
+                    "translatable": true,
+                    "value": "Summer Essentials have arrived",
+                    "translate": "Summer Essentials have arrived"
+                  },
+                  {
+                    "name": "show_title",
+                    "note": "",
+                    "path": "sections.banner.items.item_9.show_title",
+                    "type": "tc_checkbox",
+                    "translatable": false,
+                    "value": true
+                  },
+                  {
+                    "name": "button_txt",
+                    "note": "",
+                    "path": "sections.banner.items.item_9.btn_txt",
+                    "type": "tc_input",
+                    "translatable": true,
+                    "value": "Shop All",
+                    "translate": "Shop All"
+                  },
+                  {
+                    "name": "button_url",
+                    "note": "",
+                    "path": "sections.banner.items.item_9.btn_url",
+                    "type": "tc_input",
+                    "translatable": false,
+                    "value": "/shop"
+                  },
+                  {
+                    "name": "show_button",
+                    "note": "",
+                    "path": "sections.banner.items.item_9.show_button",
+                    "type": "tc_checkbox",
+                    "translatable": false,
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "products",
+              "icon": "select_all",
+              "blocks": [
+                {
+                  "name": "section",
+                  "values": [
+                    {
+                      "name": "show_section",
+                      "path": "sections.homepage.products.show_section",
+                      "type": "tc_checkbox",
+                      "value": true
+                    },
+                    {
+                      "name": "section_title",
+                      "path": "sections.homepage.products.title",
+                      "type": "tc_input",
+                      "translatable": true,
+                      "value": "All that GLITTERS is SOLID 14K GOLD",
+                      "translate": "All that GLITTERS is SOLID 14K GOLD"
+                    },
+                    {
+                      "name": "section_collections",
+                      "path": "sections.homepage.products.collections",
+                      "type": "tc_collection",
+                      "value": []
+                    },
+                    {
+                      "name": "products_list",
+                      "path": "sections.homepage.products.items",
+                      "type": "tc_product",
+                      "value": []
+                    },
+                    {
+                      "name": "section_show_more_text",
+                      "path": "sections.homepage.products.view_products",
+                      "type": "tc_input",
+                      "translatable": true,
+                      "value": "View All Products",
+                      "translate": "View All Products"
+                    },
+                    {
+                      "name": "section_show_more_url",
+                      "path": "sections.homepage.products.view_products_url",
+                      "type": "tc_input",
+                      "value": "/shop"
+                    },
+                    {
+                      "name": "show_title",
+                      "note": "",
+                      "path": "sections.homepage.products.show_title",
+                      "type": "tc_checkbox",
+                      "translatable": false,
+                      "value": true
+                    },
+                    {
+                      "name": "active_show_more_btn",
+                      "note": "",
+                      "path": "sections.homepage.products.active_show_more_btn",
+                      "type": "tc_checkbox",
+                      "translatable": false,
+                      "value": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "services",
+              "icon": "select_all",
+              "blocks": [
+                {
+                  "name": "show_section",
+                  "values": [
+                    {
+                      "name": "show_section",
+                      "path": "sections.services.show",
+                      "type": "tc_checkbox",
+                      "value": true
+                    }
+                  ],
+                  "fixed": true
+                },
+                {
+                  "name": "items[0]",
+                  "values": [
+                    {
+                      "name": "info",
+                      "path": "sections.services.items.item_0.info",
+                      "type": "tc_input",
+                      "value": "Service Text",
+                      "translatable": true,
+                      "translate": "Service Text"
+                    },
+                    {
+                      "name": "show_info",
+                      "path": "sections.services.items.item_0.show_info",
+                      "type": "tc_checkbox",
+                      "translatable": true,
+                      "value": true,
+                      "translate": true
+                    },
+                    {
+                      "name": "icon",
+                      "path": "sections.services.items.item_0.icon",
+                      "type": "tc_image",
+                      "value": null
+                    },
+                    {
+                      "name": "show_icon",
+                      "path": "sections.services.items.item_0.show_icon",
+                      "type": "tc_checkbox",
+                      "value": true
+                    }
+                  ]
+                },
+                {
+                  "name": "items[1]",
+                  "values": [
+                    {
+                      "name": "info",
+                      "path": "sections.services.items.item_1.info",
+                      "type": "tc_input",
+                      "value": "Service Text",
+                      "translatable": true,
+                      "translate": "Service Text"
+                    },
+                    {
+                      "name": "show_info",
+                      "path": "sections.services.items.item_1.show_info",
+                      "type": "tc_checkbox",
+                      "translatable": true,
+                      "value": true,
+                      "translate": true
+                    },
+                    {
+                      "name": "icon",
+                      "path": "sections.services.items.item_1.icon",
+                      "type": "tc_image",
+                      "value": null
+                    },
+                    {
+                      "name": "show_icon",
+                      "path": "sections.services.items.item_1.show_icon",
+                      "type": "tc_checkbox",
+                      "value": true
+                    }
+                  ]
+                },
+                {
+                  "name": "items[2]",
+                  "values": [
+                    {
+                      "name": "info",
+                      "path": "sections.services.items.item_2.info",
+                      "type": "tc_input",
+                      "value": "Service Text",
+                      "translatable": true,
+                      "translate": "Service Text"
+                    },
+                    {
+                      "name": "show_info",
+                      "path": "sections.services.items.item_2.show_info",
+                      "type": "tc_checkbox",
+                      "translatable": true,
+                      "value": true,
+                      "translate": true
+                    },
+                    {
+                      "name": "icon",
+                      "path": "sections.services.items.item_2.icon",
+                      "type": "tc_image",
+                      "value": null
+                    },
+                    {
+                      "name": "show_icon",
+                      "path": "sections.services.items.item_2.show_icon",
+                      "type": "tc_checkbox",
+                      "value": true
+                    }
+                  ]
+                },
+                {
+                  "name": "items[3]",
+                  "values": [
+                    {
+                      "name": "info",
+                      "path": "sections.services.items.item_3.info",
+                      "type": "tc_input",
+                      "value": "Service Text",
+                      "translatable": true,
+                      "translate": "Service Text"
+                    },
+                    {
+                      "name": "show_info",
+                      "path": "sections.services.items.item_3.show_info",
+                      "type": "tc_checkbox",
+                      "translatable": true,
+                      "value": true,
+                      "translate": true
+                    },
+                    {
+                      "name": "icon",
+                      "path": "sections.services.items.item_3.icon",
+                      "type": "tc_image",
+                      "value": null
+                    },
+                    {
+                      "name": "show_icon",
+                      "path": "sections.services.items.item_3.show_icon",
+                      "type": "tc_checkbox",
+                      "value": true
+                    }
+                  ]
+                },
+                {
+                  "name": "items[4]",
+                  "values": [
+                    {
+                      "name": "info",
+                      "path": "sections.services.items.item_4.info",
+                      "type": "tc_input",
+                      "value": "Service Text",
+                      "translatable": true,
+                      "translate": "Service Text"
+                    },
+                    {
+                      "name": "show_info",
+                      "path": "sections.services.items.item_4.show_info",
+                      "type": "tc_checkbox",
+                      "translatable": true,
+                      "value": true,
+                      "translate": true
+                    },
+                    {
+                      "name": "icon",
+                      "path": "sections.services.items.item_4.icon",
+                      "type": "tc_image",
+                      "value": null
+                    },
+                    {
+                      "name": "show_icon",
+                      "path": "sections.services.items.item_4.show_icon",
+                      "type": "tc_checkbox",
+                      "value": true
+                    }
+                  ]
+                }
+              ],
+              "pushable": true,
+              "default": {
+                "name": "items[9]",
+                "values": [
+                  {
+                    "name": "info",
+                    "path": "sections.services.items.item_9.info",
+                    "type": "tc_input",
+                    "value": "Service Text",
+                    "translatable": true,
+                    "frValue": "Service Text",
+                    "arValue": "Service Text"
+                  },
+                  {
+                    "name": "show_info",
+                    "path": "sections.services.items.item_9.show_info",
+                    "type": "tc_checkbox",
+                    "translatable": true,
+                    "value": true
+                  },
+                  {
+                    "name": "icon",
+                    "path": "sections.services.items.item_9.icon",
+                    "type": "tc_image",
+                    "value": null
+                  },
+                  {
+                    "name": "show_icon",
+                    "path": "sections.services.items.item_9.show_icon",
+                    "type": "tc_checkbox",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "posts",
+              "icon": "select_all",
+              "blocks": [
+                {
+                  "name": "posts_section",
+                  "values": [
+                    {
+                      "name": "show_section",
+                      "note": "",
+                      "path": "sections.posts.show_section",
+                      "type": "tc_checkbox",
+                      "translatable": false,
+                      "value": true
+                    },
+                    {
+                      "name": "title",
+                      "note": "",
+                      "path": "sections.posts.title",
+                      "type": "tc_input",
+                      "translatable": true,
+                      "value": "OUR POSTS",
+                      "translate": "Our Posts"
+                    },
+                    {
+                      "name": "show_title",
+                      "note": "",
+                      "path": "sections.posts.show_title",
+                      "type": "tc_checkbox",
+                      "translatable": false,
+                      "value": true
+                    },
+                    {
+                      "name": "read_more",
+                      "note": "",
+                      "path": "sections.posts.read_more",
+                      "type": "tc_input",
+                      "translatable": true,
+                      "value": "Read More",
+                      "translate": "Read More"
+                    },
+                    {
+                      "name": "show_title",
+                      "note": "",
+                      "path": "sections.posts.show_btn",
+                      "type": "tc_checkbox",
+                      "translatable": false,
+                      "value": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "reveiws",
+              "icon": "select_all",
+              "blocks": [
+                {
+                  "name": "reveiws_section",
+                  "values": [
+                    {
+                      "name": "show_section",
+                      "note": "",
+                      "path": "sections.reviews.show_section",
+                      "type": "tc_checkbox",
+                      "translatable": false,
+                      "value": true
+                    },
+                    {
+                      "name": "title",
+                      "note": "",
+                      "path": "sections.reviews.title",
+                      "type": "tc_input",
+                      "translatable": true,
+                      "value": "All reveiws",
+                      "translate": "All reveiws"
+                    },
+                    {
+                      "name": "show_title",
+                      "note": "",
+                      "path": "sections.reviews.show_title",
+                      "type": "tc_checkbox",
+                      "translatable": false,
+                      "value": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "brands",
+              "icon": "select_all",
+              "blocks": [
+                {
+                  "name": "section_info",
+                  "values": [
+                    {
+                      "name": "text",
+                      "note": "",
+                      "path": "sections.brands.text",
+                      "type": "tc_input",
+                      "translatable": true,
+                      "value": "“Gold makes fine jewelry with just the right balance of simple and special ”",
+                      "translate": "“Gold makes fine jewelry with just the right balance of simple and special ”"
+                    },
+                    {
+                      "name": "show_text",
+                      "note": "",
+                      "path": "sections.brands.show_text",
+                      "type": "tc_checkbox",
+                      "translatable": false,
+                      "value": true
+                    },
+                    {
+                      "name": "show_section",
+                      "note": "",
+                      "path": "sections.brands.show_section",
+                      "type": "tc_checkbox",
+                      "translatable": false,
+                      "value": true
+                    }
+                  ]
+                },
+                {
+                  "name": "brands",
+                  "values": [
+                    {
+                      "name": "brands",
+                      "note": "",
+                      "path": "sections.brands.items",
+                      "type": "tc_brand",
+                      "translatable": false,
+                      "value": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "call_to_action",
+              "icon": "select_all",
+              "blocks": [
+                {
+                  "name": "section_info",
+                  "values": [
+                    {
+                      "name": "title",
+                      "note": "",
+                      "path": "sections.callaction.title",
+                      "type": "tc_input",
+                      "translatable": true,
+                      "value": "Made in Los Angeles with love and Solid Gold",
+                      "translate": "Made in Los Angeles with love and Solid Gold"
+                    },
+                    {
+                      "name": "sow_title",
+                      "note": "",
+                      "path": "sections.callaction.show_title",
+                      "type": "tc_checkbox",
+                      "translatable": false,
+                      "value": true
+                    },
+                    {
+                      "name": "description",
+                      "note": "",
+                      "path": "sections.callaction.description",
+                      "type": "tc_input",
+                      "translatable": true,
+                      "value": "“No object can tell a story quite like a piece of jewelry” - says BabyGold™ founder, Helen Ashikian. Our always-14k solid gold, fine-jewelry is sustainably made in our family-owned factory in Downtown Los Angeles, California. We cut traditional mark-ups and offer honest pricing, bringing you the highest quality pieces to love and cherish for decades to come.“",
+                      "translate": "“No object can tell a story quite like a piece of jewelry” - says BabyGold™ founder, Helen Ashikian. Our always-14k solid gold, fine-jewelry is sustainably made in our family-owned factory in Downtown Los Angeles, California. We cut traditional mark-ups and offer honest pricing, bringing you the highest quality pieces to love and cherish for decades to come.“"
+                    },
+                    {
+                      "name": "show_description",
+                      "note": "",
+                      "path": "sections.callaction.show_desc",
+                      "type": "tc_checkbox",
+                      "translatable": false,
+                      "value": true
+                    },
+                    {
+                      "name": "button_text",
+                      "note": "",
+                      "path": "sections.callaction.btn_txt",
+                      "type": "tc_input",
+                      "translatable": true,
+                      "value": "Discover More About Us",
+                      "translate": "Discover More About Us"
+                    },
+                    {
+                      "name": "button_url",
+                      "note": "",
+                      "path": "sections.callaction.btn_url",
+                      "type": "tc_input",
+                      "translatable": true,
+                      "value": "/pages",
+                      "translate": "/pages"
+                    },
+                    {
+                      "name": "show_button",
+                      "note": "",
+                      "path": "sections.callaction.show_btn",
+                      "type": "tc_checkbox",
+                      "translatable": false,
+                      "value": true
+                    },
+                    {
+                      "name": "show_section",
+                      "note": "",
+                      "path": "sections.callaction.show_section",
+                      "type": "tc_checkbox",
+                      "translatable": false,
+                      "value": true
+                    }
+                  ]
+                },
+                {
+                  "name": "images",
+                  "values": [
+                    {
+                      "name": "first_image",
+                      "note": "",
+                      "path": "sections.callaction.first_img",
+                      "type": "tc_image",
+                      "translatable": false,
+                      "value": null
+                    },
+                    {
+                      "name": "second_image",
+                      "note": "",
+                      "path": "sections.callaction.secnd_img",
+                      "type": "tc_image",
+                      "translatable": false,
+                      "value": null
                     }
                   ]
                 }
@@ -657,7 +1369,8 @@
                       "path": "sections.posts.title",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "IN FOCUS"
+                      "value": "Our Posts",
+                      "translate": "Our Posts"
                     },
                     {
                       "name": "posts_limit",
@@ -671,7 +1384,8 @@
                       "path": "sections.posts.button.text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Discover"
+                      "value": "Discover",
+                      "translate": "Discover"
                     }
                   ]
                 }
@@ -711,7 +1425,8 @@
                       "path": "sections.shop.sidebar.collections.title",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Collections"
+                      "value": "Collections",
+                      "translate": "Collections"
                     }
                   ]
                 },
@@ -729,7 +1444,8 @@
                       "path": "sections.shop.sidebar.prices.title",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Prices"
+                      "value": "Prices",
+                      "translate": "Prices"
                     }
                   ]
                 },
@@ -747,7 +1463,8 @@
                       "path": "sections.shop.sidebar.sizes.title",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Sizes"
+                      "value": "Sizes",
+                      "translate": "Sizes"
                     }
                   ]
                 },
@@ -765,7 +1482,8 @@
                       "path": "sections.shop.sidebar.colors.title",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Colors"
+                      "value": "Colors",
+                      "translate": "Colors"
                     }
                   ]
                 },
@@ -783,7 +1501,8 @@
                       "path": "sections.shop.sidebar.tags.title",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Tags"
+                      "value": "Tags",
+                      "translate": "Tags"
                     }
                   ]
                 },
@@ -801,7 +1520,8 @@
                       "path": "sections.shop.sidebar.brands.title",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Brands"
+                      "value": "Brands",
+                      "translate": "Brands"
                     }
                   ]
                 },
@@ -813,7 +1533,8 @@
                       "path": "sections.shop.sidebar.filters_name",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Filtres"
+                      "value": "Filtres",
+                      "translate": "Filtres"
                     }
                   ]
                 },
@@ -825,14 +1546,16 @@
                       "path": "sections.shop.sidebar.button_text1",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "See the"
+                      "value": "See the",
+                      "translate": "See the"
                     },
                     {
                       "name": "text_2",
                       "path": "sections.shop.sidebar.button_text2",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Product(s)"
+                      "value": "Product(s)",
+                      "translate": "Product(s)"
                     }
                   ]
                 }
@@ -850,14 +1573,16 @@
                       "path": "sections.shop.title",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": ""
+                      "value": "",
+                      "translate": ""
                     },
                     {
                       "name": "page_description",
                       "path": "sections.shop.description",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": ""
+                      "value": "",
+                      "translate": ""
                     }
                   ]
                 },
@@ -869,14 +1594,16 @@
                       "path": "sections.shop.articles_name",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Articles"
+                      "value": "Articles",
+                      "translate": "Articles"
                     },
                     {
                       "name": "no_produts_text",
                       "path": "sections.shop.empty_text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "No product found"
+                      "value": "No product found",
+                      "translate": "No product found"
                     }
                   ]
                 },
@@ -888,7 +1615,8 @@
                       "path": "sections.shop.sort_name",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Order by"
+                      "value": "Order by",
+                      "translate": "Order by"
                     },
                     {
                       "name": "default_sort",
@@ -953,56 +1681,64 @@
                       "path": "sections.shop.sorts.newest",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Newest"
+                      "value": "Newest",
+                      "translate": "Newest"
                     },
                     {
                       "name": "oldest",
                       "path": "sections.shop.sorts.oldest",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Oldest"
+                      "value": "Oldest",
+                      "translate": "Oldest"
                     },
                     {
                       "name": "name_asc",
                       "path": "sections.shop.sorts.name_asc",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Name (A-Z)"
+                      "value": "Name (A-Z)",
+                      "translate": "Name (A-Z)"
                     },
                     {
                       "name": "name_desc",
                       "path": "sections.shop.sorts.name_desc",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Name (Z-A)"
+                      "value": "Name (Z-A)",
+                      "translate": "Name (Z-A)"
                     },
                     {
                       "name": "price_asc",
                       "path": "sections.shop.sorts.price_asc",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Price (low to high)"
+                      "value": "Price (low to high)",
+                      "translate": "Price (low to high)"
                     },
                     {
                       "name": "price_desc",
                       "path": "sections.shop.sorts.price_desc",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Price (high to low)"
+                      "value": "Price (high to low)",
+                      "translate": "Price (high to low)"
                     },
                     {
                       "name": "rating_asc",
                       "path": "sections.shop.sorts.rating_asc",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Rating (low to high)"
+                      "value": "Rating (low to high)",
+                      "translate": "Rating (low to high)"
                     },
                     {
                       "name": "rating_desc",
                       "path": "sections.shop.sorts.rating_desc",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Rating (high to low)"
+                      "value": "Rating (high to low)",
+                      "translate": "Rating (high to low)"
                     }
                   ]
                 },
@@ -1037,7 +1773,8 @@
                       "path": "sections.product.quantity.text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Quantity"
+                      "value": "Quantity",
+                      "translate": "Quantity"
                     }
                   ]
                 },
@@ -1055,7 +1792,8 @@
                       "path": "sections.product.add_to_cart.text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "ADD TO CART"
+                      "value": "ADD TO CART",
+                      "translate": "ADD TO CART"
                     }
                   ]
                 },
@@ -1073,7 +1811,8 @@
                       "path": "sections.product.buy_now.text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "BUY NOW"
+                      "value": "BUY NOW",
+                      "translate": "BUY NOW"
                     }
                   ]
                 },
@@ -1085,7 +1824,8 @@
                       "path": "sections.product.description.title",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Description"
+                      "value": "Description",
+                      "translate": "Description"
                     }
                   ]
                 },
@@ -1103,7 +1843,8 @@
                       "path": "sections.product.share_buttons.title",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "SHARE"
+                      "value": "SHARE",
+                      "translate": "SHARE"
                     },
                     {
                       "name": "show_whatsapp",
@@ -1145,7 +1886,8 @@
                       "path": "sections.product.reviews.title",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "REVIEWS"
+                      "value": "REVIEWS",
+                      "translate": "REVIEWS"
                     }
                   ]
                 },
@@ -1163,14 +1905,16 @@
                       "path": "sections.product.related.title",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "RELATED PRODUCTS"
+                      "value": "RELATED PRODUCTS",
+                      "translate": "RELATED PRODUCTS"
                     },
                     {
                       "name": "show_more_text",
                       "path": "sections.product.related.show_more_text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Discover more"
+                      "value": "Discover more",
+                      "translate": "Discover more"
                     }
                   ]
                 },
@@ -1188,7 +1932,8 @@
                       "path": "sections.product.upsell.title",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "SPECIAL OFFER"
+                      "value": "SPECIAL OFFER",
+                      "translate": "SPECIAL OFFER"
                     }
                   ]
                 }
@@ -1211,49 +1956,56 @@
                       "path": "sections.cart.title",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "CART"
+                      "value": "CART",
+                      "translate": "CART"
                     },
                     {
                       "name": "empty_text",
                       "path": "sections.cart.empty_text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "your cart is empty"
+                      "value": "your cart is empty",
+                      "translate": "your cart is empty"
                     },
                     {
                       "name": "procuct_text",
                       "path": "sections.cart.product_text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "PRODUCT"
+                      "value": "PRODUCT",
+                      "translate": "PRODUCT"
                     },
                     {
                       "name": "price_text",
                       "path": "sections.cart.price_text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "PRICE"
+                      "value": "PRICE",
+                      "translate": "PRICE"
                     },
                     {
                       "name": "quantity_text",
                       "path": "sections.cart.quantity_text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "QUANTITY"
+                      "value": "QUANTITY",
+                      "translate": "QUANTITY"
                     },
                     {
                       "name": "total_text",
                       "path": "sections.cart.total_text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "TOTAL"
+                      "value": "TOTAL",
+                      "translate": "TOTAL"
                     },
                     {
                       "name": "subtotal_text",
                       "path": "sections.cart.subtotal_text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "SUBTOTAL "
+                      "value": "SUBTOTAL ",
+                      "translate": "SUBTOTAL "
                     }
                   ]
                 },
@@ -1271,7 +2023,8 @@
                       "path": "sections.cart.upsell.title",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "SPECIAL OFFER"
+                      "value": "SPECIAL OFFER",
+                      "translate": "SPECIAL OFFER"
                     }
                   ]
                 }
@@ -1289,14 +2042,16 @@
                       "path": "sections.cart.buttons.checkout_text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "PLACE ORDER"
+                      "value": "PLACE ORDER",
+                      "translate": "PLACE ORDER"
                     },
                     {
                       "name": "back_to_shop_text",
                       "path": "sections.cart.buttons.back_to_shop_text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "BACK TO SHOP"
+                      "value": "BACK TO SHOP",
+                      "translate": "BACK TO SHOP"
                     },
                     {
                       "name": "show_back_to_shop",
@@ -1325,21 +2080,24 @@
                       "path": "sections.wishlist.title",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "WISHLIST"
+                      "value": "WISHLIST",
+                      "translate": "WISHLIST"
                     },
                     {
                       "name": "empty_text",
                       "path": "sections.wishlist.empty_text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Your Wishlist is empty"
+                      "value": "Your Wishlist is empty",
+                      "translate": "Your Wishlist is empty"
                     },
                     {
                       "name": "back_to_shop_text",
                       "path": "sections.wishlist.buttons.back_to_shop_text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Back to shop"
+                      "value": "Back to shop",
+                      "translate": "Back to shop"
                     }
                   ]
                 }
@@ -1379,7 +2137,8 @@
                       "path": "sections.blog.sidebar.categories.title",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Categories"
+                      "value": "Categories",
+                      "translate": "Categories"
                     }
                   ]
                 },
@@ -1391,14 +2150,16 @@
                       "path": "sections.blog.sidebar.button_text1",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "See the"
+                      "value": "See the",
+                      "translate": "See the"
                     },
                     {
                       "name": "text_2",
                       "path": "sections.blog.sidebar.button_text2",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Post(s)"
+                      "value": "Post(s)",
+                      "translate": "Post(s)"
                     }
                   ]
                 }
@@ -1416,14 +2177,16 @@
                       "path": "sections.blog.title",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": ""
+                      "value": "",
+                      "translate": ""
                     },
                     {
                       "name": "page_description",
                       "path": "sections.blog.description",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": ""
+                      "value": "",
+                      "translate": ""
                     }
                   ]
                 },
@@ -1435,14 +2198,16 @@
                       "path": "sections.blog.empty_text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "No blogs found"
+                      "value": "No blogs found",
+                      "translate": "No blogs found"
                     },
                     {
                       "name": "articles_name",
                       "path": "sections.blog.articles_name",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Posts"
+                      "value": "Posts",
+                      "translate": "Posts"
                     }
                   ]
                 },
@@ -1454,35 +2219,40 @@
                       "path": "sections.blog.sorts.newest",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Newest"
+                      "value": "Newest",
+                      "translate": "Newest"
                     },
                     {
                       "name": "oldest",
                       "path": "sections.blog.sorts.oldest",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Oldest"
+                      "value": "Oldest",
+                      "translate": "Oldest"
                     },
                     {
                       "name": "name_asc",
                       "path": "sections.blog.sorts.name_asc",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Name (A-Z)"
+                      "value": "Name (A-Z)",
+                      "translate": "Name (A-Z)"
                     },
                     {
                       "name": "name_desc",
                       "path": "sections.blog.sorts.name_desc",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Name (Z-A)"
+                      "value": "Name (Z-A)",
+                      "translate": "Name (Z-A)"
                     },
                     {
                       "name": "sort_name",
                       "path": "sections.blog.sort_name",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Order by"
+                      "value": "Order by",
+                      "translate": "Order by"
                     }
                   ]
                 },
@@ -1512,7 +2282,8 @@
                       "path": "sections.blog.sidebar.products.title",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "OF THE SHOP"
+                      "value": "OF THE SHOP",
+                      "translate": "OF THE SHOP"
                     }
                   ]
                 }
@@ -1541,7 +2312,8 @@
                       "path": "sections.post.share_buttons.title",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "SHARE"
+                      "value": "SHARE",
+                      "translate": "SHARE"
                     },
                     {
                       "name": "show_whatsapp",
@@ -1583,14 +2355,16 @@
                       "path": "sections.post.related.title",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "RELATED POSTS"
+                      "value": "RELATED POSTS",
+                      "translate": "RELATED POSTS"
                     },
                     {
                       "name": "show_more_text",
                       "path": "sections.posts.show_more_text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Discover more"
+                      "value": "Discover more",
+                      "translate": "Discover more"
                     }
                   ]
                 }
@@ -1613,21 +2387,24 @@
                       "path": "sections.thanks.title",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Thanks"
+                      "value": "Thanks",
+                      "translate": "Thanks"
                     },
                     {
                       "name": "description",
                       "path": "sections.thanks.description",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Thank you for your order"
+                      "value": "Thank you for your order",
+                      "translate": "Thank you for your order"
                     },
                     {
                       "name": "back_to_shop_text",
                       "path": "sections.thanks.buttons.back_to_shop_text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Back to shop"
+                      "value": "Back to shop",
+                      "translate": "Back to shop"
                     }
                   ]
                 }
@@ -1650,21 +2427,24 @@
                       "path": "sections._404.title",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Page not found"
+                      "value": "Page not found",
+                      "translate": "Page not found"
                     },
                     {
                       "name": "description",
                       "path": "sections._404.description",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "We are sorry, but the page you requested was not found"
+                      "value": "We are sorry, but the page you requested was not found",
+                      "translate": "We are sorry, but the page you requested was not found"
                     },
                     {
                       "name": "back_to_shop_text",
                       "path": "sections._404.buttons.back_to_shop_text",
                       "type": "tc_input",
                       "translatable": true,
-                      "value": "Back to shop"
+                      "value": "Back to shop",
+                      "translate": "Back to shop"
                     }
                   ]
                 }
@@ -1672,299 +2452,10 @@
             }
           ]
         }
-      ]
+      ],
+      "currentLang": null
     },
     "current": {
-      "sections": {
-        "products": {
-          "add_to_cart": {
-            "active": true,
-            "text": "ADD TO CART"
-          },
-          "show_reviews": true,
-          "add_to_cart_to_checkout": false,
-          "add_to_wishlist": {
-            "active": true
-          },
-          "added_text": "ADDED",
-          "confirm_text": "CONFIRMER",
-          "out_of_stock_text": "Out Of Stock",
-          "images": {
-            "fit": "object-cover",
-            "ratio": "pb-full"
-          }
-        },
-        "alerts": {
-          "added_to_cart": "ADDED TO CART",
-          "added_to_wishlist": "ADDED TO WISHLIST",
-          "removed_from_cart": "REMOVED FROM CART",
-          "removed_from_wishlist": "REMOVED FROM WISHLIST"
-        },
-        "header": {
-          "logo": null,
-          "icons": {
-            "cart": true,
-            "wishlist": true,
-            "account": true,
-            "search": true,
-            "language": true,
-            "currency": true,
-            "language_text": "LANGUAGE",
-            "currency_text": "CURRENCY"
-          },
-          "search_text": "Search for products",
-          "menu": null
-        },
-        "footer": {
-          "about": "add a small description about the website",
-          "location": "Location",
-          "gmail": "Email",
-          "number": "Phone Number",
-          "location_link": "#",
-          "methods": {
-            "title": "PAYMENT METHODS",
-            "visa": true,
-            "mastercard": true,
-            "transfer": true,
-            "cash": true,
-            "paypal": true
-          },
-          "social_media": {
-            "title": "FOLLOW US",
-            "facebook": "https://www.facebook.com/",
-            "twitter": "https://twitter.com/",
-            "instagram": "https://www.instagram.com/",
-            "youtube": "https://www.youtube.com/",
-            "linkedin": "https://www.linkedin.com/",
-            "whatsapp": "https://web.whatsapp.com/",
-            "snapchat": "https://www.snapchat.com/",
-            "tiktok": "https://www.tiktok.com/"
-          },
-          "menus": {
-            "menu1_active": true,
-            "menu1_title": "MENU 1",
-            "menu1": null,
-            "menu2_active": true,
-            "menu2_title": "MENU 2",
-            "menu2": null
-          },
-          "copyright": {
-            "store_name": "ONLINE STORE",
-            "text": "Copyright © __YEAR__. All rights reserved. <a href='//storeino.com'>storeino.com</a>",
-            "menu": null
-          },
-          "icons": {
-            "language": true,
-            "language_text": "LANGUAGE",
-            "currency": true,
-            "currency_text": "CURRENCY"
-          }
-        },
-        "collections": {
-          "active": true,
-          "description": "Discover",
-          "items": []
-        },
-        "product": {
-          "add_to_cart": {
-            "active": true,
-            "text": "ADD TO CART"
-          },
-          "buy_now": {
-            "active": true,
-            "text": "BUY NOW"
-          },
-          "related": {
-            "active": true,
-            "title": "RELATED PRODUCTS",
-            "show_more_text": "Discover more"
-          },
-          "upsell": {
-            "active": true,
-            "title": "SPECIAL OFFER"
-          },
-          "reviews": {
-            "active": true,
-            "title": "REVIEWS"
-          },
-          "share_buttons": {
-            "active": true,
-            "title": "SHARE",
-            "whatsapp": true,
-            "facebook": true,
-            "twitter": true,
-            "linkedin": true
-          },
-          "quantity": {
-            "text": "Quantity"
-          },
-          "description": {
-            "title": "Description"
-          }
-        },
-        "post": {
-          "share_buttons": {
-            "active": true,
-            "title": "SHARE",
-            "whatsapp": true,
-            "facebook": true,
-            "twitter": true,
-            "linkedin": true
-          },
-          "related": {
-            "active": true,
-            "title": "RELATED POSTS"
-          }
-        },
-        "posts": {
-          "show_more_text": "Discover more",
-          "active": true,
-          "title": "IN FOCUS",
-          "items": "3",
-          "button": {
-            "text": "Discover"
-          }
-        },
-        "shop": {
-          "sidebar": {
-            "active": true,
-            "collections": {
-              "active": true,
-              "title": "Collections"
-            },
-            "prices": {
-              "active": true,
-              "title": "Prices"
-            },
-            "sizes": {
-              "active": true,
-              "title": "Sizes"
-            },
-            "colors": {
-              "active": true,
-              "title": "Colors"
-            },
-            "tags": {
-              "active": true,
-              "title": "Tags"
-            },
-            "brands": {
-              "active": true,
-              "title": "Brands"
-            },
-            "filters_name": "Filtres",
-            "button_text1": "See the",
-            "button_text2": "Product(s)"
-          },
-          "title": "",
-          "description": "",
-          "sort_name": "Order by",
-          "default_sort": {
-            "createdAt": -1
-          },
-          "sorts": {
-            "newest": "Newest",
-            "oldest": "Oldest",
-            "name_asc": "Name (A-Z)",
-            "name_desc": "Name (Z-A)",
-            "price_asc": "Price (low to high)",
-            "price_desc": "Price (high to low)",
-            "rating_asc": "Rating (low to high)",
-            "rating_desc": "Rating (high to low)"
-          },
-          "pagination": {
-            "limit": 12
-          },
-          "articles_name": "Articles",
-          "empty_text": "No product found"
-        },
-        "blog": {
-          "sidebar": {
-            "active": true,
-            "categories": {
-              "active": true,
-              "title": "Categories"
-            },
-            "products": {
-              "active": true,
-              "title": "OF THE SHOP"
-            },
-            "button_text1": "See the",
-            "button_text2": "Post(s)"
-          },
-          "title": "",
-          "description": "",
-          "sorts": {
-            "newest": "Newest",
-            "oldest": "Oldest",
-            "name_asc": "Name (A-Z)",
-            "name_desc": "Name (Z-A)"
-          },
-          "sort_name": "Order by",
-          "pagination": {
-            "limit": 12
-          },
-          "empty_text": "No blogs found",
-          "articles_name": "Posts"
-        },
-        "cart": {
-          "title": "CART",
-          "empty_text": "your cart is empty",
-          "product_text": "PRODUCT",
-          "price_text": "PRICE",
-          "quantity_text": "QUANTITY",
-          "total_text": "TOTAL",
-          "subtotal_text": "SUBTOTAL",
-          "upsell": {
-            "active": true,
-            "title": "SPECIAL OFFER"
-          },
-          "buttons": {
-            "checkout_text": "PLACE ORDER",
-            "back_to_shop_text": "BACK TO SHOP",
-            "show_back_to_shop": true
-          }
-        },
-        "wishlist": {
-          "title": "WISHLIST",
-          "empty_text": "Your Wishlist is empty",
-          "buttons": {
-            "back_to_shop_text": "Back to shop"
-          }
-        },
-        "thanks": {
-          "title": "Thanks",
-          "description": "Thank you for your order",
-          "buttons": {
-            "back_to_shop_text": "Back to shop"
-          }
-        },
-        "_404": {
-          "title": "Page not found",
-          "description": "We are sorry, but the page you requested was not found",
-          "buttons": {
-            "back_to_shop_text": "Back to shop"
-          }
-        }
-      },
-      "style": {
-        "primary": {
-          "primary_color": "#000000",
-          "primary_text": "#757575"
-        },
-        "header": {
-          "header_color": "#ffffff",
-          "header_text": "#000000"
-        },
-        "footer": {
-          "footer_color": "#ffffff",
-          "footer_text": "#000000"
-        },
-        "copyright": {
-          "copyright_color": "#ffffff",
-          "copyright_text": "#000000"
-        }
-      },
       "translates": [
         {
           "language": "AR",
@@ -2014,6 +2505,10 @@
               "value": "ابحث عن منتجات"
             },
             {
+              "name": "sections.footer.copyright.store_name",
+              "value": "متجر الكتروني"
+            },
+            {
               "name": "sections.footer.about",
               "value": "أضف وصفًا صغيرًا عن موقع الويب"
             },
@@ -2030,10 +2525,6 @@
               "value": "رقم الهاتف"
             },
             {
-              "name": "sections.footer.methods.title",
-              "value": "طرق الدفع"
-            },
-            {
               "name": "sections.footer.social_media.title",
               "value": "تابعونا"
             },
@@ -2044,14 +2535,6 @@
             {
               "name": "sections.footer.menus.menu2_title",
               "value": "القائمة 2"
-            },
-            {
-              "name": "sections.footer.copyright.store_name",
-              "value": "متجر الكتروني"
-            },
-            {
-              "name": "sections.footer.copyright.text",
-              "value": "Copyright © __YEAR__. جميع الحقوق محفوظة <a href='//storeino.com'>storeino.com</a>"
             },
             {
               "name": "sections.footer.icons.language_text",
@@ -2066,52 +2549,44 @@
               "value": "إكتشف"
             },
             {
-              "name": "sections.product.add_to_cart.text",
-              "value": "اضف الى السلة"
+              "name": "sections.homepage.products.title",
+              "value": "كل ما يلمع هو ذهب خالص عيار 14"
             },
             {
-              "name": "sections.product.buy_now.text",
-              "value": "اشتري الآن"
+              "name": "sections.homepage.products.view_products",
+              "value": "عرض جميع المنتجات"
             },
             {
-              "name": "sections.product.related.title",
-              "value": "منتجات ذات صلة"
+              "name": "sections.posts.title",
+              "value": "في تركيز"
             },
             {
-              "name": "sections.product.upsell.title",
-              "value": "عرض خاص"
+              "name": "sections.reviews.title",
+              "value": "جميع الآراء"
             },
             {
-              "name": "sections.product.reviews.title",
-              "value": "المراجعات"
+              "name": "sections.brands.text",
+              "value": "\"يصنع الذهب مجوهرات راقية بتوازن مثالي بين البساطة والتميز.\""
             },
             {
-              "name": "sections.product.share_buttons.title",
-              "value": "شارك"
+              "name": "sections.callaction.title",
+              "value": "مصنوع في لوس أنجلوس بحب ومن ذهب خالص"
             },
             {
-              "name": "sections.product.quantity.text",
-              "value": "الكمية"
+              "name": "sections.callaction.description",
+              "value": "“No object can tell a story quite like a piece of jewelry” - says BabyGold™ founder, Helen Ashikian. Our always-14k solid gold, fine-jewelry is sustainably made in our family-owned factory in Downtown Los Angeles, California. We cut traditional mark-ups and offer honest pricing, bringing you the highest quality pieces to love and cherish for decades to come."
             },
             {
-              "name": "sections.product.description.title",
-              "value": "الوصف"
+              "name": "sections.callaction.btn_txt",
+              "value": "Discover More About Us"
             },
             {
-              "name": "sections.product.related.show_more_text",
-              "value": "إكتشف أكثر"
+              "name": "sections.posts.title",
+              "value": "في تركيز"
             },
             {
-              "name": "sections.post.share_buttons.title",
-              "value": "شارك"
-            },
-            {
-              "name": "sections.post.related.title",
-              "value": "مقالات ذات صلة"
-            },
-            {
-              "name": "sections.posts.show_more_text",
-              "value": "إكتشف أكثر"
+              "name": "sections.posts.button.text",
+              "value": "إكتشف"
             },
             {
               "name": "sections.shop.sidebar.collections.title",
@@ -2150,6 +2625,18 @@
               "value": "منتجات"
             },
             {
+              "name": "sections.shop.articles_name",
+              "value": "منتجات"
+            },
+            {
+              "name": "sections.shop.empty_text",
+              "value": "لاتوجد منتوجات"
+            },
+            {
+              "name": "sections.shop.sort_name",
+              "value": "ترتيب حسب"
+            },
+            {
               "name": "sections.shop.sorts.newest",
               "value": "الحديثة"
             },
@@ -2182,60 +2669,40 @@
               "value": "آراء أكثر"
             },
             {
-              "name": "sections.shop.sort_name",
-              "value": "ترتيب حسب"
+              "name": "sections.product.quantity.text",
+              "value": "الكمية"
             },
             {
-              "name": "sections.shop.articles_name",
-              "value": "منتجات"
+              "name": "sections.product.add_to_cart.text",
+              "value": "اضف الى السلة"
             },
             {
-              "name": "sections.shop.empty_text",
-              "value": "لاتوجد منتوجات"
+              "name": "sections.product.buy_now.text",
+              "value": "اشتري الآن"
             },
             {
-              "name": "sections.blog.sidebar.categories.title",
-              "value": "الفئات"
+              "name": "sections.product.description.title",
+              "value": "الوصف"
             },
             {
-              "name": "sections.blog.sidebar.products.title",
-              "value": "من المتجر"
+              "name": "sections.product.share_buttons.title",
+              "value": "شارك"
             },
             {
-              "name": "sections.blog.sidebar.button_text1",
-              "value": "انظر إلى"
+              "name": "sections.product.reviews.title",
+              "value": "المراجعات"
             },
             {
-              "name": "sections.blog.sidebar.button_text2",
-              "value": "مقالات"
+              "name": "sections.product.related.title",
+              "value": "منتجات ذات صلة"
             },
             {
-              "name": "sections.blog.sorts.newest",
-              "value": "الاحدث"
+              "name": "sections.product.related.show_more_text",
+              "value": "إكتشف أكثر"
             },
             {
-              "name": "sections.blog.sorts.oldest",
-              "value": "الأقدم"
-            },
-            {
-              "name": "sections.blog.sorts.name_asc",
-              "value": "ترتيب الاسماء أ-ي"
-            },
-            {
-              "name": "sections.blog.sorts.name_desc",
-              "value": "ترتيب الاسماء ي-أ"
-            },
-            {
-              "name": "sections.blog.sort_name",
-              "value": "ترتيب حسب"
-            },
-            {
-              "name": "sections.blog.empty_text",
-              "value": "لم يتم العثور على مدونات"
-            },
-            {
-              "name": "sections.blog.articles_name",
-              "value": "مقالات"
+              "name": "sections.product.upsell.title",
+              "value": "عرض خاص"
             },
             {
               "name": "sections.cart.title",
@@ -2290,6 +2757,62 @@
               "value": "الرجوع الى المتجر"
             },
             {
+              "name": "sections.blog.sidebar.categories.title",
+              "value": "الفئات"
+            },
+            {
+              "name": "sections.blog.sidebar.button_text1",
+              "value": "انظر إلى"
+            },
+            {
+              "name": "sections.blog.sidebar.button_text2",
+              "value": "مقالات"
+            },
+            {
+              "name": "sections.blog.empty_text",
+              "value": "لم يتم العثور على مدونات"
+            },
+            {
+              "name": "sections.blog.articles_name",
+              "value": "مقالات"
+            },
+            {
+              "name": "sections.blog.sorts.newest",
+              "value": "الاحدث"
+            },
+            {
+              "name": "sections.blog.sorts.oldest",
+              "value": "الأقدم"
+            },
+            {
+              "name": "sections.blog.sorts.name_asc",
+              "value": "ترتيب الاسماء أ-ي"
+            },
+            {
+              "name": "sections.blog.sorts.name_desc",
+              "value": "ترتيب الاسماء ي-أ"
+            },
+            {
+              "name": "sections.blog.sort_name",
+              "value": "ترتيب حسب"
+            },
+            {
+              "name": "sections.blog.sidebar.products.title",
+              "value": "من المتجر"
+            },
+            {
+              "name": "sections.post.share_buttons.title",
+              "value": "شارك"
+            },
+            {
+              "name": "sections.post.related.title",
+              "value": "مقالات ذات صلة"
+            },
+            {
+              "name": "sections.posts.show_more_text",
+              "value": "إكتشف أكثر"
+            },
+            {
               "name": "sections.thanks.title",
               "value": "شكرا"
             },
@@ -2312,14 +2835,6 @@
             {
               "name": "sections._404.buttons.back_to_shop_text",
               "value": "الرجوع الى المتجر"
-            },
-            {
-              "name": "sections.posts.title",
-              "value": "في تركيز"
-            },
-            {
-              "name": "sections.posts.button.text",
-              "value": "إكتشف"
             }
           ]
         },
@@ -2371,6 +2886,10 @@
               "value": "Rechercher des produits"
             },
             {
+              "name": "sections.footer.copyright.store_name",
+              "value": "BOUTIQUE EN LIGNE"
+            },
+            {
               "name": "sections.footer.about",
               "value": "ajouter une petite description du site"
             },
@@ -2387,10 +2906,6 @@
               "value": "Numéro de téléphone"
             },
             {
-              "name": "sections.footer.methods.title",
-              "value": "MÉTHODES DE PAYEMENT"
-            },
-            {
               "name": "sections.footer.social_media.title",
               "value": "SUIVEZ-NOUS"
             },
@@ -2401,14 +2916,6 @@
             {
               "name": "sections.footer.menus.menu2_title",
               "value": "MENU 2"
-            },
-            {
-              "name": "sections.footer.copyright.store_name",
-              "value": "BOUTIQUE EN LIGNE"
-            },
-            {
-              "name": "sections.footer.copyright.text",
-              "value": "Copyright © __YEAR__. Tous les droits réservés. <a href='//storeino.com'>storeino.com</a>"
             },
             {
               "name": "sections.footer.icons.language_text",
@@ -2423,52 +2930,44 @@
               "value": "Découvrir"
             },
             {
-              "name": "sections.product.add_to_cart.text",
-              "value": "AJOUTER AU PANIER"
+              "name": "sections.homepage.products.title",
+              "value": "Tout ce qui brille est en or massif 14 carats"
             },
             {
-              "name": "sections.product.buy_now.text",
-              "value": "ACHETER MAINTENANT"
+              "name": "sections.homepage.products.view_products",
+              "value": "Voir tous les produits"
             },
             {
-              "name": "sections.product.related.title",
-              "value": "PRODUITS CONNEXES"
+              "name": "sections.posts.title",
+              "value": "AU POINT"
             },
             {
-              "name": "sections.product.upsell.title",
-              "value": "OFFRE SPÉCIALE"
+              "name": "sections.reviews.title",
+              "value": "Tous les avis"
             },
             {
-              "name": "sections.product.reviews.title",
-              "value": "COMMENTAIRES"
+              "name": "sections.brands.text",
+              "value": "\"L'or crée des bijoux fins avec juste le bon équilibre entre simplicité et sophistication.\""
             },
             {
-              "name": "sections.product.share_buttons.title",
-              "value": "PARTAGER"
+              "name": "sections.callaction.title",
+              "value": "Fabriqué à Los Angeles avec amour et en or massif"
             },
             {
-              "name": "sections.product.quantity.text",
-              "value": "ِQuantité"
+              "name": "sections.callaction.description",
+              "value": "“No object can tell a story quite like a piece of jewelry” - says BabyGold™ founder, Helen Ashikian. Our always-14k solid gold, fine-jewelry is sustainably made in our family-owned factory in Downtown Los Angeles, California. We cut traditional mark-ups and offer honest pricing, bringing you the highest quality pieces to love and cherish for decades to come."
             },
             {
-              "name": "sections.product.description.title",
-              "value": "Description"
+              "name": "sections.callaction.btn_txt",
+              "value": "Discover More About Us"
             },
             {
-              "name": "sections.product.related.show_more_text",
-              "value": "Découvrir plus"
+              "name": "sections.posts.title",
+              "value": "AU POINT"
             },
             {
-              "name": "sections.post.share_buttons.title",
-              "value": "Partager"
-            },
-            {
-              "name": "sections.post.related.title",
-              "value": "ARTICLES SIMILAIRES"
-            },
-            {
-              "name": "sections.posts.show_more_text",
-              "value": "Découvrir plus"
+              "name": "sections.posts.button.text",
+              "value": "Découvrir"
             },
             {
               "name": "sections.shop.sidebar.collections.title",
@@ -2507,6 +3006,18 @@
               "value": "Produit(s)"
             },
             {
+              "name": "sections.shop.articles_name",
+              "value": "Articles"
+            },
+            {
+              "name": "sections.shop.empty_text",
+              "value": "Aucun produit trouvé"
+            },
+            {
+              "name": "sections.shop.sort_name",
+              "value": "Trier Par"
+            },
+            {
               "name": "sections.shop.sorts.newest",
               "value": "Le plus récents"
             },
@@ -2539,60 +3050,40 @@
               "value": "Plus d'avis"
             },
             {
-              "name": "sections.shop.sort_name",
-              "value": "Trier Par"
+              "name": "sections.product.quantity.text",
+              "value": "ِQuantité"
             },
             {
-              "name": "sections.shop.articles_name",
-              "value": "Articles"
+              "name": "sections.product.add_to_cart.text",
+              "value": "AJOUTER AU PANIER"
             },
             {
-              "name": "sections.shop.empty_text",
-              "value": "Aucun produit trouvé"
+              "name": "sections.product.buy_now.text",
+              "value": "ACHETER MAINTENANT"
             },
             {
-              "name": "sections.blog.sidebar.categories.title",
-              "value": "Catégories"
+              "name": "sections.product.description.title",
+              "value": "Description"
             },
             {
-              "name": "sections.blog.sidebar.products.title",
-              "value": "DE LA BOUTIQUE"
+              "name": "sections.product.share_buttons.title",
+              "value": "PARTAGER"
             },
             {
-              "name": "sections.blog.sidebar.button_text1",
-              "value": "Voir le"
+              "name": "sections.product.reviews.title",
+              "value": "COMMENTAIRES"
             },
             {
-              "name": "sections.blog.sidebar.button_text2",
-              "value": "Poste(s)"
+              "name": "sections.product.related.title",
+              "value": "PRODUITS CONNEXES"
             },
             {
-              "name": "sections.blog.sorts.newest",
-              "value": "Le plus récent"
+              "name": "sections.product.related.show_more_text",
+              "value": "Découvrir plus"
             },
             {
-              "name": "sections.blog.sorts.oldest",
-              "value": "Le plus ancien"
-            },
-            {
-              "name": "sections.blog.sorts.name_asc",
-              "value": "Nom (A-Z)"
-            },
-            {
-              "name": "sections.blog.sorts.name_desc",
-              "value": "Nom (Z-A)"
-            },
-            {
-              "name": "sections.blog.sort_name",
-              "value": "Trier Par"
-            },
-            {
-              "name": "sections.blog.empty_text",
-              "value": "Aucun blog trouvé"
-            },
-            {
-              "name": "sections.blog.articles_name",
-              "value": "Postes"
+              "name": "sections.product.upsell.title",
+              "value": "OFFRE SPÉCIALE"
             },
             {
               "name": "sections.cart.title",
@@ -2647,6 +3138,62 @@
               "value": "Retour à la boutique"
             },
             {
+              "name": "sections.blog.sidebar.categories.title",
+              "value": "Catégories"
+            },
+            {
+              "name": "sections.blog.sidebar.button_text1",
+              "value": "Voir le"
+            },
+            {
+              "name": "sections.blog.sidebar.button_text2",
+              "value": "Poste(s)"
+            },
+            {
+              "name": "sections.blog.empty_text",
+              "value": "Aucun blog trouvé"
+            },
+            {
+              "name": "sections.blog.articles_name",
+              "value": "Postes"
+            },
+            {
+              "name": "sections.blog.sorts.newest",
+              "value": "Le plus récent"
+            },
+            {
+              "name": "sections.blog.sorts.oldest",
+              "value": "Le plus ancien"
+            },
+            {
+              "name": "sections.blog.sorts.name_asc",
+              "value": "Nom (A-Z)"
+            },
+            {
+              "name": "sections.blog.sorts.name_desc",
+              "value": "Nom (Z-A)"
+            },
+            {
+              "name": "sections.blog.sort_name",
+              "value": "Trier Par"
+            },
+            {
+              "name": "sections.blog.sidebar.products.title",
+              "value": "DE LA BOUTIQUE"
+            },
+            {
+              "name": "sections.post.share_buttons.title",
+              "value": "Partager"
+            },
+            {
+              "name": "sections.post.related.title",
+              "value": "ARTICLES SIMILAIRES"
+            },
+            {
+              "name": "sections.posts.show_more_text",
+              "value": "Découvrir plus"
+            },
+            {
               "name": "sections.thanks.title",
               "value": "Merci"
             },
@@ -2669,33 +3216,412 @@
             {
               "name": "sections._404.buttons.back_to_shop_text",
               "value": "retour à la boutique"
-            },
-            {
-              "name": "sections.posts.title",
-              "value": "AU POINT"
-            },
-            {
-              "name": "sections.posts.button.text",
-              "value": "Découvrir"
             }
           ]
         }
-      ]
+      ],
+      "style": {
+        "primary": {
+          "primary_color": "#000000",
+          "primary_text": "#757575"
+        },
+        "header": {
+          "header_color": "#ffffff",
+          "header_text": "#000000"
+        },
+        "footer": {
+          "footer_color": "#000000",
+          "footer_text": "#ffffff"
+        },
+        "copyright": {
+          "copyright_color": "#000000",
+          "copyright_text": "#ffffff"
+        }
+      },
+      "sections": {
+        "products": {
+          "add_to_cart": {
+            "active": true,
+            "text": "ADD TO CART"
+          },
+          "show_reviews": true,
+          "add_to_wishlist": {
+            "active": true
+          },
+          "add_to_cart_to_checkout": false,
+          "added_text": "ADDED",
+          "confirm_text": "CONFIRMER",
+          "out_of_stock_text": "Out Of Stock",
+          "images": {
+            "fit": "object-cover",
+            "ratio": "pb-full"
+          }
+        },
+        "alerts": {
+          "added_to_cart": "ADDED TO CART",
+          "added_to_wishlist": "ADDED TO WISHLIST",
+          "removed_from_cart": "REMOVED FROM CART",
+          "removed_from_wishlist": "REMOVED FROM WISHLIST"
+        },
+        "header": {
+          "logo": null,
+          "icons": {
+            "cart": true,
+            "wishlist": true,
+            "account": true,
+            "search": true,
+            "language": true,
+            "currency": true,
+            "language_text": "LANGUAGE",
+            "currency_text": "CURRENCY"
+          },
+          "search_text": "Search for products",
+          "menu": null
+        },
+        "footer": {
+          "copyright": {
+            "store_name": "ONLINE STORE",
+            "text": "Copyright © __YEAR__. All rights reserved. <a href='//storeino.com'>storeino.com</a>",
+            "menu": null
+          },
+          "about": "add a small description about the website",
+          "location": "Location",
+          "location_link": "#",
+          "gmail": "Email",
+          "number": "Phone Number",
+          "social_media": {
+            "title": "FOLLOW US",
+            "facebook": "https://www.facebook.com/",
+            "twitter": "https://twitter.com/",
+            "instagram": "https://www.instagram.com/",
+            "youtube": "https://www.youtube.com/",
+            "linkedin": "https://www.linkedin.com/",
+            "whatsapp": "https://web.whatsapp.com/",
+            "snapchat": "https://www.snapchat.com/",
+            "tiktok": "https://www.tiktok.com/"
+          },
+          "menus": {
+            "menu1_active": true,
+            "menu1_title": "MENU 1",
+            "menu1": null,
+            "menu2_active": true,
+            "menu2_title": "MENU 2",
+            "menu2": null
+          },
+          "icons": {
+            "language": true,
+            "language_text": "LANGUAGE",
+            "currency": true,
+            "currency_text": "CURRENCY"
+          },
+          "methods": {
+            "title": "PAYMENT METHODS",
+            "visa": true,
+            "mastercard": true,
+            "transfer": true,
+            "cash": true,
+            "paypal": true
+          }
+        },
+        "collections": {
+          "active": true,
+          "description": "Discover",
+          "items": null
+        },
+        "banner": {
+          "show_section": true,
+          "items": {
+            "item_0": {
+              "bg_image": null,
+              "show_bg": true,
+              "title": "Stay Sparkling All Summer Along",
+              "show_title": true,
+              "btn_txt": "Show All Pieces",
+              "btn_url": "/shop",
+              "show_button": true
+            },
+            "item_1": {
+              "bg_image": null,
+              "show_bg": true,
+              "title": "Summer Essentials have arrived",
+              "show_title": true,
+              "btn_txt": "Discover Our Products",
+              "btn_url": "/shop",
+              "show_button": true
+            }
+          }
+        },
+        "homepage": {
+          "products": {
+            "show_section": true,
+            "title": "All that GLITTERS is SOLID 14K GOLD",
+            "collections": null,
+            "items": null,
+            "view_products": "View All Products",
+            "view_products_url": "/shop",
+            "show_title": true,
+            "active_show_more_btn": true
+          }
+        },
+        "services": {
+          "show": true,
+          "items": {
+            "item_0": {
+              "info": "Service Text",
+              "show_info": true,
+              "icon": null,
+              "show_icon": true
+            },
+            "item_1": {
+              "info": "Service Text",
+              "show_info": true,
+              "icon": null,
+              "show_icon": true
+            },
+            "item_2": {
+              "info": "Service Text",
+              "show_info": true,
+              "icon": null,
+              "show_icon": true
+            },
+            "item_3": {
+              "info": "Service Text",
+              "show_info": true,
+              "icon": null,
+              "show_icon": true
+            },
+            "item_4": {
+              "info": "Service Text",
+              "show_info": true,
+              "icon": null,
+              "show_icon": true
+            }
+          }
+        },
+        "posts": {
+          "show_section": true,
+          "title": "Our Posts",
+          "show_title": true,
+          "read_more": "Read More",
+          "show_btn": true,
+          "active": true,
+          "items": "3",
+          "button": {
+            "text": "Discover"
+          },
+          "show_more_text": "Discover more"
+        },
+        "reviews": {
+          "show_section": true,
+          "title": "All reveiws",
+          "show_title": true
+        },
+        "brands": {
+          "text": "“Gold makes fine jewelry with just the right balance of simple and special ”",
+          "show_text": true,
+          "show_section": true,
+          "brands": []
+        },
+        "callaction": {
+          "title": "Made in Los Angeles with love and Solid Gold",
+          "show_title": true,
+          "description": "“No object can tell a story quite like a piece of jewelry” - says BabyGold™ founder, Helen Ashikian. Our always-14k solid gold, fine-jewelry is sustainably made in our family-owned factory in Downtown Los Angeles, California. We cut traditional mark-ups and offer honest pricing, bringing you the highest quality pieces to love and cherish for decades to come.“",
+          "show_desc": true,
+          "btn_txt": "Discover More About Us",
+          "btn_url": "/pages",
+          "show_btn": true,
+          "show_section": true,
+          "first_img": null,
+          "secnd_img": null
+        },
+        "shop": {
+          "sidebar": {
+            "active": true,
+            "collections": {
+              "active": true,
+              "title": "Collections"
+            },
+            "prices": {
+              "active": true,
+              "title": "Prices"
+            },
+            "sizes": {
+              "active": true,
+              "title": "Sizes"
+            },
+            "colors": {
+              "active": true,
+              "title": "Colors"
+            },
+            "tags": {
+              "active": true,
+              "title": "Tags"
+            },
+            "brands": {
+              "active": true,
+              "title": "Brands"
+            },
+            "filters_name": "Filtres",
+            "button_text1": "See the",
+            "button_text2": "Product(s)"
+          },
+          "title": "",
+          "description": "",
+          "articles_name": "Articles",
+          "empty_text": "No product found",
+          "sort_name": "Order by",
+          "default_sort": {
+            "createdAt": -1
+          },
+          "sorts": {
+            "newest": "Newest",
+            "oldest": "Oldest",
+            "name_asc": "Name (A-Z)",
+            "name_desc": "Name (Z-A)",
+            "price_asc": "Price (low to high)",
+            "price_desc": "Price (high to low)",
+            "rating_asc": "Rating (low to high)",
+            "rating_desc": "Rating (high to low)"
+          },
+          "pagination": {
+            "limit": 12
+          }
+        },
+        "product": {
+          "quantity": {
+            "text": "Quantity"
+          },
+          "add_to_cart": {
+            "active": true,
+            "text": "ADD TO CART"
+          },
+          "buy_now": {
+            "active": true,
+            "text": "BUY NOW"
+          },
+          "description": {
+            "title": "Description"
+          },
+          "share_buttons": {
+            "active": true,
+            "title": "SHARE",
+            "whatsapp": true,
+            "facebook": true,
+            "twitter": true,
+            "linkedin": true
+          },
+          "reviews": {
+            "active": true,
+            "title": "REVIEWS"
+          },
+          "related": {
+            "active": true,
+            "title": "RELATED PRODUCTS",
+            "show_more_text": "Discover more"
+          },
+          "upsell": {
+            "active": true,
+            "title": "SPECIAL OFFER"
+          }
+        },
+        "cart": {
+          "title": "CART",
+          "empty_text": "your cart is empty",
+          "product_text": "PRODUCT",
+          "price_text": "PRICE",
+          "quantity_text": "QUANTITY",
+          "total_text": "TOTAL",
+          "subtotal_text": "SUBTOTAL ",
+          "upsell": {
+            "active": true,
+            "title": "SPECIAL OFFER"
+          },
+          "buttons": {
+            "checkout_text": "PLACE ORDER",
+            "back_to_shop_text": "BACK TO SHOP",
+            "show_back_to_shop": true
+          }
+        },
+        "wishlist": {
+          "title": "WISHLIST",
+          "empty_text": "Your Wishlist is empty",
+          "buttons": {
+            "back_to_shop_text": "Back to shop"
+          }
+        },
+        "blog": {
+          "sidebar": {
+            "active": true,
+            "categories": {
+              "active": true,
+              "title": "Categories"
+            },
+            "button_text1": "See the",
+            "button_text2": "Post(s)",
+            "products": {
+              "active": true,
+              "title": "OF THE SHOP"
+            }
+          },
+          "title": "",
+          "description": "",
+          "empty_text": "No blogs found",
+          "articles_name": "Posts",
+          "sorts": {
+            "newest": "Newest",
+            "oldest": "Oldest",
+            "name_asc": "Name (A-Z)",
+            "name_desc": "Name (Z-A)"
+          },
+          "sort_name": "Order by",
+          "pagination": {
+            "limit": 12
+          }
+        },
+        "post": {
+          "share_buttons": {
+            "active": true,
+            "title": "SHARE",
+            "whatsapp": true,
+            "facebook": true,
+            "twitter": true,
+            "linkedin": true
+          },
+          "related": {
+            "active": true,
+            "title": "RELATED POSTS"
+          }
+        },
+        "thanks": {
+          "title": "Thanks",
+          "description": "Thank you for your order",
+          "buttons": {
+            "back_to_shop_text": "Back to shop"
+          }
+        },
+        "_404": {
+          "title": "Page not found",
+          "description": "We are sorry, but the page you requested was not found",
+          "buttons": {
+            "back_to_shop_text": "Back to shop"
+          }
+        }
+      }
     }
   },
   "images": [
-    "https://storeno.b-cdn.net/themes/lux/lux-cover.jpg"
+    "https://storeno.b-cdn.net/stores/6-2024/1719664575338.jpeg"
   ],
   "isActive": false,
   "autoRenew": false,
   "expiryDate": "2050-12-12T00:00:00.000Z",
-  "name": "lux",
-  "url": "/themes/lux",
-  "route": "lux",
+  "name": "gazelle",
+  "url": "/themes/gazelle",
+  "route": "gazelle",
   "defaults": [],
   "paymentType": "yearly",
   "payments": [],
   "price": 22,
   "description": "✔ Simple and easy theme to use ✔ Well presented and convertible store and product page ✔ SEO optimized ✔ Responsive to all devices",
-  "publicName": "Lux - Multipurpose Responsive E-commerce Template"
+  "publicName": "Gazelle - Multipurpose Responsive E-commerce Template"
 }

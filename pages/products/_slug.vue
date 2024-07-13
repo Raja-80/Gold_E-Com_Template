@@ -36,14 +36,14 @@
                         product-quantity
                         add to cart
                         <div class="flex justify-end w-3/5 md:w-3/12" v-if="!outofstock">
-                            <button class="flex justify-center w-full px-5 py-4 border rounded-full text-sml ml-font-bold-hover border-primary click-effect" v-if="$settings.sections.product.add_to_cart.active" @click="addToCart">
+                            <button class="flex justify-center w-full px-5 py-4 border rounded-full text-sml hover:font-semibold border-primary click-effect" v-if="$settings.sections.product.add_to_cart.active" @click="addToCart">
                                 <span>{{ $settings.sections.product.add_to_cart.text }}</span>
                             </button>
                             <div class="w-full" v-else>
-                                <button v-if="!$store.state.apps.find(a=>a.placement.indexOf('REPLACE_BUYNOW') >= 0)" class="flex justify-center w-full px-5 py-4 border rounded-full text-sml ml-font-bold-hover border-primary click-effect"  @click="buyNow">
+                                <button v-if="!$store.state.apps.find(a=>a.placement.indexOf('REPLACE_BUYNOW') >= 0)" class="flex justify-center w-full px-5 py-4 border rounded-full text-sml hover:font-semibold border-primary click-effect"  @click="buyNow">
                                     <span>{{ $settings.sections.product.buy_now.text }}</span>
                                 </button>
-                                <a href="#checkout" v-else class="flex justify-center w-full px-5 py-4 border rounded-full text-sml ml-font-bold-hover border-primary click-effect">
+                                <a href="#checkout" v-else class="flex justify-center w-full px-5 py-4 border rounded-full text-sml hover:font-semibold border-primary click-effect">
                                     <span>{{ $settings.sections.product.buy_now.text }}</span>
                                 </a>
                             </div>
@@ -51,7 +51,7 @@
                         add to cart
                         Out Of Stock
                         <div class="flex justify-start w-3/5 md:w-3/12" v-if="outofstock">
-                            <button class="flex justify-center w-full px-5 py-4 border border-red-600 rounded-full text-sml ml-font-bold-hover click-effect">
+                            <button class="flex justify-center w-full px-5 py-4 border border-red-600 rounded-full text-sml hover:font-semibold click-effect">
                                 <span class="text-red-600">{{ $settings.sections.product.out_of_stock ? $settings.sections.product.out_of_stock.text : 'Out Of Stock' }}</span>
                             </button>
                         </div>
@@ -321,7 +321,7 @@
                                     <!-- out of stock -->
                                     <div v-show="outofstock" aria-label="Out Of Stock Button"
                                         :class="$settings.sections.product.buy_now.active ? 'mb-3' : ''"
-                                        class="flex justify-center w-full p-4 px-5 border border-red-600 rounded-full text-sml ml-font-bold-hover">
+                                        class="flex justify-center w-full p-4 px-5 border border-red-600 rounded-full text-sml hover:font-semibold">
                                         <span class="text-red-600">{{ $settings.sections.products.out_of_stock_text ?
                                             $settings.sections.products.out_of_stock_text : 'Out Of Stock' }}</span>
                                     </div>
@@ -331,7 +331,7 @@
                                         v-if="$settings.sections.product.add_to_cart.active"
                                         :class="$settings.sections.product.buy_now.active ? 'mb-3' : ''"
                                         @click="addToCart"
-                                        class="flex justify-center w-full p-4 px-5 border text-white text-sml ml-font-bold-hover bg-primary click-effect">
+                                        class="flex justify-center w-full p-4 px-5 border text-white text-sml hover:font-semibold bg-primary click-effect">
                                         <span>{{ $settings.sections.product.add_to_cart.text }}</span>
                                     </button>
                                     <!-- add to cart -->
@@ -346,7 +346,7 @@
                                     <button aria-label="buy now" v-if="$settings.sections.product.buy_now.active"
                                         v-show="!$store.state.apps.find(a => a.placement.indexOf('REPLACE_BUYNOW') >= 0)"
                                         @click="buyNow"
-                                        class="flex justify-center w-full p-4 px-5 border text-white text-sml ml-font-bold-hover bg-primary click-effect">
+                                        class="flex justify-center w-full p-4 px-5 border text-white text-sml hover:font-semibold bg-primary click-effect">
                                         <span>{{ $settings.sections.product.buy_now.text }}</span>
                                     </button>
                                     <si-app-loader placement="AFTER_BUYNOW" />

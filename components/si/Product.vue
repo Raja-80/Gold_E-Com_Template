@@ -1,5 +1,5 @@
 <template>
-    <div class="relative flex flex-col wishlist-box p-2">
+    <div class="relative flex flex-col wishlist-box p-2 ">
         <!-- wishlist icon -->
         <div :class="page == 'wishlist' ? '' : 'wishlist opacity-0'"
             v-if="$settings.sections.products.add_to_wishlist.active">

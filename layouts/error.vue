@@ -9,7 +9,7 @@
 				<span class="my-4 text-3xl font-bold text-primary md:text-4xl">{{ $settings.sections._404.title }}</span>
 			</div>
 			<h5 class="my-4 text-lg font-bold text-primary md:text-xl">{{ $settings.sections._404.description }}</h5>
-			<a href="/shop" class="inline-flex px-5 py-3 text-sm font-bold tracking-wider transition ease-linear delay-200 border rounded-full shadow-sm border-primary ml-font-bold-hover scale">{{ $settings.sections._404.buttons.back_to_shop_text }}</a>
+			<a href="/shop" class="inline-flex px-5 py-3 text-sm font-bold tracking-wider transition ease-linear delay-200 border rounded-full shadow-sm border-primary hover:font-semibold scale">{{ $settings.sections._404.buttons.back_to_shop_text }}</a>
 		</div>
 	</div>
 </div>

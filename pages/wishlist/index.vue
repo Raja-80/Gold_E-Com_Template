@@ -12,7 +12,7 @@
             <div class="flex flex-col items-center">
                 <h2 class="w-full mb-3 text-lg text-center">{{ $settings.sections.wishlist.empty_text }}</h2>
                 <nuxt-link to="/shop" class="flex items-center justify-center px-4 py-2 border rounded-full border-primary">
-                    <span class="w-full text-sml ml-font-bold-hover">{{ $settings.sections.wishlist.buttons.back_to_shop_text }}</span>
+                    <span class="w-full text-sml hover:font-semibold">{{ $settings.sections.wishlist.buttons.back_to_shop_text }}</span>
                 </nuxt-link>
             </div>
         </div>

@@ -12,6 +12,7 @@
             </div>
         </div>
         <!-- Collections -->
+         
         <!-- Collections not exists -->
         <div v-if="!loading && items.length==0" class="px-5 my-5 xl:my-10 xl:px-10">
             <div class="flex flex-wrap items-center p-5 bg-white border border-gray-300 rounded-lg">
@@ -23,11 +24,11 @@
                     <h2 v-if="this.$store.state.language.code == 'AR'" class="text-lg font-bold lg:text-xl text-center-res">{{ 'ليس لديك أي مجموعات' }}</h2>
                     <h2 v-else-if="this.$store.state.language.code == 'FR'" class="text-lg font-bold lg:text-xl text-center-res">{{ 'Vous n\'avez aucune collection' }}</h2>
                     <h2 v-else class="text-lg font-bold lg:text-xl text-center-res">{{ 'You don\'t have any collection' }}</h2>
-                    <p v-if="this.$store.state.language.code == 'AR'" class="mt-2 text-sml text-center-res">{{ 'انتقل إلى مسؤول المتجر الخاص بك > المنتجات > المجموعات' }} <a href="#" target="_blank" class="underline text-primary primary-hover">{{ 'اضف جديد' }}</a></p>
-                    <p v-else-if="this.$store.state.language.code == 'FR'" class="mt-2 text-sml text-center-res">{{ 'Accédez à l\'administration de votre boutique > produits > collections >' }} <a href="#" target="_blank" class="underline text-primary primary-hover">{{ 'Ajouter nouveau' }}</a></p>
-                    <p v-else class="mt-2 text-sml text-center-res">{{ 'Go to your store admin > products > collections >' }} <a href="#" target="_blank" class="underline text-primary primary-hover">{{ 'Add new' }}</a></p>
+                    <p v-if="this.$store.state.language.code == 'AR'" class="mt-2 text-sml text-center-res">{{ 'انتقل إلى مسؤول المتجر الخاص بك > المنتجات > المجموعات' }} <a href="https://business.storeino.com/stores/collections" target="_blank" class="underline text-primary primary-hover">{{ 'اضف جديد' }}</a></p>
+                    <p v-else-if="this.$store.state.language.code == 'FR'" class="mt-2 text-sml text-center-res">{{ 'Accédez à l\'administration de votre boutique > produits > collections >' }} <a href="https://business.storeino.com/stores/collections" target="_blank" class="underline text-primary primary-hover">{{ 'Ajouter nouveau' }}</a></p>
+                    <p v-else class="mt-2 text-sml text-center-res">{{ 'Go to your store admin > products > collections >' }} <a href="https://business.storeino.com/stores/collections" target="_blank" class="underline text-primary primary-hover">{{ 'Add new' }}</a></p>
                     <div class="flex justify-center lg:justify-start">
-                        <nuxt-link class="flex items-center justify-center h-10 px-8 mt-4 transition-all ease-linear delay-75 border rounded-full border-primary ml-font-bold-hover" to="/shop">
+                        <nuxt-link class="flex items-center justify-center h-10 px-8 mt-4 transition-all ease-linear delay-75 border rounded-full border-primary hover:font-semibold" to="/shop">
                             <span v-if="this.$store.state.language.code == 'AR'" class="text-sml">{{'شاهد العرض التوضيحي للسمة'}}</span>
                             <span v-else-if="this.$store.state.language.code == 'FR'" class="text-sml">{{'Voir la démo du thème'}}</span>
                             <span v-else class="text-sml">{{'View theme demo'}}</span>
