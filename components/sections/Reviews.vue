@@ -35,14 +35,6 @@
 
                             <div class="text-sml">{{ review.content }}</div>
                         </div>
-                        <!-- <div v-if="review.images.length > 0" class="w-full mt-3 overflow-auto scroll">
-                            <div class="flex gap-2">
-                                <si-image width="100" height="100" class="w-12 h-12 cursor-pointer"
-                                    v-for="(image, index) in review.images" :key="index" :src="image"
-                                    @click="$store.state.fullImage = image"
-                                    :alt="`${review.rating} stars - ${review.content}`" />
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>

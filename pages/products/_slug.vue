@@ -12,188 +12,63 @@
             <!-- Product id -->
             <meta itemprop="productID" :content="item._id" />
             <!-- Product id -->
-            <!-- sticky add to cart -->
-            <!-- <transition name="show">
-                <div class="fixed inset-0 top-auto z-30 px-5 py-3 bg-white border-t bg-primary-border" v-if="showStickyAddToCart" >
-                    <div class="container flex items-center gap-4 md:gap-6">
-                         Product Name
-                        <div class="items-center hidden gap-4 md:flex md:gap-6 md:w-5/12">
-                            <si-image class="object-cover rounded-sm cursor-pointer w-14 h-14" v-show="visibleSlide === index" v-for="(image, index) in item.images" :key="index" :index="index" @click="$store.state.fullImage=image ? image.src : null" :src="image ? image.src : null " :alt="item.name" />
-                            <h4 class="text-xl font-medium truncate guard-cairo-font">{{ item.name }}</h4>
-                        </div>
-                         Product Name
-                        Price
-                        <div class="hidden md:block md:w-1/12 lg:w-2/12">
-                            <si-product-price class="text-base" :type="'simple'" :price="price" :variants="[]"></si-product-price>
-                        </div>
-                        Price
-                        product-quantity
-                        <div class="w-2/5 md:w-3/12 lg:w-2/12" id="quantityProduct">
-                            <div  v-if="$settings.sections.product.quantity.active != null ? $settings.sections.product.quantity.active : true">
-                                <si-product-quantity @selected="quantitySelected" :quantity="quantity"></si-product-quantity>
-                            </div>
-                        </div>
-                        product-quantity
-                        add to cart
-                        <div class="flex justify-end w-3/5 md:w-3/12" v-if="!outofstock">
-                            <button class="flex justify-center w-full px-5 py-4 border rounded-full text-sml hover:font-semibold border-primary click-effect" v-if="$settings.sections.product.add_to_cart.active" @click="addToCart">
-                                <span>{{ $settings.sections.product.add_to_cart.text }}</span>
-                            </button>
-                            <div class="w-full" v-else>
-                                <button v-if="!$store.state.apps.find(a=>a.placement.indexOf('REPLACE_BUYNOW') >= 0)" class="flex justify-center w-full px-5 py-4 border rounded-full text-sml hover:font-semibold border-primary click-effect"  @click="buyNow">
-                                    <span>{{ $settings.sections.product.buy_now.text }}</span>
-                                </button>
-                                <a href="#checkout" v-else class="flex justify-center w-full px-5 py-4 border rounded-full text-sml hover:font-semibold border-primary click-effect">
-                                    <span>{{ $settings.sections.product.buy_now.text }}</span>
-                                </a>
-                            </div>
-                        </div>
-                        add to cart
-                        Out Of Stock
-                        <div class="flex justify-start w-3/5 md:w-3/12" v-if="outofstock">
-                            <button class="flex justify-center w-full px-5 py-4 border border-red-600 rounded-full text-sml hover:font-semibold click-effect">
-                                <span class="text-red-600">{{ $settings.sections.product.out_of_stock ? $settings.sections.product.out_of_stock.text : 'Out Of Stock' }}</span>
-                            </button>
-                        </div>
-                        Out Of Stock
-                        
-                    </div>
-                </div>
-            </transition> -->
-            <!-- sticky add to cart -->
             <!--  -->
             <div class="lg:p-5 xl:py-7 xl:px-10">
                 <div class="flex flex-wrap justify-between">
-                    <!-- shows images when click -->
-                    <transition name="fade">
-                        <div v-if="showImageSlider" class="fixed inset-0 bg-white z-index">
-                            <div @click="showBodyScroll">
-                                <div @click="showBodyScroll(); showImageSlider = false"
-                                    class="absolute top-0 right-0 z-50 px-4 py-8 cursor-pointer md:px-10 md:py-10">
-                                    <svg aria-label="close icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M10.71 10l4.65-4.66a.495.495 0 10-.7-.7L10 9.29 5.34 4.64a.495.495 0 00-.7.7L9.29 10l-4.65 4.66a.48.48 0 000 .7.481.481 0 00.7 0L10 10.71l4.66 4.65a.482.482 0 00.7 0 .48.48 0 000-.7L10.71 10z"
-                                            fill="currentColor"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="relative flex flex-wrap items-center justify-between h-full lg:p-10">
-                                <div class="flex-col items-center hidden lg:flex">
-                                    <div @click="increaseSize"
-                                        class="flex items-center justify-center m-3 transition ease-in-out delay-150 border border-gray-300 cursor-pointer hover:border-primary w-7 h-7">
-                                        <svg aria-label="plus icon" class="w-3 h-3" width="20" height="20"
-                                            viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M15.5 9.4h-4.9V4.5a.6.6 0 10-1.2 0v4.9H4.5a.6.6 0 000 1.2h4.9v4.9a.6.6 0 001.2 0v-4.9h4.9a.6.6 0 100-1.2z"
-                                                fill="currentColor"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="flex items-center justify-center ">
-                                        <span class="text-base"> {{ zoom }} %</span>
-                                    </div>
-                                    <div @click="decreaseSize"
-                                        class="flex items-center justify-center m-3 transition ease-in-out delay-150 border border-gray-300 cursor-pointer hover:border-primary w-7 h-7">
-                                        <svg aria-label="minus icon" class="w-3 h-3" width="20" height="20"
-                                            viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M15.5 9.45h-11a.55.55 0 000 1.1h11a.55.55 0 000-1.1z"
-                                                fill="currentColor"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="flex-1 lg:px-20 xl:px-40 lg:relative">
-                                    <!-- images -->
-                                    <div class="overflow-hidden" @dblclick="toggleZoom">
-                                        <div @mousedown.prevent="startDrag" @touchstart.prevent="startDrag"
-                                            @mousemove="dragImage" @touchmove="dragImage" @mouseup="stopDrag"
-                                            @touchend="stopDrag">
-                                            <div class="relative pb-3/5-res" :class="cursor" ref="image"
-                                                :style="{ transform: 'scale(' + imageScale + ') translate(' + posX + 'px, ' + posY + 'px)' }"
-                                                v-show="visibleSlide === index" v-for="(image, index) in item.images"
-                                                :key="index" :index="index">
-                                                <si-image width="400" height="400"
-                                                    class="absolute inset-0 object-contain w-full h-full"
-                                                    :src="image ? image.src : null" :alt="item.name" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- images -->
-                                    <div
-                                        class="absolute bottom-0 my-8 transform -translate-x-1/2 lg:static md:my-10 lg:my-0 lg:bottom-auto left-1/2 lg:left-auto lg:transform-none lg:translate-x-0">
-                                        <div class="flex items-center lg:block">
-                                            <button aria-label="chivron-down" v-if="item.images.length > 1"
-                                                class="p-2 mx-5 transition-all ease-linear delay-150 bg-white border border-gray-300 rounded-full lg:absolute lg:top-1/2 lg:left-1 xl:left-5 lg:transform lg:-translate-y-1/2 md:p-3 hover:border-primary"
-                                                @click="prev">
-                                                <svg aria-label="chivron icon" class="w-5 h-5 rotate-chivron" width="20"
-                                                    height="20" viewBox="0 0 20 20" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M12.5 15.54a.54.54 0 01-.39-.16L6.72 10l5.39-5.4a.551.551 0 11.78.78L8.28 10l4.61 4.61a.56.56 0 010 .78.54.54 0 01-.39.15z"
-                                                        fill="currentColor"></path>
-                                                </svg>
-                                            </button>
-                                            <div class="lg:hidden">
-                                                <div v-if="item.images.length > 1"
-                                                    class="flex items-center justify-center">
-                                                    <div class="mx-1" v-for="(_, index) in item.images" :key="index">
-                                                        <div class="w-2 h-2 rounded-full cursor-pointer"
-                                                            :class="visibleSlide == index ? 'bg-primary w-2 h-2' : 'bg-gray-300'"
-                                                            @click="setImage(index)"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button aria-label="chivron-down" v-if="item.images.length > 1"
-                                                class="p-2 mx-5 transition-all ease-linear delay-150 bg-white border border-gray-300 rounded-full lg:absolute lg:top-1/2 lg:right-1 xl:right-5 lg:transform lg:-translate-y-1/2 md:p-3 hover:border-primary"
-                                                @click="next">
-                                                <svg aria-label="chivron icon" class="w-5 h-5 rotate-chivron" width="20"
-                                                    height="20" viewBox="0 0 20 20" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M7.89 4.6a.552.552 0 00-.78.78L11.72 10l-4.61 4.6a.56.56 0 000 .78.56.56 0 00.78 0L13.28 10 7.89 4.6z"
-                                                        fill="currentColor"></path>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="hidden overflow-y-scroll lg:block scroll">
-                                    <div style="max-height: 70vh;">
-                                        <si-image class="object-cover w-16 h-16 mb-4 cursor-pointer"
-                                            :class="visibleSlide == index ? 'opacity-100' : 'opacity-50'"
-                                            v-for="(image, index) in item.images" @click="setImage(index)" :key="index"
-                                            :src="image.src" :alt="`${item.name} - ${image.title}`" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </transition>
-                    <!-- shows images when click -->
                     <!-- product images -->
                     <div style="height: fit-content;" class="w-full lg:w-3/5 lg:sticky lg:top-7">
-                        <div class="flex flex-row">
+                        <div class="flex flex-row justify-center ">
 
-                            <div class="w-1/4 flex-col hidden lg:flex">
-                                <div class="w-full " v-for="(image, index) in item.images" :key="index">
-                                    <div @click="hideBodyScroll" class="relative py-2">
-                                        <si-image
-                                            class=" object-cover border border-white shadow-lg w-20 h-20 cursor-pointer rounded-full"
-                                            @click="setImage(index); showImageSlider = true" :src="image.src"
-                                            :alt="`${item.name} - ${image.title}`" />
+                            <div class="relative w-1/4 flex-col justify-center items-center hidden lg:flex">
+                                <!-- Up Arrow -->
+                                <div class="w-full flex justify-center items-center">
+                                    <button @click="scrollUp"
+                                        class="absolute top-0 left-1/4 w-1/2 h-8 flex items-center justify-center rounded-full hover:bg-gray-50">
+                                        &#9650;
+                                    </button>
+                                </div>
+
+                                <!-- Image Carousel -->
+                                <div ref="carousel" class="flex flex-col items-center overflow-hidden mt-10"
+                                    :style="{ height: '500px' }">
+                                    <div v-for="(image, index) in item.images" :key="index" class="w-full flex flex-col justify-center items-center">
+                                        <div @click="hideBodyScroll" class="relative py-2">
+                                            <si-image class="object-cover  cursor-pointer rounded-full"
+                                                :class="{
+                                                    'border-2 border-black shadow-lg': selectedImageIndex === index,
+                                                    'border border-white shadow-sm': selectedImageIndex !== index
+                                                }" 
+                                                :style="{
+                                                    width: selectedImageIndex === index ? '86px' : '80px',
+                                                    height: selectedImageIndex === index ? '86px' : '80px'
+                                                }"
+                                                @click="setImage(index); showImageSlider = true" :src="image.src"
+                                                :alt="`${item.name} - ${image.title}`" />
+                                        </div>
                                     </div>
+                                </div>
+
+                                <!-- Down Arrow -->
+                                <div class="w-full">
+                                    <button @click="scrollDown"
+                                        class="absolute -bottom-10 left-1/4 w-1/2 h-8 flex items-center justify-center rounded-full hover:bg-gray-50">
+                                        &#9660;
+                                    </button>
                                 </div>
                             </div>
 
-                            <div class="w-3/4">
+
+                            <div class="w-3/4 ">
                                 <div class="relative overflow-hidden w-full h-full pb-2/3-res">
                                     <div @touchstart.prevent="startDrag" @touchmove="dragImage" @touchend="stopDrag">
                                         <si-image width="400" height="400"
-                                            class="absolute inset-0 object-cover w-full h-auto cursor-pointer"
+                                            class="absolute inset-0 object-cover w-full h-auto cursor-pointer mt-5"
                                             @click="hideBodyScroll(); showImageSlider = true"
-                                            :src="image ? image.src : null" :alt="item.name" />
+                                            :src="selectedImageIndex >= 0 ? item.images[selectedImageIndex].src : null" :alt="item.name" />
                                     </div>
 
-                                    <!-- big screen -->
-                                    <div class="absolute bottom-0 right-0 z-10 p-3 m-2 transition-all ease-linear delay-150 bg-white rounded-full cursor-pointer box-shadow-xs md:m-3 md:p-4 hover-bg lg:hidden"
+                                    <!-- icon to show image in full screen responsive -->
+                                    <div class=" absolute bottom-0 right-0 z-10 p-3 m-2 transition-all ease-linear delay-150 bg-white rounded-full cursor-pointer box-shadow-xs md:m-3 md:p-4 hover-bg lg:hidden"
                                         @click="hideBodyScroll(); showImageSlider = true">
                                         <svg class="w-4 h-4" width="20" height="20" viewBox="0 0 448 512"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -202,7 +77,8 @@
                                             </path>
                                         </svg>
                                     </div>
-                                    <!-- big screen -->
+
+                                    <!-- pagination dots for responsive -->
                                     <div v-if="item.images.length > 1"
                                         class="absolute bottom-0 transform -translate-x-1/2 left-1/2 lg:hidden">
                                         <div class="flex py-5">
@@ -364,31 +240,20 @@
                                         <span class="text-sml ml-font-bold">{{
                                             $settings.sections.product.description.title }}</span>
                                     </div>
-                                    <!-- <div>
-                                        <svg aria-label="chivron icon" width="20" height="20"
-                                            :class="description ? 'rotate-180 transition-all delay-150 ease-linear' : ''"
-                                            viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z"
-                                                fill="currentColor"></path>
-                                        </svg>
-                                    </div> -->
+
                                 </div>
-                                <!-- <transition name="slide">
-                                    <div class="lg-description pt-3" v-if="description == true && item.html.length > 0">
-                                        <div id="description" v-html="item.html"></div>
-                                    </div>
-                                </transition> -->
+
                                 <div class="lg-description pt-3" v-if="item.html.length > 0">
                                     <div id="description" v-html="item.html"></div>
                                 </div>
                             </div>
                             <si-app-loader placement="AFTER_DESCRIPTION" />
                         </div>
-
+                        <!-- Description -->
+                        <!-- all product reviews -->
                         <div class="pt-3 replace-reviews flex flex-col">
-                            <!-- <span class="text-sml" key="count">{{ item.review.reviews.length }}</span> -->
-                            <div v-if="item && $settings.sections.product.reviews.active" class="flex justify-start focus-within:reviews">
+                            <div v-if="item && $settings.sections.product.reviews.active"
+                                class="flex justify-start focus-within:reviews">
                                 <sections-reviews
                                     v-show="!$store.state.apps.find(a => a.placement.indexOf('REPLACE_REVIEWS') >= 0)"
                                     :item="item"></sections-reviews>
@@ -397,36 +262,14 @@
                                 <si-app-loader placement="REPLACE_REVIEWS" />
                             </div>
                         </div>
+                        <!-- all product reviews -->
 
-                        <!-- Description -->
-                        <!-- share products icons -->
-                        <!-- <div v-if="$settings.sections.product.share_buttons.active">
-                            <h3 class="py-3 text-center-res text-sml ml-font-bold">{{ $settings.sections.product.share_buttons.title }}</h3>
-                            <div class="flex items-center justify-center gap-3 lg:justify-start">
-                                <div v-for="item in socialMedia.filter(s=>$settings.sections.product.share_buttons[s.name])" :key="item.name" class="flex items-center justify-center">
-                                    <a class="flex h-full" :href="item.url" target="_blank" rel="noopener noreferrer">
-                                        <svg aria-label="social media icons" class="opacity-90" fill-rule="evenodd" width="30" height="30" :viewBox="item.view" fill="none" xmlns="http://www.w3.org/2000/svg"><path :d="item.image" fill="currentColor"></path></svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- share products icons -->
                     </div>
                     <!-- Product content -->
                 </div>
             </div>
             <!--  -->
             <div class="flex flex-col pb-16">
-                <!-- <div class="replace-reviews">
-                    <div v-if="item && $settings.sections.product.reviews.active" class="reviews">
-                        <sections-reviews
-                            v-show="!$store.state.apps.find(a => a.placement.indexOf('REPLACE_REVIEWS') >= 0)"
-                            :item="item"></sections-reviews>
-                    </div>
-                    <div class="px-5 xl:px-10">
-                        <si-app-loader placement="REPLACE_REVIEWS" />
-                    </div>
-                </div> -->
                 <!-- upsells  -->
                 <div v-if="item && $settings.sections.product.upsell.active" class="upsells">
                     <sections-upsell :item="item.upsell" />
@@ -459,6 +302,10 @@ export default {
             isDragging: false,
             startX: 0,
             startY: 0,
+            isDraggingImgs: false,
+            startYImg: 0,
+            selectedImageIndex: -1,
+            scrollTop: 0,
             visibleSlide: 0,
             // product content
             description: true,
@@ -510,6 +357,7 @@ export default {
         try {
             const { data } = await this.$storeino.products.get({ slug })
             this.item = data;
+
             this.$store.state.seo.title = (this.item.seo.title || this.item.name) + ' - ' + this.$settings.store_name;
             this.$store.state.seo.description = this.item.seo.description || this.item.description || this.$settings.store_description;
             this.$store.state.seo.keywords = this.item.seo.keywords.length > 0 ? this.item.seo.keywords || [] : this.$settings.store_keywords || [];
@@ -617,6 +465,13 @@ export default {
         }
     },
     methods: {
+        scrollUp() {
+            this.$refs.carousel.scrollTop -= 100;
+        },
+        scrollDown() {
+            this.$refs.carousel.scrollTop += 100;
+        },
+
         toggleFullscreen() {
             if (!document.fullscreenElement) {
                 document.documentElement.requestFullscreen();
@@ -819,7 +674,8 @@ export default {
             this.quantitySelected(this.item.quantity.value);
         },
         setImage(index) {
-            this.visibleSlide = index
+            this.selectedImageIndex = index;
+            this.visibleSlide = index;
             this.image = this.$tools.copy(this.item.images[index]);
         },
         setTab(tab) {
@@ -840,6 +696,19 @@ export default {
 </script>
 
 <style scoped>
+.carousel {
+    height: 20rem;
+    /* 5 x 4rem images, adjust as needed */
+    overflow-y: auto;
+    scrollbar-width: none;
+    /* Hide scrollbar for Firefox */
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+    /* Hide scrollbar for Chrome, Safari, and Opera */
+}
+
 .lg-description table td,
 th {
     border: 1px solid #dddddd;
